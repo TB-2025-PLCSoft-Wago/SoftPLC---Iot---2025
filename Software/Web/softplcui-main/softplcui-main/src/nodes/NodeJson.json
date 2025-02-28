@@ -1,0 +1,439 @@
+{
+  "nodes": [
+    {
+      "accordion": "Output",
+      "primaryType": "outputNode",
+      "type": "analogueOutput",
+      "display": "Analogue output",
+      "label": "Output",
+      "stretchable": false,
+      "services": [
+        {
+          "friendlyName": "",
+          "nameServices": [
+            "AO1",
+            "AO2"
+          ]
+        }
+      ],
+      "subServices": [],
+      "input": [
+        {
+          "dataType": "value",
+          "name": "Input"
+        }
+      ],
+      "output": []
+    },
+    {
+      "accordion": "Logical gate",
+      "primaryType": "LogicalNode",
+      "type": "AndNode",
+      "display": "And Node",
+      "label": "&",
+      "stretchable": true,
+      "services": [],
+      "subServices": [],
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordion": "Constant",
+      "primaryType": "inputNode",
+      "type": "constantInput",
+      "display": "Constant value",
+      "label": "Input",
+      "stretchable": false,
+      "services": [],
+      "subServices": [],
+      "input": [],
+      "output": [
+        {
+          "dataType": "value",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordion": "Input",
+      "primaryType": "inputNode",
+      "type": "analogueInput",
+      "display": "Analogue Input",
+      "label": "Input",
+      "stretchable": false,
+      "services": [
+        {
+          "friendlyName": "",
+          "nameServices": [
+            "AI1",
+            "AI2",
+            "TEMP1",
+            "TEMP2"
+          ]
+        }
+      ],
+      "subServices": [],
+      "input": [],
+      "output": [
+        {
+          "dataType": "value",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordion": "Input",
+      "primaryType": "inputNode",
+      "type": "appliancesInput",
+      "display": "Appliance Input",
+      "label": "Input",
+      "stretchable": false,
+      "services": [
+        {
+          "friendlyName": "Main meter",
+          "nameServices": [
+            "sgr.ActiveEnergyAC",
+            "sgr.ActiveEnergyBalanceAC",
+            "sgr.ActivePowerAC",
+            "sgr.ApparentPowerAC",
+            "sgr.CurrentAC",
+            "sgr.Frequency",
+            "sgr.PowerFactor",
+            "sgr.ReactiveEnergyAC",
+            "sgr.ReactivePowerAC",
+            "sgr.VoltageAC"
+          ]
+        }
+      ],
+      "subServices": [
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.ActiveEnergyAC",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "ActiveEnergyACL1"
+            },
+            {
+              "dataType": "value",
+              "name": "ActiveEnergyACL2"
+            },
+            {
+              "dataType": "value",
+              "name": "ActiveEnergyACL3"
+            },
+            {
+              "dataType": "value",
+              "name": "ActiveEnergyACtot"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.ActiveEnergyBalanceAC",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "ActiveImportAC"
+            },
+            {
+              "dataType": "value",
+              "name": "ActiveExportAC"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.ActivePowerAC",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "ActivePowerACL2"
+            },
+            {
+              "dataType": "value",
+              "name": "ActivePowerACL3"
+            },
+            {
+              "dataType": "value",
+              "name": "ActivePowerACtot"
+            },
+            {
+              "dataType": "value",
+              "name": "ActivePowerACL1"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.ApparentPowerAC",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "ApparentPowerACL1"
+            },
+            {
+              "dataType": "value",
+              "name": "ApparentPowerACL2"
+            },
+            {
+              "dataType": "value",
+              "name": "ApparentPowerACL3"
+            },
+            {
+              "dataType": "value",
+              "name": "ApparentPowerACtot"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.CurrentAC",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "CurrentACL1"
+            },
+            {
+              "dataType": "value",
+              "name": "CurrentACL2"
+            },
+            {
+              "dataType": "value",
+              "name": "CurrentACL3"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.Frequency",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "Frequency"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.PowerFactor",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "PowerFactorACtot"
+            },
+            {
+              "dataType": "value",
+              "name": "PowerFactorACL1"
+            },
+            {
+              "dataType": "value",
+              "name": "PowerFactorACL2"
+            },
+            {
+              "dataType": "value",
+              "name": "PowerFactorACL3"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.ReactiveEnergyAC",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "ReactiveEnergyACL1"
+            },
+            {
+              "dataType": "value",
+              "name": "ReactiveEnergyACL2"
+            },
+            {
+              "dataType": "value",
+              "name": "ReactiveEnergyACL3"
+            },
+            {
+              "dataType": "value",
+              "name": "ReactiveEnergyACtot"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.ReactivePowerAC",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "ReactivePowerACL1"
+            },
+            {
+              "dataType": "value",
+              "name": "ReactivePowerACL2"
+            },
+            {
+              "dataType": "value",
+              "name": "ReactivePowerACL3"
+            },
+            {
+              "dataType": "value",
+              "name": "ReactivePowerACtot"
+            }
+          ]
+        },
+        {
+          "friendlyName": "Main meter",
+          "primary": "sgr.VoltageAC",
+          "secondary": [
+            {
+              "dataType": "value",
+              "name": "VoltageACL1_L2"
+            },
+            {
+              "dataType": "value",
+              "name": "VoltageACL1_L3"
+            },
+            {
+              "dataType": "value",
+              "name": "VoltageACL1_N"
+            },
+            {
+              "dataType": "value",
+              "name": "VoltageACL2_L3"
+            },
+            {
+              "dataType": "value",
+              "name": "VoltageACL2_N"
+            },
+            {
+              "dataType": "value",
+              "name": "VoltageACL3_N"
+            }
+          ]
+        }
+      ],
+      "input": [],
+      "output": [
+        {
+          "dataType": "variable",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordion": "Input",
+      "primaryType": "inputNode",
+      "type": "digitalInput",
+      "display": "Digital Input",
+      "label": "Input",
+      "stretchable": false,
+      "services": [
+        {
+          "friendlyName": "",
+          "nameServices": [
+            "DI1",
+            "DI2",
+            "DI3",
+            "DI4",
+            "DI5",
+            "DI6",
+            "DI7",
+            "DI8"
+          ]
+        }
+      ],
+      "subServices": [],
+      "input": [],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordion": "Output",
+      "primaryType": "outputNode",
+      "type": "digitalOutput",
+      "display": "Digital output",
+      "label": "Output",
+      "stretchable": false,
+      "services": [
+        {
+          "friendlyName": "",
+          "nameServices": [
+            "DO1",
+            "DO2",
+            "DO3",
+            "DO4"
+          ]
+        }
+      ],
+      "subServices": [],
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        }
+      ],
+      "output": []
+    },
+    {
+      "accordion": "Logical gate",
+      "primaryType": "LogicalNode",
+      "type": "OrNode",
+      "display": "Or Node",
+      "label": ">=1",
+      "stretchable": true,
+      "services": [],
+      "subServices": [],
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordion": "Timer",
+      "primaryType": "LogicalNode",
+      "type": "TONNode",
+      "display": "Ton Node",
+      "label": "TON",
+      "stretchable": false,
+      "services": [],
+      "subServices": [],
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        },
+        {
+          "dataType": "value",
+          "name": "Time"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
+    }
+  ]
+}

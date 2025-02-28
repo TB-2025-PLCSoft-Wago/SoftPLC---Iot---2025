@@ -1,0 +1,63 @@
+// This node is a TON node.
+// timer with a turn on delay
+// Input: IN, PT
+// Output: Q
+// on IN rising edge a timer is started with PT time on IN falling edge the timer is reset
+// Q is set to 1 when the timer elapsed and IN is 1
+// Q is set to 0 if IN is 0 or if the timer is not elapsed
+package nodes
+
+import "time"
+
+type TONNode struct {
+	Id      int
+	Type    string
+	PT      time.Duration
+	IN      *float64
+	Output  float64
+	timer   time.Timer
+	elapsed bool
+	oldIN   float64
+	fired   bool
+}
+
+func (t *TONNode) ProcessLogic() {
+	if t.fired {
+		select {
+		case <-t.timer.C:
+			t.elapsed = true
+		default:
+
+		}
+	}
+	if *t.IN == 1 && t.oldIN == 0 {
+		if !t.fired {
+			t.timer = *time.NewTimer(t.PT * time.Millisecond)
+			t.fired = true
+		}
+		t.elapsed = false
+		t.oldIN = 1
+	}
+	if *t.IN == 0 && t.oldIN == 1 {
+		t.elapsed = false
+		t.oldIN = 0
+		t.fired = false
+		t.timer.Stop()
+	}
+	if *t.IN == 1 && t.elapsed {
+		t.Output = 1
+	} else {
+		t.Output = 0
+	}
+}
+func (t *TONNode) GetNodeType() string {
+	return t.Type
+}
+
+func (t *TONNode) GetId() int {
+	return t.Id
+}
+
+func (t *TONNode) GetOutput(outName string) *float64 {
+	return &t.Output
+}

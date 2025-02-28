@@ -1,0 +1,148 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+html,
+body{
+    overflow-y: hidden;
+}
+#root {
+  height: 100%;
+  margin: 0;
+}
+.and-node {
+    width: 28px;
+    height: 78px;
+}
+.or-node {
+    width: 28px;
+    height: 78px;
+}
+.ton-node {
+    width: 28px;
+    height: 78px;
+}
+.logicalNode{
+    width: 100px;
+    height: 150px;
+}
+.inputNode{
+    width: 200px;
+    height: 70px;
+}
+.inputNodeSelect {
+    max-width: 180px;
+}
+.outputNode{
+    width: 200px;
+    height: 60px;
+}
+.outputNodeSelect {
+    max-width: 180px;
+}
+
+
+
+.dndflow {
+    flex-direction: row;
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.dndflow aside {
+    border-right: 1px solid #eee;
+    padding: 15px 10px;
+    font-size: 12px;
+    background: #fcfcfc;
+}
+
+.dndflow aside .description {
+    margin-bottom: 10px;
+}
+
+.dndflow .dndnode {
+    height: 20px;
+    padding: 4px;
+    border: 1px solid #1a192b;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+.dndflow .reactflow-wrapper {
+    flex-grow: 1;
+    height: 100%;
+}
+
+.dndflow .selectall {
+    margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .dndflow {
+        flex-direction: row-reverse;
+    }
+
+    .dndflow aside {
+        width: 20%;
+        max-width: 250px;
+    }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.dndflow aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 20%;
+}
+
+.dndflow aside,
+.dndflow aside * {
+    background: white;
+}
+
+.Sidebar{
+    overflow-x: hidden;
+}
+.inputhandletext {
+    position: relative;
+    width: 1px;
+    transform: translate(10px, -40%); /* déplace le texte de 10px vers la gauche */
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.outputhandletext {
+    position: absolute;
+    right: 10px; /* déplace le texte de 10px à partir du bord droit */
+    top: -80%;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+
+.softPLCFlow .react-flow__handle-connecting {
+    background: #ff6060;
+}
+
+.softPLCFlow .react-flow__handle-valid {
+    background: #55dd99;
+}
