@@ -40,7 +40,7 @@ func init() {
 	var subServices []subServicesStruct
 	var result map[string]interface{}
 	var tabResult []map[string]interface{}
-	resp, err := http.Get("http://192.168.1.175:8888/api/v1/appliance/")
+	resp, err := http.Get("http://192.168.37.134:8888/api/v1/appliance/")
 	if err != nil {
 		panic(err)
 	}
@@ -69,7 +69,7 @@ func init() {
 		var updateServicesList []string
 		for _, v := range servicesList[i] {
 			var subServ []dataTypeNameStruct
-			res, err := http.Get("http://192.168.1.175:8888/api/v1/appliance/" + actualId + "/" + v)
+			res, err := http.Get("http://192.168.37.134:8888/api/v1/appliance/" + actualId + "/" + v)
 			if err != nil {
 				panic(err)
 			}

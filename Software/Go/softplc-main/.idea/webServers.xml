@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="280db16a-4815-438f-a21b-be8c248526cf" name="myFTPS" url="http://192.168.37.134">
+        <fileTransfer rootFolder="/root" accessType="FTPS" host="192.168.37.134" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

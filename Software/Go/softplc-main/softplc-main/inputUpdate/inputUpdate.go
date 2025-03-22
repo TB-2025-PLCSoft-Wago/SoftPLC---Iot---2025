@@ -61,7 +61,7 @@ func sub(topic string) {
 }
 
 func initClient() {
-	var broker = "192.168.1.175"
+	var broker = "192.168.37.134"
 	var port = 1884
 	opts := mqtt.NewClientOptions()
 	opts.AddBroker(fmt.Sprintf("ws://%s:%d/ws", broker, port))
@@ -79,7 +79,7 @@ func InitInputs() {
 	var result map[string]interface{}
 	var tabResult []map[string]interface{}
 	// Get the inputs from the HAL (DI, DO, AI, AO, Temp)
-	resp, err := http.Get("http://192.168.1.175:8888/api/v1/hal/io")
+	resp, err := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
 	if err != nil {
 		panic(err)
 	}
@@ -113,7 +113,7 @@ func InitInputs() {
 	}
 
 	//Get the appliances from the HAL
-	resp, err = http.Get("http://192.168.1.175:8888/api/v1/appliance/")
+	resp, err = http.Get("http://192.168.37.134:8888/api/v1/appliance/")
 	if err != nil {
 		panic(err)
 	}
@@ -140,7 +140,7 @@ func InitInputs() {
 	}
 	for i, actualId := range id {
 		for _, v := range services[i] {
-			res, err := http.Get("http://192.168.1.175:8888/api/v1/appliance/" + actualId + "/" + v)
+			res, err := http.Get("http://192.168.37.134:8888/api/v1/appliance/" + actualId + "/" + v)
 			if err != nil {
 				panic(err)
 			}
@@ -181,7 +181,7 @@ func InitInputs() {
 func UpdateInputs() {
 	mutex.Lock()
 	var result map[string]interface{}
-	resp, err := http.Get("http://192.168.1.175:8888/api/v1/hal/io")
+	resp, err := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
 	if err != nil {
 		panic(err)
 	}
@@ -215,7 +215,7 @@ func UpdateInputs() {
 	/*for i, input := range InputsOutputsState {
 		result = nil
 		if input.FriendlyName != "" {
-			resp, err := http.Get("http://192.168.1.175:8888/api/v1/appliance/" + input.id + "/" + input.Service)
+			resp, err := http.Get("http://192.168.37.134:8888/api/v1/appliance/" + input.id + "/" + input.Service)
 			if err != nil {
 				panic(err)
 			}

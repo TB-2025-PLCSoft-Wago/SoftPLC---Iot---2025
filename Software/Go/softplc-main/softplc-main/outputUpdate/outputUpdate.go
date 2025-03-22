@@ -32,14 +32,14 @@ func UpdateOutput() {
 									doNb := strings.Trim(nodeOutputList.Service, "DO")
 									doNbInt, _ := strconv.Atoi(doNb)
 									doNb = strconv.Itoa(doNbInt - 1)
-									url = "http://192.168.1.175:8888/api/v1/hal/do/" + doNb
+									url = "http://192.168.37.134:8888/api/v1/hal/do/" + doNb
 								}
 							} else {
 								if match, _ := regexp.MatchString(`^AO\d+$`, nodeOutputList.Service); match {
 									doNb := strings.Trim(nodeOutputList.Service, "AO")
 									doNbInt, _ := strconv.Atoi(doNb)
 									doNb = strconv.Itoa(doNbInt - 1)
-									url = "http://192.168.1.175:8888/api/v1/hal/ao/" + doNb
+									url = "http://192.168.37.134:8888/api/v1/hal/ao/" + doNb
 									data = strings.NewReader(strconv.FormatFloat(*nodeOutputList.OutputHandle.Input, 'f', -1, 64))
 								}
 							}

@@ -41,7 +41,7 @@ func (a *AnalogueOutputNode) GetOutputList() []OutputNodeHandle {
 }
 
 func init() {
-	resp, _ := http.Get("http://192.168.1.175:8888/api/v1/hal/io")
+	resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
 	defer resp.Body.Close()
 	body, _ := io.ReadAll(resp.Body)
 	var input Body
