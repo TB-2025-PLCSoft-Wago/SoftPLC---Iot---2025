@@ -434,6 +434,32 @@
           "name": "Output"
         }
       ]
+    },
+    {
+      "accordion": "Timer",
+      "primaryType": "LogicalNode",
+      "type": "TOFNode",
+      "display": "Tof Node",
+      "label": "TOF",
+      "stretchable": false,
+      "services": [],
+      "subServices": [],
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        },
+        {
+          "dataType": "value",
+          "name": "Time"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
     }
   ]
 }

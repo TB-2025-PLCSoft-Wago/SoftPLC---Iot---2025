@@ -76,6 +76,29 @@
           "name": "Output"
         }
       ]
+    },
+    {
+      "accordionName": "Timer",
+      "type": "TOFNode",
+      "display": "Tof Node",
+      "label": "TOF",
+      "draggable": true,
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        },
+        {
+          "dataType": "value",
+          "name": "Time"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
     }
   ]
 }

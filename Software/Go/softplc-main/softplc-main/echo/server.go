@@ -4,10 +4,12 @@ import (
 	"SoftPLC/nodes"
 	"SoftPLC/processGraph"
 	"SoftPLC/serverResponse"
+	"encoding/json"
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"net/http"
+	"os"
 )
 
 var savedJson interface{}
@@ -64,11 +66,33 @@ func EchoServer() {
 			return err
 		}
 		savedJson = jsonBody
+
+		// Convert to JSON to save in file
+		jsonData, err := json.MarshalIndent(jsonBody, "", "  ")
+		if err != nil {
+			return err
+		}
+		// save in file
+		err2 := os.WriteFile("graph_marcelin_tof.json", jsonData, 0644)
+		if err2 != nil {
+			return err2
+		}
 		return c.HTML(http.StatusOK, "Graph saved")
 	})
 
 	e.GET("/get-saved-json", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, savedJson)
+		// read file
+		jsonData, err2 := os.ReadFile("graph_marcelin_tof.json")
+		if err2 != nil {
+			return err2
+		}
+		// Désérialiser le JSON
+		var data interface{}
+		if err := json.Unmarshal(jsonData, &data); err != nil {
+			return err
+		}
+		return c.JSON(http.StatusOK, data)
+		//return c.JSON(http.StatusOK, savedJson)
 	})
 
 	e.GET("/get-description", func(c echo.Context) error {

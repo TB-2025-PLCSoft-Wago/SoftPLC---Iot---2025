@@ -23,10 +23,17 @@ body{
 .ton-node {
     width: 28px;
     height: 78px;
+    background-color: #07bc0c;
+
+}
+.tof-node {
+    width: 28px;
+    height: 78px;
 }
 .logicalNode{
     width: 100px;
     height: 150px;
+    background-color:#007aff;
 }
 .inputNode{
     width: 200px;

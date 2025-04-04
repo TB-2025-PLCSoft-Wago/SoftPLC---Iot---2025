@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>8</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>664</x>
-      <y>152</y>
-      <w>384</w>
-      <h>32</h>
+      <x>558</x>
+      <y>387</y>
+      <w>432</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>_:Automate_
 
@@ -17,10 +17,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>744</x>
-      <y>176</y>
-      <w>24</w>
-      <h>432</h>
+      <x>648</x>
+      <y>414</y>
+      <w>27</w>
+      <h>486</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;520.0</additional_attributes>
@@ -28,10 +28,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>952</x>
-      <y>208</y>
-      <w>24</w>
-      <h>400</h>
+      <x>882</x>
+      <y>450</y>
+      <w>27</w>
+      <h>450</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;480.0</additional_attributes>
@@ -39,10 +39,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>872</x>
-      <y>184</y>
-      <w>184</w>
-      <h>32</h>
+      <x>792</x>
+      <y>423</y>
+      <w>207</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>_S1:input_
 </panel_attributes>
@@ -51,10 +51,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>424</x>
-      <y>184</y>
-      <w>176</w>
-      <h>32</h>
+      <x>288</x>
+      <y>423</y>
+      <w>198</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>_:softPLC_</panel_attributes>
     <additional_attributes/>
@@ -62,10 +62,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>496</x>
-      <y>208</y>
-      <w>24</w>
-      <h>400</h>
+      <x>369</x>
+      <y>450</y>
+      <w>27</w>
+      <h>450</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;480.0</additional_attributes>
@@ -73,10 +73,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>496</x>
-      <y>240</y>
-      <w>272</w>
-      <h>40</h>
+      <x>369</x>
+      <y>486</y>
+      <w>306</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 http://192.168.37.134:8888/api/v1/hal/io</panel_attributes>
@@ -85,10 +85,10 @@ http://192.168.37.134:8888/api/v1/hal/io</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>248</x>
-      <y>184</y>
-      <w>176</w>
-      <h>32</h>
+      <x>90</x>
+      <y>423</y>
+      <w>198</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>_:softUi_</panel_attributes>
     <additional_attributes/>
@@ -96,10 +96,10 @@ http://192.168.37.134:8888/api/v1/hal/io</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>328</x>
-      <y>208</y>
-      <w>24</w>
-      <h>400</h>
+      <x>180</x>
+      <y>450</y>
+      <w>27</w>
+      <h>450</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;480.0</additional_attributes>
@@ -107,10 +107,10 @@ http://192.168.37.134:8888/api/v1/hal/io</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>248</x>
-      <y>152</y>
-      <w>352</w>
-      <h>32</h>
+      <x>90</x>
+      <y>387</y>
+      <w>396</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>_:PC_
 
@@ -120,10 +120,10 @@ http://192.168.37.134:8888/api/v1/hal/io</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>496</x>
-      <y>264</y>
-      <w>272</w>
-      <h>40</h>
+      <x>369</x>
+      <y>513</y>
+      <w>306</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 return state of input/output</panel_attributes>
