@@ -35,9 +35,7 @@ const Sidebar: React.FC<{ nodesData: NodesData }> = ({ nodesData }) => {
                     {Object.entries(nodes).map(([accordion, nodesOfAccordion], index) => (
                         <AccordionItem uuid={accordion.replace(/\s/g, '-')} key={index}>
                             <AccordionItemHeading>
-                                <AccordionItemButton>
-                                    {accordion}
-                                </AccordionItemButton>
+                                <AccordionItemButton>{accordion}</AccordionItemButton>
                             </AccordionItemHeading>
                             <AccordionItemPanel>
                                 {nodesOfAccordion.map((node, index) => (
@@ -56,6 +54,7 @@ const Sidebar: React.FC<{ nodesData: NodesData }> = ({ nodesData }) => {
             </div>
         </aside>
     );
+
 };
 
 export default Sidebar;
