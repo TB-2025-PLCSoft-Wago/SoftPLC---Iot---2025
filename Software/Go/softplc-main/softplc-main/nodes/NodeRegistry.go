@@ -2,6 +2,7 @@ package nodes
 
 import (
 	"fmt"
+	"sort"
 )
 
 type servicesStruct struct {
@@ -77,8 +78,13 @@ func CreateNode(type_ string) (Node, error) {
 
 func SystemDescription() (FinalJson, error) {
 	var finalJson FinalJson
-	for _, v := range nodeTypeDescriptions {
-		finalJson.Nodes = append(finalJson.Nodes, v)
+	keys := make([]string, 0, len(nodeTypeDescriptions))
+	for k := range nodeTypeDescriptions {
+		keys = append(keys, k) //Prepare the keys to be sorted
+	}
+	sort.Strings(keys)
+	for _, v := range keys {
+		finalJson.Nodes = append(finalJson.Nodes, nodeTypeDescriptions[v])
 	}
 	return finalJson, nil
 }
