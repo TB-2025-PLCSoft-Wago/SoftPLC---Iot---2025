@@ -85,6 +85,15 @@ func (t *TONNode) ProcessLogic() {
 		}
 	}
 
+	if t.input[indexIN].Input == nil {
+		fmt.Println("TONNode: processLogic: Error: Input has no link")
+		return
+	}
+	if t.input[indexPT].Input == nil {
+		fmt.Println("TONNode: processLogic: Error: Time has no link")
+		return
+	}
+
 	if indexPT != -1 && indexIN != -1 && indexOut != -1 {
 		if *t.input[indexIN].Input == 1 && t.oldIN == 0 {
 			if !t.fired {

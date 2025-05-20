@@ -19,6 +19,7 @@ func EchoServer() {
 
 	e.Use(middleware.CORS())
 
+	//After build
 	e.POST("/json-graph", func(c echo.Context) error {
 		serverResponse.ResponseProcessGraph = "Graph received"
 		var graph processGraph.Graph

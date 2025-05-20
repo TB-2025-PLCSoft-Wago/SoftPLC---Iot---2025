@@ -85,6 +85,15 @@ func (t *TOFNode) ProcessLogic() {
 		}
 	}
 
+	if t.input[indexIN].Input == nil {
+		fmt.Println("TOFNode: processLogic: Error: Input has no link")
+		return
+	}
+	if t.input[indexPT].Input == nil {
+		fmt.Println("TOFNode: processLogic: Error: Time has no link")
+		return
+	}
+
 	if indexPT != -1 && indexIN != -1 && indexOut != -1 {
 		if *t.input[indexIN].Input == 0 && t.oldIN == 1 {
 			if !t.fired {

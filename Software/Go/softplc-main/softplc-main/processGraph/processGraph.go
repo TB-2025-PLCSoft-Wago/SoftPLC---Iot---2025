@@ -67,13 +67,15 @@ func CreateQueue(g Graph) {
 		if strings.Contains(nodeJson.Type, "Output") {
 			for _, out := range OutputNodes {
 				for _, outHandle := range out.GetOutputList() {
+					//Prevent the ability to put multiple times the same output
 					if outHandle.Service == nodeJson.Data.Service && outHandle.SubService == nodeJson.Data.SubService {
-						serverResponse.ResponseProcessGraph = "Only one output nodes by destination allowed"
+						serverResponse.ResponseProcessGraph = "Multiple use of the same output"
 						Mutex.Unlock()
 						return
 					}
 				}
 			}
+
 			var queue []nodes.LogicalNodeInterface
 			findPreviousNode(&queue, nodeJson, g)    //find the node link ahead of the output node
 			LogicalNode = append(LogicalNode, queue) //Add a new queue to the process queues
@@ -294,6 +296,7 @@ func findLinkedEdgeName(targetId, targetHandle string, g Graph) string {
 }
 
 func linkNodes(g Graph) {
+	/*** Verify InputNodes link ***/
 	for i := range InputNodes {
 		ableToConnect := false
 		for _, edge := range g.Edges {
@@ -319,6 +322,7 @@ func linkNodes(g Graph) {
 		}
 	}
 
+	/*** Verify LogicalNode link ***/
 	for i := range LogicalNode {
 		for j := range LogicalNode[i] {
 			actualNode := LogicalNode[i][j]
@@ -358,6 +362,7 @@ func linkNodes(g Graph) {
 		}
 	}
 
+	/*** Verify Output link ***/
 	for i := range OutputNodes {
 		isLinked := false
 		for _, edge := range g.Edges {
@@ -399,7 +404,7 @@ func linkNodes(g Graph) {
 			}
 		}
 		if !isLinked {
-			serverResponse.ResponseProcessGraph = "Data type mismatch"
+			serverResponse.ResponseProcessGraph = "Data type mismatch, output node not connected"
 			fmt.Println("Data type mismatch on two nodes while linking an output to a input")
 			break
 		}

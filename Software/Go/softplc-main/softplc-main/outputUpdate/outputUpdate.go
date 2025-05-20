@@ -13,7 +13,26 @@ import (
 
 const tolerance = 0.01
 
+/*
+Pour chaque Output, on parcourt toutes les connexions de sortie (OutputList)
+associées à ce nœud pour détecter si une mise à jour est nécessaire.
+La première boucle sert à itérer sur tous les nœuds de sortie du graphe de processus.
+La seconde boucle parcourt chaque élément de la liste de sortie d'un nœud (c’est-à-dire les connexions
+vers des services ou équipements externes).
+
+Si nl’élément n’est pas un équipement (FriedlyName vide), on parcourt ensuite tous les états d'entrée/sortie
+actuels (InputsOutputsState) pour retrouver l’état correspondant à ce service.
+
+Si la valeur actuelle est différente de la valeur attendue (au-delà de la tolérance),
+on construit une requête HTTP PUT pour mettre à jour la sortie concernée via l’API REST.
+Selon le type de donnée (booléen ou flottant), on adapte la structure de la donnée et l'URL à utiliser.
+
+Enfin, si l’élément est un équipement (FriendlyName non vide), on affiche un message car
+la gestion des appliances n’est pas encore implémentée.
+*/
+
 func UpdateOutput() {
+
 	for _, output := range processGraph.OutputNodes {
 		for _, nodeOutputList := range output.GetOutputList() {
 			if nodeOutputList.FriendlyName == "" { // Output isn't an appliance
