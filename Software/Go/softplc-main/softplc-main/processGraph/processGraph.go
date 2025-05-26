@@ -21,10 +21,11 @@ type nodeJson struct {
 
 // data_ is a struct that represents the data of a node in the JSON file.
 type data_ struct {
-	FriendlyName string `json:"friendlyName"`
-	Service      string `json:"service"`
-	SubService   string `json:"subService"`
-	Value        string `json:"value"`
+	FriendlyName       string   `json:"friendlyName"`
+	Service            string   `json:"service"`
+	SubService         string   `json:"subService"`
+	Value              string   `json:"value"`
+	ParameterValueData []string `json:"parameterValueData"`
 }
 
 // edge is a struct that represents an edge in the JSON file an edge is the link between two nodes.
@@ -267,7 +268,7 @@ func createNode(nodeJson nodeJson, g Graph) nodes.LogicalNodeInterface {
 		for _, out := range description.Output {
 			output = append(output, nodes.OutputHandle{Output: 0, Name: out.Name, DataType: out.DataType})
 		}
-		logicalNodeToAdd.InitNode(NodeJsonId, nodeJson.Type, input, output)
+		logicalNodeToAdd.InitNode(NodeJsonId, nodeJson.Type, input, output, nodeJson.Data.ParameterValueData)
 	}
 	return nodeToAdd.(nodes.LogicalNodeInterface)
 }

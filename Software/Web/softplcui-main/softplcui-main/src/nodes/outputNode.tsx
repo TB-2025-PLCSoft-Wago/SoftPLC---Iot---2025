@@ -17,6 +17,7 @@ interface OutputNodeData {
     selectedSubServiceData?: string;
     valueData?: string;
     dataType?: string;
+    parameterValueData?: string[];
 }
 
 const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {

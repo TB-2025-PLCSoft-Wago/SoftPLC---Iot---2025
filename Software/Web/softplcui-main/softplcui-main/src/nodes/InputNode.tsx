@@ -14,6 +14,7 @@ interface InputNodeData {
     selectedSubServiceData?: string;
     valueData?: string;
     dataType?: string;
+    parameterValueData?: string[];
 }
 
 const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
@@ -102,6 +103,8 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
                 />
             </>
         );
+        //console.log("constantInput : ", content);
+
     } else if (data.subServices.length > 0) {
         content = (
             <>

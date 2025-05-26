@@ -63,7 +63,7 @@ func (n *OrNode) GetInput() []InputHandle {
 	return n.input
 }
 
-func (n *OrNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, output_ []OutputHandle) {
+func (n *OrNode) InitNodeInitNode(id_ int, nodeType_ string, input_ []InputHandle, output_ []OutputHandle, parameterValueData_ []string) {
 	n.id = id_
 	n.nodeType = nodeType_
 	n.input = input_

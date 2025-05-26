@@ -140,7 +140,7 @@ func (t *TOFNode) GetInput() []InputHandle {
 	return t.input
 }
 
-func (t *TOFNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, output_ []OutputHandle) {
+func (t *TOFNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, output_ []OutputHandle, parameterValueData_ []string) {
 	t.id = id_
 	t.nodeType = nodeType_
 	t.input = input_

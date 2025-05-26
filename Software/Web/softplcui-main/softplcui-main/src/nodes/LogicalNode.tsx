@@ -1,6 +1,6 @@
-import {getConnectedEdges, NodeProps, Position, useStore} from "reactflow";
+import {getConnectedEdges, Handle, NodeProps, Position, useStore} from "reactflow";
 import CustomHandle from "./CustomHandle.tsx";
-import {useEffect, useMemo} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {useUpdateNodeInternals} from "reactflow";
 
 interface LogicalNodeData {
@@ -14,6 +14,7 @@ interface LogicalNodeData {
     selectedSubServiceData?: string;
     valueData?: string;
     dataType?: string;
+    parameterValueData?: string[];
 }
 
 
@@ -44,9 +45,70 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         updateNodeInternals(props.id);
     }, [numberOfConnectedTargetHandles]);
 
+    useEffect(() => {
+        const initialValues = Array.from({ length: numberOfConnectedTargetHandles + 1 }, (_, i) => inputValues[i] || "");
+        setInputValues(initialValues);
+        data.parameterValueData = initialValues;
+    }, [numberOfConnectedTargetHandles]);
+
+    const [inputValues, setInputValues] = useState<string[]>([]);
+    const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newValues = [...inputValues];
+        newValues[index] = event.target.value;
+        setInputValues(newValues);
+        data.parameterValueData = newValues; // update data.parameterValueData
+    };
 
     let content;
-    if (!data.stretchable) {
+    console.log("logical node type :", data.dataType);
+    console.log("logical node parameter value data :", data.parameterValueData);
+    console.log("logical node label :", data.label);
+    if (data.label === "bool to string") {
+        console.log("BToSNode logical node");
+        content = (
+            <>
+                {Array.from({length: numberOfConnectedTargetHandles + 1}).map((_, index) => (
+                    <React.Fragment key={index}>
+                        <CustomHandle
+                            key={index}
+                            type="target"
+                            position={Position.Left}
+                            id={data.inputHandle[0].name + index}
+                            datatype={data.inputHandle[0].dataType}
+                            isConnectable={1}
+                            style={{
+                                height: 8,
+                                width: 8,
+                                top: `${(index + 1) * 100 / (numberOfConnectedTargetHandles + 2)}%`
+                            }}
+                        >
+                            <div className="inputhandletext">{data.inputHandle[0].name + index}</div>
+                        </CustomHandle>
+                        <input
+                            type="text"
+                            className="inputNodeSelect"
+                            value={inputValues[index] || ""}
+                            onChange={handleInputChange(index)}
+                            id={`${data.id}-input-${index}`} // Rends l'ID unique
+                            style={{ position: 'absolute', top: `${(index + 1) * 100 / (numberOfConnectedTargetHandles + 2)}%`, left: '20px' }}
+                        />
+                    </React.Fragment>
+                ))}
+                {Array.from(data.outputHandle).map((output, index) => (
+                    <CustomHandle
+                        key={index}
+                        type="source"
+                        position={Position.Right}
+                        id={output.name}
+                        datatype={output.dataType}
+                        style={{height: 8, width: 8, top: `${(index + 1) * 100 / (data.outputHandle.length + 1)}%`}}
+                    >
+                        <div className="outputhandletext">{output.name}</div>
+                    </CustomHandle>
+                ))}
+            </>
+        );
+    }else if (!data.stretchable) {
         content = (
             <>
                 {Array.from(data.inputHandle).map((input, index) => (
@@ -114,7 +176,14 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
     }
 
     return (
-        <div className="react-flow__node-default logicalNode">
+        <div
+            className="react-flow__node-default logicalNode"
+            style={{
+                height: `${(numberOfConnectedTargetHandles + 3) * 40}px`,
+                width: data.label === "bool to string" ? "225px" : "80px",
+                position: 'relative',
+            }}
+        >
             {data.label && <div>{data.label}</div>}
             {content}
         </div>

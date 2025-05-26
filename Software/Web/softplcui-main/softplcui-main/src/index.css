@@ -33,7 +33,7 @@ body{
 .logicalNode{
     width: 100px;
     height: 150px;
-    background-color:#007aff;
+    /*background-color:#007aff;*/
 }
 .inputNode{
     width: 200px;

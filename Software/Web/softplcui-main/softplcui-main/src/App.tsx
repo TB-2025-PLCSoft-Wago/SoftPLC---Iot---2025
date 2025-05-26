@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'reactflow/dist/style.css';
 
 import Sidebar from './Sidebar';
-
+import useKeyboardShortcuts from './hooks/useKeyboardShortcuts';
 import {initialNodes, nodeTypes} from './nodes';
 import {edgeTypes, initialEdges} from './edges';
 
@@ -113,7 +113,7 @@ export default function App() {
     const onDrop = useCallback(
         (event: React.DragEvent<HTMLDivElement>) => {
             event.preventDefault();
-
+            console.log("Drop detect");
             const subtype = event.dataTransfer.getData('subtype');
             const nodeDisplay = event.dataTransfer.getData('nodeLabel');
 
@@ -142,6 +142,7 @@ export default function App() {
 
         },
         [reactFlowInstance]
+
     );
 
     const onBuild = () => {
@@ -155,6 +156,8 @@ export default function App() {
                     service: node.data.selectedServiceData,
                     subService: node.data.selectedSubServiceData,
                     value: node.data.valueData,
+                    parameterValueData : node.data.parameterValueData ?? [],
+
                 },
             })),
             edges: data.edges.map(edge => ({
@@ -175,12 +178,11 @@ export default function App() {
         link.click();
         document.body.removeChild(link);
 */
-
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify(selectedElements);
-
+        console.log("App raw selectedElements : ",raw)
         const requestOptions: RequestInit = {
             method: "POST",
             headers: myHeaders,
@@ -342,6 +344,7 @@ export default function App() {
         return true;
     }
 
+    useKeyboardShortcuts({ nodes, edges, setNodes, setEdges, getId });
     return (
         <ReactFlowProvider>
             <div className="dndflow">

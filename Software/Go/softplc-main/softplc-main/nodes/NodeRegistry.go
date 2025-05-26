@@ -43,6 +43,7 @@ var nodeCreators map[string]NodeCreator
 var nodeTypeDescriptions map[string]nodeDescription
 
 func init() {
+	fmt.Println("Init NodeRegistry")
 	nodeCreators = make(map[string]NodeCreator)
 	nodeTypeDescriptions = make(map[string]nodeDescription)
 }
