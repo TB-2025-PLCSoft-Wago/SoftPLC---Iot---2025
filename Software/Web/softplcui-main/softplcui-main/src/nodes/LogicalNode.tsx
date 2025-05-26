@@ -51,7 +51,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         data.parameterValueData = initialValues;
     }, [numberOfConnectedTargetHandles]);
 
-    const [inputValues, setInputValues] = useState<string[]>([]);
+    const [inputValues, setInputValues] = useState<string[]>(data.parameterValueData ?? []);
     const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValues = [...inputValues];
         newValues[index] = event.target.value;
