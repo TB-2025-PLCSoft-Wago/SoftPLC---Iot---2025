@@ -1,26 +1,26 @@
 {
   "edges": [
     {
-      "id": "reactflow__edge-2Output-4Input0",
-      "source": "2",
+      "id": "reactflow__edge-1Output-0Input0",
+      "source": "1",
       "sourceHandle": "Output",
-      "target": "4",
+      "target": "0",
       "targetHandle": "Input0",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-5Output-4Input1",
-      "source": "5",
+      "id": "reactflow__edge-2Output-0Input1",
+      "source": "2",
       "sourceHandle": "Output",
-      "target": "4",
+      "target": "0",
       "targetHandle": "Input1",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-4Output-1Input",
-      "source": "4",
+      "id": "reactflow__edge-0Output-3Input",
+      "source": "0",
       "sourceHandle": "Output",
-      "target": "1",
+      "target": "3",
       "targetHandle": "Input",
       "type": "step"
     }
@@ -28,59 +28,58 @@
   "nodes": [
     {
       "data": {
-        "accordion": "Output",
-        "dataType": "",
-        "display": "Digital output",
-        "id": "1",
+        "accordion": "Logical gate",
+        "display": "Or Node",
+        "id": "0",
         "inputHandle": [
           {
             "dataType": "bool",
             "name": "Input"
           }
         ],
-        "label": "Output",
-        "outputHandle": [],
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "DO1",
-        "selectedSubServiceData": "",
-        "services": [
+        "label": "\u003e=1",
+        "outputHandle": [
           {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4"
-            ]
+            "dataType": "bool",
+            "name": "Output"
           }
         ],
-        "stretchable": false,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": true,
         "subServices": [],
-        "type": "digitalOutput",
+        "type": "OrNode",
         "valueData": ""
       },
       "dragging": false,
-      "height": 81,
-      "id": "1",
+      "height": 221,
+      "id": "0",
       "position": {
-        "x": 753.1079876412813,
-        "y": 325.91044792707265
+        "x": 671,
+        "y": 253
       },
       "positionAbsolute": {
-        "x": 753.1079876412813,
-        "y": 325.91044792707265
+        "x": 671,
+        "y": 253
       },
       "selected": false,
-      "type": "outputNode",
-      "width": 221
+      "type": "LogicalNode",
+      "width": 101
     },
     {
       "data": {
         "accordion": "Input",
         "dataType": "",
         "display": "Digital Input",
-        "id": "2",
+        "id": "1",
         "inputHandle": [],
         "label": "Input",
         "outputHandle": [
@@ -115,66 +114,18 @@
       },
       "dragging": false,
       "height": 91,
-      "id": "2",
+      "id": "1",
       "position": {
-        "x": 143.20078606682006,
-        "y": 320.45372242928795
+        "x": 301,
+        "y": 281
       },
       "positionAbsolute": {
-        "x": 143.20078606682006,
-        "y": 320.45372242928795
+        "x": 301,
+        "y": 281
       },
       "selected": false,
       "type": "inputNode",
       "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "And Node",
-        "id": "4",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "\u0026",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterValueData": [
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "",
-        "selectedSubServiceData": "",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "AndNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 221,
-      "id": "4",
-      "position": {
-        "x": 546.707009922646,
-        "y": 294.59415915152834
-      },
-      "positionAbsolute": {
-        "x": 546.707009922646,
-        "y": 294.59415915152834
-      },
-      "selected": true,
-      "type": "LogicalNode",
-      "width": 101
     },
     {
       "data": {
@@ -214,26 +165,74 @@
         "type": "digitalInput",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
       "height": 91,
-      "id": "5",
+      "id": "2",
       "position": {
-        "x": 151.87905363894316,
-        "y": 481.4204131852263
+        "x": 371,
+        "y": 423
       },
       "positionAbsolute": {
-        "x": 151.87905363894316,
-        "y": 481.4204131852263
+        "x": 371,
+        "y": 423
       },
       "selected": false,
       "type": "inputNode",
       "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Output",
+        "dataType": "",
+        "display": "Digital output",
+        "id": "3",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Output",
+        "outputHandle": [],
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "DO1",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "digitalOutput",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 81,
+      "id": "3",
+      "position": {
+        "x": 846,
+        "y": 336
+      },
+      "positionAbsolute": {
+        "x": 846,
+        "y": 336
+      },
+      "selected": true,
+      "type": "outputNode",
+      "width": 221
     }
   ],
   "viewport": {
-    "x": 65.81780448242557,
-    "y": 25.24271765406263,
-    "zoom": 0.9258747122872899
+    "x": -244,
+    "y": 46,
+    "zoom": 1
   }
 }
