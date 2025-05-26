@@ -1,147 +1,39 @@
 {
   "edges": [
     {
-      "id": "reactflow__edge-1Output-0x0",
-      "source": "1",
-      "sourceHandle": "Output",
-      "target": "0",
-      "targetHandle": "x0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-0Output-2Input",
-      "source": "0",
+      "id": "reactflow__edge-13Output-2Input",
+      "source": "13",
       "sourceHandle": "Output",
       "target": "2",
       "targetHandle": "Input",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-1Output-3x0",
-      "source": "1",
+      "id": "reactflow__edge-10Output-13Time [ms]",
+      "source": "10",
       "sourceHandle": "Output",
-      "target": "3",
-      "targetHandle": "x0",
+      "target": "13",
+      "targetHandle": "Time [ms]",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-3Output-4Input",
-      "source": "3",
+      "id": "reactflow__edge-16Output-17Input",
+      "source": "16",
       "sourceHandle": "Output",
-      "target": "4",
+      "target": "17",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-17Output-13Input",
+      "source": "17",
+      "sourceHandle": "Output",
+      "target": "13",
       "targetHandle": "Input",
       "type": "step"
     }
   ],
   "nodes": [
-    {
-      "data": {
-        "accordion": "Communication",
-        "display": "bool To String Node",
-        "id": "0",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "x"
-          }
-        ],
-        "label": "bool to string",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterValueData": [
-          "aaaBBB",
-          "ccceee"
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "testFN",
-            "nameServices": [
-              "testNS1",
-              "testNS2"
-            ]
-          }
-        ],
-        "stretchable": true,
-        "subServices": [],
-        "type": "BToSNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 181,
-      "id": "0",
-      "position": {
-        "x": 581.2949199151287,
-        "y": 225.2226293208774
-      },
-      "positionAbsolute": {
-        "x": 581.2949199151287,
-        "y": 225.2226293208774
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
-    },
-    {
-      "data": {
-        "accordion": "Input",
-        "dataType": "",
-        "display": "Digital Input",
-        "id": "1",
-        "inputHandle": [],
-        "label": "Input",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "DI1",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DI1",
-              "DI2",
-              "DI3",
-              "DI4",
-              "DI5",
-              "DI6",
-              "DI7",
-              "DI8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "digitalInput",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 91,
-      "id": "1",
-      "position": {
-        "x": 274.9659483531009,
-        "y": 267.0183343548411
-      },
-      "positionAbsolute": {
-        "x": 274.9659483531009,
-        "y": 267.0183343548411
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
     {
       "data": {
         "accordion": "Output",
@@ -180,12 +72,12 @@
       "height": 81,
       "id": "2",
       "position": {
-        "x": 898.9191283660095,
-        "y": 304.05552695802805
+        "x": 895.9191283660095,
+        "y": 355.05552695802805
       },
       "positionAbsolute": {
-        "x": 898.9191283660095,
-        "y": 304.05552695802805
+        "x": 895.9191283660095,
+        "y": 355.05552695802805
       },
       "selected": false,
       "type": "outputNode",
@@ -193,114 +85,192 @@
     },
     {
       "data": {
-        "accordion": "Communication",
-        "display": "bool To String Node",
-        "id": "0",
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "10",
+        "inputHandle": [],
+        "label": "Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "2000"
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "10",
+      "position": {
+        "x": 460.66388471067137,
+        "y": 446.2478634585124
+      },
+      "positionAbsolute": {
+        "x": 460.66388471067137,
+        "y": 446.2478634585124
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Timer",
+        "display": "Tof Node",
+        "id": "13",
         "inputHandle": [
           {
             "dataType": "bool",
-            "name": "x"
+            "name": "Input"
+          },
+          {
+            "dataType": "value",
+            "name": "Time [ms]"
           }
         ],
-        "label": "bool to string",
+        "label": "TOF",
         "outputHandle": [
           {
             "dataType": "bool",
             "name": "Output"
           }
         ],
-        "parameterValueData": [
-          "fafaf",
-          ""
-        ],
+        "parameterValueData": [],
         "primaryType": "LogicalNode",
         "selectedFriendlyNameData": "",
         "selectedServiceData": "",
         "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "testFN",
-            "nameServices": [
-              "testNS1",
-              "testNS2"
-            ]
-          }
-        ],
-        "stretchable": true,
+        "services": [],
+        "stretchable": false,
         "subServices": [],
-        "type": "BToSNode",
+        "type": "TOFNode",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
-      "height": 181,
-      "id": "3",
+      "height": 101,
+      "id": "13",
       "position": {
-        "x": 582.2949199151287,
-        "y": 459.2226293208774
+        "x": 735.6638847106713,
+        "y": 333.24786345851237
       },
       "positionAbsolute": {
-        "x": 582.2949199151287,
-        "y": 459.2226293208774
+        "x": 735.6638847106713,
+        "y": 333.24786345851237
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 246
+      "width": 101
     },
     {
       "data": {
-        "accordion": "Output",
+        "accordion": "Input",
         "dataType": "",
-        "display": "Digital output",
-        "id": "2",
+        "display": "Digital Input",
+        "id": "16",
+        "inputHandle": [],
+        "label": "Input",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "DI1",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DI1",
+              "DI2",
+              "DI3",
+              "DI4",
+              "DI5",
+              "DI6",
+              "DI7",
+              "DI8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "digitalInput",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "16",
+      "position": {
+        "x": 278.7920183470563,
+        "y": 311.35150429002334
+      },
+      "positionAbsolute": {
+        "x": 278.7920183470563,
+        "y": 311.35150429002334
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "Rtrig Node",
+        "id": "17",
         "inputHandle": [
           {
             "dataType": "bool",
             "name": "Input"
           }
         ],
-        "label": "Output",
-        "outputHandle": [],
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "DO2",
-        "selectedSubServiceData": "",
-        "services": [
+        "label": "Rtrig",
+        "outputHandle": [
           {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4"
-            ]
+            "dataType": "bool",
+            "name": "Output"
           }
         ],
+        "parameterValueData": [],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
         "stretchable": false,
         "subServices": [],
-        "type": "digitalOutput",
+        "type": "RtrigNode",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
-      "height": 81,
-      "id": "4",
+      "height": 101,
+      "id": "17",
       "position": {
-        "x": 888.9191283660095,
-        "y": 494.05552695802805
+        "x": 560.1395553475924,
+        "y": 312.1287074309088
       },
       "positionAbsolute": {
-        "x": 888.9191283660095,
-        "y": 494.05552695802805
+        "x": 560.1395553475924,
+        "y": 312.1287074309088
       },
-      "selected": false,
-      "type": "outputNode",
-      "width": 221
+      "selected": true,
+      "type": "LogicalNode",
+      "width": 101
     }
   ],
   "viewport": {
-    "x": -32.919128366009545,
-    "y": -47.055526958028054,
-    "zoom": 1
+    "x": -84.711903852359,
+    "y": -170.60505151240636,
+    "zoom": 1.2866648980094326
   }
 }

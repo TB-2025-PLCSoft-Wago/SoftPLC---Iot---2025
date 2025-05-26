@@ -9,7 +9,7 @@ type FtrigNode struct {
 	nodeType  string
 	input     []InputHandle
 	output    []OutputHandle
-	prevInput float64
+	prevInput string
 }
 
 var ftrigDescription = nodeDescription{
@@ -39,13 +39,13 @@ func init() {
 
 func (n *FtrigNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 		return
 	}
 	if *n.input[0].Input == n.prevInput {
-		n.output[0].Output = 0
-	} else if *n.input[0].Input == 0 {
-		n.output[0].Output = 1
+		n.output[0].Output = "0"
+	} else if *n.input[0].Input == "0" && n.prevInput == "1" {
+		n.output[0].Output = "1"
 	}
 
 	n.prevInput = *n.input[0].Input

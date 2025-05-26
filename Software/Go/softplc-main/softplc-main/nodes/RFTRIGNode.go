@@ -7,7 +7,7 @@ type RFtrigNode struct {
 	nodeType  string
 	input     []InputHandle
 	output    []OutputHandle
-	prevInput float64
+	prevInput string
 }
 
 var rftrigDescription = nodeDescription{
@@ -36,16 +36,16 @@ func init() {
 
 func (n *RFtrigNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 		return
 	}
 	if *n.input[0].Input == n.prevInput {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 	} else {
-		n.output[0].Output = 1
+		n.output[0].Output = "1"
 	}
 
-	n.prevInput = *n.input[0].Input // Erreur : *any ≠ float64
+	n.prevInput = *n.input[0].Input
 
 }
 func (n *RFtrigNode) GetNodeType() string {

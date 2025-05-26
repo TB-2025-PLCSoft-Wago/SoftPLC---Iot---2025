@@ -7,7 +7,7 @@ type RtrigNode struct {
 	nodeType  string
 	input     []InputHandle
 	output    []OutputHandle
-	prevInput float64
+	prevInput string
 }
 
 var rtrigDescription = nodeDescription{
@@ -36,13 +36,13 @@ func init() {
 
 func (n *RtrigNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 		return
 	}
 	if *n.input[0].Input == n.prevInput {
-		n.output[0].Output = 0
-	} else if *n.input[0].Input == 1 {
-		n.output[0].Output = 1
+		n.output[0].Output = "0"
+	} else if *n.input[0].Input == "1" {
+		n.output[0].Output = "1"
 	}
 
 	n.prevInput = *n.input[0].Input

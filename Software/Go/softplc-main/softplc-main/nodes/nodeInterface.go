@@ -7,13 +7,13 @@ type Node interface {
 }
 
 type InputHandle struct {
-	Input    *float64
+	Input    *string
 	Name     string
 	DataType string
 }
 
 type OutputHandle struct {
-	Output   float64
+	Output   string
 	Name     string
 	DataType string
 }

@@ -35,16 +35,16 @@ func init() {
 
 func (n *AndNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 		return
 	}
 	for _, in := range n.input {
-		if *in.Input == 0 {
-			n.output[0].Output = 0
+		if *in.Input == "0" {
+			n.output[0].Output = "0"
 			return
 		}
 	}
-	n.output[0].Output = 1
+	n.output[0].Output = "1"
 }
 func (n *AndNode) GetNodeType() string {
 	return n.nodeType

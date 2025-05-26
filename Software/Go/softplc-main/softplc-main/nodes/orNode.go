@@ -34,12 +34,12 @@ func init() {
 
 func (n *OrNode) ProcessLogic() {
 	for _, in := range n.input {
-		if *in.Input == 1 {
-			n.output[0].Output = 1
+		if *in.Input == "1" {
+			n.output[0].Output = "1"
 			return
 		}
 	}
-	n.output[0].Output = 0
+	n.output[0].Output = "0"
 }
 
 func (n *OrNode) GetNodeType() string {

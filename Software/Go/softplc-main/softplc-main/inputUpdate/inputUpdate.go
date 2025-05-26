@@ -14,7 +14,7 @@ import (
 
 type InputsOutputs struct {
 	FriendlyName string
-	Value        float64
+	Value        string
 	Service      string
 	SubService   string
 	id           string
@@ -42,7 +42,9 @@ var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Me
 		if input.id == splitTopic[0] && input.Service == splitTopic[1] {
 			for key, value := range body {
 				if key == input.SubService {
-					InputsOutputsState[i].Value = value.(map[string]interface{})["value"].(float64)
+					valFloat := value.(map[string]interface{})["value"].(float64)
+					valStr := strconv.FormatFloat(valFloat, 'f', -1, 64)
+					InputsOutputsState[i].Value = valStr
 				}
 			}
 		}
@@ -94,13 +96,15 @@ func InitInputs() {
 	}
 	for key, value := range result {
 		for i, v := range value.([]interface{}) {
-			var val float64
+			var val string
 			if v == true {
-				val = 1
+				val = "1"
 			} else if v == false {
-				val = 0
+				val = "0"
 			} else {
-				val = v.(float64)
+				valFloat := v.(float64)
+				valStr := strconv.FormatFloat(valFloat, 'f', -1, 64)
+				val = valStr
 			}
 			InputsOutputsState = append(InputsOutputsState, InputsOutputs{
 				FriendlyName: "",
@@ -156,9 +160,12 @@ func InitInputs() {
 			res.Body.Close()
 			if len(result["dataPoints"].(map[string]interface{})) != 0 {
 				for key, value := range result["dataPoints"].(map[string]interface{}) {
+					valFloat := value.(map[string]interface{})["value"].(float64)
+					valStr := strconv.FormatFloat(valFloat, 'f', -1, 64)
+
 					InputsOutputsState = append(InputsOutputsState, InputsOutputs{
 						FriendlyName: friendlyName[i],
-						Value:        value.(map[string]interface{})["value"].(float64),
+						Value:        valStr,
 						Service:      v,
 						SubService:   key,
 						id:           actualId,
@@ -201,11 +208,13 @@ func UpdateInputs() {
 			for j, input := range InputsOutputsState {
 				if input.Service == strings.ToUpper(key)+strconv.Itoa(i+1) {
 					if v == true {
-						InputsOutputsState[j].Value = 1
+						InputsOutputsState[j].Value = "1"
 					} else if v == false {
-						InputsOutputsState[j].Value = 0
+						InputsOutputsState[j].Value = "0"
 					} else {
-						InputsOutputsState[j].Value = v.(float64)
+						valFloat := v.(float64)
+						valStr := strconv.FormatFloat(valFloat, 'f', -1, 64)
+						InputsOutputsState[j].Value = valStr
 					}
 				}
 			}

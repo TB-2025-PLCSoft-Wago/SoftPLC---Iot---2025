@@ -35,14 +35,14 @@ func init() {
 
 func (n *NotNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 		return
 	}
 
-	if *n.input[0].Input == 0 {
-		n.output[0].Output = 1
+	if *n.input[0].Input == "0" {
+		n.output[0].Output = "1"
 	} else {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 	}
 }
 func (n *NotNode) GetNodeType() string {

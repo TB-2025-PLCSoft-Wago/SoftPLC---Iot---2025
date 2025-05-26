@@ -38,11 +38,14 @@ func UpdateOutput() {
 			if nodeOutputList.FriendlyName == "" { // Output isn't an appliance
 				for _, ccIOState := range inputUpdate.InputsOutputsState {
 					if ccIOState.Service == nodeOutputList.Service {
-						if math.Abs(ccIOState.Value-*nodeOutputList.OutputHandle.Input) > tolerance {
+						ccIOState_, _ := strconv.ParseFloat(ccIOState.Value, 64)
+						outputHandleInput_, _ := strconv.ParseFloat(*nodeOutputList.OutputHandle.Input, 64)
+
+						if math.Abs(ccIOState_-outputHandleInput_) > tolerance {
 							var data *strings.Reader
 							var url string
 							if nodeOutputList.OutputHandle.DataType == "bool" {
-								if *nodeOutputList.OutputHandle.Input == 1 {
+								if *nodeOutputList.OutputHandle.Input == "1" {
 									data = strings.NewReader("true")
 								} else {
 									data = strings.NewReader("false")
@@ -59,7 +62,7 @@ func UpdateOutput() {
 									doNbInt, _ := strconv.Atoi(doNb)
 									doNb = strconv.Itoa(doNbInt - 1)
 									url = "http://192.168.37.134:8888/api/v1/hal/ao/" + doNb
-									data = strings.NewReader(strconv.FormatFloat(*nodeOutputList.OutputHandle.Input, 'f', -1, 64))
+									data = strings.NewReader(*nodeOutputList.OutputHandle.Input) //data = strings.NewReader(strconv.FormatFloat(*nodeOutputList.OutputHandle.Input, 'f', -1, 64))
 								}
 							}
 							req, err := http.NewRequest(http.MethodPut, url, data)

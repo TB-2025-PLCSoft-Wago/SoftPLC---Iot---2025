@@ -174,7 +174,10 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson nodeJson, g 
 							ConstValue = append(ConstValue, Const{Id: inId, Value: val})
 							for i := range ConstValue {
 								if ConstValue[i].Id == inId {
-									inputHandle = nodes.InputHandle{Input: &ConstValue[i].Value, Name: description.Output[0].Name, DataType: description.Output[0].DataType}
+									valFloat := ConstValue[i].Value
+									valStr := strconv.FormatFloat(valFloat, 'f', -1, 64)
+									valStrCopy := valStr
+									inputHandle = nodes.InputHandle{Input: &valStrCopy, Name: description.Output[0].Name, DataType: description.Output[0].DataType}
 									break
 								}
 							}
@@ -266,7 +269,7 @@ func createNode(nodeJson nodeJson, g Graph) nodes.LogicalNodeInterface {
 		}
 		var output []nodes.OutputHandle
 		for _, out := range description.Output {
-			output = append(output, nodes.OutputHandle{Output: 0, Name: out.Name, DataType: out.DataType})
+			output = append(output, nodes.OutputHandle{Output: "0", Name: out.Name, DataType: out.DataType})
 		}
 		logicalNodeToAdd.InitNode(NodeJsonId, nodeJson.Type, input, output, nodeJson.Data.ParameterValueData)
 	}

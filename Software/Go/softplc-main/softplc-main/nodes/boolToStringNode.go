@@ -39,16 +39,16 @@ func init() {
 
 func (n *BToSNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 		return
 	}
 	for _, in := range n.input {
-		if *in.Input == 1 && (n.parameterValueData[0] == n.parameterValueData[1]) {
-			n.output[0].Output = 1
+		if *in.Input == "1" && (n.parameterValueData[0] == n.parameterValueData[1]) {
+			n.output[0].Output = "1"
 			return
 		}
 	}
-	n.output[0].Output = 0
+	n.output[0].Output = "0"
 	/*
 		if *n.input[0].Input > *n.input[1].Input {
 			n.output[0].Output = 1

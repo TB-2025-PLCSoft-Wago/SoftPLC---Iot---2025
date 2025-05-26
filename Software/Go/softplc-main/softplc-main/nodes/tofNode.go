@@ -9,6 +9,7 @@ package nodes
 
 import (
 	"fmt"
+	"strconv"
 	"time"
 )
 
@@ -95,31 +96,33 @@ func (t *TOFNode) ProcessLogic() {
 	}
 
 	if indexPT != -1 && indexIN != -1 && indexOut != -1 {
-		if *t.input[indexIN].Input == 0 && t.oldIN == 1 {
+		if *t.input[indexIN].Input == "0" && t.oldIN == 1 {
 			if !t.fired {
 				//fmt.Println(*t.input[indexPT].Input)
-				fmt.Println(time.Duration(*t.input[indexPT].Input) * time.Millisecond)
-				t.timer = *time.NewTimer(time.Duration(*t.input[indexPT].Input) * time.Millisecond)
+				valueStr := *t.input[indexPT].Input
+				valueFloat, _ := strconv.ParseFloat(valueStr, 64)
+				fmt.Println(time.Duration(valueFloat) * time.Millisecond)
+				t.timer = *time.NewTimer(time.Duration(valueFloat) * time.Millisecond)
 				t.fired = true
 			}
 			t.elapsed = false
 			t.oldIN = 0
 		}
 
-		if *t.input[indexIN].Input == 1 && t.fired == true {
+		if *t.input[indexIN].Input == "1" && t.fired == true {
 			t.elapsed = false
 			t.oldIN = 1
 			t.fired = false
 			t.timer.Stop()
 		}
-		if *t.input[indexIN].Input == 1 {
+		if *t.input[indexIN].Input == "1" {
 			t.oldIN = 1
 		}
 
-		if *t.input[indexIN].Input == 1 || (!t.elapsed && t.fired == true) {
-			t.output[indexOut].Output = 1
+		if *t.input[indexIN].Input == "1" || (!t.elapsed && t.fired == true) {
+			t.output[indexOut].Output = "1"
 		} else {
-			t.output[indexOut].Output = 0
+			t.output[indexOut].Output = "0"
 		}
 	} else {
 		fmt.Println("TOFNode: processLogic: Error: Input or output not found")

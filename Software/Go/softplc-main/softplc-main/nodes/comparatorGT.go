@@ -37,14 +37,14 @@ func init() {
 
 func (n *GTNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 		return
 	}
 
 	if *n.input[0].Input > *n.input[1].Input {
-		n.output[0].Output = 1
+		n.output[0].Output = "1"
 	} else {
-		n.output[0].Output = 0
+		n.output[0].Output = "0"
 	}
 }
 
