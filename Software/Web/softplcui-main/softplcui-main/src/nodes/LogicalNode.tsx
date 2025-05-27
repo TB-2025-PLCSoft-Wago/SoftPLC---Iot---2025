@@ -46,9 +46,10 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
     }, [numberOfConnectedTargetHandles]);
 
     useEffect(() => {
-        const initialValues = Array.from({ length: numberOfConnectedTargetHandles + 1 }, (_, i) => inputValues[i] || "");
+        const initialValues = Array.from({ length: Math.max(numberOfConnectedTargetHandles + 1,getParameterElementUsingNumber(data.parameterValueData ?? [])+1)}, (_, i) => inputValues[i] || "");
         setInputValues(initialValues);
         data.parameterValueData = initialValues;
+        console.log("parameterValueData initialValues : ", initialValues);
     }, [numberOfConnectedTargetHandles]);
 
     const [inputValues, setInputValues] = useState<string[]>(data.parameterValueData ?? []);
@@ -57,17 +58,32 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         newValues[index] = event.target.value;
         setInputValues(newValues);
         data.parameterValueData = newValues; // update data.parameterValueData
+        console.log("handleInputChange newValues : ", newValues);
     };
+    const getParameterElementUsingNumber = (arr: string[]): number => {
+        let count : number = 0;
+        let countEmptyBetween  : number = 0;
+        arr.forEach((str, index) => {
+            //console.log(`Index ${index}: ${count}`);
+            if (!str){
+                countEmptyBetween += 1;
+            }else{
+                count += 1 + countEmptyBetween;
+                countEmptyBetween = 0;
+            }
+        });
+        console.log("Count parameter : ", count);
+        return count;
+    }
 
     let content;
-    console.log("logical node type :", data.dataType);
-    console.log("logical node parameter value data :", data.parameterValueData);
-    console.log("logical node label :", data.label);
+
+    //console.log("logical node parameter value data :", data.parameterValueData);
     if (data.label === "bool to string") {
-        console.log("BToSNode logical node");
+        //console.log("BToSNode logical node");
         content = (
             <>
-                {Array.from({length: numberOfConnectedTargetHandles + 1}).map((_, index) => (
+                {Array.from({length: Math.max(numberOfConnectedTargetHandles + 1,getParameterElementUsingNumber(data.parameterValueData ?? [])+1)}).map((_, index) => (
                     <React.Fragment key={index}>
                         <CustomHandle
                             key={index}
@@ -79,7 +95,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
                             style={{
                                 height: 8,
                                 width: 8,
-                                top: `${(index + 1) * 100 / (numberOfConnectedTargetHandles + 2)}%`
+                                top: `${(index + 1) * 100 / (Math.max(numberOfConnectedTargetHandles,getParameterElementUsingNumber(data.parameterValueData ?? [])) + 2)}%`
                             }}
                         >
                             <div className="inputhandletext">{data.inputHandle[0].name + index}</div>
@@ -90,7 +106,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
                             value={inputValues[index] || ""}
                             onChange={handleInputChange(index)}
                             id={`${data.id}-input-${index}`} // Rends l'ID unique
-                            style={{ position: 'absolute', top: `${(index + 1) * 100 / (numberOfConnectedTargetHandles + 2)}%`, left: '20px' }}
+                            style={{ position: 'absolute', top: `${(index + 1) * 100 / (Math.max(numberOfConnectedTargetHandles,getParameterElementUsingNumber(data.parameterValueData ?? [])) + 2)}%`, left: '20px' }}
                         />
                     </React.Fragment>
                 ))}
@@ -179,7 +195,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         <div
             className="react-flow__node-default logicalNode"
             style={{
-                height: `${(numberOfConnectedTargetHandles + 3) * 40}px`,
+                height: `${(Math.max(numberOfConnectedTargetHandles,getParameterElementUsingNumber(data.parameterValueData ?? []))+ 3) * 40}px`,
                 width: data.label === "bool to string" ? "225px" : "80px",
                 position: 'relative',
             }}
