@@ -1,6 +1,8 @@
 package nodes
 
-// BToSNode that wor like a logical OR gate
+import "strings"
+
+// BToSNode that wor like a logical
 type BToSNode struct {
 	id                 int
 	nodeType           string
@@ -13,7 +15,7 @@ var boolToStringDescription = nodeDescription{
 	AccordionName: "Communication",
 	PrimaryType:   "LogicalNode",
 	Type_:         "BToSNode",
-	Display:       "bool To String Node",
+	Display:       "bool To string Node",
 	Label:         "bool to string",
 	Stretchable:   true,
 	Services: []servicesStruct{
@@ -23,7 +25,7 @@ var boolToStringDescription = nodeDescription{
 	Input: []dataTypeNameStruct{
 		{DataType: "bool", Name: "x"},
 	},
-	Output: []dataTypeNameStruct{{DataType: "bool", Name: "Output"}},
+	Output: []dataTypeNameStruct{{DataType: "value", Name: "Output"}},
 }
 
 func init() {
@@ -39,16 +41,23 @@ func init() {
 
 func (n *BToSNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = "0"
+		n.output[0].Output = "nothing to send"
 		return
 	}
-	for _, in := range n.input {
-		if *in.Input == "1" && (n.parameterValueData[0] == n.parameterValueData[1]) {
-			n.output[0].Output = "1"
-			return
+	var result []string
+	var temp bool = false
+	for i, in := range n.input {
+		if *in.Input == "1" && n.parameterValueData[i] != "" {
+			result = append(result, n.parameterValueData[i])
+			temp = true
 		}
 	}
-	n.output[0].Output = "0"
+	if temp {
+		n.output[0].Output = strings.Join(result, " ,, ")
+	} else {
+		n.output[0].Output = "nothing to send"
+	}
+
 	/*
 		if *n.input[0].Input > *n.input[1].Input {
 			n.output[0].Output = 1
