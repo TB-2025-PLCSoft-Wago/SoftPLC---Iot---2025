@@ -21,6 +21,12 @@ export default function useKeyboardShortcuts({
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
+            const activeElement = document.activeElement;
+            const isInputFocused =
+                activeElement instanceof HTMLInputElement ||
+                activeElement instanceof HTMLTextAreaElement ||
+                (activeElement && (activeElement as HTMLElement).isContentEditable);
+            if (isInputFocused) return;
             // Copy ctrl + c
             if ((event.ctrlKey || event.metaKey) && event.key === "c" || event.key === "x") {
                 const selectedNodes = nodes.filter((n) => n.selected);

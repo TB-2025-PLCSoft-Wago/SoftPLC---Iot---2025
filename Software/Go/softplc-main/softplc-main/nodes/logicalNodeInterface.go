@@ -11,4 +11,5 @@ type LogicalNodeInterface interface {
 	ProcessLogic()
 	GetOutput(outName string) *OutputHandle
 	GetInput() []InputHandle
+	DestroyToBuildAgain()
 }

@@ -149,3 +149,7 @@ func (t *TOFNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, outp
 	t.input = input_
 	t.output = output_
 }
+
+func (t *TOFNode) DestroyToBuildAgain() {
+
+}

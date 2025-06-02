@@ -19,16 +19,17 @@ type subServicesStruct struct {
 	Secondary    []dataTypeNameStruct `json:"secondary"`
 }
 type nodeDescription struct {
-	AccordionName string               `json:"accordion"`
-	PrimaryType   string               `json:"primaryType"`
-	Type_         string               `json:"type"`
-	Display       string               `json:"display"`
-	Label         string               `json:"label"`
-	Stretchable   bool                 `json:"stretchable"`
-	Services      []servicesStruct     `json:"services"`
-	SubServices   []subServicesStruct  `json:"subServices"`
-	Input         []dataTypeNameStruct `json:"inputHandle"`
-	Output        []dataTypeNameStruct `json:"outputHandle"`
+	AccordionName     string               `json:"accordion"`
+	PrimaryType       string               `json:"primaryType"`
+	Type_             string               `json:"type"`
+	Display           string               `json:"display"`
+	Label             string               `json:"label"`
+	Stretchable       bool                 `json:"stretchable"`
+	Services          []servicesStruct     `json:"services"`
+	SubServices       []subServicesStruct  `json:"subServices"`
+	Input             []dataTypeNameStruct `json:"inputHandle"`
+	Output            []dataTypeNameStruct `json:"outputHandle"`
+	ParameterNameData []string             `json:"parameterNameData"`
 }
 
 type FinalJson struct {

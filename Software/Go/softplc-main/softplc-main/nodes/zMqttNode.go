@@ -24,7 +24,7 @@ type MqttNode struct {
 var mqttDescription = nodeDescription{
 	AccordionName: "Communication",
 	PrimaryType:   "LogicalNode",
-	Type_:         "MqttNode",
+	Type_:         "ConfigurableNode",
 	Display:       "mqtt Node",
 	Label:         "MQTT",
 	Stretchable:   false,
@@ -36,11 +36,8 @@ var mqttDescription = nodeDescription{
 		{DataType: "value", Name: "msgToSend"},
 		{DataType: "value", Name: "topicToReceive"},
 	},
-	Output: []dataTypeNameStruct{{DataType: "bool", Name: "xDone"}, {DataType: "value", Name: "msg"}},
-}
-
-var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Message) {
-	fmt.Printf("Received message: %s from topic: %s\n", msg.Payload(), msg.Topic())
+	Output:            []dataTypeNameStruct{{DataType: "bool", Name: "xDone"}, {DataType: "value", Name: "msg"}},
+	ParameterNameData: []string{"broker", "port", "user", "password"},
 }
 
 func (n *MqttNode) messageHandler() mqtt.MessageHandler {
@@ -68,7 +65,7 @@ var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err
 }
 
 func init() {
-	RegisterNodeCreator("MqttNode", func() (Node, error) {
+	RegisterNodeCreator("ConfigurableNode", func() (Node, error) {
 		return &MqttNode{
 			id:       -1,
 			nodeType: "",
@@ -104,7 +101,8 @@ func (n *MqttNode) ProcessLogic() {
 			n.output[0].Output = "0"
 		}
 	} else {
-		initConnection(n, "broker.hivemq.com", 1883, "go_mqtt_client")
+		//initConnection(n, "broker.hivemq.com", 1883, "go_mqtt_client")
+		initConnection(n)
 		topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
 		sub(n.client, topicToReceive)
 
@@ -141,17 +139,16 @@ func (n *MqttNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, out
 
 	n.connectionIsInit = false
 }
-func initConnection(n *MqttNode, broker_ string, port_ int, ClientID string) {
+func initConnection(n *MqttNode) { //, broker_ string, port_ int, ClientID string
 	n.connectionIsInit = true
-	var broker = "broker.hivemq.com"
-	var port = 1883
+	var broker = n.parameterValueData[0] //"broker.hivemq.com"
+	var port = n.parameterValueData[1]   //1883
 	opts := mqtt.NewClientOptions()
-	opts.AddBroker(fmt.Sprintf("tcp://%s:%d", broker, port))
-	opts.SetClientID("go_mqtt_client")
-	//opts.SetUsername("emqx")
-	//opts.SetPassword("public")
+	opts.AddBroker(fmt.Sprintf("tcp://%s:%s", broker, port))
+	opts.SetClientID((fmt.Sprintf("CC100_mqtt_client_%d", n.id)))
+	opts.SetUsername(n.parameterValueData[2]) //emqx
+	opts.SetPassword(n.parameterValueData[3]) //public
 	opts.SetDefaultPublishHandler(n.messageHandler())
-	//opts.SetDefaultPublishHandler(messagePubHandler)
 	opts.OnConnect = connectHandler
 	opts.OnConnectionLost = connectLostHandler
 
@@ -184,9 +181,31 @@ func publish(client mqtt.Client, topic []string, message []string) {
 				token := client.Publish(topicStr, 0, false, msgStr)
 				token.Wait()
 			}(topicTemp, message[i])
-			/*token := client.Publish(topicTemp, 0, false, message[i])
-			token.Wait()
-			time.Sleep(time.Second)*/
 		}
 	}
+}
+
+func (n *MqttNode) DestroyToBuildAgain() {
+	// Vérifier si une connexion est initialisée
+	if n.connectionIsInit && n.client != nil && n.client.IsConnected() {
+		// Tentative de désabonnement de tous les topics connus
+		if n.input != nil && len(n.input) > 3 && n.input[3].Input != nil {
+			topics := strings.Split(*n.input[3].Input, " ,, ")
+			for _, topic := range topics {
+				if topic != "nothing to send" {
+					token := n.client.Unsubscribe(topic)
+					token.Wait()
+				}
+			}
+		}
+
+		// Déconnexion du client
+		n.client.Disconnect(250)
+	}
+
+	// Nettoyage des champs internes
+	n.client = nil
+	n.connectionIsInit = false
+	n.outputFlag = false
+	n.lastPayload = nil
 }

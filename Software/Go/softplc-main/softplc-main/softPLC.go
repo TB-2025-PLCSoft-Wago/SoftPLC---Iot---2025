@@ -29,6 +29,7 @@ func main() {
 					for _, n := range v {
 						if logicalNode, ok := n.(nodes.LogicalNodeInterface); ok {
 							logicalNode.ProcessLogic()
+
 						}
 					}
 				}

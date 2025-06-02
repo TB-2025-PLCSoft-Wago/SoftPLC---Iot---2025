@@ -146,3 +146,7 @@ func (t *TONNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, outp
 	t.input = input_
 	t.output = output_
 }
+
+func (t *TONNode) DestroyToBuildAgain() {
+
+}

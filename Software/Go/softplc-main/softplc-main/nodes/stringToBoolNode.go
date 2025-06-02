@@ -1,5 +1,10 @@
 package nodes
 
+import (
+	"fmt"
+	"strconv"
+)
+
 // StringToBoolNode that wor like a logical
 type StringToBoolNode struct {
 	id                 int
@@ -14,7 +19,7 @@ var msgToBoolDescription = nodeDescription{
 	PrimaryType:   "LogicalNode",
 	Type_:         "StringToBoolNode",
 	Display:       "string To bool Node",
-	Label:         "string to bool Node",
+	Label:         "string to bool",
 	Stretchable:   false,
 	Services:      []servicesStruct{},
 	SubServices:   []subServicesStruct{},
@@ -37,14 +42,17 @@ func init() {
 
 func (n *StringToBoolNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = "0"
+		for i, _ := range n.parameterValueData {
+			n.output[i].Output = "0"
+		}
 		return
 	}
 
-	n.output[0].Output = "0"
-	for i, in := range n.input {
-		if *in.Input == n.parameterValueData[i] && n.parameterValueData[i] != "" {
-			n.output[0].Output = "1"
+	for i, _ := range n.parameterValueData {
+		if *n.input[0].Input == n.parameterValueData[i] && n.parameterValueData[i] != "" {
+			n.output[i].Output = "1"
+		} else {
+			n.output[i].Output = "0"
 		}
 	}
 
@@ -76,5 +84,17 @@ func (n *StringToBoolNode) InitNode(id_ int, nodeType_ string, input_ []InputHan
 	n.nodeType = nodeType_
 	n.input = input_
 	n.output = output_
+	n.output = make([]OutputHandle, len(parameterValueData_))
+	for i := range parameterValueData_ {
+		n.output[i] = OutputHandle{
+			Output:   strconv.Itoa(i),
+			Name:     fmt.Sprintf("%s%d", output_[0].Name, i),
+			DataType: output_[0].DataType,
+		}
+	}
 	n.parameterValueData = parameterValueData_
+}
+
+func (n *StringToBoolNode) DestroyToBuildAgain() {
+
 }

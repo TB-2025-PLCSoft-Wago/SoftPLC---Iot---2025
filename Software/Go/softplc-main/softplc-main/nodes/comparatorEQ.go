@@ -75,3 +75,6 @@ func (n *EQNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, outpu
 	n.input = input_
 	n.output = output_
 }
+func (n *EQNode) DestroyToBuildAgain() {
+
+}

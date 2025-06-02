@@ -94,3 +94,6 @@ func (n *BToSNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, out
 	n.output = output_
 	n.parameterValueData = parameterValueData_
 }
+func (n *BToSNode) DestroyToBuildAgain() {
+
+}

@@ -157,6 +157,7 @@ export default function App() {
                     subService: node.data.selectedSubServiceData,
                     value: node.data.valueData,
                     parameterValueData : node.data.parameterValueData ?? [],
+                    parameterNameData : node.data.parameterNameData ?? [],
 
                 },
             })),

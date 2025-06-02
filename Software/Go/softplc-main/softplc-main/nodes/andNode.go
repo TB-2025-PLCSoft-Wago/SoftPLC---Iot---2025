@@ -73,3 +73,7 @@ func (n *AndNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, outp
 	n.input = input_
 	n.output = output_
 }
+
+func (n *AndNode) DestroyToBuildAgain() {
+
+}

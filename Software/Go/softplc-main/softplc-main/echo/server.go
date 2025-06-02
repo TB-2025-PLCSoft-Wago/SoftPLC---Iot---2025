@@ -2,6 +2,7 @@ package echo
 
 import (
 	"SoftPLC/nodes"
+	"SoftPLC/outputUpdate"
 	"SoftPLC/processGraph"
 	"SoftPLC/serverResponse"
 	"encoding/json"
@@ -22,6 +23,19 @@ func EchoServer() {
 	//After build
 	e.POST("/json-graph", func(c echo.Context) error {
 		serverResponse.ResponseProcessGraph = "Graph received"
+
+		//Reset especially comunication
+		processGraph.Mutex.Lock()
+		for _, v := range processGraph.LogicalNode {
+			for _, n := range v {
+				if logicalNode, ok := n.(nodes.LogicalNodeInterface); ok {
+					logicalNode.DestroyToBuildAgain()
+				}
+			}
+		}
+		outputUpdate.UpdateOutput()
+		processGraph.Mutex.Unlock()
+		//nil
 		var graph processGraph.Graph
 		if err := c.Bind(&graph); err != nil {
 			return err
