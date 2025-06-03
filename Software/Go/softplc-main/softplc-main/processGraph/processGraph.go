@@ -80,7 +80,7 @@ func CreateQueue(g Graph) {
 			var queue []nodes.LogicalNodeInterface
 			findPreviousNode(&queue, nodeJson, g)    //find the node link ahead of the output node
 			LogicalNode = append(LogicalNode, queue) //Add a new queue to the process queues
-
+			//keepOnlyOneLogicalNode()
 			//create the output node
 			outputToAdd, err := nodes.CreateNode(nodeJson.Type)
 			if err != nil {
@@ -354,6 +354,7 @@ func linkNodes(g Graph) {
 						if LogicalNode[i][l].GetId() == nodeJsonId {
 							targetNodeHandle := LogicalNode[i][l].GetOutput(findLinkedEdgeName(strconv.Itoa(actualNode.GetId()), in.Name, g))
 							if targetNodeHandle.DataType == actualNodeInputs[k].DataType {
+								fmt.Println("logical link : " + strconv.Itoa(actualNode.GetId()) + " (" + actualNode.GetNodeType() + ")" + " and " + strconv.Itoa(nodeJsonId) + " (" + srcNodeJson.Type + ")")
 								actualNodeInputs[k].Input = &targetNodeHandle.Output
 							} else {
 								serverResponse.ResponseProcessGraph = "Data type mismatch"
@@ -413,4 +414,39 @@ func linkNodes(g Graph) {
 			break
 		}
 	}
+}
+
+// function to find a node by ID in LogicalNode[i]
+func getLogicalNodeById(nodes []nodes.LogicalNodeInterface, id int) nodes.LogicalNodeInterface {
+	for _, n := range nodes {
+		if n.GetId() == id {
+			return n
+		}
+	}
+	return nil
+}
+
+// function minimum of size for LogicalNode[i]
+func keepOnlyOneLogicalNode() {
+	lastQueueIndex := len(LogicalNode) - 1
+	if lastQueueIndex == 0 {
+		return
+	}
+	for n2 := range LogicalNode[lastQueueIndex] {
+		for q1 := range LogicalNode {
+			for n1 := range LogicalNode[q1] {
+				if n1 < (len(LogicalNode[lastQueueIndex]) - 1) {
+					if LogicalNode[lastQueueIndex][n2].GetId() == LogicalNode[q1][n1].GetId() {
+						fmt.Println("remove id : " + strconv.Itoa(n2))
+						LogicalNode[lastQueueIndex] = removeAtIndex(LogicalNode[lastQueueIndex], n2)
+
+					}
+				}
+			}
+		}
+	}
+
+}
+func removeAtIndex(s []nodes.LogicalNodeInterface, i int) []nodes.LogicalNodeInterface {
+	return append(s[:i], s[i+1:]...)
 }

@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+var clientID uint16 = 0 //Create unique ID for each connection (0..65535)
+
 // MqttNode that wor like a logical
 type MqttNode struct {
 	id                 int
@@ -19,6 +21,7 @@ type MqttNode struct {
 	msgHandler         mqtt.MessageHandler
 	outputFlag         bool
 	lastPayload        []string
+	clientID           uint16
 }
 
 var mqttDescription = nodeDescription{
@@ -42,7 +45,7 @@ var mqttDescription = nodeDescription{
 
 func (n *MqttNode) messageHandler() mqtt.MessageHandler {
 	return func(client mqtt.Client, msg mqtt.Message) {
-		fmt.Printf("Received message: %s from topic: %s\n", msg.Payload(), msg.Topic())
+		fmt.Printf("Received message: %s from topic: %s to clientID %d\n", msg.Payload(), msg.Topic(), n.clientID)
 		if !n.outputFlag {
 			n.lastPayload = []string{}
 		}
@@ -86,8 +89,8 @@ func (n *MqttNode) ProcessLogic() {
 			msgToSend := strings.Split(*n.input[2].Input, " ,, ")
 			publish(n.client, topicToSend, msgToSend)
 
-			topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-			sub(n.client, topicToReceive)
+			//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
+			//sub(n.client, topicToReceive)
 			//publish(client, "topic/test2", "Bonjour")
 			//n.client.Disconnect(250)
 		}
@@ -103,8 +106,8 @@ func (n *MqttNode) ProcessLogic() {
 	} else {
 		//initConnection(n, "broker.hivemq.com", 1883, "go_mqtt_client")
 		initConnection(n)
-		topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-		sub(n.client, topicToReceive)
+		//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
+		//sub(n.client, topicToReceive)
 
 	}
 }
@@ -145,7 +148,10 @@ func initConnection(n *MqttNode) { //, broker_ string, port_ int, ClientID strin
 	var port = n.parameterValueData[1]   //1883
 	opts := mqtt.NewClientOptions()
 	opts.AddBroker(fmt.Sprintf("tcp://%s:%s", broker, port))
-	opts.SetClientID((fmt.Sprintf("CC100_mqtt_client_%d", n.id)))
+	//opts.SetClientID((fmt.Sprintf("CC100_mqtt_client_%d", n.id)))
+	opts.SetClientID((fmt.Sprintf("CC100_mqtt_c%d", clientID)))
+	n.clientID = clientID
+	clientID = clientID + 1
 	opts.SetUsername(n.parameterValueData[2]) //emqx
 	opts.SetPassword(n.parameterValueData[3]) //public
 	opts.SetDefaultPublishHandler(n.messageHandler())
@@ -160,6 +166,9 @@ func initConnection(n *MqttNode) { //, broker_ string, port_ int, ClientID strin
 	if token := n.client.Connect(); token.Wait() && token.Error() != nil {
 		panic(token.Error())
 	}
+
+	topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
+	sub(n.client, topicToReceive)
 }
 func sub(client mqtt.Client, topic []string) {
 	for _, topicTemp := range topic {
@@ -179,6 +188,7 @@ func publish(client mqtt.Client, topic []string, message []string) {
 		if topicTemp != "nothing to send" {
 			go func(topicStr, msgStr string) {
 				token := client.Publish(topicStr, 0, false, msgStr)
+				fmt.Printf("publish message: %s to topic: %s \n", msgStr, topicStr)
 				token.Wait()
 			}(topicTemp, message[i])
 		}
@@ -186,9 +196,9 @@ func publish(client mqtt.Client, topic []string, message []string) {
 }
 
 func (n *MqttNode) DestroyToBuildAgain() {
-	// Vérifier si une connexion est initialisée
+	// Check if a connection is initialized
 	if n.connectionIsInit && n.client != nil && n.client.IsConnected() {
-		// Tentative de désabonnement de tous les topics connus
+		// Attempt to unsubscribe from all known topics
 		if n.input != nil && len(n.input) > 3 && n.input[3].Input != nil {
 			topics := strings.Split(*n.input[3].Input, " ,, ")
 			for _, topic := range topics {
@@ -199,13 +209,14 @@ func (n *MqttNode) DestroyToBuildAgain() {
 			}
 		}
 
-		// Déconnexion du client
+		// Disconnecting the client
 		n.client.Disconnect(250)
 	}
 
-	// Nettoyage des champs internes
+	// Cleaning of internal fields
 	n.client = nil
 	n.connectionIsInit = false
 	n.outputFlag = false
 	n.lastPayload = nil
+
 }
