@@ -1,9 +1,6 @@
 package nodes
 
 import (
-	"encoding/json"
-	"io"
-	"net/http"
 	"strconv"
 )
 
@@ -41,14 +38,17 @@ func (a *AnalogueOutputNode) GetOutputList() []OutputNodeHandle {
 }
 
 func init() {
-	resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
-	defer resp.Body.Close()
-	body, _ := io.ReadAll(resp.Body)
-	var input Body
-	json.Unmarshal(body, &input)
+	/*
+		resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
+		defer resp.Body.Close()
+		body, _ := io.ReadAll(resp.Body)
+		var input Body
+		json.Unmarshal(body, &input)
+	*/
 	var nameServices []string
-	for i := range input.Ao {
-		nameServices = append(nameServices, "AO"+strconv.Itoa(i+1))
+	//for i := range input.Ao {
+	for i := 19; i <= 20; i++ {
+		nameServices = append(nameServices, "AO"+strconv.Itoa(i-18))
 	}
 	services := []servicesStruct{{FriendlyName: "", NameServices: nameServices}}
 

@@ -3,6 +3,9 @@ package outputUpdate
 import (
 	"SoftPLC/inputUpdate"
 	"SoftPLC/processGraph"
+	"bytes"
+	"crypto/tls"
+	"encoding/json"
 	"fmt"
 	"math"
 	"net/http"
@@ -42,40 +45,73 @@ func UpdateOutput() {
 						outputHandleInput_, _ := strconv.ParseFloat(*nodeOutputList.OutputHandle.Input, 64)
 
 						if math.Abs(ccIOState_-outputHandleInput_) > tolerance {
-							var data *strings.Reader
+							//var data *strings.Reader
 							var url string
+							var jsonValue interface{}
+							var idOutput string
+							var isBool bool = nodeOutputList.OutputHandle.DataType == "bool"
+							username := "admin"
+							password := "wago"
 							if nodeOutputList.OutputHandle.DataType == "bool" {
-								if *nodeOutputList.OutputHandle.Input == "1" {
-									data = strings.NewReader("true")
-								} else {
-									data = strings.NewReader("false")
-								}
+								jsonValue = *nodeOutputList.OutputHandle.Input == "1"
 								if match, _ := regexp.MatchString(`^DO\d+$`, nodeOutputList.Service); match {
 									doNb := strings.Trim(nodeOutputList.Service, "DO")
 									doNbInt, _ := strconv.Atoi(doNb)
-									doNb = strconv.Itoa(doNbInt - 1)
-									url = "http://192.168.37.134:8888/api/v1/hal/do/" + doNb
+									idOutput = strconv.Itoa(doNbInt + 8)
+									url = "https://192.168.37.134/wda/parameters/0-0-io-channels-" + idOutput + "-dovalue"
 								}
 							} else {
+								jsonValue, _ = strconv.ParseFloat(*nodeOutputList.OutputHandle.Input, 64)
 								if match, _ := regexp.MatchString(`^AO\d+$`, nodeOutputList.Service); match {
-									doNb := strings.Trim(nodeOutputList.Service, "AO")
-									doNbInt, _ := strconv.Atoi(doNb)
-									doNb = strconv.Itoa(doNbInt - 1)
-									url = "http://192.168.37.134:8888/api/v1/hal/ao/" + doNb
-									data = strings.NewReader(*nodeOutputList.OutputHandle.Input) //data = strings.NewReader(strconv.FormatFloat(*nodeOutputList.OutputHandle.Input, 'f', -1, 64))
+									aoNb := strings.Trim(nodeOutputList.Service, "AO")
+									aoNbInt, _ := strconv.Atoi(aoNb)
+									idOutput = strconv.Itoa(aoNbInt + 18)
+									url = "https://192.168.37.134/wda/parameters/0-0-io-channels-" + idOutput + "-aovalue"
+									//data = strings.NewReader(*nodeOutputList.OutputHandle.Input) //data = strings.NewReader(strconv.FormatFloat(*nodeOutputList.OutputHandle.Input, 'f', -1, 64))
 								}
 							}
-							req, err := http.NewRequest(http.MethodPut, url, data)
+							// Create the JSON of body
+							payload := map[string]interface{}{
+								"data": map[string]interface{}{
+									"id": "0-0-io-channels-" + idOutput + "-" + func() string { //exemple : "id": "0-0-io-channels-9-dovalue"
+										if isBool {
+											return "dovalue"
+										}
+										return "aovalue"
+									}(),
+									"type": "parameters",
+									"attributes": map[string]interface{}{
+										"value": jsonValue,
+									},
+								},
+							}
+
+							// JSON serialization
+							jsonBytes, err := json.Marshal(payload)
+							if err != nil {
+								fmt.Println("JSON encoding error:", err)
+								continue
+							}
+							req, err := http.NewRequest(http.MethodPatch, url, bytes.NewBuffer(jsonBytes))
 							if err != nil {
 								fmt.Println(err)
+								continue
 							}
-							req.Header.Set("Content-Type", "application/json")
+							req.SetBasicAuth(username, password)
+							req.Header.Set("Content-Type", "application/vnd.api+json")
 
-							client := &http.Client{}
+							client := &http.Client{
+								Transport: &http.Transport{
+									TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+								},
+							}
 							resp, err := client.Do(req)
 							if err != nil {
 								fmt.Println(err)
+								continue
 							}
+							defer resp.Body.Close()
+
 							if resp.StatusCode != 204 {
 								fmt.Println("Error while updating output on " + nodeOutputList.Service)
 							}

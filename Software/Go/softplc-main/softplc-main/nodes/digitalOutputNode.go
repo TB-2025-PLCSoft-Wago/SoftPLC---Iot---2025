@@ -1,9 +1,6 @@
 package nodes
 
 import (
-	"encoding/json"
-	"io"
-	"net/http"
 	"strconv"
 )
 
@@ -28,14 +25,16 @@ func (d *DigitalOutputNode) InitNode(id_ int, nodeType_ string, output_ []Output
 }
 
 func init() {
-	resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
-	defer resp.Body.Close()
-	body, _ := io.ReadAll(resp.Body)
-	var input Body
-	json.Unmarshal(body, &input)
+	/*
+		resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
+		defer resp.Body.Close()
+		body, _ := io.ReadAll(resp.Body)
+		var input Body
+		json.Unmarshal(body, &input)*/
 	var nameServices []string
-	for i := range input.Do {
-		nameServices = append(nameServices, "DO"+strconv.Itoa(i+1))
+	//for i := range input.Do {
+	for i := 9; i <= 16; i++ {
+		nameServices = append(nameServices, "DO"+strconv.Itoa(i-8))
 	}
 	services := []servicesStruct{{FriendlyName: "", NameServices: nameServices}}
 	var digitalOutputDescription = nodeDescription{

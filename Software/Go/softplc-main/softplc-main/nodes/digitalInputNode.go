@@ -1,9 +1,6 @@
 package nodes
 
 import (
-	"encoding/json"
-	"io"
-	"net/http"
 	"strconv"
 )
 
@@ -30,14 +27,18 @@ func (n *DigitalInputNode) GetId() int {
 }
 
 func init() {
-	resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
-	defer resp.Body.Close()
-	body, _ := io.ReadAll(resp.Body)
-	var input Body
-	json.Unmarshal(body, &input)
+	/*
+		resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
+		defer resp.Body.Close()
+		body, _ := io.ReadAll(resp.Body)
+		var input Body
+		json.Unmarshal(body, &input)
+	*/
 	var nameServices []string
-	for i := range input.Di {
-		nameServices = append(nameServices, "DI"+strconv.Itoa(i+1))
+
+	//for i := range input.Di {
+	for i := 21; i <= 28; i++ {
+		nameServices = append(nameServices, "DI"+strconv.Itoa(i-20)) //i+1
 	}
 	services := []servicesStruct{{FriendlyName: "", NameServices: nameServices}}
 	var digitalInputDescription = nodeDescription{

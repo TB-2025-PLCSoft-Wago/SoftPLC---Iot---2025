@@ -1,9 +1,6 @@
 package nodes
 
 import (
-	"encoding/json"
-	"io"
-	"net/http"
 	"strconv"
 )
 
@@ -22,17 +19,21 @@ func (n *AnalogueInputNode) GetId() int {
 }
 
 func init() {
-	resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io") // marcelin http://192.168.1.175:8888/api/v1/hal/io
-	defer resp.Body.Close()
-	body, _ := io.ReadAll(resp.Body)
-	var input Body
-	json.Unmarshal(body, &input)
+	/*
+		resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io") // marcelin http://192.168.1.175:8888/api/v1/hal/io
+		defer resp.Body.Close()
+		body, _ := io.ReadAll(resp.Body)
+		var input Body
+		json.Unmarshal(body, &input)
+	*/
 	var nameServices []string
-	for i := range input.Ai {
-		nameServices = append(nameServices, "AI"+strconv.Itoa(i+1))
+	//for i := range input.Ai {
+	for i := 31; i <= 32; i++ {
+		nameServices = append(nameServices, "AI"+strconv.Itoa(i-30))
 	}
-	for i := range input.Temp {
-		nameServices = append(nameServices, "TEMP"+strconv.Itoa(i+1))
+	//for i := range input.Temp {
+	for i := 29; i <= 30; i++ {
+		nameServices = append(nameServices, "TEMP"+strconv.Itoa(i-28))
 	}
 	services := []servicesStruct{{FriendlyName: "", NameServices: nameServices}}
 	var digitalInputDescription = nodeDescription{
