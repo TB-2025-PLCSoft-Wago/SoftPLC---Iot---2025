@@ -27,8 +27,8 @@ var mutex sync.Mutex
 var InputsOutputsState []InputsOutputs
 
 // var client mqtt.Client
-var urls []string
-
+var urlsID []string
+var postID string
 var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) {
 	fmt.Println("Connected")
 }
@@ -42,7 +42,6 @@ var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Me
 		fmt.Println(err)
 	}
 	body := payload["dataPoints"].(map[string]interface{})
-	mutex.Lock()
 	for i, input := range InputsOutputsState {
 		if input.id == splitTopic[0] && input.Service == splitTopic[1] {
 			for key, value := range body {
@@ -54,7 +53,7 @@ var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Me
 			}
 		}
 	}
-	mutex.Unlock()
+
 }
 
 /*
@@ -153,11 +152,87 @@ func configureControleMode(nb uint8) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 204 {
-		fmt.Println("Error configure output DO")
+		fmt.Println("Error configure controle mode")
 	}
 	resp.Body.Close()
 }
 
+func createMonitoringLists() {
+	username := "admin"
+	password := "wago"
+	url := "https://192.168.37.134/wda/monitoring-lists"
+	// Create the JSON of body
+	var parameters []map[string]interface{}
+
+	for _, id := range urlsID {
+		parameters = append(parameters, map[string]interface{}{
+			"id":   id,
+			"type": "parameters",
+		})
+	}
+	payload := map[string]interface{}{
+		"data": map[string]interface{}{
+			"type": "monitoring-lists",
+			"attributes": map[string]interface{}{
+				"timeout": 600,
+			},
+			"relationships": map[string]interface{}{
+				"parameters": map[string]interface{}{
+					"data": parameters,
+				},
+			},
+		},
+	}
+
+	// JSON serialization
+	jsonBytes, err := json.Marshal(payload)
+	if err != nil {
+		fmt.Println("JSON encoding error:", err)
+		panic(err)
+	}
+	req, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonBytes))
+	if err != nil {
+		panic(err)
+	}
+	req.SetBasicAuth(username, password)
+	req.Header.Set("Content-Type", "application/vnd.api+json")
+
+	client := &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		},
+	}
+	//client := createHTTPClient()
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	postID, err = getMonitoringListID(resp.Body)
+	if resp.StatusCode != 201 {
+		fmt.Println("Error createMonitoringLists not 201")
+		panic(resp.StatusCode)
+	}
+	resp.Body.Close()
+
+}
+func getMonitoringListID(respBody io.Reader) (string, error) {
+	var responseData map[string]interface{}
+
+	err := json.NewDecoder(respBody).Decode(&responseData)
+	if err != nil {
+		return "", fmt.Errorf("JSON decoding failed: %w", err)
+	}
+
+	// data -> id
+	if data, ok := responseData["data"].(map[string]interface{}); ok {
+		if id, ok := data["id"].(string); ok {
+			return id, nil
+		}
+	}
+
+	return "", fmt.Errorf("ID not found in response")
+}
 func initClient() {
 	/*
 		var broker = "192.168.37.134"
@@ -171,9 +246,11 @@ func initClient() {
 		if token := client.Connect(); token.Wait() && token.Error() != nil {
 			panic(token.Error())
 		}*/
+	generateURLsId()
 	configureControleMode(0)
 	configureDO()
 	configureControleMode(2)
+	createMonitoringLists()
 }
 
 /*
@@ -289,27 +366,27 @@ func initClient() {
 */
 
 // Generates all necessary URLs for IO values
-func generateURLs() {
-	baseURL := "https://192.168.37.134/wda/parameters/0-0-io-channels-"
+func generateURLsId() {
+	baseURL := "0-0-io-channels-"
 	// divalue (21 to 28)
 	for i := 21; i <= 28; i++ {
-		urls = append(urls, fmt.Sprintf("%s%d-divalue", baseURL, i))
+		urlsID = append(urlsID, fmt.Sprintf("%s%d-divalue", baseURL, i))
 	}
 	// dovalue (9 to 16)
 	for i := 9; i <= 16; i++ {
-		urls = append(urls, fmt.Sprintf("%s%d-dovalue", baseURL, i))
+		urlsID = append(urlsID, fmt.Sprintf("%s%d-dovalue", baseURL, i))
 	}
 	// aivalue (31 to 32)
 	for i := 31; i <= 32; i++ {
-		urls = append(urls, fmt.Sprintf("%s%d-aivalue", baseURL, i))
+		urlsID = append(urlsID, fmt.Sprintf("%s%d-aivalue", baseURL, i))
 	}
 	// aovalue (19 to 20)
 	for i := 19; i <= 20; i++ {
-		urls = append(urls, fmt.Sprintf("%s%d-aovalue", baseURL, i))
+		urlsID = append(urlsID, fmt.Sprintf("%s%d-aovalue", baseURL, i))
 	}
 	// aivalue (29 to 30) -> TEMP (X13)
 	for i := 29; i <= 30; i++ {
-		urls = append(urls, fmt.Sprintf("%s%d-aivalue", baseURL, i))
+		urlsID = append(urlsID, fmt.Sprintf("%s%d-aivalue", baseURL, i))
 	}
 }
 
@@ -323,10 +400,8 @@ func InitInputs() {
 	username := "admin"
 	password := "wago"
 
-	generateURLs()
-
 	client := createHTTPClient()
-	results := fetchValues(client, username, password, urls)
+	results := fetchValues(client, username, password)
 
 	/*fmt.Println("Fetched values:")
 	for url, val := range results {
@@ -403,6 +478,7 @@ func InitInputs() {
 			}
 		}
 	*/
+	//
 	//mutex.Unlock()
 	fmt.Println("IO init finished")
 }
@@ -412,10 +488,10 @@ func UpdateInputs() {
 	// Authentification
 	username := "admin"
 	password := "wago"
-	//generateURLs()
+	//generateURLsId()
 
 	client := createHTTPClient()
-	results := fetchValues(client, username, password, urls)
+	results := fetchValues(client, username, password)
 	/*
 		fmt.Println("Fetched values:")
 		for url, val := range results {
@@ -505,72 +581,16 @@ func createHTTPClient() *http.Client {
 }
 
 // Fetches JSON values from given URLs
-func fetchValues(client *http.Client, username, password string, urls []string) map[string]interface{} {
-	var (
-		results = make(map[string]interface{})
-		wg      sync.WaitGroup
-		mu      sync.Mutex // pour protéger `results`
-	)
-	sem := make(chan struct{}, 1) // max 4 requêtes en parallèle
-	start := time.Now()           //test
-	for _, url := range urls {
-		wg.Add(1)
-		go func(url string) {
-			defer wg.Done()
-			time.Sleep(10 * time.Millisecond)
+func fetchValues(client *http.Client, username string, password string) map[string]interface{} {
+	results := make(map[string]interface{})
+	start := time.Now()
 
-			sem <- struct{}{}        // acquérir un slot
-			defer func() { <-sem }() // libérer le slot
+	url := fmt.Sprintf("https://192.168.37.134/wda/monitoring-lists/%s/parameters", postID)
 
-			value, err := fetchValue(url, username, password, client)
-			if err != nil {
-				fmt.Printf("Error fetching %s: %v\n", url, err)
-				return
-			}
-
-			mu.Lock()
-			results[url] = value
-			mu.Unlock()
-		}(url)
-		/*
-			fmt.Println("Requesting:", url)
-
-			req, err := http.NewRequest("GET", url, nil)
-			if err != nil {
-				fmt.Println("Request creation error:", err)
-				continue
-			}
-
-			req.SetBasicAuth(username, password)
-			req.Header.Set("Content-Type", "application/vnd.api+json")
-
-			resp, err := client.Do(req)
-			if err != nil {
-				fmt.Println("HTTP request error:", err)
-				continue
-			}
-			defer resp.Body.Close()
-
-			body, err := io.ReadAll(resp.Body)
-			if err != nil {
-				fmt.Println("Response read error:", err)
-				continue
-			}
-
-			value := parseResponse(body, url)
-			results[url] = value
-		*/
-	}
-	wg.Wait()
-
-	duration := time.Since(start)
-	fmt.Printf("Total time for fetchValues: %s\n", duration)
-	return results
-}
-func fetchValue(url, username, password string, client *http.Client) (interface{}, error) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return nil, fmt.Errorf("request creation failed: %w", err)
+		fmt.Println("Request creation failed:", err)
+		return results
 	}
 
 	req.SetBasicAuth(username, password)
@@ -578,54 +598,45 @@ func fetchValue(url, username, password string, client *http.Client) (interface{
 
 	resp, err := client.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("http request failed: %w", err)
+		fmt.Println("HTTP request failed:", err)
+		return results
 	}
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, fmt.Errorf("read failed: %w", err)
+		fmt.Println("Failed to read response:", err)
+		return results
 	}
 
-	var data map[string]interface{}
-	if err = json.Unmarshal(body, &data); err != nil {
-		return nil, fmt.Errorf("json parsing failed: %w", err)
+	var response map[string]interface{}
+	if err := json.Unmarshal(body, &response); err != nil {
+		fmt.Println("JSON parse error:", err)
+		return results
 	}
-	if resp.StatusCode >= 400 {
-		return nil, fmt.Errorf("HTTP %d error from %s: %s", resp.StatusCode, url, string(body))
+
+	data, ok := response["data"].([]interface{})
+	if !ok {
+		fmt.Println("Unexpected JSON structure: missing `data` array")
+		return results
 	}
-	// safely extract nested value
-	if d, ok := data["data"].(map[string]interface{}); ok {
-		if attr, ok := d["attributes"].(map[string]interface{}); ok {
-			if value, ok := attr["value"]; ok {
-				return value, nil
-			}
+
+	for _, item := range data {
+		param, ok := item.(map[string]interface{})
+		if !ok {
+			continue
 		}
-	}
-	return nil, fmt.Errorf("value field missing")
-}
-
-// Parses JSON and extracts the "value" field
-func parseResponse(body []byte, url string) interface{} {
-	var data map[string]interface{}
-	if err := json.Unmarshal(body, &data); err != nil {
-		fmt.Println("JSON parsing error:", err)
-		return nil
-	}
-
-	if dataField, ok := data["data"].(map[string]interface{}); ok {
-		if attrField, ok := dataField["attributes"].(map[string]interface{}); ok {
-			if value, ok := attrField["value"]; ok {
-				return value
-			}
-			fmt.Println("'value' field missing in 'attributes'")
-		} else {
-			fmt.Println("'attributes' field missing or malformed")
+		id, _ := param["id"].(string)
+		attrs, ok := param["attributes"].(map[string]interface{})
+		if !ok {
+			continue
 		}
-	} else {
-		fmt.Println("'data' field missing or malformed")
+		val := attrs["value"] //extracts the "value" field
+		results[id] = val
 	}
-	return nil
+
+	fmt.Printf("Fetched %d values in %s\n", len(results), time.Since(start))
+	return results
 }
 
 // Builds InputsOutputsState from fetched results (used in InitInputs)
