@@ -6,7 +6,7 @@ import (
 	"SoftPLC/nodes"
 	"SoftPLC/outputUpdate"
 	"SoftPLC/processGraph"
-	"fmt"
+	"SoftPLC/server"
 	"time"
 )
 
@@ -21,6 +21,7 @@ func main() {
 	timer := time.NewTimer(1000 * time.Millisecond)
 	<-timer.C
 	go echo.EchoServer()
+	go server.CreateWebSocket()
 	ticker := time.NewTicker(10 * time.Millisecond)
 	ticker2 := time.NewTicker(600 * time.Second) // monitoring Lists
 	go func() {
@@ -36,8 +37,9 @@ func main() {
 		select {
 		case <-ticker.C:
 			if len(processGraph.OutputNodes) != 0 {
-				start := time.Now()
-				fmt.Printf("total time before restart is  %s\n", time.Since(start2))
+				//start := time.Now()
+				//fmt.Printf("total time before restart is  %s\n", time.Since(start2))
+				server.SendToWebSocket("SoftPLC")
 				inputUpdate.UpdateInputs()
 				processGraph.Mutex.Lock()
 				for _, v := range processGraph.LogicalNode {
@@ -50,7 +52,7 @@ func main() {
 				}
 				outputUpdate.UpdateOutput()
 				processGraph.Mutex.Unlock()
-				fmt.Printf("total time value is  %s\n", time.Since(start))
+				//fmt.Printf("total time value is  %s\n", time.Since(start))
 				start2 = time.Now()
 
 			}

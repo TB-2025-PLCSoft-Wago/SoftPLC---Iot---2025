@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
     addEdge,
@@ -312,7 +313,11 @@ export default function App() {
             }
         )
     };
+    const navigate = useNavigate();
 
+    const openView = () => {
+        navigate('/websocket');
+    };
     const isValidConnection = (connection: Connection) => {
         const sourceNode = nodes.find((node) => node.id === connection.source);
         const targetNode = nodes.find((node) => node.id === connection.target);
@@ -366,6 +371,7 @@ export default function App() {
                         onDragOver={onDragOver}
                     >
                         <Panel position="top-right">
+                            <button onClick={openView}>Open view</button>
                             <button onClick={onSave}>Save</button>
                             <button onClick={onRestore}>Restore</button>
                             <button onClick={onBuild}>Build</button>

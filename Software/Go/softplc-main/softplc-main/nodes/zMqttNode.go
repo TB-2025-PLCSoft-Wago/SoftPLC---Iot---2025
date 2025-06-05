@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-var clientID uint16 = 0 //Create unique ID for each connection (0..65535)
+var clientID uint16 = 0 //CreateMqtt unique ID for each connection (0..65535)
 var serveurIsInit bool = false
 
 // MqttNode that wor like a logical
@@ -147,7 +147,7 @@ func (n *MqttNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, out
 }
 func initConnection(n *MqttNode) {
 	if !serveurIsInit {
-		go server.Create()
+		go server.CreateMqtt()
 		serveurIsInit = true
 	}
 

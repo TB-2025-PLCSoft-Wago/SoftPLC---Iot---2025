@@ -583,7 +583,7 @@ func createHTTPClient() *http.Client {
 // Fetches JSON values from given URLs
 func fetchValues(client *http.Client, username string, password string) map[string]interface{} {
 	results := make(map[string]interface{})
-	start := time.Now()
+	//start := time.Now()
 
 	url := fmt.Sprintf("https://192.168.37.134/wda/monitoring-lists/%s/parameters", postID)
 
@@ -635,7 +635,7 @@ func fetchValues(client *http.Client, username string, password string) map[stri
 		results[id] = val
 	}
 
-	fmt.Printf("Fetched %d values in %s\n", len(results), time.Since(start))
+	//fmt.Printf("Fetched %d values in %s\n", len(results), time.Since(start))
 	return results
 }
 
@@ -692,7 +692,7 @@ func mapResultsToInputsOutputs(results map[string]interface{}) {
 
 // Updates InputsOutputsState in place (used in UpdateInputs)
 func updateInputsOutputsState(results map[string]interface{}) {
-	fmt.Println("updateInputsOutputsState")
+	//fmt.Println("updateInputsOutputsState")
 	for key, v := range results {
 		parts := strings.Split(key, "-")
 		if len(parts) < 6 {
