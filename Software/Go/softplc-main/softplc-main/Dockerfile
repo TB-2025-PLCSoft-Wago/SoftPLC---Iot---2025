@@ -22,6 +22,8 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-softplcgo
 # the application is going to listen on by default.
 # https://docs.docker.com/reference/dockerfile/#expose
 EXPOSE 8889
+#mqtt serveur
+EXPOSE 1883
 
 # Run
 CMD ["/docker-softplcgo"]

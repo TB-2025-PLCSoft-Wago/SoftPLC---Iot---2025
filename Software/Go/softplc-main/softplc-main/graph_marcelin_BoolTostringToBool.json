@@ -116,7 +116,7 @@
           "cs",
           "ab",
           "cs ,, ab",
-          "nothing to send"
+          "empty"
         ],
         "primaryType": "LogicalNode",
         "selectedFriendlyNameData": "default",

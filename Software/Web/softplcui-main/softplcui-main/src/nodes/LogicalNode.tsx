@@ -12,7 +12,11 @@ import CommunicationHandles from "./handles/CommunicationHandles.tsx";
 import StringToBoolHandles from "./handles/StringToBoolHandles.tsx";
 
 const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
-    const { data = { inputHandle: [], outputHandle: [], stretchable: false, label: "BUG", id: "BUG"} } = props;
+    const { data = { inputHandle: [], outputHandle: [], stretchable: false, label: "BUG", id: "BUG",
+        parameterValueData: undefined,
+        parameterNameData: undefined,
+        type: undefined
+    } } = props;
 
     const edges = useStore((state) => state.edges);
     const updateNodeInternals = useUpdateNodeInternals();

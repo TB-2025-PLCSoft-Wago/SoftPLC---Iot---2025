@@ -157,7 +157,7 @@ func configureControleMode(nb uint8) {
 	resp.Body.Close()
 }
 
-func createMonitoringLists() {
+func CreateMonitoringLists() {
 	username := "admin"
 	password := "wago"
 	url := "https://192.168.37.134/wda/monitoring-lists"
@@ -250,7 +250,7 @@ func initClient() {
 	configureControleMode(0)
 	configureDO()
 	configureControleMode(2)
-	createMonitoringLists()
+	CreateMonitoringLists()
 }
 
 /*
@@ -692,6 +692,7 @@ func mapResultsToInputsOutputs(results map[string]interface{}) {
 
 // Updates InputsOutputsState in place (used in UpdateInputs)
 func updateInputsOutputsState(results map[string]interface{}) {
+	fmt.Println("updateInputsOutputsState")
 	for key, v := range results {
 		parts := strings.Split(key, "-")
 		if len(parts) < 6 {

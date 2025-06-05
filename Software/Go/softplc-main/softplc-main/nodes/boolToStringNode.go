@@ -41,7 +41,7 @@ func init() {
 
 func (n *BToSNode) ProcessLogic() {
 	if n.input == nil {
-		n.output[0].Output = "nothing to send"
+		n.output[0].Output = "null"
 		return
 	}
 	var result []string
@@ -55,7 +55,7 @@ func (n *BToSNode) ProcessLogic() {
 	if temp {
 		n.output[0].Output = strings.Join(result, " ,, ")
 	} else {
-		n.output[0].Output = "nothing to send"
+		n.output[0].Output = "empty"
 	}
 
 	/*

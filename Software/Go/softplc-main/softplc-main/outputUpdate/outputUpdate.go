@@ -12,6 +12,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 const tolerance = 0.01
@@ -52,6 +53,7 @@ func UpdateOutput() {
 							var isBool bool = nodeOutputList.OutputHandle.DataType == "bool"
 							username := "admin"
 							password := "wago"
+							var start time.Time
 							if nodeOutputList.OutputHandle.DataType == "bool" {
 								jsonValue = *nodeOutputList.OutputHandle.Input == "1"
 								if match, _ := regexp.MatchString(`^DO\d+$`, nodeOutputList.Service); match {
@@ -59,6 +61,7 @@ func UpdateOutput() {
 									doNbInt, _ := strconv.Atoi(doNb)
 									idOutput = strconv.Itoa(doNbInt + 8)
 									url = "https://192.168.37.134/wda/parameters/0-0-io-channels-" + idOutput + "-dovalue"
+									start = time.Now()
 								}
 							} else {
 								jsonValue, _ = strconv.ParseFloat(*nodeOutputList.OutputHandle.Input, 64)
@@ -116,6 +119,7 @@ func UpdateOutput() {
 								fmt.Println("Error while updating output on " + nodeOutputList.Service)
 							}
 							resp.Body.Close()
+							fmt.Printf("toggle dovalue value in  %s\n", time.Since(start))
 						}
 					}
 				}

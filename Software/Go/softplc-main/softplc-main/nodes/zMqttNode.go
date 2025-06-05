@@ -1,6 +1,7 @@
 package nodes
 
 import (
+	"SoftPLC/server"
 	"fmt"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 	"strings"
@@ -8,6 +9,7 @@ import (
 )
 
 var clientID uint16 = 0 //Create unique ID for each connection (0..65535)
+var serveurIsInit bool = false
 
 // MqttNode that wor like a logical
 type MqttNode struct {
@@ -22,6 +24,7 @@ type MqttNode struct {
 	outputFlag         bool
 	lastPayload        []string
 	clientID           uint16
+	topicToReceive     []string
 }
 
 var mqttDescription = nodeDescription{
@@ -142,7 +145,12 @@ func (n *MqttNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, out
 
 	n.connectionIsInit = false
 }
-func initConnection(n *MqttNode) { //, broker_ string, port_ int, ClientID string
+func initConnection(n *MqttNode) {
+	if !serveurIsInit {
+		go server.Create()
+		serveurIsInit = true
+	}
+
 	n.connectionIsInit = true
 	var broker = n.parameterValueData[0] //"broker.hivemq.com"
 	var port = n.parameterValueData[1]   //1883
@@ -167,12 +175,12 @@ func initConnection(n *MqttNode) { //, broker_ string, port_ int, ClientID strin
 		panic(token.Error())
 	}
 
-	topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-	sub(n.client, topicToReceive)
+	n.topicToReceive = strings.Split(*n.input[3].Input, " ,, ")
+	sub(n.client, n.topicToReceive)
 }
 func sub(client mqtt.Client, topic []string) {
 	for _, topicTemp := range topic {
-		if topicTemp != "nothing to send" {
+		if topicTemp != "null" && topicTemp != "empty" {
 			token := client.Subscribe(topicTemp, 1, nil)
 			token.Wait()
 			//fmt.Printf("Subscribed to topic %s", topicTemp)
@@ -185,7 +193,7 @@ func sub(client mqtt.Client, topic []string) {
 
 func publish(client mqtt.Client, topic []string, message []string) {
 	for i, topicTemp := range topic {
-		if topicTemp != "nothing to send" {
+		if topicTemp != "null" && topicTemp != "empty" {
 			go func(topicStr, msgStr string) {
 				token := client.Publish(topicStr, 0, false, msgStr)
 				fmt.Printf("publish message: %s to topic: %s \n", msgStr, topicStr)
@@ -199,10 +207,9 @@ func (n *MqttNode) DestroyToBuildAgain() {
 	// Check if a connection is initialized
 	if n.connectionIsInit && n.client != nil && n.client.IsConnected() {
 		// Attempt to unsubscribe from all known topics
-		if n.input != nil && len(n.input) > 3 && n.input[3].Input != nil {
-			topics := strings.Split(*n.input[3].Input, " ,, ")
-			for _, topic := range topics {
-				if topic != "nothing to send" {
+		if n.topicToReceive != nil {
+			for _, topic := range n.topicToReceive {
+				if topic != "null" && topic != "empty" {
 					token := n.client.Unsubscribe(topic)
 					token.Wait()
 				}
@@ -218,5 +225,6 @@ func (n *MqttNode) DestroyToBuildAgain() {
 	n.connectionIsInit = false
 	n.outputFlag = false
 	n.lastPayload = nil
+	n.topicToReceive = nil
 
 }

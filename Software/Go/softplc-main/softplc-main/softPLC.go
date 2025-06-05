@@ -6,8 +6,11 @@ import (
 	"SoftPLC/nodes"
 	"SoftPLC/outputUpdate"
 	"SoftPLC/processGraph"
+	"fmt"
 	"time"
 )
+
+var start2 time.Time
 
 func main() {
 	//nodes.CreateNode("TONNode")
@@ -19,10 +22,22 @@ func main() {
 	<-timer.C
 	go echo.EchoServer()
 	ticker := time.NewTicker(10 * time.Millisecond)
+	ticker2 := time.NewTicker(600 * time.Second) // monitoring Lists
+	go func() {
+		for {
+			select {
+			case <-ticker2.C:
+
+				inputUpdate.CreateMonitoringLists() // Recreate
+			}
+		}
+	}()
 	for {
 		select {
 		case <-ticker.C:
 			if len(processGraph.OutputNodes) != 0 {
+				start := time.Now()
+				fmt.Printf("total time before restart is  %s\n", time.Since(start2))
 				inputUpdate.UpdateInputs()
 				processGraph.Mutex.Lock()
 				for _, v := range processGraph.LogicalNode {
@@ -35,6 +50,9 @@ func main() {
 				}
 				outputUpdate.UpdateOutput()
 				processGraph.Mutex.Unlock()
+				fmt.Printf("total time value is  %s\n", time.Since(start))
+				start2 = time.Now()
+
 			}
 		}
 	}
