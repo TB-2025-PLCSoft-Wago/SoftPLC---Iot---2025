@@ -62,7 +62,7 @@ func init() {
 	}, digitalInputDescription)
 }
 
-func (n *DigitalInputNode) InitNode(id_ int, nodeType_ string, output_ []InputNodeHandle) {
+func (n *DigitalInputNode) InitNode(id_ int, nodeType_ string, output_ []InputNodeHandle, parameterValueData_ []string) {
 	n.id = id_
 	n.nodeType = nodeType_
 	n.output = output_

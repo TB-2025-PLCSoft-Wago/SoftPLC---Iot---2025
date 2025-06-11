@@ -15,6 +15,7 @@ interface InputNodeData {
     valueData?: string;
     dataType?: string;
     parameterValueData?: string[];
+    parameterNameData?: string[];
 }
 
 const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
@@ -31,7 +32,9 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
             selectedServiceData: "BUG",
             selectedSubServiceData: "BUG",
             valueData: "BUG",
-            selectedFriendlyNameData: "BUG"
+            selectedFriendlyNameData: "BUG",
+            parameterValueData: undefined,
+            parameterNameData: undefined,
         }
     } = props;
     const [selectedFriendlyName, setSelectedFriendlyName] = useState(data.selectedFriendlyNameData);
@@ -39,11 +42,20 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
     const [selectedSubService, setSelectedSubService] = useState(data.selectedSubServiceData);
     const [inputValue, setInputValue] = useState(data.valueData);
     const [handleType, setHandleType] = useState("");
+    const [inputValues, setInputValues] = useState<string[]>(data.parameterValueData ?? []);
 
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
     }
+
+    const handleInputChange2 = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newValues = [...inputValues];
+        newValues[index] = event.target.value;
+        setInputValues(newValues);
+        data.parameterValueData = newValues;
+        console.log("newValues : ",newValues)
+    };
 
     const handleFriendlyNameChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedFriendlyName(event.target.value);
@@ -101,6 +113,37 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
                     onChange={handleInputChange}
                     id={data.id}
                 />
+            </>
+        );
+        //console.log("constantInput : ", content);
+
+    } else if (data.type === "viewWebInputBool" || data.type === "viewWebInputValue") {
+        console.log("dataType : ", data.outputHandle[0].dataType);
+        content = (
+            <>
+
+                <Handle
+                    type={"source"}
+                    position={Position.Right}
+                    id={data.outputHandle[0].name}
+                    isConnectable={true}
+                    datatype="bool"
+                    style={{ height: 8, width: 8 }}
+                />
+
+                {[0, 1].map((index) => (
+                    <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "4px" }}>
+                            <input
+                                id={`${data.id}-${index}`}
+                                type="text"
+                                className="inputNodeSelect"
+                                value={inputValues[index]}
+                                onChange={handleInputChange2(index)}
+                                placeholder={data.parameterNameData?.[index] ?? ""}
+                            />
+                    </div>
+                ))}
+
             </>
         );
         //console.log("constantInput : ", content);

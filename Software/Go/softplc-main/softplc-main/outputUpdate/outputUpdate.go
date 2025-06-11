@@ -3,6 +3,7 @@ package outputUpdate
 import (
 	"SoftPLC/inputUpdate"
 	"SoftPLC/processGraph"
+	"SoftPLC/server"
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
@@ -38,11 +39,24 @@ func UpdateOutput() {
 
 	for _, output := range processGraph.OutputNodes {
 		for _, nodeOutputList := range output.GetOutputList() {
+			/*** View web output ***/
+			if strings.Contains(output.GetNodeType(), "viewWeb") {
+				for _, ccIOState := range server.OutputsStateWeb {
+					if strconv.Itoa(ccIOState.ID) == nodeOutputList.FriendlyName {
+						if ccIOState.Value != *nodeOutputList.OutputHandle.Input {
+							//ccIOState.Value = *nodeOutputList.OutputHandle.Input
+							server.UpdateOutputValueByID(ccIOState.ID, *nodeOutputList.OutputHandle.Input)
+						}
+					}
+				}
+				continue
+			}
+			/*** Real output ***/
 			if nodeOutputList.FriendlyName == "" { // Output isn't an appliance
 				for _, ccIOState := range inputUpdate.InputsOutputsState {
 					if ccIOState.Service == nodeOutputList.Service {
-						ccIOState_, _ := strconv.ParseFloat(ccIOState.Value, 64)
-						outputHandleInput_, _ := strconv.ParseFloat(*nodeOutputList.OutputHandle.Input, 64)
+						ccIOState_, _ := strconv.ParseFloat(ccIOState.Value, 64)                            // real output value
+						outputHandleInput_, _ := strconv.ParseFloat(*nodeOutputList.OutputHandle.Input, 64) //value in input of the output
 
 						if math.Abs(ccIOState_-outputHandleInput_) > tolerance {
 							//var data *strings.Reader
@@ -75,7 +89,7 @@ func UpdateOutput() {
 							// Create the JSON of body
 							payload := map[string]interface{}{
 								"data": map[string]interface{}{
-									"id": "0-0-io-channels-" + idOutput + "-" + func() string { //exemple : "id": "0-0-io-channels-9-dovalue"
+									"id": "0-0-io-channels-" + idOutput + "-" + func() string { //example : "id": "0-0-io-channels-9-dovalue"
 										if isBool {
 											return "dovalue"
 										}

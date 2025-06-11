@@ -14,7 +14,7 @@ func (c *ConstantInputNode) GetNodeType() string {
 	return c.nodeType
 }
 
-func (c *ConstantInputNode) InitNode(id_ int, nodeType_ string, input_ []InputNodeHandle) {
+func (c *ConstantInputNode) InitNode(id_ int, nodeType_ string, input_ []InputNodeHandle, parameterValueData_ []string) {
 	c.id = id_
 	c.nodeType = nodeType_
 	c.output = input_

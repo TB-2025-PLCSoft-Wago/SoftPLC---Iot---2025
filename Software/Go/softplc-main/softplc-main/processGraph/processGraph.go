@@ -3,6 +3,7 @@ package processGraph
 import (
 	"SoftPLC/inputUpdate"
 	"SoftPLC/nodes"
+	"SoftPLC/server"
 	"SoftPLC/serverResponse"
 	"fmt"
 	"strconv"
@@ -204,7 +205,7 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson nodeJson, g 
 						}
 						var tabInputNodeHandle []nodes.InputNodeHandle
 						tabInputNodeHandle = append(tabInputNodeHandle, inputNodeHandle)
-						inputNodeToAdd.InitNode(inId, nextNodeJson.Type, tabInputNodeHandle)
+						inputNodeToAdd.InitNode(inId, nextNodeJson.Type, tabInputNodeHandle, nextNodeJson.Data.ParameterValueData)
 						InputNodes = append(InputNodes, inputNodeToAdd)
 					}
 				}
@@ -257,7 +258,7 @@ func createNode(nodeJson nodeJson, g Graph) nodes.LogicalNodeInterface {
 	} else {
 		description, _ := nodes.NodeDescription(nodeJson.Type)
 		var input []nodes.InputHandle
-		if description.Stretchable {
+		if description.Stretchable && !(description.Type_ == "StringToBoolNode") { //StringToBoolNode is Stretchable with only one input
 			nbInputs := getNbInputs(nodeJson.Id, g)
 			for i := 0; i < nbInputs; i++ {
 				input = append(input, nodes.InputHandle{Input: nil, Name: description.Input[0].Name + strconv.Itoa(i), DataType: description.Input[0].DataType})
@@ -316,8 +317,24 @@ func linkNodes(g Graph) {
 				}
 			}
 		}
-		if strings.Contains(InputNodes[i].GetNodeType(), "constant") {
+		if strings.Contains(InputNodes[i].GetNodeType(), "constant") { //if contains constant
 			ableToConnect = true
+		}
+
+		if strings.Contains(InputNodes[i].GetNodeType(), "viewWeb") {
+			for _, edge := range g.Edges {
+				if edge.Source == strconv.Itoa(InputNodes[i].GetId()) {
+					for j := range server.InputsOutputsStateWeb {
+						inputHandle := InputNodes[i].GetOutput(edge.SourceHandle)
+						inputLink := server.InputsOutputsStateWeb[j]
+						if strconv.Itoa(inputLink.IRCode) == inputHandle.FriendlyName {
+							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &server.InputsOutputsStateWeb[j].Value
+							ableToConnect = true
+							break
+						}
+					}
+				}
+			}
 		}
 		if !ableToConnect {
 			serverResponse.ResponseProcessGraph = "Input node not connected" + strconv.Itoa(InputNodes[i].GetId())
@@ -382,7 +399,7 @@ func linkNodes(g Graph) {
 							dataTypeTarget := OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.DataType
 							if dataTypeScr == dataTypeTarget {
 								isLinked = true
-								OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = InputNodes[j].GetOutput(srcHandleName).InputHandle.Input
+								OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = InputNodes[j].GetOutput(srcHandleName).InputHandle.Input //we pass the input address to the output
 								break
 							}
 						}

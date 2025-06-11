@@ -14,7 +14,7 @@ func (a *ApplianceInputNode) GetNodeType() string {
 	return a.nodeType
 }
 
-func (a *ApplianceInputNode) InitNode(id_ int, nodeType_ string, input_ []InputNodeHandle) {
+func (a *ApplianceInputNode) InitNode(id_ int, nodeType_ string, input_ []InputNodeHandle, parameterValueData_ []string) {
 	a.id = id_
 	a.nodeType = nodeType_
 	a.output = input_

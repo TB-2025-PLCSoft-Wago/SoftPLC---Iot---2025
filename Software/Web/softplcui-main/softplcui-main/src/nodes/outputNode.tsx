@@ -26,6 +26,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
             dataType: "BUG",
             id: "BUG",
             label: "BUG",
+            type: "BUG",
             subServices: [],
             services: [],
             inputHandle: [],
@@ -33,15 +34,17 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
             selectedFriendlyNameData: "BUG",
             selectedServiceData: "BUG",
             selectedSubServiceData: "BUG",
-            valueData: "BUG"
+            valueData: "BUG",
+            parameterValueData: undefined,
+            parameterNameData: undefined,
         }
     } = props;
     const [selectedFriendlyName, setSelectedFriendlyName] = useState(data.selectedFriendlyNameData);
     const [selectedService, setSelectedService] = useState(data.selectedServiceData);
     const [selectedSubService, setSelectedSubService] = useState(data.selectedSubServiceData);
+
     const [handleType, setHandleType] = useState("");
     data.valueData = "";
-
     const handleFriendlyNameChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedFriendlyName(event.target.value);
         setSelectedService("default");
@@ -56,22 +59,36 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
     const handleSubServiceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedSubService(event.target.value);
     }
-    useEffect(() => {
+    const handleServiceChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedService(event.target.value);
+        //setSelectedSubService("default");
+        console.log("service input : ",event.target.value)
+        data.selectedServiceData = event.target.value
+    }
 
-        if (selectedFriendlyName === "default") {
-            data.selectedFriendlyNameData = "";
-        } else {
-            data.selectedFriendlyNameData = selectedFriendlyName;
-        }
-        if (data.services.length > 0) {
-            data.selectedServiceData = selectedService;
-        } else {
-            data.selectedServiceData = "";
-        }
-        if (data.subServices.length > 0) {
-            data.selectedSubServiceData = selectedSubService;
-        } else {
-            data.selectedSubServiceData = "";
+    const handleSubServiceChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedSubService(event.target.value);
+        console.log("sub service input : ",event.target.value)
+        data.selectedSubServiceData = event.target.value
+    }
+    useEffect(() => {
+        console.log("useEffect");
+        if (!data.type.includes("viewWeb")) {
+            if (selectedFriendlyName === "default") {
+                data.selectedFriendlyNameData = "";
+            } else {
+                data.selectedFriendlyNameData = selectedFriendlyName;
+            }
+            if (data.services.length > 0) {
+                data.selectedServiceData = selectedService;
+            } else {
+                data.selectedServiceData = "";
+            }
+            if (data.subServices.length > 0) {
+                data.selectedSubServiceData = selectedSubService;
+            } else {
+                data.selectedSubServiceData = "";
+            }
         }
         const newHandleType = data.subServices.find(sub => sub.friendlyName === selectedFriendlyName && sub.primary === selectedService)?.secondary.find(sec => sec.name === selectedSubService)?.dataType || "";
         setHandleType(newHandleType);
@@ -79,7 +96,47 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
     }, [selectedService, selectedSubService, selectedFriendlyName]);
 
     let content;
-    if (data.subServices.length > 0) {
+    const {id, selectedServiceData, selectedSubServiceData } = data;
+    if (data.type.includes("viewWeb")) {
+        content = (
+            <>
+                <CustomHandle
+                    type={"target"}
+                    position={Position.Left}
+                    id={data.inputHandle[0].name}
+                    isConnectable={1}
+                    datatype={data.inputHandle[0].dataType}
+                    style={{height: 8, width: 8}}
+                ></CustomHandle>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "8px" }}>
+                    {/* Input 1 */}
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                        <input
+                            id={`${id}-0`}
+                            type="text"
+                            className="inputNodeSelect"
+                            value={selectedServiceData}
+                            onChange={handleServiceChangeInput}
+                            placeholder="appliance name"
+                        />
+                    </div>
+
+                    {/* Input 2 */}
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                        <input
+                            id={`${id}-1`}
+                            type="text"
+                            className="inputNodeSelect"
+                            value={selectedSubServiceData}
+                            onChange={handleSubServiceChangeInput}
+                            placeholder="signal name"
+                        />
+                    </div>
+                </div>
+            </>
+        );
+    } else if (data.subServices.length > 0) {
         content = (
             <>
                 <CustomHandle

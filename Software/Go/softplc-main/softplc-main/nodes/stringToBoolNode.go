@@ -20,7 +20,7 @@ var msgToBoolDescription = nodeDescription{
 	Type_:         "StringToBoolNode",
 	Display:       "string To bool Node",
 	Label:         "string to bool",
-	Stretchable:   false,
+	Stretchable:   true,
 	Services:      []servicesStruct{},
 	SubServices:   []subServicesStruct{},
 	Input: []dataTypeNameStruct{

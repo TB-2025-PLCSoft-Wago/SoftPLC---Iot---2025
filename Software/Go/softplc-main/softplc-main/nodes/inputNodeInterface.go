@@ -4,7 +4,7 @@ type InputNodeInterface interface {
 	GetId() int
 	GetNodeType() string
 
-	InitNode(id_ int, nodeType_ string, input_ []InputNodeHandle)
+	InitNode(id_ int, nodeType_ string, input_ []InputNodeHandle, parameterValueData_ []string)
 	GetOutput(outName string) *InputNodeHandle
 }
 

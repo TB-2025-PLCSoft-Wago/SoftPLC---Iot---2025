@@ -39,7 +39,6 @@ func main() {
 			if len(processGraph.OutputNodes) != 0 {
 				//start := time.Now()
 				//fmt.Printf("total time before restart is  %s\n", time.Since(start2))
-				server.SendToWebSocket("SoftPLC")
 				inputUpdate.UpdateInputs()
 				processGraph.Mutex.Lock()
 				for _, v := range processGraph.LogicalNode {

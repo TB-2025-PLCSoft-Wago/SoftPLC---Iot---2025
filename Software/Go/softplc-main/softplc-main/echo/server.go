@@ -4,6 +4,7 @@ import (
 	"SoftPLC/nodes"
 	"SoftPLC/outputUpdate"
 	"SoftPLC/processGraph"
+	"SoftPLC/server"
 	"SoftPLC/serverResponse"
 	"encoding/json"
 	"fmt"
@@ -33,6 +34,7 @@ func EchoServer() {
 				}
 			}
 		}
+		server.ResetAll()
 		outputUpdate.UpdateOutput()
 		processGraph.Mutex.Unlock()
 		//nil

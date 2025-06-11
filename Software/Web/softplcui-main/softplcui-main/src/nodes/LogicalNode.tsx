@@ -80,7 +80,8 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
             />
         );
     }else if (data.label === "string to bool") {
-        console.log("stoB type : ", data.label);
+        //console.log("stoB type : ", data.label);
+        //console.log("stoB type : ", data.type);
         content = (
             <StringToBoolHandles
                 data={data}
@@ -91,7 +92,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         );
     }else if (data.type === "ConfigurableNode") {
         console.log("Mqtt parameterNameData : ", data.parameterNameData);
-        console.log("Mqtt type : ", data.type);
+        //console.log("Mqtt type : ", data.type);
         const [nodeSize, setNodeSize] = useState({ width: 225, height: (numberOfConnectedTargetHandles + 7) * 40 });
 
         const handleResize = (width: number, height: number) => {
