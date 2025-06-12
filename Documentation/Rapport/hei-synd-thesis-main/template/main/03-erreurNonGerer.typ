@@ -1,7 +1,7 @@
 #import "@preview/hei-synd-thesis:0.1.1": *
 #import "/metadata.typ": *
 #pagebreak()
-= Erreur non géré
+= Erreurs non gérées
 #infobox()[Certaines erreurs n’ont pas été traitées lors de l’ancien TB. Cette section présente ces erreurs qui devront être réglées.]
 == Manque lien
 Le problème est que le programme plcSoft plante au lieu d’afficher simplement une erreur et de ne pas Build le programme dans l’automate.

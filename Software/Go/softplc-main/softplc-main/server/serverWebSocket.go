@@ -53,6 +53,8 @@ type Output struct {
 	Value         interface{} `json:"value"`
 }
 
+var outputChange bool = false
+
 type Appliance struct {
 	Name   string  `json:"name"`
 	Inputs []Input `json:"inputs"`
@@ -193,9 +195,9 @@ func initOutput() {
 	clientsMu.Lock()
 	defer clientsMu.Unlock()
 
-	// Pour chaque appareil dans AllOutputsByAppliance
+	// For each device in AllOutputsByAppliance
 	for applianceName, outputs := range AllOutputsByAppliance {
-		// Met à jour les valeurs des outputs à partir de OutputsStateWeb
+		// Update the output values from OutputsStateWeb
 		for i := range outputs {
 			for _, state := range OutputsStateWeb {
 				if outputs[i].ID == state.ID {
@@ -219,7 +221,7 @@ func initOutput() {
 			}
 		}
 
-		// Construit et envoie ApplianceUpdate avec toutes les outputs
+		// Build and send ApplianceUpdate with all outputs
 		applianceUpdate := ApplianceUpdate{
 			Type:      "update",
 			Appliance: applianceName,
@@ -323,7 +325,7 @@ func handleIncomingMessage(conn *websocket.Conn, msg []byte) {
 
 		}
 
-		//conn.WriteMessage(websocket.TextMessage, []byte("Commande IR reçue"))
+		//conn.WriteMessage(websocket.TextMessage, []byte("IR order received"))
 
 	case data["irCode"] != nil && data["value"] != nil:
 		fmt.Println("✍️ User input value:", data)
@@ -341,14 +343,14 @@ func handleIncomingMessage(conn *websocket.Conn, msg []byte) {
 			}
 
 		}
-		//conn.WriteMessage(websocket.TextMessage, []byte("Valeur enregistrée"))
+		//conn.WriteMessage(websocket.TextMessage, []byte("value saved"))
 
 	case data["type"] == "update":
 		fmt.Println("🔄 update state (output):", data)
 
 	default:
 		fmt.Println("📦 Unrecognized JSON message:", data)
-		//conn.WriteMessage(websocket.TextMessage, []byte("Format non reconnu"))
+		//conn.WriteMessage(websocket.TextMessage, []byte("Format not recognized"))
 	}
 }
 
@@ -447,28 +449,43 @@ func UpdateOutputValueByID(outputID int, newValue interface{}) {
 	for i := range OutputsStateWeb {
 		if OutputsStateWeb[i].ID == outputID {
 			OutputsStateWeb[i].Value = newValue
+			outputChange = true
+			return
+		}
+	}
+	log.Printf("⚠️ No OutputState with ID %d found\n", outputID)
+}
+
+/*
+func UpdateOutputValueByID(outputID int, newValue interface{}) {
+	//Update OutputsStateWeb
+	for i := range OutputsStateWeb {
+		if OutputsStateWeb[i].ID == outputID {
+			OutputsStateWeb[i].Value = newValue
 
 			// Find the appliance from the outputID
 			for applianceName, outputs := range AllOutputsByAppliance {
 				for j := range outputs {
 					if outputs[j].ID == outputID {
-						// Mettre à jour la valeur dans la copie locale
-						switch outputs[j].Type {
-						case "number":
-							//output.Value, _ = strconv.ParseFloat(newValue, 64)
-						case "value":
-							outputs[j].Value = newValue
-						case "bool":
-							if newValue == "1" {
-								outputs[j].Value = true
-							} else {
-								outputs[j].Value = false
+						/*
+							// Update the value in the local copy
+							switch outputs[j].Type {
+							case "number":
+								//output.Value, _ = strconv.ParseFloat(newValue, 64)
+							case "value":
+								outputs[j].Value = newValue
+							case "bool":
+								if newValue == "1" {
+									outputs[j].Value = true
+								} else {
+									outputs[j].Value = false
+								}
+							default:
+								fmt.Println("Unrecognized type of typeOf : ", outputs[j].Type)
+								continue
 							}
-						default:
-							fmt.Println("Unrecognized type of typeOf : ", outputs[j].Type)
-							continue
-						}
-
+*/
+/*
 						// Update AllOutputsByAppliance
 						AllOutputsByAppliance[applianceName][j] = outputs[j]
 
@@ -529,6 +546,68 @@ func UpdateOutputValueByID(outputID int, newValue interface{}) {
 	}
 
 	log.Printf("⚠️ No OutputState with ID %d found\n", outputID)
+}*/
+
+func UpdateOutputValue() {
+	if outputChange {
+		outputChange = false
+		// Find the appliance from the outputID
+		for applianceName, outputs := range AllOutputsByAppliance {
+			for j := range outputs {
+				// Update AllOutputsByAppliance
+				AllOutputsByAppliance[applianceName][j] = outputs[j]
+
+				// Update the values of all outputs of this device
+				for k := range AllOutputsByAppliance[applianceName] {
+					for _, state := range OutputsStateWeb {
+						if AllOutputsByAppliance[applianceName][k].ID == state.ID {
+							switch AllOutputsByAppliance[applianceName][k].Type {
+							case "number":
+								//output.Value, _ = strconv.ParseFloat(newValue, 64)
+							case "value":
+								AllOutputsByAppliance[applianceName][k].Value = state.Value
+							case "bool":
+								if state.Value == "1" {
+									AllOutputsByAppliance[applianceName][k].Value = true
+								} else {
+									AllOutputsByAppliance[applianceName][k].Value = false
+								}
+							default:
+								fmt.Println("Unrecognized type of typeOf : ", AllOutputsByAppliance[applianceName][k].Type)
+								continue
+							}
+						}
+					}
+				}
+
+				// Send the entire output array for this device
+				applianceUpdate := ApplianceUpdate{
+					Type:      "update",
+					Appliance: applianceName,
+					Outputs:   AllOutputsByAppliance[applianceName],
+				}
+
+				jsonData, err := json.Marshal(applianceUpdate)
+				if err != nil {
+					log.Println("❌ JSON marshal error in UpdateOutputValueByID:", err)
+					return
+				}
+
+				clientsMu.Lock()
+				for conn := range clients {
+					err = conn.WriteMessage(websocket.TextMessage, jsonData)
+					if err != nil {
+						fmt.Println("Send error:", err)
+						conn.Close()
+						delete(clients, conn)
+					}
+				}
+				clientsMu.Unlock()
+
+			}
+		}
+	}
+
 }
 
 func ResetAll() {

@@ -15,7 +15,7 @@
   - *Documentation and Knowledge Transfer*: Highlight the importance of documentation in facilitating knowledge transfer and ensuring the sustainability of the implemented system.
 ]
 
-#lorem(50)
+Cette section décrit les différentes étapes qui ont été implémentées durant le projet. Elle est divisée en plusieurs sous-sections, chacune abordant un aspect spécifique. Il y est notamment décrit comment les blocs logiques complexes ont été implémentés, comment WDA a été utilisé ainsi que tout ce qui a dû être mis en place pour que tous cela soit réalisable.
 
 #add-chapter(
   after: <sec:impl>,

@@ -71,7 +71,11 @@ func CreateQueue(g Graph) {
 				for _, outHandle := range out.GetOutputList() {
 					//Prevent the ability to put multiple times the same output
 					if outHandle.Service == nodeJson.Data.Service && outHandle.SubService == nodeJson.Data.SubService {
-						serverResponse.ResponseProcessGraph = "Multiple use of the same output"
+						if outHandle.SubService != "" {
+							serverResponse.ResponseProcessGraph = "Multiple use of the same output, service : " + outHandle.Service + " and SubService : " + outHandle.SubService
+						} else {
+							serverResponse.ResponseProcessGraph = "Multiple use of the same output : " + outHandle.Service
+						}
 						Mutex.Unlock()
 						return
 					}

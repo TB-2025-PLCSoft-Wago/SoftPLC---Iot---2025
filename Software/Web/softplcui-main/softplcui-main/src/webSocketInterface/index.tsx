@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import TextInputSender from "./TextInputSender.tsx";
+import {useNavigate} from "react-router-dom";
+import {Panel} from "reactflow";
 
 type Appliance = {
     name: string;
@@ -77,11 +79,27 @@ const WebSocketView = () => {
             ws.current.send(JSON.stringify({ type: 'irCommand', irCode }));
         }
     };
+    const navigate = useNavigate();
+    const goBackView = () => {
+        navigate(-1);
+    };
     console.log("appliances:",appliances);
     return (
+        <>
+            {/* button */}
+            <div style={{
+                position: 'fixed',
+                top: '2rem',
+                right: '2rem',
+                zIndex: 1000
+            }}>
+                <button onClick={goBackView}>Close view</button>
+            </div>
+
+            {/* main content
+ */}
         <div style={{height: '100vh', overflowY: 'auto', padding: '1rem'}}>
             <h2>🧠 WebSocket Interface</h2>
-
             <div style={{marginBottom: '1rem'}}>
                 <input
                     type="text"
@@ -131,7 +149,7 @@ const WebSocketView = () => {
                                 {/* Outputs (states) */}
                                 {deviceOutputs.length > 0 && (
                                     <div style={{marginTop: '0.5rem'}}>
-                                        <h5>📊 État :</h5>
+                                        <h5>📊 States :</h5>
                                         <ul style={{marginTop: '0.2rem'}}>
                                             {deviceOutputs.map(output => (
                                                 <li key={output.id}>
@@ -160,7 +178,7 @@ const WebSocketView = () => {
                                 <legend>{applianceName}</legend>
 
                                 <div style={{marginTop: '0.5rem'}}>
-                                    <h5>📊 État :</h5>
+                                    <h5>📊 States :</h5>
                                     <ul style={{marginTop: '0.2rem'}}>
                                         {deviceOutputs.map(output => (
                                             <li key={output.id}>
@@ -189,6 +207,7 @@ const WebSocketView = () => {
                 ))}
             </div>
         </div>
+        </>
     );
 };
 

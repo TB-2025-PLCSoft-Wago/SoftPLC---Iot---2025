@@ -89,6 +89,13 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
             } else {
                 data.selectedSubServiceData = "";
             }
+        }else {
+            if (data.selectedServiceData === "default") {
+                data.selectedServiceData = "";
+            }
+            if (data.selectedSubServiceData === "default") {
+                data.selectedSubServiceData = "";
+            }
         }
         const newHandleType = data.subServices.find(sub => sub.friendlyName === selectedFriendlyName && sub.primary === selectedService)?.secondary.find(sec => sec.name === selectedSubService)?.dataType || "";
         setHandleType(newHandleType);

@@ -48,3 +48,5 @@ Plus de détaille dans dossier « autre » puis dossier « Request ».
 )
  
 C’est possible avec un automate 751-9402  @WAGODownloadCentera,  cependant on a le modèle 751-9401 @WAGODownloadCenter. Cela ne signifie pas que c’est impossible, mais que ce n'est pas documenté.
+
+
