@@ -273,8 +273,9 @@ func createNode(nodeJson nodeJson, g Graph) nodes.LogicalNodeInterface {
 			}
 		}
 		var output []nodes.OutputHandle
-		for _, out := range description.Output {
-			output = append(output, nodes.OutputHandle{Output: "0", Name: out.Name, DataType: out.DataType})
+		for i, out := range description.Output {
+			output = append(output, nodes.OutputHandle{Output: strconv.Itoa(i), Name: out.Name, DataType: out.DataType})
+			fmt.Println(i)
 		}
 		logicalNodeToAdd.InitNode(NodeJsonId, nodeJson.Type, input, output, nodeJson.Data.ParameterValueData)
 	}

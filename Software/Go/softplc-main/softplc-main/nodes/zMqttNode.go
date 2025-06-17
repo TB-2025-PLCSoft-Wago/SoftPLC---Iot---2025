@@ -52,7 +52,7 @@ func (n *MqttNode) messageHandler() mqtt.MessageHandler {
 		if !n.outputFlag {
 			n.lastPayload = []string{}
 		}
-		n.lastPayload = append(n.lastPayload, fmt.Sprint(msg.Payload()))
+		n.lastPayload = append(n.lastPayload, string(msg.Payload()))
 		n.outputFlag = true
 		if msg.Retained() {
 			client.Publish(msg.Topic(), 0, true, "") //when is a message retain
@@ -67,7 +67,14 @@ var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) {
 
 var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err error) {
 	fmt.Printf("Connect lost: %v", err)
-	fmt.Println()
+	time.Sleep(2 * time.Second)
+
+	// Tentative de reconnexion manuelle si AutoReconnect ne suffit pas
+	if token := client.Connect(); token.Wait() && token.Error() != nil {
+		fmt.Printf("Reconnection failed: %v\n", token.Error())
+	} else {
+		fmt.Println("Reconnected successfully")
+	}
 }
 
 func init() {
@@ -141,13 +148,25 @@ func (n *MqttNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, out
 	n.nodeType = nodeType_
 	n.input = input_
 	n.output = output_
+	/*
+		n.output = make([]OutputHandle, len(parameterValueData_))
+		for i := range parameterValueData_ {
+			n.output[i] = OutputHandle{
+				Output:   strconv.Itoa(i),
+				Name:     fmt.Sprintf("%s%d", output_[0].Name, i),
+				DataType: output_[0].DataType,
+			}
+		}*/
 	n.parameterValueData = parameterValueData_
 
 	n.connectionIsInit = false
 }
 func initConnection(n *MqttNode) {
 	if !serveurIsInit {
-		go server.CreateMqtt()
+		if n.parameterValueData[0] != "" {
+			go server.CreateMqtt()
+		}
+
 		serveurIsInit = true
 	}
 
