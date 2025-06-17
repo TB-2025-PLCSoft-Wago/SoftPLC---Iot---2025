@@ -38,6 +38,10 @@ func (n *NotNode) ProcessLogic() {
 		n.output[0].Output = "0"
 		return
 	}
+	if n.input[0].Input == nil {
+		n.output[0].Output = "1"
+		return
+	}
 
 	if *n.input[0].Input == "0" {
 		n.output[0].Output = "1"

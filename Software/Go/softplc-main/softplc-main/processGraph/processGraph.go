@@ -328,11 +328,11 @@ func linkNodes(g Graph) {
 		if strings.Contains(InputNodes[i].GetNodeType(), "viewWeb") {
 			for _, edge := range g.Edges {
 				if edge.Source == strconv.Itoa(InputNodes[i].GetId()) {
-					for j := range server.InputsOutputsStateWeb {
+					for j := range server.InputsStateWeb {
 						inputHandle := InputNodes[i].GetOutput(edge.SourceHandle)
-						inputLink := server.InputsOutputsStateWeb[j]
+						inputLink := server.InputsStateWeb[j]
 						if strconv.Itoa(inputLink.IRCode) == inputHandle.FriendlyName {
-							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &server.InputsOutputsStateWeb[j].Value
+							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &server.InputsStateWeb[j].Value
 							ableToConnect = true
 							break
 						}

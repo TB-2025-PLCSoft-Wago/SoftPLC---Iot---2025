@@ -11,19 +11,29 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-type InputOutput struct {
+type Appliance struct {
+	Name   string  `json:"name"`
+	Inputs []Input `json:"inputs"`
+}
+
+type AppliancesData struct {
+	Type       string      `json:"type"`
+	Appliances []Appliance `json:"appliances"`
+}
+
+var appliancesJSON = AppliancesData{
+	Type:       "appliances",
+	Appliances: []Appliance{},
+}
+
+type InputState struct {
 	IRCode int
 	Value  string
 }
 
 var irCode int
-var InputsOutputsStateWeb []InputOutput
+var InputsStateWeb []InputState
 
-type ApplianceUpdate struct {
-	Type      string   `json:"type"` // always "update"
-	Appliance string   `json:"appliance"`
-	Outputs   []Output `json:"outputs"`
-}
 type Input struct {
 	Text      string `json:"text"`
 	IRCode    int    `json:"irCode"`
@@ -36,6 +46,12 @@ type Input struct {
 		overrides     bool
 	}
 */
+type ApplianceUpdate struct {
+	Type      string   `json:"type"` // always "update"
+	Appliance string   `json:"appliance"`
+	Outputs   []Output `json:"outputs"`
+}
+
 var AllOutputsByAppliance = map[string][]Output{}
 
 type OutputState struct {
@@ -55,16 +71,6 @@ type Output struct {
 
 var outputChange bool = false
 
-type Appliance struct {
-	Name   string  `json:"name"`
-	Inputs []Input `json:"inputs"`
-}
-
-type AppliancesData struct {
-	Type       string      `json:"type"`
-	Appliances []Appliance `json:"appliances"`
-}
-
 var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool { return true },
 }
@@ -73,11 +79,6 @@ var (
 	clients   = make(map[*websocket.Conn]bool) // active connections
 	clientsMu sync.Mutex
 )
-
-var appliancesJSON = AppliancesData{
-	Type:       "appliances",
-	Appliances: []Appliance{},
-}
 
 // Manages WebSocket connections
 func wsHandler(w http.ResponseWriter, r *http.Request) {
@@ -176,7 +177,7 @@ func SendToWebSocket(msg string) {
 }
 
 func addToState(irCode_ int, typeOf string) {
-	var inputOrOutputToAdd InputOutput
+	var inputOrOutputToAdd InputState
 	switch typeOf {
 	case "number":
 		inputOrOutputToAdd.Value = "0"
@@ -189,7 +190,7 @@ func addToState(irCode_ int, typeOf string) {
 		return
 	}
 	inputOrOutputToAdd.IRCode = irCode_
-	InputsOutputsStateWeb = append(InputsOutputsStateWeb, inputOrOutputToAdd)
+	InputsStateWeb = append(InputsStateWeb, inputOrOutputToAdd)
 }
 func initOutput() {
 	clientsMu.Lock()
@@ -312,13 +313,13 @@ func handleIncomingMessage(conn *websocket.Conn, msg []byte) {
 	switch {
 	case data["type"] == "irCommand" && data["irCode"] != nil:
 		//toggleInput
-		for i := range InputsOutputsStateWeb {
+		for i := range InputsStateWeb {
 			if irCodeFloat, ok := data["irCode"].(float64); ok {
-				if InputsOutputsStateWeb[i].IRCode == int(irCodeFloat) {
-					if InputsOutputsStateWeb[i].Value == "0" {
-						InputsOutputsStateWeb[i].Value = "1"
+				if InputsStateWeb[i].IRCode == int(irCodeFloat) {
+					if InputsStateWeb[i].Value == "0" {
+						InputsStateWeb[i].Value = "1"
 					} else {
-						InputsOutputsStateWeb[i].Value = "0"
+						InputsStateWeb[i].Value = "0"
 					}
 				}
 			}
@@ -329,12 +330,12 @@ func handleIncomingMessage(conn *websocket.Conn, msg []byte) {
 
 	case data["irCode"] != nil && data["value"] != nil:
 		fmt.Println("✍️ User input value:", data)
-		for i := range InputsOutputsStateWeb {
+		for i := range InputsStateWeb {
 			if irCodeFloat, ok := data["irCode"].(float64); ok {
-				if InputsOutputsStateWeb[i].IRCode == int(irCodeFloat) {
+				if InputsStateWeb[i].IRCode == int(irCodeFloat) {
 
 					if valueStr, ok := data["value"].(string); ok {
-						InputsOutputsStateWeb[i].Value = valueStr
+						InputsStateWeb[i].Value = valueStr
 					} else {
 						fmt.Println("❌ data[\"value\"]")
 					}
@@ -412,13 +413,13 @@ func AddOutputToAppliance(applianceName string, outputName string, typeOf string
 		Value:         value,
 	}
 
-	// Ajouter à OutputsStateWeb
+	// Add to OutputsStateWeb
 	OutputsStateWeb = append(OutputsStateWeb, OutputState{ID: newID, Value: value})
 
-	// Ajouter à la map
+	// Add to the map
 	AllOutputsByAppliance[applianceName] = append(AllOutputsByAppliance[applianceName], output)
 
-	// Envoyer WebSocket
+	// send WebSocket
 	applianceUpdate := ApplianceUpdate{
 		Type:      "update",
 		Appliance: applianceName,
@@ -548,7 +549,7 @@ func UpdateOutputValueByID(outputID int, newValue interface{}) {
 	log.Printf("⚠️ No OutputState with ID %d found\n", outputID)
 }*/
 
-func UpdateOutputValue() {
+func UpdateOutputValueView() {
 	if outputChange {
 		outputChange = false
 		// Find the appliance from the outputID
@@ -612,7 +613,7 @@ func UpdateOutputValue() {
 
 func ResetAll() {
 	irCode = 0
-	InputsOutputsStateWeb = []InputOutput{}
+	InputsStateWeb = []InputState{}
 	appliancesJSON = AppliancesData{
 		Type:       "appliances",
 		Appliances: []Appliance{},

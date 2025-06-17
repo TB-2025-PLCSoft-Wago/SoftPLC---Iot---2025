@@ -49,6 +49,8 @@ Au niveau visuel, la structure doit être améliorée. En effet, on ne peut pas 
 
 Le code ne permet pas de changer le type d'un bloc de manière dynamique, car c'est le programme backend qui l'envoie à l'initialisation du programme. Cela est donc impossible sans de grosses modifications.
 
+Il n'y a pas non plus de méthode permettant de réinitialiser les nodes, ce qui est nécessaire pour pouvoir créer des blocs plus complexes. 
+
 
 === Ajouter des blocs simples
 
@@ -76,6 +78,9 @@ Les éléments suivants doivent ensuite être adaptés :
   ],
 )
 #label("fig:nodedescription-vs-vue")
+
+
+#include "/main/03-erreurNonGerer.typ"
 
 
 

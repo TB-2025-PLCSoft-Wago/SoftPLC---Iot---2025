@@ -154,6 +154,9 @@ func initConnection(n *MqttNode) {
 	n.connectionIsInit = true
 	var broker = n.parameterValueData[0] //"broker.hivemq.com"
 	var port = n.parameterValueData[1]   //1883
+	if port == "" {
+		port = "1883"
+	}
 	opts := mqtt.NewClientOptions()
 	opts.AddBroker(fmt.Sprintf("tcp://%s:%s", broker, port))
 	//opts.SetClientID((fmt.Sprintf("CC100_mqtt_client_%d", n.id)))

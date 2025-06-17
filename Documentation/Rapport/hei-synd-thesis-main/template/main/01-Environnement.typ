@@ -1,7 +1,7 @@
 #import "@preview/hei-synd-thesis:0.1.1": *
 #import "/metadata.typ": *
 #pagebreak()
-= Environnement de développement
+== Environnement de développement
 
 #table(
   columns: 3,
@@ -18,6 +18,8 @@ La salle *23.N320* utilisé pour connecté l’automate WAGO CC100 sur le résea
   [Goland], [PC], [Développement logiciel],
   [Umlet], [PC], [Réalisation de schéma basé développement],
   [Firefox], [PC], [Permettant meilleure visualisation de WDx],
+  [HTTPie], [PC], [Permettant de tester les requêtes HTTP],
+  [miro], [site], [Réalisation de schéma, prise de note, réflexion, analyse],
   [WDx], [Automate], [
     Dénomination générale pour parler de WDM + WDD + WDA :
 
@@ -27,9 +29,9 @@ La salle *23.N320* utilisé pour connecté l’automate WAGO CC100 sur le résea
   ],
   [WDA], [Automate], [
     Nouvelle librairie, interface REST, WAGO accessible par web en JSON.
-    Permet la récupération des informations de l’automate et le contrôle des entrées/sorties par requête JSON.
+    Permet la récupération des informations de l’automate et le contrôle des entrées/sorties par requête HTTP en format JSON.
 
-    https://192.168.1.126/wda/parameters?page[limit]=20000
+    https://192.168.37.134/wda/parameters?page[limit]=20000
     https://192.168.1.126/wda/parameter-definitions?page[limit]=20000
   ],
 )

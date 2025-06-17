@@ -1,9 +1,9 @@
 #import "@preview/hei-synd-thesis:0.1.1": *
 #import "/metadata.typ": *
 #pagebreak()
-= Erreurs non gérées
+=== Erreurs non gérées
 #infobox()[Certaines erreurs n’ont pas été traitées lors de l’ancien TB. Cette section présente ces erreurs qui devront être réglées.]
-== Manque lien
+==== Manque lien
 Le problème est que le programme plcSoft plante au lieu d’afficher simplement une erreur et de ne pas Build le programme dans l’automate.
 
 Cependant, le save est possible et le restore peut être fait après avoir relancé le programme.
@@ -31,7 +31,7 @@ Cependant, le save est possible et le restore peut être fait après avoir relan
   ],
 )
 
-== Plusieurs Output pour un Input
+==== Plusieurs Output pour un Input
 #importantbox()[Cela devrait être faisable, pourtant c’est interdit.]
 #figure(
   image("/resources/img/2output_1input.png", width: 100%),

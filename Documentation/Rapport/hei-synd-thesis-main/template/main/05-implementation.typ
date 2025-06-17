@@ -13,9 +13,19 @@
   - *Performance Optimization*: Address any performance considerations or optimizations made during the implementation phase.
   - *Deployment and Configuration*: Describe the deployment process and configuration management practices involved in deploying the system to production or testing environments.
   - *Documentation and Knowledge Transfer*: Highlight the importance of documentation in facilitating knowledge transfer and ensuring the sustainability of the implemented system.
+
+  Dans la phase de mise en œuvre de votre mémoire de licence, vous traduisez les spécifications de conception en artefacts tangibles et fonctionnels. Cette section offre un aperçu de l’exécution pratique de votre recherche, en détaillant les étapes prises pour réaliser le système proposé. Voici quelques façons d’améliorer et de développer cette section :
+
+  - *Méthodologie de développement* : Décrivez la méthodologie ou l’approche employée dans le processus de développement.
+  - *Prototypage et développement itératif* : Le cas échéant, discutez des techniques de prototypage ou de développement itératif utilisées pendant la phase de mise en œuvre.
+  - *Pratiques et normes de codage* : Fournir des informations sur les pratiques, normes et conventions de codage respectées lors du développement.
+  - *Tests et assurance qualité* : Détailler les stratégies de test et les mesures d’assurance qualité utilisées pour valider l’exactitude et la robustesse du système mis en œuvre.
+  - *Optimisation des performances* : Traiter toutes les considérations ou optimisations de performance effectuées pendant la phase de mise en œuvre.
+  - *Déploiement et configuration* : Décrivez le processus de déploiement et les pratiques de gestion de la configuration impliquées dans le déploiement du système vers des environnements de production ou de test.
+  - *Documentation et transfert de connaissances* : Souligner l’importance de la documentation pour faciliter le transfert de connaissances et assurer la durabilité du système mis en œuvre.
 ]
 
-Cette section décrit les différentes étapes qui ont été implémentées durant le projet. Elle est divisée en plusieurs sous-sections, chacune abordant un aspect spécifique. Il y est notamment décrit comment les blocs logiques complexes ont été implémentés, comment WDA a été utilisé ainsi que tout ce qui a dû être mis en place pour que tous cela soit réalisable.
+Cette section décrit les différentes étapes qui ont été implémentées durant le projet. Elle est divisée en plusieurs sous-sections, chacune abordant un aspect spécifique. Il y est notamment décrit comment les blocs logiques complexes ont été implémentés, comment WDA a été utilisé, l'ajout d'une vue webSocket ainsi que tout ce qui a dû être mis en place pour que tout cela soit réalisable.
 
 #add-chapter(
   after: <sec:impl>,
@@ -23,15 +33,67 @@ Cette section décrit les différentes étapes qui ont été implémentées dura
   minitoc-title: i18n("toc-title", lang: option.lang)
 )[
   #pagebreak()
-  == Section 1
+  == WDA
+  L'intégration de WDA est une partie importante du projet. Cette section décrit comment WDA a été utilisé pour communiquer avec l'automate et comment il a été intégré dans le programme.
 
-  #lorem(50)
+  Pour implémenter WDA, il a fallu modifier le programme backend (`softplc-main`) et plus particulièrement les fichiers `inputUpdate.go` et `outputUpdate.go`.
+  
+  Un des principaux problèmes de WDA est la vitesse, qui est très lente. Après une commande GET sur une I/O, cela peut prendre jusqu'à environ 500ms avant qu'on ait la réponse. Sachant qu'on a besoin de faire une requête GET pour chaque Input et Output, cela représente au total 22 requêtes. La première version du programme faisait une requête GET pour chaque Input et Output, ce qui prenait plusieurs secondes pour récupérer l'état de tous les Inputs et Outputs. Pour résoudre ce problème, il a été trouvé la solution d'utiliser une *Monitoring Lists* (@sec:monitoring-lists). Cela nous permet de récupérer les I/O en une seule requête GET pour récupérer l'état de tous les Inputs et Outputs en une seule fois. Cela permet de réduire le temps de récupération à environ 500ms.
 
-  == Section 2
+  Toutes les requêtes via WDA doivent avoir le header @fig:header-vs-vue et l'authentification @fig:Authentification-vs-vue.
 
-  #lorem(50)
+#figure(
+  image("/resources/img/18_HeaderWDA.png", width: 90%),
+  caption: [
+    Header WDA 
+  ],
+)
+#label("fig:header-vs-vue")
+#figure(
+  image("/resources/img/19_autentificationWDA.png", width: 90%),
+  caption: [
+    Authentification WDA 
+  ],
+)
+#label("fig:Authentification-vs-vue")
+=== inputUpdate.go
+  Dans `inputUpdate.go`, l'idée étant de créer et mettre à jour la variable tableau *InputsOutputsState* de structure _InputsOutputs_ dont la structure d'un élément est montré @fig:exempleElementInputOutputState-vs-vue, afin de garder le fonctionnement du programme existant, mais cette fois-ci en utilisant WDA. 
 
+#figure(
+  image("/resources/img/15_exempleElementInputOutputState.png", width: 50%),
+  caption: [
+    Exemple d'élément Input/Output State dans le programme backend 
+  ],
+)
+#label("fig:exempleElementInputOutputState-vs-vue")
+
+Au démarrage, `softPLC.go` appelle la fonction *InitInputs* pour créer le client HTTP, appeler la fonction *initClient* et initialiser la variable *InputsOutputsState*, qui est créée par la fonction *mapResultsToInputsOutputs* prenant en paramètre le résultat de la fonction *fetchValues* (@fig:returnFetchVal-vs-vue), responsable de faire la requête GET afin de récupérer les valeurs des I/O.
+
+La fonction *initClient* a pour rôle de *configurer les DIO* (@sec:dio-activation). Par défaut, ils sont configurés en *input* (value = 1 à 8). Il faut donc les configurer en *output* (value = 9 à 16) si on veut avoir que des outputs. De plus, avant de pouvoir lire et écrire des I/O, il faut modifier le *access mode* (@sec:access-mode) en activant le control mode (value = 2). Par défaut, celui-ci est désactivé (value = 0).
+
+#figure(
+  image("/resources/img/25_ResultFetchVal.png", width: 50%),
+  caption: [
+    structure valeur retournée par la fonction fetchValues
+  ],
+)
+#label("fig:returnFetchVal-vs-vue")
+
+Ensuite, la fonction *UpdateInputs* est appelée à chaque cycle par `softPLC.go`. La fonction *UpdateInputs* utilise la fonction *updateInputsOutputsState* pour mettre à jour la variable *InputsOutputsState*. La fonction *updateInputsOutputsState* met à jour la variable *InputsOutputsState* avec les nouvelles valeurs récupérées par la fonction *fetchValues* pour récupérer les valeurs des I/O.
+
+En parallèle, la fonction *CreateMonitoringLists* est appelée périodiquement toutes les 600 secondes par `softPLC.go` pour recréer une monitoring lists (@sec:monitoring-lists).
+
+  === outputUpdate.go
+  Dans `outputUpdate.go`, l'idée est de mettre à jour les *outputs* après que le programme ait été exécuté. La logique pour déclencher l'envoi des nouvelles valeurs des *outputs* est restée la même que pour l'ancien programme. La différence est que l'on utilise *WDA* pour envoyer les nouvelles valeurs des *outputs*. C’est-à-dire que l'on crée des requêtes *PATCH* pour les *AO* et *DO*, exemple de requête *PATCH* (@sec:exemplePatchOutput-vs-vue).
+
+
+  == Interface webSocket
+  == Intégration des blocs logiques simples
+  L'intégration des blocs logiques simples est une étape importante du projet. Cette section décrit comment ces blocs logiques simples ont été intégrés dans le programme. 
+  == Intégration des blocs logiques complexes
+  === MQTT
+  === WebSocket
+  === HTTP
   == Conclusion
 
-  #lorem(50)
 ]

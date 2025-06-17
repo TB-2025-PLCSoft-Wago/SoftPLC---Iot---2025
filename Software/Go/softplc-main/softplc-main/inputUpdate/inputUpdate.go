@@ -28,7 +28,7 @@ var InputsOutputsState []InputsOutputs
 
 // var client mqtt.Client
 var urlsID []string
-var postID string
+var postID string //monitoring list ID
 var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) {
 	fmt.Println("Connected")
 }
@@ -485,7 +485,7 @@ func InitInputs() {
 func UpdateInputs() {
 	mutex.Lock()
 	defer mutex.Unlock() //unlock if return or panic
-	// Authentification
+	// Authentication
 	username := "admin"
 	password := "wago"
 	//generateURLsId()
@@ -574,7 +574,7 @@ func createHTTPClient() *http.Client {
 			MaxIdleConns:        100,
 			IdleConnTimeout:     90 * time.Second,
 			DisableCompression:  false,
-			MaxConnsPerHost:     0, // 0 = illimité
+			MaxConnsPerHost:     0, // 0 = illimitable
 			MaxIdleConnsPerHost: 10,
 		},
 	}
@@ -668,7 +668,7 @@ func mapResultsToInputsOutputs(results map[string]interface{}) {
 		}
 
 		ioType := parts[5]
-		k := strings.TrimSuffix(ioType, "value") // exemple : "aiValue" --> ai
+		k := strings.TrimSuffix(ioType, "value") // example : "aiValue" --> ai
 
 		var val string
 		if v == true {
@@ -708,7 +708,7 @@ func updateInputsOutputsState(results map[string]interface{}) {
 		if id >= 9 && id <= 16 {
 			id = id - 8 //do
 		} else if id >= 21 && id <= 28 {
-			id = id - 20 //di
+			id = id - 20 //di (x12)
 		} else if id == 29 || id == 30 {
 			id = id - 28 //ai (x13)
 		} else if id == 31 || id == 32 {
@@ -735,20 +735,5 @@ func updateInputsOutputsState(results map[string]interface{}) {
 				}
 			}
 		}
-	}
-}
-
-// Formats value to string based on type
-func formatValue(v interface{}) string {
-	switch val := v.(type) {
-	case bool:
-		if val {
-			return "1"
-		}
-		return "0"
-	case float64:
-		return strconv.FormatFloat(val, 'f', -1, 64)
-	default:
-		return fmt.Sprintf("%v", val)
 	}
 }

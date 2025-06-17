@@ -34,16 +34,4 @@ Les tâches devant être réalisées sont :
   -	Documentation et tests et rédaction du rapport, poster et présentation.
 ]
 
-#pagebreak()
-= L’implémentation bloc de haut niveau
 
-Il existe plusieurs manière d’aborder le problème. Une des approches est de repérer les points commun entre ces blocs de haut niveau pour essayer d’en tirer une forme générique. On remarque que tous ces blocs ont pour objectif de transmettre et recevoir des données. Il faudra donc commencer par le développement de bloc commun pour une communication. Il faut également des blocs permettant de travailler avec des STRING. Le schéma figure 1 montre le concept d’une telle structure avec tous les blocs qui devront être développé autour pour pouvoir créer une communication. 
-#figure(
-  image("/resources/img/01_communication_principe.png", width: 110%),
-  caption: [
-    Communication principe
-  ],
-)
-#ideabox()[
-L’idée étant d’avoir un bloc communication qui s’occupe de la configuration étant différente pour can, Mqtt etc. Sur le quel, on poura double cliqués pour accéder à la page de configuration. Sur ce bloc de communication, on pourait ensuite venir lier nos 2 blocs permettant la transition de boolean vers nos trame. Par le future, en mode debug, l’utilisateur pourra voir l’état de la communication grace au "bloc de communication" et voir ce que la logique combinatoire transmet comme trame grâce au bloc en vert.
-]
