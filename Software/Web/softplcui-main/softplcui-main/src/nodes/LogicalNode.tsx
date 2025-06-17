@@ -90,7 +90,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
                 handleInputChange={handleInputChange}
             />
         );
-    }else if (data.type === "ConfigurableNode") {
+    }else if (data.type.includes("ConfigurableNode")) {
         console.log("Mqtt parameterNameData : ", data.parameterNameData);
         //console.log("Mqtt type : ", data.type);
         const [nodeSize, setNodeSize] = useState({ width: 225, height: (numberOfConnectedTargetHandles + 7) * 40 });

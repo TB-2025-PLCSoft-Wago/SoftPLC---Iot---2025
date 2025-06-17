@@ -73,6 +73,14 @@
       "type": "step"
     },
     {
+      "id": "reactflow__edge-21Output-4x1",
+      "source": "21",
+      "sourceHandle": "Output",
+      "target": "4",
+      "targetHandle": "x1",
+      "type": "step"
+    },
+    {
       "id": "reactflow__edge-21Output-20x0",
       "source": "21",
       "sourceHandle": "Output",
@@ -82,11 +90,18 @@
     },
     {
       "id": "reactflow__edge-20Output-14payload",
-      "selected": true,
       "source": "20",
       "sourceHandle": "Output",
       "target": "14",
       "targetHandle": "payload",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-21Output-7x1",
+      "source": "21",
+      "sourceHandle": "Output",
+      "target": "7",
+      "targetHandle": "x1",
       "type": "step"
     },
     {
@@ -98,68 +113,11 @@
       "type": "step"
     },
     {
-      "id": "reactflow__edge-25Output-26Input",
-      "source": "25",
-      "sourceHandle": "Output",
-      "target": "26",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-26Output-20x1",
-      "source": "26",
-      "sourceHandle": "Output",
-      "target": "20",
-      "targetHandle": "x1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-21Output-27Input0",
+      "id": "reactflow__edge-21Output-18Input1",
       "source": "21",
-      "sourceHandle": "Output",
-      "target": "27",
-      "targetHandle": "Input0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-27Output-4x1",
-      "source": "27",
-      "sourceHandle": "Output",
-      "target": "4",
-      "targetHandle": "x1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-27Output-7x1",
-      "source": "27",
-      "sourceHandle": "Output",
-      "target": "7",
-      "targetHandle": "x1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-26Output-27Input1",
-      "source": "26",
-      "sourceHandle": "Output",
-      "target": "27",
-      "targetHandle": "Input1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-27Output-18Input1",
-      "source": "27",
       "sourceHandle": "Output",
       "target": "18",
       "targetHandle": "Input1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-15Output-20x2",
-      "selected": false,
-      "source": "15",
-      "sourceHandle": "Output",
-      "target": "20",
-      "targetHandle": "x2",
       "type": "step"
     }
   ],
@@ -211,12 +169,12 @@
       "height": 221,
       "id": "4",
       "position": {
-        "x": 876.548209395823,
-        "y": 285.94712685085875
+        "x": 857.6311308080011,
+        "y": 288.3117616743365
       },
       "positionAbsolute": {
-        "x": 876.548209395823,
-        "y": 285.94712685085875
+        "x": 857.6311308080011,
+        "y": 288.3117616743365
       },
       "selected": false,
       "type": "LogicalNode",
@@ -665,12 +623,12 @@
       "height": 91,
       "id": "19",
       "position": {
-        "x": 184.79644919082023,
-        "y": 360.074059878354
+        "x": 416.4656960323349,
+        "y": 303.7695505256466
       },
       "positionAbsolute": {
-        "x": 184.79644919082023,
-        "y": 360.074059878354
+        "x": 416.4656960323349,
+        "y": 303.7695505256466
       },
       "selected": false,
       "type": "inputNode",
@@ -697,8 +655,6 @@
         "parameterNameData": null,
         "parameterValueData": [
           "{   \"data\": {     \"id\": \"0-0-io-channels-9-dovalue\",     \"type\": \"parameters\",     \"attributes\": {       \"value\": true     }   } }",
-          "{   \"data\": {     \"id\": \"0-0-io-channels-9-dovalue\",     \"type\": \"parameters\",     \"attributes\": {       \"value\": false     }   } }",
-          "{   \"data\": {     \"type\": \"monitoring-lists\",     \"attributes\": {       \"timeout\": 600     },     \"relationships\": {       \"parameters\": {         \"data\": [           { \"id\": \"0-0-io-channels-21-divalue\", \"type\": \"parameters\" },           { \"id\": \"0-0-io-channels-22-divalue\", \"type\": \"parameters\" },           { \"id\": \"0-0-io-channels-23-divalue\", \"type\": \"parameters\" },           { \"id\": \"0-0-io-channels-9-dovalue\", \"type\": \"parameters\" },           { \"id\": \"0-0-io-channels-10-dovalue\", \"type\": \"parameters\" },           { \"id\": \"0-0-io-channels-11-dovalue\", \"type\": \"parameters\" }         ]       }     }          } }",
           "",
           ""
         ],
@@ -721,15 +677,15 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 261,
+      "height": 181,
       "id": "20",
       "position": {
-        "x": 828.162159107338,
-        "y": 763.2516523256897
+        "x": 880.0736132211603,
+        "y": 738.1909503397065
       },
       "positionAbsolute": {
-        "x": 828.162159107338,
-        "y": 763.2516523256897
+        "x": 880.0736132211603,
+        "y": 738.1909503397065
       },
       "selected": false,
       "type": "LogicalNode",
@@ -772,168 +728,12 @@
       "height": 141,
       "id": "21",
       "position": {
-        "x": 462.5445676103509,
-        "y": 431.7511654826029
+        "x": 542.3188789110263,
+        "y": 432.78014870716544
       },
       "positionAbsolute": {
-        "x": 462.5445676103509,
-        "y": 431.7511654826029
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Input bool",
-        "id": "6",
-        "inputHandle": [],
-        "label": "view Input bool",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "test_HTTP",
-          "btn DO1 OFF"
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "bool",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebInputBool",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "25",
-      "position": {
-        "x": 247.77043548344443,
-        "y": 559.6068900018297
-      },
-      "positionAbsolute": {
-        "x": 247.77043548344443,
-        "y": 559.6068900018297
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Edge Detection",
-        "display": "RF_trig Node",
-        "id": "15",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "RF_trig",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RFtrigNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 141,
-      "id": "26",
-      "position": {
-        "x": 505.84247072197786,
-        "y": 703.5842770812562
-      },
-      "positionAbsolute": {
-        "x": 505.84247072197786,
-        "y": 703.5842770812562
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "Or Node",
-        "id": "18",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "\u003e=1",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "OrNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 221,
-      "id": "27",
-      "position": {
-        "x": 615.8711326877494,
-        "y": 264.71489601084096
-      },
-      "positionAbsolute": {
-        "x": 615.8711326877494,
-        "y": 264.71489601084096
+        "x": 542.3188789110263,
+        "y": 432.78014870716544
       },
       "selected": false,
       "type": "LogicalNode",
@@ -941,8 +741,8 @@
     }
   ],
   "viewport": {
-    "x": 125.58572720216284,
-    "y": 7.446783944265178,
-    "zoom": 0.5
+    "x": -45.44670871764413,
+    "y": 46.284886299127834,
+    "zoom": 0.5586435690361111
   }
 }
