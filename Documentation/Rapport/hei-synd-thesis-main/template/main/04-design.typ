@@ -37,7 +37,7 @@
   #include "/main/01-Environnement.typ"
   #pagebreak()
   == Aperçu du système
-  /*Le système que nous allons développer est un HAL (Hardware Abstraction Layer) pour la programmation d'automates WAGO. Il permettra de créer des programmes PLC en utilisant une interface graphique, sans avoir à écrire de code. Le système sera divisé en plusieurs parties, chacune ayant un rôle spécifique.*/
+  /*Le système que nous allons développer est un #gls("HAL") (Hardware Abstraction Layer) pour la programmation d'automates WAGO. Il permettra de créer des programmes PLC en utilisant une interface graphique, sans avoir à écrire de code. Le système sera divisé en plusieurs parties, chacune ayant un rôle spécifique.*/
   L'aperçu du système est présenté dans le schéma de principe @fig:schemaPrincipe-vs-vue. Il montre les différentes parties du système et comment elles interagissent entre elles. Le schéma n'est pas exhaustif, mais il donne une idée générale des grands principes du système. 
   #figure(
   image("/resources/img/26_schemaPrincipe.png", width: 130%),
@@ -48,7 +48,7 @@
 #label("fig:schemaPrincipe-vs-vue")
 
   #pagebreak()
-== L’implémentation de bloc de haut niveau
+== Bloc de haut niveau
 
 Il existe plusieurs manière d’aborder le problème. Une des approches est de repérer les points commun entre ces blocs de haut niveau pour essayer d’en tirer une forme générique. On remarque que tous ces blocs ont pour objectif de transmettre et recevoir des données. Il faudra donc commencer par le développement de bloc commun pour une communication. Il faut également des blocs permettant de travailler avec des STRING. Le schéma figure 1 montre le concept d’une telle structure avec tous les blocs qui devront être développé autour pour pouvoir créer une communication. 
 #figure(
@@ -57,11 +57,13 @@ Il existe plusieurs manière d’aborder le problème. Une des approches est de 
     Communication principe
   ],
 )
+#label("fig:communication-Bloc-principe")
 #ideabox()[
-L’idée étant d’avoir un bloc communication qui s’occupe de la configuration étant différente pour can, Mqtt etc. Sur le quel, on poura double cliqués pour accéder à la page de configuration. Sur ce bloc de communication, on pourait ensuite venir lier nos 2 blocs permettant la transition de boolean vers nos trame. Par le future, en mode debug, l’utilisateur pourra voir l’état de la communication grace au "bloc de communication" et voir ce que la logique combinatoire transmet comme trame grâce au bloc en vert.
+L’idée étant d’avoir un bloc communication qui s’occupe de la configuration étant différente pour MQTT, HTTP, CAN, etc. Sur le quel, on pourra double cliqués pour accéder à la page de configuration. Sur ce bloc de communication, on pourait ensuite venir lier nos 2 blocs permettant la transition de boolean vers nos trame. Par le future, en mode debug, l’utilisateur pourra voir l’état de la communication grace au "bloc de communication" et voir ce que la logique combinatoire transmet comme trame grâce au bloc en vert.
 ]
 
   #pagebreak()
+
 
   == User Interface (UI) Design
   === Vue programmation
@@ -113,7 +115,7 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 == Gestion et stockage des données
 La gestion et le stockage des données sont des aspects importantes du système. Dans notre cas, les données sont stockées et transmises en fromat JSON. 
 === Node MQTT 
-Aucun des paramètres n'est obligatoire, par défaut le port est *1883* et le serveur tourne sur l'automate.
+Aucun des paramètres n'est obligatoire, par défaut le port est *1883* et le serveur tourne sur l'automate. Les "Settings" rentrés dans la vue sont données par *parameterValueData*.
 #figure(
   image("/resources/img/33_mqtt_settingExemple.png", width: 90%),
   caption: [
@@ -169,6 +171,36 @@ Aucun des paramètres n'est obligatoire, par défaut le port est *1883* et le se
     caption: [mqtt, extrait de la structure JSON d'un exemple],
   
   )
+=== Node HTTP client
+Le package Go @HttpPackageNetb a été trouvé.
+Pour le Node HTTP client, il est possible de configurer les paramètres suivants :
+- *URL* : l'URL de la requête HTTP.
+- *user* : l'utilisateur pour l'authentification HTTP.
+- *password* : le mot de passe pour l'authentification HTTP.
+- *Headers* : les en-têtes HTTP à envoyer avec la requête.
+#infobox()[les _Headers_ sont des paires clé-valeur, par exemple : `{"Content-Type": "application/json"}`. Il faut donc deux paramètres pour chaque Header. De plus, il faut que ce soit possible de mettre plusieurs Headers. ]
+  
+Le bloc peut prendre dynamiquement les paramètres suivants :
+- *xSend* : un booléen pour envoyer lorsque qu'il passe à _true_.
+- *url path* : la suite du chemin de l'URL de la requête HTTP.Il est ajouté à la suite du paramètre _URL_ pour donner l'URL final.
+- *Method* : la méthode HTTP à utiliser (GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS), par défaut GET.
+- *Body* : le corps de la requête HTTP, qui peut être au format JSON ou autre.
+Le bloc nous retournera les paramètres suivants :
+- *xDone* : un booléen pour indiquer si la requête a été effectuée avec succès.
+- *Response* : la réponse de la requête HTTP.
+/*
+#figure(
+  image("/resources/img/34_http_settingExemple.png", width: 90%),
+  caption: [
+    exemple de paramétrage de "HTTP"
+  ],
+)*/
+=== Node HTTP serveur
+Le package Go @HttpPackageNetb a été trouvé.
+L'exemple @soysouvanhClientsServeursHTTP permet d'en comprendre d'avantage sur la création d'un serveur HTTP en Go. Pour le déploiement d'un serveur HTTP sur Docker, il a été trouvé la documentation @nicholsonCraignicholsonSimplehttp2023.
+
+Le Node HTTP serveur permet de créer un serveur HTTP qui écoute les requêtes entrantes. Le but étant que l'on puisse recevoir une requête venant de n'importe où, par exemple une _appliance_ HTTP qui veut activer une sortie automate. Il doit être permettre de créer une resource (POST), de modifier une resource (PUT, PATCH), de lire une resource (GET) et de supprimer une resource (DELETE).
+
 === Node webSocket output
 Pour cette fois, nous n'utilisons pas "parameterValueData" car les outputs ont un fonctionnement différent dans le programme qui rend cette implémentation plus complexe. De plus, il n'est pas nécessaire car, généralement, les outputs n'ont pas de paramètres. Il est donc possible de se passer de cette fonctionnalité en utilisant "selectedServiceData" et "selectedSubServiceData".
 

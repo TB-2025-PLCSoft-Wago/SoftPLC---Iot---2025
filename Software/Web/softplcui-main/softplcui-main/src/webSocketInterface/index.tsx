@@ -99,7 +99,7 @@ const WebSocketView = () => {
             {/* main content
  */}
         <div style={{height: '100vh', overflowY: 'auto', padding: '1rem'}}>
-            <h2>🧠 WebSocket Interface</h2>
+            <h2>WebSocket Interface</h2>
             <div style={{marginBottom: '1rem'}}>
                 <input
                     type="text"

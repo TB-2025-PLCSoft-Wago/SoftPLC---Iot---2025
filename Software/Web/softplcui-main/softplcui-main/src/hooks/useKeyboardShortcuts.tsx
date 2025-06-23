@@ -10,6 +10,8 @@ type UseKeyboardShortcutsProps = {
     getId: () => string;
 };
 
+
+
 export default function useKeyboardShortcuts({
                                                  nodes,
                                                  edges,
@@ -18,6 +20,16 @@ export default function useKeyboardShortcuts({
                                                  getId,
                                              }: UseKeyboardShortcutsProps) {
     const copiedDataRef = useRef<{ nodes: Node[]; edges: Edge[] }>({ nodes: [], edges: [] });
+    const undoStack = useRef<{ nodes: Node[]; edges: Edge[] }[]>([]);
+    const redoStack = useRef<{ nodes: Node[]; edges: Edge[] }[]>([]);
+    const pushToUndoStack = () => {
+        undoStack.current.push({
+            nodes: structuredClone(nodes),
+            edges: structuredClone(edges),
+        });
+        // On vide la redo stack à chaque nouvelle action
+        redoStack.current = [];
+    };
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -49,6 +61,7 @@ export default function useKeyboardShortcuts({
 
                 //delete node after copy when x
                 if (event.key === "x"){
+                    pushToUndoStack();
                     setNodes((prev) => prev.filter((n) => !selectedNodeIds.has(n.id)));
                     setEdges((prev) =>
                         prev.filter(
@@ -60,6 +73,7 @@ export default function useKeyboardShortcuts({
 
             // Paste ctrl + v
             if ((event.ctrlKey || event.metaKey) && event.key === "v") {
+                pushToUndoStack();
                 const { nodes: copiedNodes, edges: copiedEdges } = copiedDataRef.current;
 
                 const idMap = new Map<string, string>();
@@ -100,6 +114,35 @@ export default function useKeyboardShortcuts({
                     edges: newEdges,
                 });
             }
+
+            // Undo (Ctrl + Z)
+            if ((event.ctrlKey || event.metaKey) && event.key === "z") {
+                const lastState = undoStack.current.pop();
+                if (lastState) {
+                    redoStack.current.push({
+                        nodes: structuredClone(nodes),
+                        edges: structuredClone(edges),
+                    });
+                    setNodes(lastState.nodes);
+                    setEdges(lastState.edges);
+                }
+                return;
+            }
+
+            // Redo (Ctrl + Y)
+            if ((event.ctrlKey || event.metaKey) && event.key === "y") {
+                const nextState = redoStack.current.pop();
+                if (nextState) {
+                    undoStack.current.push({
+                        nodes: structuredClone(nodes),
+                        edges: structuredClone(edges),
+                    });
+                    setNodes(nextState.nodes);
+                    setEdges(nextState.edges);
+                }
+                return;
+            }
+
         };
 
         window.addEventListener("keydown", handleKeyDown);

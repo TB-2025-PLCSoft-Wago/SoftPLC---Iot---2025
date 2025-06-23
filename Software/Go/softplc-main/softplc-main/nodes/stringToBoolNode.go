@@ -3,6 +3,7 @@ package nodes
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 // StringToBoolNode that wor like a logical
@@ -47,12 +48,41 @@ func (n *StringToBoolNode) ProcessLogic() {
 		}
 		return
 	}
+	//reset
+	for i, _ := range n.output {
+		n.output[i].Output = "0"
+	}
+	inputOrder := strings.Split(*n.input[0].Input, " ,, ")
+	/*
+		if len(inputOrder) <= 1 {
+			for i, _ := range n.parameterValueData {
+				if *n.input[0].Input == n.parameterValueData[i] && n.parameterValueData[i] != "" {
+					n.output[i].Output = "1"
+				} else {
+					n.output[i].Output = "0"
+				}
+			}
+		}*/
+	if !(len(inputOrder) <= 1) {
 
+		if len(inputOrder) >= len(n.parameterValueData) {
+			for i, _ := range n.parameterValueData {
+				if inputOrder[i] == n.parameterValueData[i] && n.parameterValueData[i] != "" {
+					n.output[i].Output = "1"
+				}
+			}
+		} else {
+			for i, _ := range inputOrder {
+				if inputOrder[i] == n.parameterValueData[i] && n.parameterValueData[i] != "" {
+					n.output[i].Output = "1"
+				}
+			}
+		}
+	}
+	//input equal one parameter
 	for i, _ := range n.parameterValueData {
 		if *n.input[0].Input == n.parameterValueData[i] && n.parameterValueData[i] != "" {
 			n.output[i].Output = "1"
-		} else {
-			n.output[i].Output = "0"
 		}
 	}
 

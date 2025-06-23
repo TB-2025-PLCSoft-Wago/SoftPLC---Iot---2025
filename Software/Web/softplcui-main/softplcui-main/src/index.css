@@ -173,3 +173,21 @@ input[type='number'] {
 .Sidebar::-webkit-scrollbar-track {
     background: #f0f0f0; /* Fond de la barre */
 }
+
+/* Highlight selected node with a blue border */
+.react-flow__node.selected {
+    border: 2px solid #2196f3 !important;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+    border-radius: 8px;
+}
+/* Style for data.label container: green rectangle */
+.react-flow__node .data-label {
+    background-color: #d4f5d4; /* light green */
+    border: 2px solid #4caf50; /* darker green border */
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-weight: 500;
+    color: #1b5e20;
+    display: inline-block;
+    margin-bottom: 4px;
+}

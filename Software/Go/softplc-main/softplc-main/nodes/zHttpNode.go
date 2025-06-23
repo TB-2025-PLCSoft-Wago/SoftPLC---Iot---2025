@@ -37,10 +37,10 @@ var httpDescription = nodeDescription{
 	Services:      []servicesStruct{},
 	SubServices:   []subServicesStruct{},
 	Input: []dataTypeNameStruct{
-		{DataType: "bool", Name: "xEnable"},
-		{DataType: "value", Name: "url"},
-		{DataType: "value", Name: "method"},  // "GET" or "POST"
-		{DataType: "value", Name: "payload"}, // Only for POST
+		{DataType: "bool", Name: "xSend"},
+		{DataType: "value", Name: "url path"},
+		{DataType: "value", Name: "method"}, // "GET" or "POST"
+		{DataType: "value", Name: "body"},   // Only for POST
 	},
 	Output: []dataTypeNameStruct{
 		{DataType: "bool", Name: "xDone"},

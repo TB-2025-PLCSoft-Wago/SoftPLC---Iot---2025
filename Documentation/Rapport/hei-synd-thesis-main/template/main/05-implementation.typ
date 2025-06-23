@@ -90,6 +90,34 @@ En parallèle, la fonction *CreateMonitoringLists* est appelée périodiquement 
   == Interface webSocket
   == Intégration des blocs logiques simples
   L'intégration des blocs logiques simples est une étape importante du projet. Cette section décrit comment ces blocs logiques simples ont été intégrés dans le programme. 
+
+  === Bloc Bool to String
+  Il correspond au bloc *Pulse to frame Sender* du schéma @fig:communication-Bloc-principe. Mais il est utilisable pour d'autres fonctionnalités que la communication.  
+Le bloc *Bool to String* permet de transmettre en sortie une chaîne de caractères selon si un booléen est à _true_ en face.  
+C'est un bloc de type #gls("strechable"), c'est-à-dire que le nombre d'entrées est dynamique.  
+La figure @fig:blocBoolToString-vs-vue montre un exemple de ce à quoi pourrait ressembler le bloc *Bool to String*. Il est possible d'écrire plusieurs lignes de texte, chaque ligne de texte se trouve en face d'une entrée booléenne. Si l'entrée booléenne est à _true_, la ligne de texte correspondante sera transmise en sortie.
+ 
+#figure(
+  image("/resources/img/35_exempleDesign_BoolToString.png", width: 50%),
+  caption: [
+    bloc Bool to String
+  ],
+)
+#label("fig:blocBoolToString-vs-vue")
+#infobox()[
+Il est possible d'*activer plusieurs lignes de texte* en même temps. Par exemple, si les entrées booléennes *x0*, *x1* et *x2* sont à _true_, les lignes de texte correspondantes seront transmises en sortie sous la forme d'un tableau. Cependant, la sortie est de type *String*, donc les lignes de texte seront séparées par " ,, " (deux virgules entourées par des espaces).
+
+]
+
+=== Bloc String to Bool
+Le bloc *String to Bool* permet de recevoir une chaîne de caractères et de la convertir en booléens. Il est représenté par le bloc *Frame to Pulse Receiver* sur le schéma @fig:communication-Bloc-principe. Il est également un bloc de type #gls("strechable") mais au niveau des sorties. La figure @fig:blocStringToBool-vs-vue montre un exemple de ce à quoi pourrait ressembler le bloc *String to Bool*. Il est possible d'écrire plusieurs lignes de texte, chaque ligne de texte se trouve en face d'une sortie booléenne. Si la chaîne de caractères reçue contient la ligne de texte correspondante, la sortie booléenne sera à _true_.
+#figure(
+  image("/resources/img/36_exempleDesign_StringToBool.png", width: 50%),
+  caption: [
+    bloc String to Bool
+  ],
+)
+#label("fig:blocStringToBool-vs-vue")
   == Intégration des blocs logiques complexes
   === MQTT
   === WebSocket

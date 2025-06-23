@@ -43,7 +43,7 @@ var mqttDescription = nodeDescription{
 		{DataType: "value", Name: "topicToReceive"},
 	},
 	Output:            []dataTypeNameStruct{{DataType: "bool", Name: "xDone"}, {DataType: "value", Name: "msg"}},
-	ParameterNameData: []string{"broker", "port", "user", "password"},
+	ParameterNameData: []string{"broker", "port", "user", "passwordServer"},
 }
 
 func (n *MqttNode) messageHandler() mqtt.MessageHandler {
