@@ -1,6 +1,7 @@
 // hooks/useKeyboardShortcuts.ts
 import { useEffect, useRef } from "react";
 import { Node, Edge } from "reactflow";
+import useDebouncedUndo from "./useDebouncedUndo";
 
 type UseKeyboardShortcutsProps = {
     nodes: Node[];
@@ -148,4 +149,12 @@ export default function useKeyboardShortcuts({
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [nodes, edges, setNodes, setEdges, getId]);
+
+    useDebouncedUndo(nodes, edges, pushToUndoStack, undoStack);
+
+
+
 }
+
+
+
