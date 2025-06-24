@@ -333,3 +333,31 @@ legend {
     color: white;
     font-style: italic;
 }
+
+
+/*Select*/
+.custom-select {
+    width: 100%;
+    padding: 3px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #eeeeee;
+    font-size: 14px;
+    color: #1b5e20;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.custom-select:hover {
+    border-color: #888;
+}
+
+.custom-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}

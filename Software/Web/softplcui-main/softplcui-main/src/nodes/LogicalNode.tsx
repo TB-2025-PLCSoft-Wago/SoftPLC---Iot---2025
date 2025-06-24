@@ -10,6 +10,9 @@ import { LogicalNodeData } from "./types.ts";
 import { getParameterElementUsingNumber } from "./utils/getParameterCount.ts";
 import CommunicationHandles from "./handles/CommunicationHandles.tsx";
 import StringToBoolHandles from "./handles/StringToBoolHandles.tsx";
+import TimerNode from "./TimerNode.tsx";
+import EdgeDetectionNode from "./EdgeDetectionNode.tsx";
+
 
 const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
     const { data = { inputHandle: [], outputHandle: [], stretchable: false, label: "BUG", id: "BUG",
@@ -121,8 +124,30 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         );
     } else if (!data.stretchable) {
         content = <FixedHandles data={data} />;
+        if (data.type.includes("TON") || (data.type.includes("TOF"))) {
+            //console.log("timer : ",data.type)
+            return (
+                <TimerNode
+                    data={data}
+                    numberOfConnectedTargetHandles={numberOfConnectedTargetHandles}
+                />
+            );
+
+        }
+        if (data.type.includes("trig")) {
+            //console.log("timer : ",data.type)
+            return (
+                <EdgeDetectionNode
+                    data={data}
+                    numberOfConnectedTargetHandles={numberOfConnectedTargetHandles}
+                />
+            );
+
+        }
     } else {
-        content = <StretchableHandles data={data} numberOfConnectedTargetHandles={numberOfConnectedTargetHandles} />;
+        content = <StretchableHandles data={data} numberOfConnectedTargetHandles={numberOfConnectedTargetHandles}/>;
+
+
     }
 
     return (

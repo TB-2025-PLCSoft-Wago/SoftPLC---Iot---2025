@@ -89,6 +89,10 @@ En parallèle, la fonction *CreateMonitoringLists* est appelée périodiquement 
   #pagebreak()
   == Interface webSocket
   react-router-dom : pour naviguer entre les routes (avec useNavigate).
+
+  const openView = () => {
+        navigate('/websocket');
+    };
    #pagebreak()
   == Intégration des blocs logiques simples
   L'intégration des blocs logiques simples est une étape importante du projet. Cette section décrit comment ces blocs logiques simples ont été intégrés dans le programme. 
@@ -210,9 +214,23 @@ La sortie est *result* qui peut être de format de type *int* ou *float*, c'est 
   - ctrl + y : rétablit la modification annulée (redo)  
 
   *undo / redo* : Le principe est d'avoir deux piles _redoStack_ et _undoStack_. On utilise _pushToUndoStack()_ pour créer une pile, et _useDebouncedUndo.tsx_ qui vérifie lorsqu'il y a des modifications et utilise un petit délai pour éviter de pousser plusieurs fois à cause d'une modification mineure survenant au même moment.
-
-
   === CSS
+
+  == Gestion des erreurs
+  === Timer
+  #figure(
+  image("/resources/img/41_erreur_Tof.png", width: 100%),
+  caption: [
+    exemple - erreur *TOF*
+  ],
+  )
+
+  #figure(
+  image("/resources/img/41_erreur_Ton.png", width: 100%),
+  caption: [
+    exemple - erreur *TON*
+  ],
+  )
 
   == Conclusion
 

@@ -41,7 +41,7 @@ func init() {
 		PrimaryType:   "inputNode",
 		Type_:         "constantInput",
 		Display:       "Constant value",
-		Label:         "Input",
+		Label:         "Constant value Input",
 		Stretchable:   false,
 		Services:      []servicesStruct{},
 		SubServices:   []subServicesStruct{},

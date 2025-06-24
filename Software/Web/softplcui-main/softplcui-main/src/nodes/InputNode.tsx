@@ -107,7 +107,7 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
                     style={{height: 8, width: 8}}
                 />
                 <input
-                    type="number"
+                    type="text"
                     className="inputNodeSelect"
                     value={inputValue}
                     onChange={handleInputChange}

@@ -141,7 +141,6 @@ export default function App() {
                 };
                 setNodes((nds) => nds.concat(newNode));
             }
-
         },
         [reactFlowInstance]
 
@@ -352,16 +351,16 @@ export default function App() {
     }
     const [isDragging, setIsDragging] = useState(false);
     const handleNodeDragStart = () => {
-        console.log("start move");
+        //console.log("start move");
         setIsDragging(true);
     };
 
     const handleNodeDrag = () => {
-        console.log("moving");
+        //console.log("moving");
     };
 
     const handleNodeDragStop = () => {
-        console.log("stop move");
+        //console.log("stop move");
         setIsDragging(false);
     };
 

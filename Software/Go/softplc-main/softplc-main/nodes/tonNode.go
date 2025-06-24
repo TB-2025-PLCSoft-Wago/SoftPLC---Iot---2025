@@ -8,6 +8,7 @@
 package nodes
 
 import (
+	"SoftPLC/serverResponse"
 	"fmt"
 	"strconv"
 	"time"
@@ -130,6 +131,11 @@ func (t *TONNode) ProcessLogic() {
 func (t *TONNode) GetOutput(outName string) *OutputHandle {
 	for i, name := range t.output {
 		if name.Name == outName {
+			valueStr := *t.input[1].Input
+			_, err := strconv.ParseFloat(valueStr, 64)
+			if err != nil {
+				serverResponse.ResponseProcessGraph = "TON - Time ms : " + valueStr + ", wrong format"
+			}
 			return &t.output[i]
 		}
 	}

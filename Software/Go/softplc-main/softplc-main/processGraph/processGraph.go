@@ -45,7 +45,7 @@ type Graph struct {
 
 type Const struct {
 	Id    int
-	Value float64
+	Value string
 }
 
 // LogicalNode is a slice of slice of nodes.Node tha contains all the nodes in the JSON file except the output/input nodes.
@@ -175,13 +175,16 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson nodeJson, g 
 						var inputHandle nodes.InputHandle
 						description, _ := nodes.NodeDescription(nextNodeJson.Type)
 						if strings.Contains(nextNodeJson.Type, "constant") {
-							val, _ := strconv.ParseFloat(nextNodeJson.Data.Value, 64)
-							ConstValue = append(ConstValue, Const{Id: inId, Value: val})
+							//val, _ := strconv.ParseFloat(nextNodeJson.Data.Value, 64)
+							//ConstValue = append(ConstValue, Const{Id: inId, Value: val})
+							//val, _ := strconv.ParseFloat(nextNodeJson.Data.Value, 64)
+							ConstValue = append(ConstValue, Const{Id: inId, Value: nextNodeJson.Data.Value})
 							for i := range ConstValue {
 								if ConstValue[i].Id == inId {
-									valFloat := ConstValue[i].Value
-									valStr := strconv.FormatFloat(valFloat, 'f', -1, 64)
-									valStrCopy := valStr
+									//valFloat := ConstValue[i].Value
+									//valStr := strconv.FormatFloat(valFloat, 'f', -1, 64)
+									//valStrCopy := valStr
+									valStrCopy := ConstValue[i].Value
 									inputHandle = nodes.InputHandle{Input: &valStrCopy, Name: description.Output[0].Name, DataType: description.Output[0].DataType}
 									break
 								}
