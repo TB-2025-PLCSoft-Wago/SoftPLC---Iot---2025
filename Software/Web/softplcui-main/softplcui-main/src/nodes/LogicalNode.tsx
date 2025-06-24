@@ -115,7 +115,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
                     position: "relative",
                 }}
             >
-                {data.label && <div>{data.label}</div>}
+                {data.label && <div className="data-label">{data.label}</div>}
                 {content}
             </div>
         );

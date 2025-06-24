@@ -9,6 +9,7 @@ type UseKeyboardShortcutsProps = {
     setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
     setEdges: React.Dispatch<React.SetStateAction<Edge[]>>;
     getId: () => string;
+    isDragging: boolean;
 };
 
 
@@ -19,6 +20,7 @@ export default function useKeyboardShortcuts({
                                                  setNodes,
                                                  setEdges,
                                                  getId,
+                                                 isDragging,
                                              }: UseKeyboardShortcutsProps) {
     const copiedDataRef = useRef<{ nodes: Node[]; edges: Edge[] }>({ nodes: [], edges: [] });
     const undoStack = useRef<{ nodes: Node[]; edges: Edge[] }[]>([]);
@@ -33,6 +35,9 @@ export default function useKeyboardShortcuts({
     };
 
     useEffect(() => {
+        if(!isDragging){
+            //console.log("UseEffectKeyboard")
+        }
         const handleKeyDown = (event: KeyboardEvent) => {
             const activeElement = document.activeElement;
             const isInputFocused =

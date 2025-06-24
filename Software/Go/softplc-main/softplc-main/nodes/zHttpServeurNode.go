@@ -59,6 +59,7 @@ var httpServerDescription = nodeDescription{
 	Output: []dataTypeNameStruct{
 		{DataType: "bool", Name: "xDone"},
 		{DataType: "value", Name: "receive"},
+		{DataType: "value", Name: "Resource ID"},
 	},
 	ParameterNameData: []string{"url server", "user server", "password server"},
 }
@@ -370,15 +371,14 @@ func (n *HttpServerNode) ProcessLogic() {
 		n.output[0].Output = "0"
 		return
 	}
+	if n.parameterValueData[0] == "" {
+		urlServer = ":8080"
+	} else {
+		urlServer = n.parameterValueData[0]
+	}
+	usernameServer = n.parameterValueData[1]
+	passwordServer = n.parameterValueData[2]
 	if !serveurHttpIsInit {
-		if n.parameterValueData[0] == "" {
-			urlServer = ":8080"
-		} else {
-			urlServer = n.parameterValueData[0]
-		}
-		usernameServer = n.parameterValueData[1]
-		passwordServer = n.parameterValueData[2]
-
 		go func() {
 			http.HandleFunc("/", h1)
 			http.HandleFunc("/endpoint", h2)
@@ -397,6 +397,7 @@ func (n *HttpServerNode) ProcessLogic() {
 		//A message has been read
 		//fmt.Println("subscriber received :", msg)
 		if msg == "patch" || msg == "post" {
+			n.output[2].Output = strconv.Itoa(lastResourceId)
 			n.output[0].Output = "1"
 			paramToSend := strings.Split(*n.input[0].Input, " ,, ")
 			var temp []string

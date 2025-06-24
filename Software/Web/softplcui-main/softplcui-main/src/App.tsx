@@ -109,6 +109,7 @@ export default function App() {
     const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = 'move';
+        //console.log("drag over"); //From Accordion, not already place
     }, []);
 
     const onDrop = useCallback(
@@ -349,8 +350,22 @@ export default function App() {
         }
         return true;
     }
+    const [isDragging, setIsDragging] = useState(false);
+    const handleNodeDragStart = () => {
+        console.log("start move");
+        setIsDragging(true);
+    };
 
-    useKeyboardShortcuts({ nodes, edges, setNodes, setEdges, getId });
+    const handleNodeDrag = () => {
+        console.log("moving");
+    };
+
+    const handleNodeDragStop = () => {
+        console.log("stop move");
+        setIsDragging(false);
+    };
+
+    useKeyboardShortcuts({ nodes, edges, setNodes, setEdges, getId, isDragging });
     return (
         <ReactFlowProvider>
             <div className="dndflow">
@@ -369,12 +384,16 @@ export default function App() {
                         onInit={setReactFlowInstance}
                         onDrop={onDrop}
                         onDragOver={onDragOver}
+
+                        onNodeDragStart={handleNodeDragStart}
+                        onNodeDrag={handleNodeDrag}
+                        onNodeDragStop={handleNodeDragStop}
                     >
                         <Panel position="top-right">
-                            <button onClick={openView}>Open view</button>
-                            <button onClick={onSave}>Save</button>
-                            <button onClick={onRestore}>Restore</button>
-                            <button onClick={onBuild}>Build</button>
+                            <button className={"button button1"} onClick={openView}>Open view</button>
+                            <button className={"button button1"} onClick={onSave}>Save</button>
+                            <button className={"button button1"} onClick={onRestore}>Restore</button>
+                            <button className={"button button1"} onClick={onBuild}>Build</button>
                         </Panel>
                         <Background
                             color="red"

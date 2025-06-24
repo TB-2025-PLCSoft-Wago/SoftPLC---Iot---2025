@@ -86,8 +86,10 @@ En parallèle, la fonction *CreateMonitoringLists* est appelée périodiquement 
   === outputUpdate.go
   Dans `outputUpdate.go`, l'idée est de mettre à jour les *outputs* après que le programme ait été exécuté. La logique pour déclencher l'envoi des nouvelles valeurs des *outputs* est restée la même que pour l'ancien programme. La différence est que l'on utilise *WDA* pour envoyer les nouvelles valeurs des *outputs*. C’est-à-dire que l'on crée des requêtes *PATCH* pour les *AO* et *DO*, exemple de requête *PATCH* (@sec:exemplePatchOutput-vs-vue).
 
-
+  #pagebreak()
   == Interface webSocket
+  react-router-dom : pour naviguer entre les routes (avec useNavigate).
+   #pagebreak()
   == Intégration des blocs logiques simples
   L'intégration des blocs logiques simples est une étape importante du projet. Cette section décrit comment ces blocs logiques simples ont été intégrés dans le programme. 
 
@@ -118,10 +120,100 @@ Le bloc *String to Bool* permet de recevoir une chaîne de caractères et de la 
   ],
 )
 #label("fig:blocStringToBool-vs-vue")
+
+Le fonctionnement du bloc *String to Bool* a été réfléchi de manière à ce qu'il soit le plus simple possible, mais pouvant gérer le plus de situations possible. Le schéma bloc simulant toutes les situations se trouve en @fig:blocFonctionmentStringToBool-vs-vue. Des blocs se trouvent en amont, mais ce qui nous intéresse est ce qu'on retrouve en _input_. Les trois situations de fonctionnement principales sont :
+1. Activer un booléen si la chaîne de caractères reçue correspond à une des lignes de texte, (@fig:blocFonctionmentStringToBoolSituation1-vs-vue).
+2. Traiter un tableau reçu dans son ordre original. Cela est important pour les blocs de communication, car on peut donner le résultat de leurs messages dans le même ordre que l'ordre de demande de requête, ce qui permet de traiter les messages sans se soucier d'avoir plusieurs messages avec les mêmes valeurs, (@fig:blocFonctionmentStringToBoolSituation2-vs-vue).
+3. Traiter des tableaux comme des caractères simples, (@fig:blocFonctionmentStringToBoolSituation3-vs-vue).
+
+Ainsi, il doit être capable de gérer des caractères simples et des pseudos tableaux (lignes de texte séparées par " ,, "). Si la chaîne de caractères reçue contient un caractère simple, la sortie booléenne correspondante sera à _true_, pour autant qu'elle existe.
+
+ 
+#figure(
+  image("/resources/img/37_exempleImplementationFonctionnement_StringToBool.png", width: 100%),
+  caption: [
+    exemple - fonctionnement String to Bool
+  ],
+)
+#label("fig:blocFonctionmentStringToBool-vs-vue")
+
+#figure(
+  image("/resources/img/38_strToBool_situation_1.png", width: 100%),
+  caption: [
+    exemple - fonctionnement *String to Bool* - situation 1
+  ],
+)
+#label("fig:blocFonctionmentStringToBoolSituation1-vs-vue")
+#figure(
+  image("/resources/img/38_strToBool_situation_2.png", width: 100%),
+  caption: [
+    exemple - fonctionnement *String to Bool* - situation 2
+  ],
+)
+#label("fig:blocFonctionmentStringToBoolSituation2-vs-vue")
+#figure(
+  image("/resources/img/38_strToBool_situation_3.png", width: 80%),
+  caption: [
+    exemple - fonctionnement *String to Bool* - situation 3
+  ],
+)
+#label("fig:blocFonctionmentStringToBoolSituation3-vs-vue")
+=== SR
+  Le bloc *SR* est qui permet de maintenir un état booléen. Il suffit d'une impultion sur l'entrée *S* (set) pour mettre la sortie à _true_ et d'une impultion sur l'entrée *R1* (reset) pour mettre la sortie à _false_.
+  Le reset à la priorité sur le set, c'est-à-dire que si on a une *S* à _true_ et une *R1* à _true_, la sortie sera à _false_.
+#figure(
+  image("/resources/img/39_exemple_utilisation_SR.png", width: 100%),
+  caption: [
+    exemple - utilisation *SR*
+  ],
+)
+#label("fig:blocFonctionnementSR-vs-vue")
+#figure(
+  image("/resources/img/39_exemple_utilisation_SR_View.png", width: 100%),
+  caption: [
+    exemple - utilisation *SR* - visualisation des états
+  ],
+)
+#label("fig:blocFonctionnementSR_result-vs-vue")
+
+=== Counter
+  Le bloc *Counter* permet de compter et décompter des impulsions. 
+  Les entrées sont les suivantes :
+  - *Step* : l'entrée pour choisir le pas d'incrémentation ou de décrémentation du compteur, (par défaut, le pas est de 1).
+  - *+* : l'entrée pour incrémenter le compteur.
+  - *-* : l'entrée pour décrémenter le compteur.
+  - *R* : l'entrée pour remettre le compteur à zéro.
+  
+La sortie est *result* qui peut être de format de type *int* ou *float*, c'est le résultat des opérations.
+#label("fig:blocFonctionnementSR-vs-vue")
+#figure(
+  image("/resources/img/40_exemple_utilisation_Counter_View.png", width: 100%),
+  caption: [
+    exemple - utilisation *Counter*
+  ],
+)
+#infobox[Noter que l'on utilise des blocs *RF_trig*. Cela permet de générer des impulsions à chaque clic sur les boutons.]
+
   == Intégration des blocs logiques complexes
   === MQTT
   === WebSocket
   === HTTP
+
+  == Améliorations interface
+  === Rajouter des raccourcies
+  Le fichier _useKeyboardShortcuts.tsx_ a été créé pour l'occasion. Il est appelé dans _App.tsx_.  
+  Les raccourcis qui ont été rajoutés sont :
+  - ctrl + c : copie les nodes/edges sélectionnés  
+  - ctrl + v : coller  
+  - ctrl + x : couper  
+  - ctrl + z : annule la dernière modification (undo)  
+  - ctrl + y : rétablit la modification annulée (redo)  
+
+  *undo / redo* : Le principe est d'avoir deux piles _redoStack_ et _undoStack_. On utilise _pushToUndoStack()_ pour créer une pile, et _useDebouncedUndo.tsx_ qui vérifie lorsqu'il y a des modifications et utilise un petit délai pour éviter de pousser plusieurs fois à cause d'une modification mineure survenant au même moment.
+
+
+  === CSS
+
   == Conclusion
 
 ]

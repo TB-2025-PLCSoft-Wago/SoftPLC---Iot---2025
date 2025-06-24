@@ -118,7 +118,7 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
         //console.log("constantInput : ", content);
 
     } else if (data.type === "viewWebInputBool" || data.type === "viewWebInputValue") {
-        console.log("dataType : ", data.outputHandle[0].dataType);
+        //console.log("dataType : ", data.outputHandle[0].dataType);
         content = (
             <>
 

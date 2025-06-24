@@ -21,7 +21,7 @@ const CommunicationHandles: React.FC<Props> = ({
     const [showConfig, setShowConfig] = useState(false);
     const handleOpenConfig = () => {
         setShowConfig(true);
-        onResize?.(500, (data.inputHandle.length + 2) * 40); // setting size
+        onResize?.(550, (data.inputHandle.length + 2) * 40); // setting size
     };
 
     const handleCloseConfig = () => {
@@ -70,12 +70,12 @@ const CommunicationHandles: React.FC<Props> = ({
             ))}
 
             {/*settings button */}
-            <button
+            <button className={"buttonNode"}
                 onClick={handleOpenConfig}
                 style={{
                     position: "absolute",
-                    top: "10%",
-                    right: "20px",
+                    top: "9%",
+                    right: "5px",
                     transform: "translateY(-50%)",
                     zIndex: 10
                 }}
@@ -87,30 +87,35 @@ const CommunicationHandles: React.FC<Props> = ({
             {showConfig && (
                 <div className="config-panel">
                     <h4>Settings configuration</h4>
-                    {inputValues.map((val, index) => (
-                        <div key={index} style={{ marginBottom: "8px" }}>
-                            <input
-                                type="text"
-                                value={val}
-                                onChange={handleInputChange(index)}
-                                placeholder={
-                                    data.parameterNameData?.[index] === "setting" || !data.parameterNameData?.[index]
-                                        ? `setting ${index - data.parameterNameData.length + 1}`
-                                        : data.parameterNameData[index]
-                                }
-                                style={{ padding: "4px", width: "80%" }}
-                            />
-                        </div>
-                    ))}
-                    <button
-                        onClick={() => setInputValues([...inputValues, ""])}
-                        style={{ marginRight: "10px" }}
-                    >
-                        + Add a setting
-                    </button>
-                    <button onClick={handleCloseConfig}>Close</button>
+
+                    <div className="config-inputs">
+                        {inputValues.map((val, index) => (
+                            <div key={index} style={{ marginBottom: "8px" }}>
+                                <input
+                                    type="text"
+                                    value={val}
+                                    onChange={handleInputChange(index)}
+                                    placeholder={
+                                        data.parameterNameData?.[index] === "setting" || !data.parameterNameData?.[index]
+                                            ? `setting ${index - data.parameterNameData.length + 1}`
+                                            : data.parameterNameData[index]
+                                    }
+                                    style={{ padding: "4px", width: "80%" }}
+                                />
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="config-buttons">
+                        <button onClick={() => setInputValues([...inputValues, ""])} style={{ marginRight: "10px" }}>
+                            + Add a setting
+                        </button>
+                        <button onClick={handleCloseConfig}>Close</button>
+                    </div>
                 </div>
             )}
+
+
         </>
     );
 };

@@ -93,7 +93,7 @@ const WebSocketView = () => {
                 right: '2rem',
                 zIndex: 1000
             }}>
-                <button onClick={goBackView}>Close view</button>
+                <button className={"button button1"} onClick={goBackView}>Close view</button>
             </div>
 
             {/* main content
@@ -115,7 +115,7 @@ const WebSocketView = () => {
             </div>
             {appliances.length > 0 && (
                 <div>
-                    <h4>📺 Devices :</h4>
+                    {/*<h4>Devices :</h4>*/}
                     {appliances.map((device, idx) => {
                         const deviceOutputs = outputs[device.name] || [];
 
@@ -135,7 +135,7 @@ const WebSocketView = () => {
                                     }
 
                                     return (
-                                        <button
+                                        <button className={"button button1"}
                                             key={bidx}
                                             style={{marginRight: '0.5rem', marginBottom: '0.5rem'}}
                                             onClick={() => sendIRCode(btn.irCode)}

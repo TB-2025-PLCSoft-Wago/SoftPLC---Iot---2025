@@ -33,7 +33,7 @@ body{
 .logicalNode{
     width: 100px;
     height: 150px;
-    /*background-color:#007aff;*/
+    /*background-color:#007aff*/;
 }
 .inputNode{
     width: 200px;
@@ -65,7 +65,7 @@ body{
     font-size: 12px;
     background: #fcfcfc;
 }
-
+/*Accordion*/
 .dndflow aside .description {
     margin-bottom: 10px;
 }
@@ -80,6 +80,21 @@ body{
     justify-content: center;
     align-items: center;
     cursor: grab;
+}
+.dndflow .dndnode:hover {
+    height: 20px;
+    padding: 4px;
+    border: 1px solid #1a192b;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    transition-duration: 0.4s;
+    background-color: #1b5e20;
+
 }
 
 .dndflow .reactflow-wrapper {
@@ -174,6 +189,45 @@ input[type='number'] {
     background: #f0f0f0; /* Fond de la barre */
 }
 
+/* settings */
+.config-panel {
+    width: 500px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.config-inputs {
+    max-height: 200px; /* Limite la hauteur visible */
+    overflow-y: auto;
+    margin-bottom: 12px;
+    padding-right: 8px; /* Pour ne pas cacher le contenu avec la scrollbar */
+}
+
+.config-inputs::-webkit-scrollbar {
+    width: 8px;
+}
+.config-inputs::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+.config-inputs::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+.config-inputs::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.config-buttons {
+    display: flex;
+    justify-content: flex-end; /* aligner à droite */
+    gap: 10px;
+    margin-top: auto;
+    /*background-color: #d4f5d4;*/
+}
+
 /* Highlight selected node with a blue border */
 .react-flow__node.selected {
     border: 2px solid #2196f3 !important;
@@ -182,12 +236,100 @@ input[type='number'] {
 }
 /* Style for data.label container: green rectangle */
 .react-flow__node .data-label {
-    background-color: #d4f5d4; /* light green */
-    border: 2px solid #4caf50; /* darker green border */
+    /*background-color: #d4f5d4;*/ /* light green */
+    /*border: 2px solid #4caf50;*/ /* darker green border */
     border-radius: 6px;
     padding: 6px 10px;
     font-weight: 500;
     color: #1b5e20;
     display: inline-block;
     margin-bottom: 4px;
+}
+
+
+
+/*Buttons*/
+.button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 4px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #04AA6D;
+}
+
+.button1:hover {
+    background-color: #04AA6D;
+    color: white;
+}
+
+
+
+
+
+.buttonNode {
+    background-color: white;
+    color: black;
+    border: 1px solid #1a192b;
+    font-style: italic;
+}
+
+.buttonNode:hover {
+    background-color: #1a192b;
+    color: white;
+}
+
+
+
+
+/* WebSocket */
+fieldset {
+    margin:10px;
+    padding:10px;
+    /*background: #EEEEEE;*/
+
+    /*font-weight: bold;*/
+    text-align: left;
+
+    border: #444 1px solid;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    box-shadow: 0 0 5px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.25);
+    -khtml-box-shadow: 0 0 5px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.25);
+}
+
+legend {
+    background: #999999;
+    margin: 0;
+    padding: 2px 15px;
+    border: #444 1px solid;
+
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-border-radius: 3px;
+
+    box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+    -khtml-box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5) inset;
+
+    color: white;
+    font-style: italic;
 }
