@@ -23,8 +23,14 @@ const StringToBoolHandles: React.FC<Props> = ({
     );
 
     return (
-
         <>
+            {/* colored background above the line */}
+            <div className="node-top-background ntb-BoolToString" />
+
+            {data.label && <div className="data-label dl-BoolToString">{data.label}</div>}
+
+            {/* line of separation */}
+            <div className="node-separator ns-BoolToString"/>
         {data.inputHandle.map((input, index) => (
             <CustomHandle
                 key={index}
@@ -33,6 +39,7 @@ const StringToBoolHandles: React.FC<Props> = ({
                 id={input.name}
                 datatype={input.dataType}
                 isConnectable={1}
+                className="inputhandleClass"
                 style={{
                     height: 8,
                     width: 8,
@@ -51,6 +58,7 @@ const StringToBoolHandles: React.FC<Props> = ({
                     position={Position.Right}
                     id={`${data.outputHandle[0].name}${index}`}
                     datatype={data.outputHandle[0].dataType}
+                    className="inputhandleClass"
                     style={{
                         height: 8,
                         width: 8,

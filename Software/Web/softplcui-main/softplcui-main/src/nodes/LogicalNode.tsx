@@ -29,9 +29,10 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
     const numberOfConnectedTargetHandles = useMemo(() => {
         if (data.stretchable) {
             const connectedEdges = getConnectedEdges([props], edges);
+            //console.log("connected.filer :",connectedEdges.filter((e) => e.target === props.id).length)
             return connectedEdges.filter((e) => e.target === props.id).length;
         }
-        return -1;
+        return Math.max(data.inputHandle?.length-1,data.outputHandle?.length-2);
     }, [data.stretchable, data.inputHandle, props.id, edges]);
 
     useEffect(() => {
@@ -98,8 +99,15 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         //console.log("Mqtt type : ", data.type);
         const [nodeSize, setNodeSize] = useState({ width: 225, height: (numberOfConnectedTargetHandles + 7) * 40 });
 
+        /*
         const handleResize = (width: number, height: number) => {
             setNodeSize({ width, height });
+        };*/
+        const handleResize = (width: number, _height: number) => {
+            setNodeSize((prev) => ({
+                ...prev,
+                width, // garde l’ancien height, calculé par le useEffect
+            }));
         };
         content = (
             <CommunicationHandles
@@ -118,7 +126,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
                     position: "relative",
                 }}
             >
-                {data.label && <div className="data-label">{data.label}</div>}
+                {/*data.label && <div className="data-label">{data.label}</div>*/}
                 {content}
             </div>
         );
@@ -149,7 +157,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
 
 
     }
-
+    //console.log("number of Connected :", numberOfConnectedTargetHandles)
     return (
         <div
             className="react-flow__node-default logicalNode"

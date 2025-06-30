@@ -188,11 +188,14 @@ func CreateMonitoringLists() {
 	jsonBytes, err := json.Marshal(payload)
 	if err != nil {
 		fmt.Println("JSON encoding error:", err)
-		panic(err)
+		CreateMonitoringLists()
+		//panic(err)
 	}
 	req, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonBytes))
 	if err != nil {
-		panic(err)
+		fmt.Println("Error request createMonitoringLists : ", err)
+		CreateMonitoringLists()
+		//panic(err)
 	}
 	req.SetBasicAuth(username, password)
 	req.Header.Set("Content-Type", "application/vnd.api+json")
@@ -205,13 +208,16 @@ func CreateMonitoringLists() {
 	//client := createHTTPClient()
 	resp, err := client.Do(req)
 	if err != nil {
-		panic(err)
+		fmt.Println("Error client createMonitoringLists : ", err)
+		CreateMonitoringLists()
+		//panic(err)
 	}
 	defer resp.Body.Close()
 	postID, err = getMonitoringListID(resp.Body)
 	if resp.StatusCode != 201 {
-		fmt.Println("Error createMonitoringLists not 201")
-		panic(resp.StatusCode)
+		fmt.Println("Error createMonitoringLists not 201 is : ", resp.StatusCode)
+		CreateMonitoringLists()
+		//panic(resp.StatusCode)
 	}
 	resp.Body.Close()
 

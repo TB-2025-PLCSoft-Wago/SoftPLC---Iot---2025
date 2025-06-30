@@ -7,10 +7,9 @@ interface TextInputSenderProps {
 
 const TextInputSender: React.FC<TextInputSenderProps> = ({ irCode, ws }) => {
     const [value, setValue] = useState('');
+    const [isSent, setIsSent] = useState(false);
 
     const sendValue = () => {
-        if (!value.trim()) return;
-
         const payload = {
             irCode,
             value,
@@ -18,9 +17,16 @@ const TextInputSender: React.FC<TextInputSenderProps> = ({ irCode, ws }) => {
 
         if (ws.current?.readyState === WebSocket.OPEN) {
             ws.current.send(JSON.stringify(payload));
-            setValue('');
+            setIsSent(true); // Mark as sent
         } else {
             alert('WebSocket not connected.');
+        }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value);
+        if (isSent) {
+            setIsSent(false); // Remove the italic as soon as we modify
         }
     };
 
@@ -30,11 +36,14 @@ const TextInputSender: React.FC<TextInputSenderProps> = ({ irCode, ws }) => {
                 type="text"
                 value={value}
                 placeholder="enter a value"
-                onChange={(e) => setValue(e.target.value)}
+                onChange={handleChange}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') sendValue();
                 }}
-                style={{ marginRight: '0.5rem' }}
+                style={{
+                    marginRight: '0.5rem',
+                    fontStyle: isSent ? 'italic' : 'normal',
+                }}
             />
             <button onClick={sendValue}>Send</button>
         </>

@@ -13,6 +13,13 @@ const StretchableHandles: React.FC<Props> = ({ data, numberOfConnectedTargetHand
 
     return (
         <>
+            {/* colored background above the line */}
+            <div className="node-top-background ntb-stretchable" />
+
+            {data.label && <div className="data-label dl-stretchable">{data.label}</div>}
+
+            {/* line of separation */}
+            <div className="node-separator ns-stretchable"/>
             {Array.from({ length: totalHandles }).map((_, index) => (
                 <CustomHandle
                     key={index}
@@ -21,6 +28,7 @@ const StretchableHandles: React.FC<Props> = ({ data, numberOfConnectedTargetHand
                     id={`${data.inputHandle[0].name}${index}`}
                     datatype={data.inputHandle[0].dataType}
                     isConnectable={1}
+                    className="inputhandleClass"
                     style={{
                         height: 8,
                         width: 8,
@@ -38,6 +46,7 @@ const StretchableHandles: React.FC<Props> = ({ data, numberOfConnectedTargetHand
                     position={Position.Right}
                     id={output.name}
                     datatype={output.dataType}
+                    className="inputhandleClass"
                     style={{
                         height: 8,
                         width: 8,

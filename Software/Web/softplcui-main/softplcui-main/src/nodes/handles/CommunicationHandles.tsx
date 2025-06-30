@@ -31,6 +31,60 @@ const CommunicationHandles: React.FC<Props> = ({
 
     return (
         <>
+            {/* colored background above the line */}
+            <div className="node-top-background ntb-Communication" />
+
+            {data.label && <div className="data-label dl-Communication">{data.label}</div>}
+
+            {/* line of separation */}
+            <div className="node-separator ns-Communication"/>
+
+            {/*settings button */}
+            <button className={"buttonNode"}
+                    onClick={handleOpenConfig}
+                    style={{
+                        position: "absolute",
+                        top: "20px",
+                        right: "5px",
+                        transform: "translateY(-50%)",
+                        zIndex: 10
+                    }}
+            >
+                settings
+            </button>
+
+            {/* settings pannel */}
+            {showConfig && (
+                <div className="config-panel">
+                    <h4>Settings configuration</h4>
+
+                    <div className="config-inputs">
+                        {inputValues.map((val, index) => (
+                            <div key={index} style={{marginBottom: "8px"}}>
+                                <input
+                                    type="text"
+                                    value={val}
+                                    onChange={handleInputChange(index)}
+                                    placeholder={
+                                        data.parameterNameData?.[index] === "setting" || !data.parameterNameData?.[index]
+                                            ? `setting ${index - data.parameterNameData.length + 1}`
+                                            : data.parameterNameData[index]
+                                    }
+                                    style={{padding: "4px", width: "80%"}}
+                                />
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="config-buttons">
+                        <button onClick={() => setInputValues([...inputValues, ""])} style={{marginRight: "10px"}}>
+                            + Add a setting
+                        </button>
+                        <button onClick={handleCloseConfig}>Close</button>
+                    </div>
+                </div>
+            )}
+
             {/* input */}
             {data.inputHandle.map((input, index) => (
                 <React.Fragment key={index}>
@@ -40,6 +94,7 @@ const CommunicationHandles: React.FC<Props> = ({
                         id={input.name}
                         datatype={input.dataType}
                         isConnectable={1}
+                        className="inputhandleClass"
                         style={{
                             height: 8,
                             width: 8,
@@ -59,6 +114,7 @@ const CommunicationHandles: React.FC<Props> = ({
                     position={Position.Right}
                     id={output.name}
                     datatype={output.dataType}
+                    className="inputhandleClass"
                     style={{
                         height: 8,
                         width: 8,
@@ -68,53 +124,6 @@ const CommunicationHandles: React.FC<Props> = ({
                     {!showConfig && <div className="outputhandletext">{output.name}</div>}
                 </CustomHandle>
             ))}
-
-            {/*settings button */}
-            <button className={"buttonNode"}
-                onClick={handleOpenConfig}
-                style={{
-                    position: "absolute",
-                    top: "9%",
-                    right: "5px",
-                    transform: "translateY(-50%)",
-                    zIndex: 10
-                }}
-            >
-                settings
-            </button>
-
-            {/* settings pannel */}
-            {showConfig && (
-                <div className="config-panel">
-                    <h4>Settings configuration</h4>
-
-                    <div className="config-inputs">
-                        {inputValues.map((val, index) => (
-                            <div key={index} style={{ marginBottom: "8px" }}>
-                                <input
-                                    type="text"
-                                    value={val}
-                                    onChange={handleInputChange(index)}
-                                    placeholder={
-                                        data.parameterNameData?.[index] === "setting" || !data.parameterNameData?.[index]
-                                            ? `setting ${index - data.parameterNameData.length + 1}`
-                                            : data.parameterNameData[index]
-                                    }
-                                    style={{ padding: "4px", width: "80%" }}
-                                />
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="config-buttons">
-                        <button onClick={() => setInputValues([...inputValues, ""])} style={{ marginRight: "10px" }}>
-                            + Add a setting
-                        </button>
-                        <button onClick={handleCloseConfig}>Close</button>
-                    </div>
-                </div>
-            )}
-
 
         </>
     );

@@ -104,6 +104,7 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
                     id={data.outputHandle[0].name}
                     isConnectable={true}
                     datatype={data.outputHandle[0].dataType}
+                    className="inputhandleClass"
                     style={{height: 8, width: 8}}
                 />
                 <input
@@ -117,7 +118,7 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
         );
         //console.log("constantInput : ", content);
 
-    } else if (data.type === "viewWebInputBool" || data.type === "viewWebInputValue") {
+    } else if (data.type.includes("viewWebInput") || (data.type.includes("variableInput"))) {
         //console.log("dataType : ", data.outputHandle[0].dataType);
         content = (
             <>
@@ -128,6 +129,7 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
                     id={data.outputHandle[0].name}
                     isConnectable={true}
                     datatype="bool"
+                    className="inputhandleClass"
                     style={{ height: 8, width: 8 }}
                 />
 
@@ -157,6 +159,7 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
                     id={data.outputHandle[0].name}
                     isConnectable={true}
                     datatype={handleType}
+                    className="inputhandleClass"
                     style={{height: 8, width: 8}}
                 />
                 <select className="inputNodeSelect" value={selectedFriendlyName} onChange={handleFriendlyNameChange}
@@ -197,6 +200,7 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
                     id={data.outputHandle[0].name}
                     isConnectable={true}
                     datatype={data.outputHandle[0].dataType}
+                    className="inputhandleClass"
                     style={{height: 8, width: 8}}
                 />
                 <select className="inputNodeSelect" value={selectedService} onChange={handleServiceChange} id={data.id}>

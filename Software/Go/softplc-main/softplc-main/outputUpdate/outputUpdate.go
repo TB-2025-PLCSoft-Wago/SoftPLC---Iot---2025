@@ -4,6 +4,7 @@ import (
 	"SoftPLC/inputUpdate"
 	"SoftPLC/processGraph"
 	"SoftPLC/server"
+	"SoftPLC/variable"
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
@@ -46,6 +47,18 @@ func UpdateOutput() {
 						if ccIOState.Value != *nodeOutputList.OutputHandle.Input {
 							//ccIOState.Value = *nodeOutputList.OutputHandle.Input
 							server.UpdateOutputValueByID(ccIOState.ID, *nodeOutputList.OutputHandle.Input)
+						}
+					}
+				}
+				continue
+			}
+			/*** Variable output ***/
+			if strings.Contains(output.GetNodeType(), "variable") {
+				for _, ccIOState := range variable.OutputsStateVariable {
+					if ccIOState.Name == nodeOutputList.FriendlyName {
+						if ccIOState.Value != *nodeOutputList.OutputHandle.Input {
+							//ccIOState.Value = *nodeOutputList.OutputHandle.Input
+							variable.UpdateVariableOutput(ccIOState.Name, *nodeOutputList.OutputHandle.Input)
 						}
 					}
 				}

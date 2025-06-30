@@ -5,6 +5,7 @@ import (
 	"SoftPLC/nodes"
 	"SoftPLC/server"
 	"SoftPLC/serverResponse"
+	"SoftPLC/variable"
 	"fmt"
 	"strconv"
 	"strings"
@@ -336,6 +337,21 @@ func linkNodes(g Graph) {
 						inputLink := server.InputsStateWeb[j]
 						if strconv.Itoa(inputLink.IRCode) == inputHandle.FriendlyName {
 							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &server.InputsStateWeb[j].Value
+							ableToConnect = true
+							break
+						}
+					}
+				}
+			}
+		}
+		if strings.Contains(InputNodes[i].GetNodeType(), "variable") {
+			for _, edge := range g.Edges {
+				if edge.Source == strconv.Itoa(InputNodes[i].GetId()) {
+					for j := range variable.InputsStateVariable {
+						inputHandle := InputNodes[i].GetOutput(edge.SourceHandle)
+						inputLink := variable.InputsStateVariable[j]
+						if inputLink.Name == inputHandle.FriendlyName {
+							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &variable.InputsStateVariable[j].Value
 							ableToConnect = true
 							break
 						}

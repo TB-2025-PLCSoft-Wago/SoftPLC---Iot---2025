@@ -73,7 +73,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
     }
     useEffect(() => {
         console.log("useEffect");
-        if (!data.type.includes("viewWeb")) {
+        if (!data.type.includes("viewWeb") && !data.type.includes("variable")) {
             if (selectedFriendlyName === "default") {
                 data.selectedFriendlyNameData = "";
             } else {
@@ -104,7 +104,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
 
     let content;
     const {id, selectedServiceData, selectedSubServiceData } = data;
-    if (data.type.includes("viewWeb")) {
+    if (data.type.includes("viewWeb") || data.type.includes("variable")) {
         content = (
             <>
                 <CustomHandle
@@ -113,6 +113,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
                     id={data.inputHandle[0].name}
                     isConnectable={1}
                     datatype={data.inputHandle[0].dataType}
+                    className="inputhandleClass"
                     style={{height: 8, width: 8}}
                 ></CustomHandle>
 
@@ -125,7 +126,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
                             className="inputNodeSelect"
                             value={selectedServiceData}
                             onChange={handleServiceChangeInput}
-                            placeholder="appliance name"
+                            placeholder={data.type.includes("viewWeb") ? "appliance name" : "name"}
                         />
                     </div>
 
@@ -137,7 +138,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
                             className="inputNodeSelect"
                             value={selectedSubServiceData}
                             onChange={handleSubServiceChangeInput}
-                            placeholder="signal name"
+                            placeholder={data.type.includes("viewWeb") ? "signal name":"default value" }
                         />
                     </div>
                 </div>
@@ -152,6 +153,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
                     id={data.inputHandle[0].name}
                     isConnectable={1}
                     datatype={handleType}
+                    className="inputhandleClass"
                     style={{height: 8, width: 8}}
                 />
                 <select className="outputNodeSelect" value={selectedFriendlyName} onChange={handleFriendlyNameChange}
@@ -193,6 +195,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
                     id={data.inputHandle[0].name}
                     isConnectable={1}
                     datatype={data.inputHandle[0].dataType}
+                    className="inputhandleClass"
                     style={{height: 8, width: 8}}
                 ></CustomHandle>
                 <select className="outputNodeSelect" value={selectedService} onChange={handleServiceChange}

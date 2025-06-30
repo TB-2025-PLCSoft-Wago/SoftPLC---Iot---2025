@@ -7,6 +7,7 @@ import (
 	"SoftPLC/outputUpdate"
 	"SoftPLC/processGraph"
 	"SoftPLC/server"
+	"SoftPLC/variable"
 	"time"
 )
 
@@ -51,6 +52,7 @@ func main() {
 				}
 				outputUpdate.UpdateOutput()
 				server.UpdateOutputValueView()
+				variable.UpdateVariableInputs()
 				processGraph.Mutex.Unlock()
 				//fmt.Printf("total time value is  %s\n", time.Since(start))
 				start2 = time.Now()

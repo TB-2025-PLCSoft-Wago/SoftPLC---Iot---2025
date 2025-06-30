@@ -23,6 +23,7 @@ type MqttNode struct {
 	msgHandler         mqtt.MessageHandler
 	outputFlag         bool
 	lastPayload        []string
+	lastTopic          []string
 	clientID           uint16
 	topicToReceive     []string
 }
@@ -51,8 +52,10 @@ func (n *MqttNode) messageHandler() mqtt.MessageHandler {
 		fmt.Printf("Received message: %s from topic: %s to clientID %d\n", msg.Payload(), msg.Topic(), n.clientID)
 		if !n.outputFlag {
 			n.lastPayload = []string{}
+			n.lastTopic = []string{}
 		}
 		n.lastPayload = append(n.lastPayload, string(msg.Payload()))
+		n.lastTopic = append(n.lastTopic, string(msg.Topic()))
 		n.outputFlag = true
 		if msg.Retained() {
 			client.Publish(msg.Topic(), 0, true, "") //when is a message retain
@@ -95,8 +98,18 @@ func (n *MqttNode) ProcessLogic() {
 			return
 		}
 		if *n.input[0].Input == "1" {
-			topicToSend := strings.Split(*n.input[1].Input, " ,, ")
-			msgToSend := strings.Split(*n.input[2].Input, " ,, ")
+			var topicToSend, msgToSend []string
+			if n.input[1].Input != nil {
+				topicToSend = strings.Split(*n.input[1].Input, " ,, ")
+			} else {
+				topicToSend = []string{}
+			}
+			if n.input[2].Input != nil {
+				msgToSend = strings.Split(*n.input[2].Input, " ,, ")
+			} else {
+				msgToSend = []string{}
+			}
+
 			publish(n.client, topicToSend, msgToSend)
 
 			//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
@@ -107,6 +120,19 @@ func (n *MqttNode) ProcessLogic() {
 		//A message has been read
 		if n.outputFlag {
 			n.output[0].Output = "1"
+			topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
+			var newMsg []string
+		OuterLoop:
+			for i, topicTemp := range n.lastTopic {
+				for _, topicTempToReceive := range topicToReceive {
+					if topicTempToReceive == topicTemp {
+						newMsg = append(newMsg, n.lastPayload[i])
+						continue OuterLoop
+					}
+				}
+				//token := n.client.Unsubscribe(topicTemp)
+				//token.Wait()
+			}
 			n.output[1].Output = strings.Join(n.lastPayload, " ,, ")
 			n.outputFlag = false
 			return
@@ -247,6 +273,23 @@ func (n *MqttNode) DestroyToBuildAgain() {
 	n.connectionIsInit = false
 	n.outputFlag = false
 	n.lastPayload = nil
+	n.lastTopic = nil
 	n.topicToReceive = nil
 
 }
+
+/*
+topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
+			var newMsg []string
+			OuterLoop:
+			for i, topicTemp := range n.lastTopic {
+				for _, topicTempToReceive := range topicToReceive {
+					if topicTempToReceive == topicTemp {
+						newMsg = append(newMsg, n.lastPayload[i])
+						continue OuterLoop
+					}
+				}
+				token := n.client.Unsubscribe(topicTemp)
+				token.Wait()
+			}
+*/

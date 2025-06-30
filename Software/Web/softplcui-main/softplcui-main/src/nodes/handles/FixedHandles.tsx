@@ -10,6 +10,18 @@ interface Props {
 const FixedHandles: React.FC<Props> = ({ data }) => {
     return (
         <>
+            {data.label && !['TON', 'TOF', 'Ftrig','Rtrig', 'RF_trig'].includes(data.label) && (
+                <>
+                    {/* colored background above the line */}
+                    <div className="node-top-background ntb-fixed" />
+
+                    <div className="data-label dl-fixed">{data.label}</div>
+
+                    {/* line of separation */}
+                    <div className="node-separator ns-fixed" />
+                </>
+            )}
+
             {data.inputHandle.map((input, index) => (
                 <CustomHandle
                     key={index}
@@ -18,6 +30,7 @@ const FixedHandles: React.FC<Props> = ({ data }) => {
                     id={input.name}
                     datatype={input.dataType}
                     isConnectable={1}
+                    className="inputhandleClass"
                     style={{
                         height: 8,
                         width: 8,
@@ -35,6 +48,7 @@ const FixedHandles: React.FC<Props> = ({ data }) => {
                     position={Position.Right}
                     id={output.name}
                     datatype={output.dataType}
+                    className="inputhandleClass"
                     style={{
                         height: 8,
                         width: 8,

@@ -234,17 +234,61 @@ input[type='number'] {
     box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
     border-radius: 8px;
 }
+
+/*** Head of a Node ***/
+.node-top-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px; /* same value of node-separator */
+    background-color: #CFC9CE;
+    z-index: 0; /* Sous les autres éléments */
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
 /* Style for data.label container: green rectangle */
 .react-flow__node .data-label {
-    /*background-color: #d4f5d4;*/ /* light green */
+    position: absolute;
+    background-color: #FFFBDB; /* light green */
     /*border: 2px solid #4caf50;*/ /* darker green border */
     border-radius: 6px;
     padding: 6px 10px;
-    font-weight: 500;
-    color: #1b5e20;
+    font-weight: bold;
+    color: #123F15;
+    top: 5px;
+    transform: translateX(-50%);
     display: inline-block;
     margin-bottom: 4px;
+    text-align: center;
+    z-index: 2;
+
 }
+
+.node-separator {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+    height: 2px;
+    background-color: #1b5e20;
+    z-index: 1;
+}
+
+/*Communication*/
+.ntb-Communication{
+    height: 60px;
+}
+.react-flow__node .dl-Communication{
+    top: 15px;
+}
+
+
+.ns-Communication{
+    top: 60px;
+}
+
+/****/
 
 
 
@@ -360,4 +404,22 @@ legend {
 .custom-select:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+
+/* edge edges Connection*/
+.react-flow__edge-path {
+    transition: stroke 5.2s, filter 0.2s, stroke-opacity 0.2s;
+}
+.react-flow__edge.selected .react-flow__edge-path {
+    //stroke: #00bcd4 !important;
+    //filter: brightness(1.75);
+    stroke-opacity: 0.8;
+    stroke-width: 2 !important;
+}
+
+/* Handle */
+.inputhandleClass{
+    background-color: #07bc0c;
+
 }

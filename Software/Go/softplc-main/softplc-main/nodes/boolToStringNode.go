@@ -47,9 +47,11 @@ func (n *BToSNode) ProcessLogic() {
 	var result []string
 	var temp bool = false
 	for i, in := range n.input {
-		if *in.Input == "1" && n.parameterValueData[i] != "" {
-			result = append(result, n.parameterValueData[i])
-			temp = true
+		if in.Input != nil {
+			if *in.Input == "1" && n.parameterValueData[i] != "" {
+				result = append(result, n.parameterValueData[i])
+				temp = true
+			}
 		}
 	}
 	if temp {

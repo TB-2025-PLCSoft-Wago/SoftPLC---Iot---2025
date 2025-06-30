@@ -4,13 +4,14 @@ import {
     addEdge,
     Background,
     BackgroundVariant,
-    Controls,
+    Controls, MarkerType,
     OnConnect,
     Panel,
     ReactFlow, ReactFlowInstance,
     ReactFlowProvider,
     useEdgesState,
     useNodesState,
+    Edge, MiniMap,
 } from "reactflow";
 
 
@@ -23,7 +24,9 @@ import Sidebar from './Sidebar';
 import useKeyboardShortcuts from './hooks/useKeyboardShortcuts';
 import {initialNodes, nodeTypes} from './nodes';
 import {edgeTypes, initialEdges} from './edges';
-
+/*color*/
+import ConnectionLine from './nodes/utils/ConnectionLine.tsx';
+import ColorSelectorNode from './nodes/utils/ColorSelectorNode';
 export interface NodesData {
     nodes: Array<{
         accordion: string;
@@ -99,13 +102,54 @@ export default function App() {
         }
     }, [edges]);
 
+    /*Color connections */
+
+    const [selectedEdges, setSelectedEdges] = useState<Edge[]>([]);
+    const [color, setColor] = useState('#30362F');
+    const connectionLineStyle = { stroke: color, strokeWidth: 1 };
     const onConnect: OnConnect = useCallback(
-        (connection) => {
-            setEdges((eds) => addEdge({...connection, type: "step"}, eds));
-        },
-        [setEdges]
+        (params) =>
+            setEdges((eds) =>
+                addEdge(
+                    {
+                        ...params,
+                        type: 'step',
+                        //className: 'colored-edge',
+                        style: { stroke: color, strokeWidth: 1},
+                    },
+                    eds
+                )
+            ),
+        [color]
     );
 
+    const onSelectionChange = useCallback(({ edges }) => {
+        setSelectedEdges(edges ?? []);
+    }, []);
+
+    const handleColorChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            const newColor = e.target.value;
+            setColor(newColor);
+
+            // Met à jour les couleurs des edges sélectionnés
+            setEdges((eds) =>
+                eds.map((edge) =>
+                    selectedEdges.some((sel) => sel.id === edge.id)
+                        ? {
+                            ...edge,
+                            //className: 'colored-edge',
+                            style: { ...edge.style, stroke: newColor },
+                        }
+                        : edge
+                )
+            );
+        },
+        [selectedEdges, setEdges]
+    );
+
+
+    /* interact */
     const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = 'move';
@@ -365,10 +409,13 @@ export default function App() {
     };
 
     useKeyboardShortcuts({ nodes, edges, setNodes, setEdges, getId, isDragging });
+
+
     return (
         <ReactFlowProvider>
             <div className="dndflow">
                 <div className="reactflow-wrapper" ref={reactFlowWrapper} style={{height: '100vh', width: '100%'}}>
+
                     <ReactFlow
 
                         className="softPLCFlow"
@@ -387,13 +434,35 @@ export default function App() {
                         onNodeDragStart={handleNodeDragStart}
                         onNodeDrag={handleNodeDrag}
                         onNodeDragStop={handleNodeDragStop}
+
+                        connectionLineComponent={ConnectionLine}
+                        connectionLineStyle={connectionLineStyle}
+                        onSelectionChange={onSelectionChange}
+                        fitView
                     >
                         <Panel position="top-right">
+                            {/* Color Picker flottant */}
+                            <div style={{
+                                position: 'absolute',
+                                top: 50,
+                                //left: 300,
+                                background: 'white',
+                                padding: '8px',
+                                borderRadius: '8px',
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                                zIndex: 1000,
+                            }}>
+                                <label style={{ marginRight: 6 }}>🎨 Color of the connections</label>
+                                <input type="color" value={color} onChange={handleColorChange} />
+                            </div>
+                            {/*button*/}
                             <button className={"button button1"} onClick={openView}>Open view</button>
                             <button className={"button button1"} onClick={onSave}>Save</button>
                             <button className={"button button1"} onClick={onRestore}>Restore</button>
                             <button className={"button button1"} onClick={onBuild}>Build</button>
                         </Panel>
+                        {/*<MiniMap />*/}
+                        <Controls />
                         <Background
                             color="red"
                             variant={BackgroundVariant.Dots}
