@@ -1,7 +1,5 @@
 package variable
 
-import "fmt"
-
 type OutputState struct {
 	Name  string
 	Value string
@@ -37,7 +35,7 @@ func UpdateVariableInputs() {
 		for i, inputTemp := range InputsStateVariable {
 			if inputTemp.Name == outputTemp.Name {
 				if inputTemp.Value != outputTemp.Value {
-					fmt.Println("value : ", outputTemp.Value, " Name : ", outputTemp.Name)
+					//fmt.Println("value : ", outputTemp.Value, " Name : ", outputTemp.Name)
 					InputsStateVariable[i].Value = outputTemp.Value
 				}
 			}

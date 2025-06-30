@@ -47,7 +47,7 @@
     },
     {
       "id": "reactflow__edge-21Output-27Input0",
-      "selected": true,
+      "selected": false,
       "source": "21",
       "sourceHandle": "Output",
       "target": "27",
@@ -223,15 +223,6 @@
       "sourceHandle": "receive",
       "target": "47",
       "targetHandle": "str",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-47x2-48Input",
-      "selected": false,
-      "source": "47",
-      "sourceHandle": "x2",
-      "target": "48",
-      "targetHandle": "Input",
       "type": "step"
     },
     {
@@ -478,19 +469,6 @@
       "type": "step"
     },
     {
-      "id": "reactflow__edge-76str-78str",
-      "selected": false,
-      "source": "76",
-      "sourceHandle": "str",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "78",
-      "targetHandle": "str",
-      "type": "step"
-    },
-    {
       "id": "reactflow__edge-75Output-79Input",
       "selected": false,
       "source": "75",
@@ -501,19 +479,6 @@
       },
       "target": "79",
       "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-79Output-78pass",
-      "selected": false,
-      "source": "79",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "78",
-      "targetHandle": "pass",
       "type": "step"
     },
     {
@@ -543,19 +508,6 @@
       "type": "step"
     },
     {
-      "id": "89",
-      "selected": false,
-      "source": "84",
-      "sourceHandle": "str",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "85",
-      "targetHandle": "str",
-      "type": "step"
-    },
-    {
       "id": "90",
       "selected": false,
       "source": "83",
@@ -566,19 +518,6 @@
       },
       "target": "86",
       "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "91",
-      "selected": false,
-      "source": "86",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "85",
-      "targetHandle": "pass",
       "type": "step"
     },
     {
@@ -660,32 +599,6 @@
       "type": "step"
     },
     {
-      "id": "reactflow__edge-85str-82str0",
-      "selected": false,
-      "source": "85",
-      "sourceHandle": "str",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "82",
-      "targetHandle": "str0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-78str-82str1",
-      "selected": false,
-      "source": "78",
-      "sourceHandle": "str",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "82",
-      "targetHandle": "str1",
-      "type": "step"
-    },
-    {
       "id": "reactflow__edge-86Output-69Input2",
       "source": "86",
       "sourceHandle": "Output",
@@ -732,6 +645,90 @@
       },
       "target": "69",
       "targetHandle": "Input3",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-47x1-48Input",
+      "source": "47",
+      "sourceHandle": "x1",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "48",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-79Output-103pass",
+      "source": "79",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "103",
+      "targetHandle": "pass",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-76str-103strIn",
+      "source": "76",
+      "sourceHandle": "str",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "103",
+      "targetHandle": "strIn",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-103strOut-82str1",
+      "source": "103",
+      "sourceHandle": "strOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "82",
+      "targetHandle": "str1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-104strOut-82str0",
+      "source": "104",
+      "sourceHandle": "strOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "82",
+      "targetHandle": "str0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-84str-104strIn",
+      "source": "84",
+      "sourceHandle": "str",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "104",
+      "targetHandle": "strIn",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-86Output-104pass",
+      "source": "86",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "104",
+      "targetHandle": "pass",
       "type": "step"
     }
   ],
@@ -1288,7 +1285,7 @@
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test",
+        "selectedServiceData": "test_HTTPServeur",
         "selectedSubServiceData": "responseServeur",
         "services": [
           {
@@ -1682,7 +1679,7 @@
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test",
+        "selectedServiceData": "test_HTTPServeur",
         "selectedSubServiceData": "responseServeur2",
         "services": [
           {
@@ -1737,7 +1734,7 @@
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test",
+        "selectedServiceData": "test_HTTPServeur",
         "selectedSubServiceData": "xDone",
         "services": [
           {
@@ -1853,7 +1850,7 @@
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test",
+        "selectedServiceData": "test_HTTPServeur",
         "selectedSubServiceData": "ID",
         "services": [
           {
@@ -1887,7 +1884,7 @@
         "x": 389.8509978864338,
         "y": 1451.6633762655285
       },
-      "selected": false,
+      "selected": true,
       "type": "outputNode",
       "width": 221
     },
@@ -1912,8 +1909,8 @@
         "parameterNameData": null,
         "parameterValueData": [
           "",
-          "",
           "true",
+          "",
           ""
         ],
         "primaryType": "LogicalNode",
@@ -1927,19 +1924,19 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 261,
+      "height": 225,
       "id": "47",
       "position": {
         "x": 674.7429774077502,
-        "y": 1244.7456690444374
+        "y": 1245.7737828710935
       },
       "positionAbsolute": {
         "x": 674.7429774077502,
-        "y": 1244.7456690444374
+        "y": 1245.7737828710935
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 246
+      "width": 250
     },
     {
       "data": {
@@ -1984,12 +1981,12 @@
       "height": 81,
       "id": "48",
       "position": {
-        "x": 957.3121249961994,
-        "y": 1499.7785271302262
+        "x": 968.6213770894161,
+        "y": 1397.9952582912756
       },
       "positionAbsolute": {
-        "x": 957.3121249961994,
-        "y": 1499.7785271302262
+        "x": 968.6213770894161,
+        "y": 1397.9952582912756
       },
       "selected": false,
       "type": "outputNode",
@@ -2053,7 +2050,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 425,
+      "height": 421,
       "id": "49",
       "position": {
         "x": 367.76960666198676,
@@ -2065,7 +2062,7 @@
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 250
+      "width": 246
     },
     {
       "data": {
@@ -3330,59 +3327,6 @@
     },
     {
       "data": {
-        "accordion": "Handling value",
-        "display": "Retain Value Node",
-        "id": "78",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "pass"
-          },
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "label": "Retain value",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RetainValueNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 181,
-      "id": "78",
-      "position": {
-        "x": 2244.1788371022,
-        "y": 1188.8645298548486
-      },
-      "positionAbsolute": {
-        "x": 2244.1788371022,
-        "y": 1188.8645298548486
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
         "id": "15",
@@ -3684,60 +3628,6 @@
       "positionAbsolute": {
         "x": 1632.8696403336742,
         "y": 780.8874021411851
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Handling value",
-        "display": "Retain Value Node",
-        "id": "78",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "pass"
-          },
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "label": "Retain value",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RetainValueNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 181,
-      "id": "85",
-      "position": {
-        "x": 1806.6873830464046,
-        "y": 727.0798760076045
-      },
-      "positionAbsolute": {
-        "x": 1806.6873830464046,
-        "y": 727.0798760076045
       },
       "selected": false,
       "type": "LogicalNode",
@@ -4139,11 +4029,117 @@
       "selected": false,
       "type": "outputNode",
       "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Handling value",
+        "display": "Retain Value Node",
+        "id": "103",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "pass"
+          },
+          {
+            "dataType": "value",
+            "name": "strIn"
+          }
+        ],
+        "label": "Retain value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "strOut"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RetainValueNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 181,
+      "id": "103",
+      "position": {
+        "x": 2260.44854660137,
+        "y": 1225.6859839684478
+      },
+      "positionAbsolute": {
+        "x": 2260.44854660137,
+        "y": 1225.6859839684478
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    },
+    {
+      "data": {
+        "accordion": "Handling value",
+        "display": "Retain Value Node",
+        "id": "104",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "pass"
+          },
+          {
+            "dataType": "value",
+            "name": "strIn"
+          }
+        ],
+        "label": "Retain value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "strOut"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RetainValueNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 181,
+      "id": "104",
+      "position": {
+        "x": 1817.3563749644798,
+        "y": 804.103141051795
+      },
+      "positionAbsolute": {
+        "x": 1817.3563749644798,
+        "y": 804.103141051795
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
     }
   ],
   "viewport": {
-    "x": -280.11819189725543,
-    "y": -202.70687839888973,
-    "zoom": 0.5000000000000002
+    "x": 605.5050128458889,
+    "y": -668.022824943235,
+    "zoom": 0.6973718331752028
   }
 }

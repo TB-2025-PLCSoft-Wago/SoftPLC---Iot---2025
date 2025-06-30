@@ -257,7 +257,7 @@ func (n *MqttNode) DestroyToBuildAgain() {
 		// Attempt to unsubscribe from all known topics
 		if n.topicToReceive != nil {
 			for _, topic := range n.topicToReceive {
-				if topic != "null" && topic != "empty" {
+				if topic != "null" && topic != "" {
 					token := n.client.Unsubscribe(topic)
 					token.Wait()
 				}

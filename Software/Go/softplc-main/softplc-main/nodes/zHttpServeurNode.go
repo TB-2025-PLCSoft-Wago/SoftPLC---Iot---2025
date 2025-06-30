@@ -16,9 +16,10 @@ var serveurHttpIsInit bool = false
 
 // receive msg
 var (
-	storage = make(map[int]map[string]interface{})
-	nextID  = 1
-	mu      sync.Mutex
+	lastMessage = make(map[string]interface{})
+	storage     = make(map[int]map[string]interface{})
+	nextID      = 1
+	mu          sync.Mutex
 )
 
 var (
@@ -111,15 +112,18 @@ func flatten(data map[string]interface{}, prefix string, flat map[string]interfa
 		}
 	}
 }
+
+// http://localhost:8080/msgTest
 func h1(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
 }
+
 func h2(w http.ResponseWriter, _ *http.Request) {
 	io.WriteString(w, "Hello from a HandleFunc #2!\n")
 }
 func h3(w http.ResponseWriter, r *http.Request) {
 	// Check the method
-	if r.Method != http.MethodPost {
+	if r.Method != http.MethodPut {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
@@ -150,18 +154,32 @@ func h3(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer r.Body.Close()
-	// Parser dynamiquement le JSON
-	//var data map[string]interface{}
-	var data interface{}
-	err = json.Unmarshal(body, &data)
-	switch data.(type) {
-	case map[string]interface{}:
-		fmt.Println("Objet JSON")
-	case []interface{}:
-		fmt.Println("Tableau JSON")
-	default:
-		fmt.Println("Autre type JSON")
+	/*
+		// Parser dynamiquement le JSON
+		//var data map[string]interface{}
+		var data interface{}
+		err = json.Unmarshal(body, &data)
+		switch data.(type) {
+		case map[string]interface{}:
+			fmt.Println("Objet JSON")
+		case []interface{}:
+			fmt.Println("Tableau JSON")
+		default:
+			fmt.Println("Autre type JSON")
+		}*/
+	var input map[string]interface{}
+	if err := json.Unmarshal(body, &input); err != nil {
+		http.Error(w, "JSON invalid", http.StatusBadRequest)
+		return
 	}
+
+	//storage message
+	flat := make(map[string]interface{})
+	flatten(input, "", flat)
+	mu.Lock()
+	lastMessage = flat
+	mu.Unlock()
+	bus.Publish("messagePut")
 	/*
 		if err != nil {
 			http.Error(w, "JSON invalide", http.StatusBadRequest)
@@ -381,7 +399,7 @@ func (n *HttpServerNode) ProcessLogic() {
 	if !serveurHttpIsInit {
 		go func() {
 			http.HandleFunc("/", h1)
-			http.HandleFunc("/endpoint", h2)
+			//http.HandleFunc("/endpoint", h2)
 			http.HandleFunc("/message", h3)
 			http.HandleFunc("/flatten", flattenHandler)
 			http.HandleFunc("/flatten/", getOrDeleteFlattenedHandler)
@@ -410,6 +428,19 @@ func (n *HttpServerNode) ProcessLogic() {
 			n.output[1].Output = strings.Join(temp, " ,, ") //n.lastReceive
 			outputFlag = false
 			return
+		} else if msg == "messagePut" {
+			n.output[2].Output = "-1"
+			n.output[0].Output = "1"
+			paramToSend := strings.Split(*n.input[0].Input, " ,, ")
+			var temp []string
+			for i := 0; i < len(paramToSend); i++ {
+				value := fmt.Sprintf("%v", lastMessage[paramToSend[i]])
+				temp = append(temp, value)
+
+			}
+
+			n.output[1].Output = strings.Join(temp, " ,, ") //n.lastReceive
+
 		}
 	default:
 		n.output[0].Output = "0"

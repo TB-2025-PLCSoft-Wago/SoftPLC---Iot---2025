@@ -31,8 +31,8 @@ var httpDescription = nodeDescription{
 	AccordionName: "Communication",
 	PrimaryType:   "LogicalNode",
 	Type_:         "ConfigurableNodeHttp",
-	Display:       "HTTP Node",
-	Label:         "HTTP",
+	Display:       "HTTP Client Node",
+	Label:         "HTTP Client",
 	Stretchable:   false,
 	Services:      []servicesStruct{},
 	SubServices:   []subServicesStruct{},
@@ -80,63 +80,65 @@ func (n *HttpNode) ProcessLogic() {
 	}
 
 	if *n.input[0].Input == "1" {
-		url := n.parameterValueData[_URL] + *n.input[1].Input
-		method := strings.ToUpper(*n.input[2].Input)
-		payload := ""
-		if n.input[3].Input != nil && *n.input[3].Input != "empty" && *n.input[3].Input != "null" {
-			payload = *n.input[3].Input
-		}
-
-		var req *http.Request
-		var err error
-		switch method {
-		case "POST":
-			req, err = http.NewRequest(http.MethodPost, url, bytes.NewBuffer([]byte(payload)))
-		case "PUT":
-			req, err = http.NewRequest(http.MethodPut, url, bytes.NewBuffer([]byte(payload)))
-		case "PATCH":
-			req, err = http.NewRequest(http.MethodPatch, url, bytes.NewBuffer([]byte(payload)))
-		case "DELETE":
-			req, err = http.NewRequest(http.MethodDelete, url, nil) // Or with body if needed
-		case "HEAD":
-			req, err = http.NewRequest(http.MethodHead, url, nil)
-		case "OPTIONS":
-			req, err = http.NewRequest(http.MethodOptions, url, nil)
-		default:
-			req, err = http.NewRequest(http.MethodGet, url, nil)
-		}
-
-		if err != nil {
-			n.lastResponse = fmt.Sprintf("request error: %v", err)
-			n.outputFlag = true
-			return
-		}
-
-		// Optional headers
-		for i := _HEADER_START; i+1 < len(n.parameterValueData); i += 2 {
-			key := strings.TrimSpace(n.parameterValueData[i])
-			value := strings.TrimSpace(n.parameterValueData[i+1])
-			if key != "" && value != "" {
-				req.Header.Set(key, value)
+		go func() {
+			url := n.parameterValueData[_URL] + *n.input[1].Input
+			method := strings.ToUpper(*n.input[2].Input)
+			payload := ""
+			if n.input[3].Input != nil && *n.input[3].Input != "empty" && *n.input[3].Input != "null" {
+				payload = *n.input[3].Input
 			}
-		}
 
-		// Optional authenticate
-		if n.parameterValueData[_USER] != "" && n.parameterValueData[_PASSWORD] != "" {
-			req.SetBasicAuth(n.parameterValueData[_USER], n.parameterValueData[_PASSWORD])
-		}
+			var req *http.Request
+			var err error
+			switch method {
+			case "POST":
+				req, err = http.NewRequest(http.MethodPost, url, bytes.NewBuffer([]byte(payload)))
+			case "PUT":
+				req, err = http.NewRequest(http.MethodPut, url, bytes.NewBuffer([]byte(payload)))
+			case "PATCH":
+				req, err = http.NewRequest(http.MethodPatch, url, bytes.NewBuffer([]byte(payload)))
+			case "DELETE":
+				req, err = http.NewRequest(http.MethodDelete, url, nil) // Or with body if needed
+			case "HEAD":
+				req, err = http.NewRequest(http.MethodHead, url, nil)
+			case "OPTIONS":
+				req, err = http.NewRequest(http.MethodOptions, url, nil)
+			default:
+				req, err = http.NewRequest(http.MethodGet, url, nil)
+			}
 
-		resp, err := n.client.Do(req)
-		if err != nil {
-			n.lastResponse = fmt.Sprintf("http error: %v", err)
+			if err != nil {
+				n.lastResponse = fmt.Sprintf("request error: %v", err)
+				n.outputFlag = true
+				return
+			}
+
+			// Optional headers
+			for i := _HEADER_START; i+1 < len(n.parameterValueData); i += 2 {
+				key := strings.TrimSpace(n.parameterValueData[i])
+				value := strings.TrimSpace(n.parameterValueData[i+1])
+				if key != "" && value != "" {
+					req.Header.Set(key, value)
+				}
+			}
+
+			// Optional authenticate
+			if n.parameterValueData[_USER] != "" && n.parameterValueData[_PASSWORD] != "" {
+				req.SetBasicAuth(n.parameterValueData[_USER], n.parameterValueData[_PASSWORD])
+			}
+
+			resp, err := n.client.Do(req)
+			if err != nil {
+				n.lastResponse = fmt.Sprintf("http error: %v", err)
+				n.outputFlag = true
+				return
+			}
+			defer resp.Body.Close()
+
+			body, _ := ioutil.ReadAll(resp.Body)
+			n.lastResponse = string(body)
 			n.outputFlag = true
-			return
-		}
-		defer resp.Body.Close()
-
-		body, _ := ioutil.ReadAll(resp.Body)
-		n.lastResponse = string(body)
-		n.outputFlag = true
+		}()
 	}
 
 	if n.outputFlag {

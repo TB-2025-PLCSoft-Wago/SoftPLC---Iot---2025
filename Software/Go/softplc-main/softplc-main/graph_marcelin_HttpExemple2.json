@@ -231,14 +231,19 @@
     },
     {
       "id": "reactflow__edge-44receive-40Input",
+      "selected": false,
       "source": "44",
       "sourceHandle": "receive",
+      "style": {
+        "stroke": "#003cf0"
+      },
       "target": "40",
       "targetHandle": "Input",
       "type": "step"
     },
     {
       "id": "reactflow__edge-44Resource ID-45Input",
+      "selected": false,
       "source": "44",
       "sourceHandle": "Resource ID",
       "target": "45",
@@ -247,16 +252,24 @@
     },
     {
       "id": "reactflow__edge-44receive-47str",
+      "selected": false,
       "source": "44",
       "sourceHandle": "receive",
+      "style": {
+        "stroke": "#003cf0"
+      },
       "target": "47",
       "targetHandle": "str",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-47x2-48Input",
+      "id": "reactflow__edge-47x1-48Input",
       "source": "47",
-      "sourceHandle": "x2",
+      "sourceHandle": "x1",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
       "target": "48",
       "targetHandle": "Input",
       "type": "step"
@@ -564,6 +577,7 @@
         ],
         "parameterNameData": null,
         "parameterValueData": [
+          "",
           ""
         ],
         "primaryType": "LogicalNode",
@@ -777,6 +791,7 @@
         ],
         "parameterNameData": null,
         "parameterValueData": [
+          "",
           ""
         ],
         "primaryType": "LogicalNode",
@@ -882,6 +897,7 @@
         ],
         "parameterNameData": null,
         "parameterValueData": [
+          "",
           ""
         ],
         "primaryType": "LogicalNode",
@@ -978,7 +994,7 @@
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test",
+        "selectedServiceData": "test_HTTPServeur",
         "selectedSubServiceData": "responseServeur",
         "services": [
           {
@@ -1078,7 +1094,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 261,
+      "height": 421,
       "id": "31",
       "position": {
         "x": 1201.1531947222277,
@@ -1220,6 +1236,7 @@
         ],
         "parameterNameData": null,
         "parameterValueData": [
+          "",
           ""
         ],
         "primaryType": "LogicalNode",
@@ -1326,6 +1343,7 @@
         ],
         "parameterNameData": null,
         "parameterValueData": [
+          "",
           ""
         ],
         "primaryType": "LogicalNode",
@@ -1370,7 +1388,7 @@
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test",
+        "selectedServiceData": "test_HTTPServeur",
         "selectedSubServiceData": "responseServeur2",
         "services": [
           {
@@ -1397,12 +1415,12 @@
       "height": 81,
       "id": "40",
       "position": {
-        "x": 1190.945186860571,
-        "y": 1381.080624255578
+        "x": 1169.6904319016649,
+        "y": 1389.4221111994198
       },
       "positionAbsolute": {
-        "x": 1190.945186860571,
-        "y": 1381.080624255578
+        "x": 1169.6904319016649,
+        "y": 1389.4221111994198
       },
       "selected": false,
       "type": "outputNode",
@@ -1425,7 +1443,7 @@
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test",
+        "selectedServiceData": "test_HTTPServeur",
         "selectedSubServiceData": "xDone",
         "services": [
           {
@@ -1510,19 +1528,19 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 264,
+      "height": 341,
       "id": "44",
       "position": {
         "x": 796.4743780729723,
-        "y": 1179.687005576021
+        "y": 1180.9704314735839
       },
       "positionAbsolute": {
         "x": 796.4743780729723,
-        "y": 1179.687005576021
+        "y": 1180.9704314735839
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 249
+      "width": 246
     },
     {
       "data": {
@@ -1541,7 +1559,7 @@
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test",
+        "selectedServiceData": "test_HTTPServeur",
         "selectedSubServiceData": "ID",
         "services": [
           {
@@ -1568,12 +1586,12 @@
       "height": 81,
       "id": "45",
       "position": {
-        "x": 1169.8509978864338,
-        "y": 1483.6633762655285
+        "x": 1170.984354675587,
+        "y": 1505.165034202844
       },
       "positionAbsolute": {
-        "x": 1169.8509978864338,
-        "y": 1483.6633762655285
+        "x": 1170.984354675587,
+        "y": 1505.165034202844
       },
       "selected": false,
       "type": "outputNode",
@@ -1600,8 +1618,9 @@
         "parameterNameData": null,
         "parameterValueData": [
           "",
+          "true",
           "",
-          "true"
+          ""
         ],
         "primaryType": "LogicalNode",
         "selectedFriendlyNameData": "default",
@@ -1614,7 +1633,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 264,
+      "height": 225,
       "id": "47",
       "position": {
         "x": 1454.7429774077502,
@@ -1626,7 +1645,7 @@
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 249
+      "width": 250
     },
     {
       "data": {
@@ -1671,21 +1690,21 @@
       "height": 81,
       "id": "48",
       "position": {
-        "x": 1767.7429774077502,
-        "y": 1429.7456690444374
+        "x": 1762.5636620199928,
+        "y": 1341.774226497367
       },
       "positionAbsolute": {
-        "x": 1767.7429774077502,
-        "y": 1429.7456690444374
+        "x": 1762.5636620199928,
+        "y": 1341.774226497367
       },
-      "selected": false,
+      "selected": true,
       "type": "outputNode",
       "width": 221
     }
   ],
   "viewport": {
-    "x": -1045.7429774077495,
-    "y": -1204.7456690444367,
-    "zoom": 0.9999999999999996
+    "x": -201.9266632040667,
+    "y": -647.0151263473342,
+    "zoom": 0.697371833175203
   }
 }

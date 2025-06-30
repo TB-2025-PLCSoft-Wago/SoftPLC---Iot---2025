@@ -19,9 +19,9 @@ var retainValueDescription = nodeDescription{
 	SubServices:   []subServicesStruct{},
 	Input: []dataTypeNameStruct{
 		{DataType: "bool", Name: "pass"},
-		{DataType: "value", Name: "str"},
+		{DataType: "value", Name: "strIn"},
 	},
-	Output: []dataTypeNameStruct{{DataType: "value", Name: "str"}},
+	Output: []dataTypeNameStruct{{DataType: "value", Name: "strOut"}},
 }
 
 func init() {
