@@ -66,6 +66,8 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 
 
   == User Interface (UI) Design
+  L'interface utilisateur utilise _React_, la documentation @UsingTypeScriptReact peut aider. On utilise également _React flow_, dont la documentation @Quickstart2025, qui s'occupe plus particulièrement des mécanismes liés aux Nodes, Edges, Handle, etc.
+
   === Vue programmation
 
   La vue programmation permet de créer des programmes PLC en utilisant une interface graphique. Elle est représentée par la "Programming Page" sur le schéma @fig:schemaPrincipe-vs-vue. Cette vue permet de créer par *drag and drop* des blocs logiques, des *Inputs* et des *Outputs*, et de les connecter entre eux pour créer un programme PLC.

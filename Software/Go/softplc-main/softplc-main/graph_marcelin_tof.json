@@ -1,760 +1,429 @@
 {
   "edges": [
     {
-      "id": "reactflow__edge-15Output-18Input0",
-      "selected": false,
-      "source": "15",
+      "id": "reactflow__edge-0Output-2Input0",
+      "source": "0",
       "sourceHandle": "Output",
-      "target": "18",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "2",
       "targetHandle": "Input0",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-6Output-15Input",
-      "selected": false,
+      "id": "reactflow__edge-3Output-2Input1",
+      "source": "3",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "2",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-4Output-1Input",
+      "source": "4",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "1",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-2Output-6Input0",
+      "source": "2",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "6",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-6Output-5Input",
       "source": "6",
       "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "5",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-7Output-6Input1",
+      "source": "7",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "6",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-6Output-8Input",
+      "source": "6",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "8",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-4Output-9Input",
+      "source": "4",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "9",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-10Output-11Input",
+      "source": "10",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "11",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-12Output-21strIn",
+      "source": "12",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "21",
+      "targetHandle": "strIn",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-21strOut-20Input",
+      "source": "21",
+      "sourceHandle": "strOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "20",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-22Output-21pass",
+      "source": "22",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "21",
+      "targetHandle": "pass",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-24Output-22Input",
+      "source": "24",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "22",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-25Output-13Input",
+      "source": "25",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "13",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-25Output-15Input",
+      "source": "25",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
       "target": "15",
       "targetHandle": "Input",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-15Output-4x0",
+      "id": "reactflow__edge-26Output-28Input",
       "selected": false,
-      "source": "15",
+      "source": "26",
       "sourceHandle": "Output",
-      "target": "4",
-      "targetHandle": "x0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-19Output-21Input",
-      "selected": false,
-      "source": "19",
-      "sourceHandle": "Output",
-      "target": "21",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "28",
       "targetHandle": "Input",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-15Output-7x0",
+      "id": "reactflow__edge-28Output-27Input",
       "selected": false,
-      "source": "15",
+      "source": "28",
       "sourceHandle": "Output",
-      "target": "7",
-      "targetHandle": "x0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-21Output-27Input0",
-      "selected": false,
-      "source": "21",
-      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
       "target": "27",
-      "targetHandle": "Input0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-27Output-4x1",
-      "selected": false,
-      "source": "27",
-      "sourceHandle": "Output",
-      "target": "4",
-      "targetHandle": "x1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-27Output-7x1",
-      "selected": false,
-      "source": "27",
-      "sourceHandle": "Output",
-      "target": "7",
-      "targetHandle": "x1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-27Output-18Input1",
-      "selected": false,
-      "source": "27",
-      "sourceHandle": "Output",
-      "target": "18",
-      "targetHandle": "Input1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-36Output-37Input",
-      "selected": false,
-      "source": "36",
-      "sourceHandle": "Output",
-      "target": "37",
       "targetHandle": "Input",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-37Output-33Input",
+      "id": "reactflow__edge-29Output-31Input",
       "selected": false,
-      "source": "37",
-      "sourceHandle": "Output",
-      "target": "33",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-39Output-38x0",
-      "selected": false,
-      "source": "39",
-      "sourceHandle": "Output",
-      "target": "38",
-      "targetHandle": "x0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-39Output-38x1",
-      "selected": false,
-      "source": "39",
-      "sourceHandle": "Output",
-      "target": "38",
-      "targetHandle": "x1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-39Output-38x2",
-      "selected": false,
-      "source": "39",
-      "sourceHandle": "Output",
-      "target": "38",
-      "targetHandle": "x2",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-38Output-44Parameters to receive",
-      "selected": false,
-      "source": "38",
-      "sourceHandle": "Output",
-      "target": "44",
-      "targetHandle": "Parameters to receive",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-44xDone-42Input",
-      "selected": false,
-      "source": "44",
-      "sourceHandle": "xDone",
-      "target": "42",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-44receive-30Input",
-      "selected": false,
-      "source": "44",
-      "sourceHandle": "receive",
-      "target": "30",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-44receive-40Input",
-      "selected": false,
-      "source": "44",
-      "sourceHandle": "receive",
-      "target": "40",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-44Resource ID-45Input",
-      "selected": false,
-      "source": "44",
-      "sourceHandle": "Resource ID",
-      "target": "45",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-44receive-47str",
-      "selected": false,
-      "source": "44",
-      "sourceHandle": "receive",
-      "target": "47",
-      "targetHandle": "str",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-50Output-49xEnable",
-      "source": "50",
+      "source": "29",
       "sourceHandle": "Output",
       "style": {
         "stroke": "#30362F",
         "strokeWidth": 1
       },
-      "target": "49",
-      "targetHandle": "xEnable",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-52Output-49topicToReceive",
-      "source": "52",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "49",
-      "targetHandle": "topicToReceive",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-53Output-52x0",
-      "source": "53",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "52",
-      "targetHandle": "x0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-54Output-55Input",
-      "source": "54",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "55",
+      "target": "31",
       "targetHandle": "Input",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-49msg-57Input",
+      "id": "reactflow__edge-49Output-53x0",
+      "selected": false,
       "source": "49",
-      "sourceHandle": "msg",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "57",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-49xDone-59Input",
-      "source": "49",
-      "sourceHandle": "xDone",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "59",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-60Output-53Input",
-      "source": "60",
       "sourceHandle": "Output",
       "style": {
         "stroke": "#30362F",
         "strokeWidth": 1
       },
       "target": "53",
-      "targetHandle": "Input",
+      "targetHandle": "x0",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-56Output-49topicToSend",
-      "source": "56",
+      "id": "reactflow__edge-50Output-53x1",
+      "selected": false,
+      "source": "50",
       "sourceHandle": "Output",
       "style": {
         "stroke": "#30362F",
         "strokeWidth": 1
       },
-      "target": "49",
-      "targetHandle": "topicToSend",
+      "target": "53",
+      "targetHandle": "x1",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-55Output-61x0",
-      "source": "55",
+      "id": "reactflow__edge-58Output-51y",
+      "selected": false,
+      "source": "58",
       "sourceHandle": "Output",
       "style": {
         "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "51",
+      "targetHandle": "y",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-59Output-50y",
+      "selected": false,
+      "source": "59",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "50",
+      "targetHandle": "y",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-60Output-49y",
+      "selected": false,
+      "source": "60",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362f",
+        "strokeWidth": 1
+      },
+      "target": "49",
+      "targetHandle": "y",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-57Output-49x",
+      "selected": false,
+      "source": "57",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#51b392",
+        "strokeWidth": 1
+      },
+      "target": "49",
+      "targetHandle": "x",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-57Output-50x",
+      "selected": false,
+      "source": "57",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#51b392",
+        "strokeWidth": 1
+      },
+      "target": "50",
+      "targetHandle": "x",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-57Output-51x",
+      "selected": false,
+      "source": "57",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#51b392",
+        "strokeWidth": 1
+      },
+      "target": "51",
+      "targetHandle": "x",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-53Output-62strIn",
+      "selected": false,
+      "source": "53",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362f",
+        "strokeWidth": 1
+      },
+      "target": "62",
+      "targetHandle": "strIn",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-61Q-62pass",
+      "selected": false,
+      "source": "61",
+      "sourceHandle": "Q",
+      "style": {
+        "stroke": "#30362f",
+        "strokeWidth": 1
+      },
+      "target": "62",
+      "targetHandle": "pass",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-51Output-53x2",
+      "selected": false,
+      "source": "51",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362f",
+        "strokeWidth": 1
+      },
+      "target": "53",
+      "targetHandle": "x2",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-55Output-64Input",
+      "selected": false,
+      "source": "55",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362f",
+        "strokeWidth": 1
+      },
+      "target": "64",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-55Output-61S",
+      "selected": false,
+      "source": "55",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362f",
         "strokeWidth": 1
       },
       "target": "61",
-      "targetHandle": "x0",
+      "targetHandle": "S",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-61Output-49msgToSend",
-      "source": "61",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "49",
-      "targetHandle": "msgToSend",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-55Output-56x0",
-      "source": "55",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "56",
-      "targetHandle": "x0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-62Output-52x1",
-      "source": "62",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "52",
-      "targetHandle": "x1",
-      "type": "step"
-    },
-    {
-      "id": "74",
-      "selected": false,
-      "source": "68",
-      "sourceHandle": "Output",
-      "target": "69",
-      "targetHandle": "Input0",
-      "type": "step"
-    },
-    {
-      "id": "75",
+      "id": "reactflow__edge-64Output-61R1",
       "selected": false,
       "source": "64",
       "sourceHandle": "Output",
-      "target": "68",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "77",
-      "selected": false,
-      "source": "70",
-      "sourceHandle": "Output",
-      "target": "71",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "78",
-      "selected": false,
-      "source": "68",
-      "sourceHandle": "Output",
-      "target": "65",
-      "targetHandle": "x0",
-      "type": "step"
-    },
-    {
-      "id": "79",
-      "selected": false,
-      "source": "71",
-      "sourceHandle": "Output",
-      "target": "72",
-      "targetHandle": "Input0",
-      "type": "step"
-    },
-    {
-      "id": "81",
-      "selected": false,
-      "source": "72",
-      "sourceHandle": "Output",
-      "target": "65",
-      "targetHandle": "x1",
-      "type": "step"
-    },
-    {
-      "id": "82",
-      "selected": false,
-      "source": "72",
-      "sourceHandle": "Output",
-      "target": "69",
-      "targetHandle": "Input1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-75Output-79Input",
-      "selected": false,
-      "source": "75",
-      "sourceHandle": "Output",
       "style": {
-        "stroke": "#30362F",
+        "stroke": "#30362f",
         "strokeWidth": 1
       },
-      "target": "79",
-      "targetHandle": "Input",
+      "target": "61",
+      "targetHandle": "R1",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-81Output-76str0",
+      "id": "reactflow__edge-62strOut-54Input",
       "selected": false,
-      "source": "81",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "76",
-      "targetHandle": "str0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-80Output-76str1",
-      "selected": false,
-      "source": "80",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "76",
-      "targetHandle": "str1",
-      "type": "step"
-    },
-    {
-      "id": "90",
-      "selected": false,
-      "source": "83",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "86",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "92",
-      "selected": false,
-      "source": "88",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "84",
-      "targetHandle": "str0",
-      "type": "step"
-    },
-    {
-      "id": "93",
-      "selected": false,
-      "source": "87",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "84",
-      "targetHandle": "str1",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-97Output-84str2",
-      "selected": false,
-      "source": "97",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "84",
-      "targetHandle": "str2",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-94Output-84str3",
-      "selected": false,
-      "source": "94",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "84",
-      "targetHandle": "str3",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-100Output-84str4",
-      "selected": false,
-      "source": "100",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "84",
-      "targetHandle": "str4",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-95Output-84str5",
-      "selected": false,
-      "source": "95",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "84",
-      "targetHandle": "str5",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-86Output-69Input2",
-      "source": "86",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "69",
-      "targetHandle": "Input2",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-82str-102Input",
-      "source": "82",
-      "sourceHandle": "str",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "102",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-79Output-69Input3",
-      "selected": false,
-      "source": "79",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#00ffb3",
-        "strokeWidth": 1
-      },
-      "target": "69",
-      "targetHandle": "Input3",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-47x1-48Input",
-      "source": "47",
-      "sourceHandle": "x1",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "48",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-79Output-103pass",
-      "source": "79",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "103",
-      "targetHandle": "pass",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-76str-103strIn",
-      "source": "76",
-      "sourceHandle": "str",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "103",
-      "targetHandle": "strIn",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-103strOut-82str1",
-      "source": "103",
+      "source": "62",
       "sourceHandle": "strOut",
       "style": {
-        "stroke": "#30362F",
+        "stroke": "#30362f",
         "strokeWidth": 1
       },
-      "target": "82",
-      "targetHandle": "str1",
+      "target": "54",
+      "targetHandle": "Input",
       "type": "step"
     },
     {
-      "id": "reactflow__edge-104strOut-82str0",
-      "source": "104",
+      "id": "reactflow__edge-62strOut-43Input",
+      "selected": false,
+      "source": "62",
       "sourceHandle": "strOut",
       "style": {
-        "stroke": "#30362F",
+        "stroke": "#30362f",
         "strokeWidth": 1
       },
-      "target": "82",
-      "targetHandle": "str0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-84str-104strIn",
-      "source": "84",
-      "sourceHandle": "str",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "104",
-      "targetHandle": "strIn",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-86Output-104pass",
-      "source": "86",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "target": "104",
-      "targetHandle": "pass",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-82str-106url path",
-      "source": "82",
-      "sourceHandle": "str",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "106",
-      "targetHandle": "url path",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-65Output-106method",
-      "source": "65",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "106",
-      "targetHandle": "method",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-69Output-106xSend",
-      "source": "69",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "106",
-      "targetHandle": "xSend",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-106xDone-67Input",
-      "source": "106",
-      "sourceHandle": "xDone",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "67",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-106response-66Input",
-      "source": "106",
-      "sourceHandle": "response",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "66",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-18Output-108xSend",
-      "source": "18",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "108",
-      "targetHandle": "xSend",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-4Output-108url path",
-      "source": "4",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "108",
-      "targetHandle": "url path",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-7Output-108method",
-      "source": "7",
-      "sourceHandle": "Output",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "108",
-      "targetHandle": "method",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-108xDone-10Input",
-      "source": "108",
-      "sourceHandle": "xDone",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "10",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-108response-9Input",
-      "source": "108",
-      "sourceHandle": "response",
-      "style": {
-        "stroke": "#b1b1b7",
-        "strokeWidth": 1
-      },
-      "target": "9",
+      "target": "43",
       "targetHandle": "Input",
       "type": "step"
     }
@@ -762,26 +431,135 @@
   "nodes": [
     {
       "data": {
-        "accordion": "Communication",
-        "display": "bool To string Node",
-        "id": "4",
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "0",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "test"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "0",
+      "position": {
+        "x": 216.1487862141829,
+        "y": 248.08412352508213
+      },
+      "positionAbsolute": {
+        "x": 216.1487862141829,
+        "y": 248.08412352508213
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "1",
         "inputHandle": [
           {
             "dataType": "bool",
-            "name": "x"
+            "name": "Input"
           }
         ],
-        "label": "bool to string",
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "test",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 81,
+      "id": "1",
+      "position": {
+        "x": 771.4800729855172,
+        "y": 93.42533298470686
+      },
+      "positionAbsolute": {
+        "x": 771.4800729855172,
+        "y": 93.42533298470686
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "And Node",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u0026",
         "outputHandle": [
           {
-            "dataType": "value",
+            "dataType": "bool",
             "name": "Output"
           }
         ],
         "parameterNameData": null,
         "parameterValueData": [
-          "relay?state=1",
-          "relay?state=0",
+          "",
+          "",
           "",
           ""
         ],
@@ -789,564 +567,295 @@
         "selectedFriendlyNameData": "default",
         "selectedServiceData": "default",
         "selectedSubServiceData": "default",
-        "services": [
-          {
-            "friendlyName": "testFN",
-            "nameServices": [
-              "testNS1",
-              "testNS2"
-            ]
-          }
-        ],
+        "services": [],
         "stretchable": true,
         "subServices": [],
-        "type": "BToSNode",
+        "type": "AndNode",
         "valueData": ""
       },
       "dragging": false,
       "height": 221,
+      "id": "2",
+      "position": {
+        "x": 540.6577287158893,
+        "y": 288.7398769582339
+      },
+      "positionAbsolute": {
+        "x": 540.6577287158893,
+        "y": 288.7398769582339
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "0",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "test2"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 91,
+      "id": "3",
+      "position": {
+        "x": 213.7661265756667,
+        "y": 369.58923821453646
+      },
+      "positionAbsolute": {
+        "x": 213.7661265756667,
+        "y": 369.58923821453646
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Input",
+        "dataType": "",
+        "display": "Digital Input",
+        "id": "4",
+        "inputHandle": [],
+        "label": "Input",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "DI1",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DI1",
+              "DI2",
+              "DI3",
+              "DI4",
+              "DI5",
+              "DI6",
+              "DI7",
+              "DI8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "digitalInput",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 91,
       "id": "4",
       "position": {
-        "x": 829.5321906787634,
-        "y": -58.619724944267034
+        "x": 295.84409145842375,
+        "y": 17.982260032844188
       },
       "positionAbsolute": {
-        "x": 829.5321906787634,
-        "y": -58.619724944267034
+        "x": 295.84409145842375,
+        "y": 17.982260032844188
       },
       "selected": false,
-      "type": "LogicalNode",
-      "width": 246
+      "type": "inputNode",
+      "width": 221
     },
     {
       "data": {
-        "accordion": "View web",
+        "accordion": "Variables",
         "dataType": "",
-        "display": "Input bool",
+        "display": "Output Bool ",
+        "id": "1",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "test2",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 81,
+      "id": "5",
+      "position": {
+        "x": 878.8576344621326,
+        "y": 250.79269813752109
+      },
+      "positionAbsolute": {
+        "x": 878.8576344621326,
+        "y": 250.79269813752109
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Or Node",
         "id": "6",
-        "inputHandle": [],
-        "label": "view Input bool",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u003e=1",
         "outputHandle": [
           {
             "dataType": "bool",
             "name": "Output"
           }
         ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
+        "parameterNameData": null,
         "parameterValueData": [
-          "test_HTTP",
-          "relay On"
+          "",
+          "",
+          "",
+          ""
         ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
         "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "bool",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
         "subServices": [],
-        "type": "viewWebInputBool",
+        "type": "OrNode",
         "valueData": ""
       },
       "dragging": false,
-      "height": 91,
+      "height": 221,
       "id": "6",
       "position": {
-        "x": 330.4716710173093,
-        "y": -260.3817301444469
+        "x": 708.8033392183258,
+        "y": 404.8598710921208
       },
       "positionAbsolute": {
-        "x": 330.4716710173093,
-        "y": -260.3817301444469
+        "x": 708.8033392183258,
+        "y": 404.8598710921208
       },
       "selected": false,
-      "type": "inputNode",
-      "width": 221
+      "type": "LogicalNode",
+      "width": 101
     },
     {
       "data": {
-        "accordion": "Communication",
-        "display": "bool To string Node",
+        "accordion": "Input",
+        "dataType": "",
+        "display": "Digital Input",
         "id": "4",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "x"
-          }
-        ],
-        "label": "bool to string",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "GET",
-          "GET",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [
-          {
-            "friendlyName": "testFN",
-            "nameServices": [
-              "testNS1",
-              "testNS2"
-            ]
-          }
-        ],
-        "stretchable": true,
-        "subServices": [],
-        "type": "BToSNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 221,
-      "id": "7",
-      "position": {
-        "x": 821.9425025463447,
-        "y": 177.83591046369702
-      },
-      "positionAbsolute": {
-        "x": 821.9425025463447,
-        "y": 177.83591046369702
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output value",
-        "id": "9",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "Input"
-          }
-        ],
-        "label": "view Output Value",
-        "outputHandle": [],
-        "parameterNameData": null,
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test_HTTP",
-        "selectedSubServiceData": "Response",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4",
-              "DO5",
-              "DO6",
-              "DO7",
-              "DO8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebOutputValue",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 81,
-      "id": "9",
-      "position": {
-        "x": 1453.4162640955412,
-        "y": 97.7641669284371
-      },
-      "positionAbsolute": {
-        "x": 1453.4162640955412,
-        "y": 97.7641669284371
-      },
-      "selected": false,
-      "type": "outputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output Bool",
-        "id": "10",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "view Output Bool",
-        "outputHandle": [],
-        "parameterNameData": null,
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test_HTTP",
-        "selectedSubServiceData": "xDone",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4",
-              "DO5",
-              "DO6",
-              "DO7",
-              "DO8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebOutputBool",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 81,
-      "id": "10",
-      "position": {
-        "x": 1449.618989359964,
-        "y": -58.82275857395416
-      },
-      "positionAbsolute": {
-        "x": 1449.618989359964,
-        "y": -58.82275857395416
-      },
-      "selected": false,
-      "type": "outputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Edge Detection",
-        "display": "RF_trig Node",
-        "id": "15",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "RF_trig",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RFtrigNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 141,
-      "id": "15",
-      "position": {
-        "x": 587.9250242599359,
-        "y": -280.5656432466119
-      },
-      "positionAbsolute": {
-        "x": 587.9250242599359,
-        "y": -280.5656432466119
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "Or Node",
-        "id": "18",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "\u003e=1",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "OrNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 221,
-      "id": "18",
-      "position": {
-        "x": 959.1167402326805,
-        "y": -311.6600664771563
-      },
-      "positionAbsolute": {
-        "x": 959.1167402326805,
-        "y": -311.6600664771563
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Input bool",
-        "id": "6",
         "inputHandle": [],
-        "label": "view Input bool",
+        "label": "Input",
         "outputHandle": [
           {
             "dataType": "bool",
             "name": "Output"
           }
         ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "test_HTTP",
-          "relay Off"
-        ],
+        "parameterNameData": null,
         "primaryType": "inputNode",
         "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
+        "selectedServiceData": "DI2",
         "selectedSubServiceData": "",
         "services": [
           {
             "friendlyName": "",
             "nameServices": [
-              "bool",
-              "number",
-              "string"
+              "DI1",
+              "DI2",
+              "DI3",
+              "DI4",
+              "DI5",
+              "DI6",
+              "DI7",
+              "DI8"
             ]
           }
         ],
         "stretchable": false,
         "subServices": [],
-        "type": "viewWebInputBool",
+        "type": "digitalInput",
         "valueData": ""
       },
       "draggable": true,
       "dragging": false,
       "height": 91,
-      "id": "19",
+      "id": "7",
       "position": {
-        "x": 132.3765494745321,
-        "y": 28.60441087134558
+        "x": 318.8453630768932,
+        "y": 529.0898751781222
       },
       "positionAbsolute": {
-        "x": 132.3765494745321,
-        "y": 28.60441087134558
+        "x": 318.8453630768932,
+        "y": 529.0898751781222
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Edge Detection",
-        "display": "RF_trig Node",
-        "id": "15",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "RF_trig",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RFtrigNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 141,
-      "id": "21",
-      "position": {
-        "x": 400.1360085896339,
-        "y": 71.72976793081057
-      },
-      "positionAbsolute": {
-        "x": 400.1360085896339,
-        "y": 71.72976793081057
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "Or Node",
-        "id": "18",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "\u003e=1",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "OrNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 181,
-      "id": "27",
-      "position": {
-        "x": 569.7581448850576,
-        "y": -87.62488905585201
-      },
-      "positionAbsolute": {
-        "x": 569.7581448850576,
-        "y": -87.62488905585201
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output value",
-        "id": "30",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "Input"
-          }
-        ],
-        "label": "view Output Value",
-        "outputHandle": [],
-        "parameterNameData": null,
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test_HTTPServeur",
-        "selectedSubServiceData": "responseServeur",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4",
-              "DO5",
-              "DO6",
-              "DO7",
-              "DO8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebOutputValue",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 81,
-      "id": "30",
-      "position": {
-        "x": 406.6053665819104,
-        "y": 1244.4333770720584
-      },
-      "positionAbsolute": {
-        "x": 406.6053665819104,
-        "y": 1244.4333770720584
-      },
-      "selected": false,
-      "type": "outputNode",
       "width": 221
     },
     {
@@ -1354,7 +863,7 @@
         "accordion": "Output",
         "dataType": "",
         "display": "Digital output",
-        "id": "33",
+        "id": "8",
         "inputHandle": [
           {
             "dataType": "bool",
@@ -1390,14 +899,14 @@
       },
       "dragging": false,
       "height": 81,
-      "id": "33",
+      "id": "8",
       "position": {
-        "x": 146.8313361355854,
-        "y": 1552.9495294066278
+        "x": 939.5430285501837,
+        "y": 443.8263097546772
       },
       "positionAbsolute": {
-        "x": 146.8313361355854,
-        "y": 1552.9495294066278
+        "x": 939.5430285501837,
+        "y": 443.8263097546772
       },
       "selected": false,
       "type": "outputNode",
@@ -1405,53 +914,110 @@
     },
     {
       "data": {
-        "accordion": "Input",
+        "accordion": "Output",
         "dataType": "",
-        "display": "Digital Input",
-        "id": "36",
+        "display": "Digital output",
+        "id": "8",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Output",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "DO1",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "digitalOutput",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 81,
+      "id": "9",
+      "position": {
+        "x": 772.8693128000161,
+        "y": -54.706343857188
+      },
+      "positionAbsolute": {
+        "x": 772.8693128000161,
+        "y": -54.706343857188
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "0",
         "inputHandle": [],
-        "label": "Input",
+        "label": "variable Input bool",
         "outputHandle": [
           {
             "dataType": "bool",
             "name": "Output"
           }
         ],
-        "parameterNameData": null,
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "test2"
+        ],
         "primaryType": "inputNode",
         "selectedFriendlyNameData": "",
-        "selectedServiceData": "DI4",
+        "selectedServiceData": "default",
         "selectedSubServiceData": "",
         "services": [
           {
             "friendlyName": "",
             "nameServices": [
-              "DI1",
-              "DI2",
-              "DI3",
-              "DI4",
-              "DI5",
-              "DI6",
-              "DI7",
-              "DI8"
+              "bool",
+              "number",
+              "string"
             ]
           }
         ],
         "stretchable": false,
         "subServices": [],
-        "type": "digitalInput",
+        "type": "variableInputBool",
         "valueData": ""
       },
+      "draggable": true,
       "dragging": false,
       "height": 91,
-      "id": "36",
+      "id": "10",
       "position": {
-        "x": -301.7307450006979,
-        "y": 1494.8722404402142
+        "x": 291.76728578603417,
+        "y": 661.6635943099742
       },
       "positionAbsolute": {
-        "x": -301.7307450006979,
-        "y": 1494.8722404402142
+        "x": 291.76728578603417,
+        "y": 661.6635943099742
       },
       "selected": false,
       "type": "inputNode",
@@ -1459,440 +1025,10 @@
     },
     {
       "data": {
-        "accordion": "Logical gate",
-        "display": "Not Node",
-        "id": "37",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "Not",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "NotNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 141,
-      "id": "37",
-      "position": {
-        "x": -26.043139801409552,
-        "y": 1492.5748437302202
-      },
-      "positionAbsolute": {
-        "x": -26.043139801409552,
-        "y": 1492.5748437302202
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Communication",
-        "display": "bool To string Node",
-        "id": "38",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "x"
-          }
-        ],
-        "label": "bool to string",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "data-id",
-          "value",
-          "data-attributes-value2",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [
-          {
-            "friendlyName": "testFN",
-            "nameServices": [
-              "testNS1",
-              "testNS2"
-            ]
-          }
-        ],
-        "stretchable": true,
-        "subServices": [],
-        "type": "BToSNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 261,
-      "id": "38",
-      "position": {
-        "x": -302.7801439946036,
-        "y": 1138.0881400275755
-      },
-      "positionAbsolute": {
-        "x": -302.7801439946036,
-        "y": 1138.0881400275755
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "Not Node",
-        "id": "39",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "Not",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "NotNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 141,
-      "id": "39",
-      "position": {
-        "x": -493.4278089530394,
-        "y": 1136.7986525242
-      },
-      "positionAbsolute": {
-        "x": -493.4278089530394,
-        "y": 1136.7986525242
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output value",
-        "id": "30",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "Input"
-          }
-        ],
-        "label": "view Output Value",
-        "outputHandle": [],
-        "parameterNameData": null,
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test_HTTPServeur",
-        "selectedSubServiceData": "responseServeur2",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4",
-              "DO5",
-              "DO6",
-              "DO7",
-              "DO8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebOutputValue",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 81,
-      "id": "40",
-      "position": {
-        "x": 410.9451868605711,
-        "y": 1349.080624255578
-      },
-      "positionAbsolute": {
-        "x": 410.9451868605711,
-        "y": 1349.080624255578
-      },
-      "selected": false,
-      "type": "outputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output Bool",
-        "id": "42",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "view Output Bool",
-        "outputHandle": [],
-        "parameterNameData": null,
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test_HTTPServeur",
-        "selectedSubServiceData": "xDone",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4",
-              "DO5",
-              "DO6",
-              "DO7",
-              "DO8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebOutputBool",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 81,
-      "id": "42",
-      "position": {
-        "x": 406.6176840210628,
-        "y": 1157.0370357904749
-      },
-      "positionAbsolute": {
-        "x": 406.6176840210628,
-        "y": 1157.0370357904749
-      },
-      "selected": false,
-      "type": "outputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Communication",
-        "display": "HTTP Server Node",
-        "id": "44",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "Parameters to receive"
-          }
-        ],
-        "label": "HTTP Server",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xDone"
-          },
-          {
-            "dataType": "value",
-            "name": "receive"
-          },
-          {
-            "dataType": "value",
-            "name": "Resource ID"
-          }
-        ],
-        "parameterNameData": [
-          "url server",
-          "user server",
-          "password server"
-        ],
-        "parameterValueData": [
-          "",
-          "admin",
-          "secret",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "ConfigurableNodeHttpServer",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 341,
-      "id": "44",
-      "position": {
-        "x": 16.474378072972286,
-        "y": 1147.687005576021
-      },
-      "positionAbsolute": {
-        "x": 16.474378072972286,
-        "y": 1147.687005576021
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output value",
-        "id": "30",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "Input"
-          }
-        ],
-        "label": "view Output Value",
-        "outputHandle": [],
-        "parameterNameData": null,
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "test_HTTPServeur",
-        "selectedSubServiceData": "ID",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4",
-              "DO5",
-              "DO6",
-              "DO7",
-              "DO8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebOutputValue",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 81,
-      "id": "45",
-      "position": {
-        "x": 389.8509978864338,
-        "y": 1451.6633762655285
-      },
-      "positionAbsolute": {
-        "x": 389.8509978864338,
-        "y": 1451.6633762655285
-      },
-      "selected": false,
-      "type": "outputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Communication",
-        "display": "string To bool Node",
-        "id": "47",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "label": "string to bool",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "x"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "true",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "StringToBoolNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 221,
-      "id": "47",
-      "position": {
-        "x": 674.7429774077502,
-        "y": 1245.7737828710935
-      },
-      "positionAbsolute": {
-        "x": 674.7429774077502,
-        "y": 1245.7737828710935
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
-    },
-    {
-      "data": {
         "accordion": "Output",
         "dataType": "",
         "display": "Digital output",
-        "id": "48",
+        "id": "11",
         "inputHandle": [
           {
             "dataType": "bool",
@@ -1928,14 +1064,14 @@
       },
       "dragging": false,
       "height": 81,
-      "id": "48",
+      "id": "11",
       "position": {
-        "x": 968.6213770894161,
-        "y": 1397.9952582912756
+        "x": 634.3525662669775,
+        "y": 675.5996539546753
       },
       "positionAbsolute": {
-        "x": 968.6213770894161,
-        "y": 1397.9952582912756
+        "x": 634.3525662669775,
+        "y": 675.5996539546753
       },
       "selected": false,
       "type": "outputNode",
@@ -1943,253 +1079,24 @@
     },
     {
       "data": {
-        "accordion": "Communication",
-        "display": "mqtt Node",
-        "id": "49",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xEnable"
-          },
-          {
-            "dataType": "value",
-            "name": "topicToSend"
-          },
-          {
-            "dataType": "value",
-            "name": "msgToSend"
-          },
-          {
-            "dataType": "value",
-            "name": "topicToReceive"
-          }
-        ],
-        "label": "MQTT",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xDone"
-          },
-          {
-            "dataType": "value",
-            "name": "msg"
-          }
-        ],
-        "parameterNameData": [
-          "broker",
-          "port",
-          "user",
-          "passwordServer"
-        ],
-        "parameterValueData": [
-          "broker.emqx.io",
-          "1883",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "ConfigurableNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 421,
-      "id": "49",
-      "position": {
-        "x": 367.76960666198676,
-        "y": 1841.3716265474045
-      },
-      "positionAbsolute": {
-        "x": 367.76960666198676,
-        "y": 1841.3716265474045
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "Not Node",
-        "id": "39",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "Not",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "NotNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 141,
-      "id": "50",
-      "position": {
-        "x": 205.171114529225,
-        "y": 1710.2090427371609
-      },
-      "positionAbsolute": {
-        "x": 205.171114529225,
-        "y": 1710.2090427371609
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Communication",
-        "display": "bool To string Node",
-        "id": "52",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "x"
-          }
-        ],
-        "label": "bool to string",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "shellies/shelly-s1/#",
-          "shellies/shelly-s1/temperature",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [
-          {
-            "friendlyName": "testFN",
-            "nameServices": [
-              "testNS1",
-              "testNS2"
-            ]
-          }
-        ],
-        "stretchable": true,
-        "subServices": [],
-        "type": "BToSNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 221,
-      "id": "52",
-      "position": {
-        "x": 30.387314645597627,
-        "y": 2343.49029599079
-      },
-      "positionAbsolute": {
-        "x": 30.387314645597627,
-        "y": 2343.49029599079
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "Not Node",
-        "id": "39",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "Not",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "NotNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 141,
-      "id": "53",
-      "position": {
-        "x": -142.40826326056887,
-        "y": 2263.244317696913
-      },
-      "positionAbsolute": {
-        "x": -142.40826326056887,
-        "y": 2263.244317696913
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
+        "accordion": "Variables",
         "dataType": "",
-        "display": "Input bool",
-        "id": "6",
+        "display": "Input value ",
+        "id": "12",
         "inputHandle": [],
-        "label": "view Input bool",
+        "label": "variable Input value",
         "outputHandle": [
           {
-            "dataType": "bool",
+            "dataType": "value",
             "name": "Output"
           }
         ],
         "parameterNameData": [
-          "appliance name",
-          "signal name"
+          "name",
+          "default value"
         ],
         "parameterValueData": [
-          "mqtt_H\u0026T",
-          "test"
+          "test_var_Value"
         ],
         "primaryType": "inputNode",
         "selectedFriendlyNameData": "",
@@ -2199,7 +1106,7 @@
           {
             "friendlyName": "",
             "nameServices": [
-              "bool",
+              "value",
               "number",
               "string"
             ]
@@ -2207,20 +1114,19 @@
         ],
         "stretchable": false,
         "subServices": [],
-        "type": "viewWebInputBool",
+        "type": "variableInputValue",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
       "height": 91,
-      "id": "54",
+      "id": "12",
       "position": {
-        "x": -394.5956636439132,
-        "y": 1884.5401970139965
+        "x": 146.34151115305997,
+        "y": 1170.0465811655733
       },
       "positionAbsolute": {
-        "x": -394.5956636439132,
-        "y": 1884.5401970139965
+        "x": 146.34151115305997,
+        "y": 1170.0465811655733
       },
       "selected": false,
       "type": "inputNode",
@@ -2228,9 +1134,225 @@
     },
     {
       "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Value ",
+        "id": "13",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "test_var_Value",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 81,
+      "id": "13",
+      "position": {
+        "x": 606.300425623507,
+        "y": 862.8259873042733
+      },
+      "positionAbsolute": {
+        "x": 606.300425623507,
+        "y": 862.8259873042733
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "15",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "test314",
+        "selectedSubServiceData": "test3",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 81,
+      "id": "15",
+      "position": {
+        "x": 607.8586183368086,
+        "y": 958.2188870580931
+      },
+      "positionAbsolute": {
+        "x": 607.8586183368086,
+        "y": 958.2188870580931
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "15",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "test_var_Value",
+        "selectedSubServiceData": "out",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 81,
+      "id": "20",
+      "position": {
+        "x": 653.5566415909682,
+        "y": 1085.5422315022017
+      },
+      "positionAbsolute": {
+        "x": 653.5566415909682,
+        "y": 1085.5422315022017
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Handling value",
+        "display": "Retain Value Node",
+        "id": "21",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "pass"
+          },
+          {
+            "dataType": "value",
+            "name": "strIn"
+          }
+        ],
+        "label": "Retain value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "strOut"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RetainValueNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 181,
+      "id": "21",
+      "position": {
+        "x": 471.7488774679596,
+        "y": 1049.3360249831235
+      },
+      "positionAbsolute": {
+        "x": 471.7488774679596,
+        "y": 1049.3360249831235
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    },
+    {
+      "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
-        "id": "55",
+        "id": "22",
         "inputHandle": [
           {
             "dataType": "bool",
@@ -2261,14 +1383,608 @@
       },
       "dragging": false,
       "height": 141,
-      "id": "55",
+      "id": "22",
       "position": {
-        "x": -107.34635961454481,
-        "y": 1907.7819780265456
+        "x": 266.307186262484,
+        "y": 1016.6804376508708
       },
       "positionAbsolute": {
-        "x": -107.34635961454481,
-        "y": 1907.7819780265456
+        "x": 266.307186262484,
+        "y": 1016.6804376508708
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input bool",
+        "id": "24",
+        "inputHandle": [],
+        "label": "view Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "test_var_Value",
+          "pass"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "24",
+      "position": {
+        "x": 17.15688620117413,
+        "y": 1041.9761617458867
+      },
+      "positionAbsolute": {
+        "x": 17.15688620117413,
+        "y": 1041.9761617458867
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input value",
+        "id": "25",
+        "inputHandle": [],
+        "label": "view Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "test_var_Value",
+          "value to out"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "25",
+      "position": {
+        "x": 117.14676887191678,
+        "y": 877.9361820910593
+      },
+      "positionAbsolute": {
+        "x": 117.14676887191678,
+        "y": 877.9361820910593
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "26",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "test_ContreReaction_bool"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "26",
+      "position": {
+        "x": 72.91968027937403,
+        "y": 1362.4838645343739
+      },
+      "positionAbsolute": {
+        "x": 72.91968027937403,
+        "y": 1362.4838645343739
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "27",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "test_ContreReaction_bool",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 81,
+      "id": "27",
+      "position": {
+        "x": 485.06613057175184,
+        "y": 1360.3146244906025
+      },
+      "positionAbsolute": {
+        "x": 485.06613057175184,
+        "y": 1360.3146244906025
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Not Node",
+        "id": "28",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Not",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "NotNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 141,
+      "id": "28",
+      "position": {
+        "x": 340.2044247820562,
+        "y": 1332.1018649480852
+      },
+      "positionAbsolute": {
+        "x": 340.2044247820562,
+        "y": 1332.1018649480852
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "26",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "test_ContreReaction_bool"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 91,
+      "id": "29",
+      "position": {
+        "x": 73.35161130250444,
+        "y": 1496.343004898111
+      },
+      "positionAbsolute": {
+        "x": 73.35161130250444,
+        "y": 1496.343004898111
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "31",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "test_ContreReaction_bool",
+        "selectedSubServiceData": "test_ContreReaction_bool",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 81,
+      "id": "31",
+      "position": {
+        "x": 411.46047381361797,
+        "y": 1501.464947361325
+      },
+      "positionAbsolute": {
+        "x": 411.46047381361797,
+        "y": 1501.464947361325
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "43",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "test_ContreReaction_value",
+        "selectedSubServiceData": "BoolToString_Output",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 81,
+      "id": "43",
+      "position": {
+        "x": 896.3557450883189,
+        "y": 2065.115304184989
+      },
+      "positionAbsolute": {
+        "x": 896.3557450883189,
+        "y": 2065.115304184989
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Comparator",
+        "display": "EQ Node",
+        "id": "49",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "x"
+          },
+          {
+            "dataType": "value",
+            "name": "y"
+          }
+        ],
+        "label": "x = y",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "EQNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 181,
+      "id": "49",
+      "position": {
+        "x": 193.6070412107632,
+        "y": 1856.2907055222804
+      },
+      "positionAbsolute": {
+        "x": 193.6070412107632,
+        "y": 1856.2907055222804
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    },
+    {
+      "data": {
+        "accordion": "Comparator",
+        "display": "EQ Node",
+        "id": "49",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "x"
+          },
+          {
+            "dataType": "value",
+            "name": "y"
+          }
+        ],
+        "label": "x = y",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "EQNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 181,
+      "id": "50",
+      "position": {
+        "x": 192.48248814452057,
+        "y": 2001.158315841199
+      },
+      "positionAbsolute": {
+        "x": 192.48248814452057,
+        "y": 2001.158315841199
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    },
+    {
+      "data": {
+        "accordion": "Comparator",
+        "display": "EQ Node",
+        "id": "49",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "x"
+          },
+          {
+            "dataType": "value",
+            "name": "y"
+          }
+        ],
+        "label": "x = y",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "EQNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 181,
+      "id": "51",
+      "position": {
+        "x": 192.386048904934,
+        "y": 2139.44599766952
+      },
+      "positionAbsolute": {
+        "x": 192.386048904934,
+        "y": 2139.44599766952
       },
       "selected": false,
       "type": "LogicalNode",
@@ -2278,7 +1994,7 @@
       "data": {
         "accordion": "Communication",
         "display": "bool To string Node",
-        "id": "52",
+        "id": "41",
         "inputHandle": [
           {
             "dataType": "bool",
@@ -2294,7 +2010,9 @@
         ],
         "parameterNameData": null,
         "parameterValueData": [
-          "shellies/command",
+          "Hi",
+          "Bye",
+          "",
           "",
           ""
         ],
@@ -2318,15 +2036,15 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 181,
-      "id": "56",
+      "height": 261,
+      "id": "53",
       "position": {
-        "x": 57.98197686512847,
-        "y": 1896.6615563363557
+        "x": 402.1467344177387,
+        "y": 1955.4240787372082
       },
       "positionAbsolute": {
-        "x": 57.98197686512847,
-        "y": 1896.6615563363557
+        "x": 402.1467344177387,
+        "y": 1955.4240787372082
       },
       "selected": false,
       "type": "LogicalNode",
@@ -2334,23 +2052,23 @@
     },
     {
       "data": {
-        "accordion": "View web",
+        "accordion": "Variables",
         "dataType": "",
-        "display": "Output value",
-        "id": "9",
+        "display": "Output Value ",
+        "id": "47",
         "inputHandle": [
           {
             "dataType": "value",
             "name": "Input"
           }
         ],
-        "label": "view Output Value",
+        "label": "variable Output Value",
         "outputHandle": [],
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "mqtt_H\u0026T",
-        "selectedSubServiceData": "msg",
+        "selectedServiceData": "test_ContreReaction_value",
+        "selectedSubServiceData": "",
         "services": [
           {
             "friendlyName": "",
@@ -2368,74 +2086,20 @@
         ],
         "stretchable": false,
         "subServices": [],
-        "type": "viewWebOutputValue",
+        "type": "variableOutputValue",
         "valueData": ""
       },
       "draggable": true,
       "dragging": false,
       "height": 81,
-      "id": "57",
+      "id": "54",
       "position": {
-        "x": 739.6070498385732,
-        "y": 2063.6500732692402
+        "x": 952.5121039300709,
+        "y": 1954.3391066038644
       },
       "positionAbsolute": {
-        "x": 739.6070498385732,
-        "y": 2063.6500732692402
-      },
-      "selected": false,
-      "type": "outputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output Bool",
-        "id": "59",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "view Output Bool",
-        "outputHandle": [],
-        "parameterNameData": null,
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "mqtt_H\u0026T",
-        "selectedSubServiceData": "xDone",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4",
-              "DO5",
-              "DO6",
-              "DO7",
-              "DO8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebOutputBool",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 81,
-      "id": "59",
-      "position": {
-        "x": 723.5803938182773,
-        "y": 1916.0644751483258
-      },
-      "positionAbsolute": {
-        "x": 723.5803938182773,
-        "y": 1916.0644751483258
+        "x": 952.5121039300709,
+        "y": 1954.3391066038644
       },
       "selected": false,
       "type": "outputNode",
@@ -2446,7 +2110,7 @@
         "accordion": "View web",
         "dataType": "",
         "display": "Input bool",
-        "id": "6",
+        "id": "55",
         "inputHandle": [],
         "label": "view Input bool",
         "outputHandle": [
@@ -2460,8 +2124,8 @@
           "signal name"
         ],
         "parameterValueData": [
-          "mqtt_H\u0026T",
-          "disableReceive"
+          "test_ContreReaction_value",
+          "start"
         ],
         "primaryType": "inputNode",
         "selectedFriendlyNameData": "",
@@ -2481,18 +2145,194 @@
         "subServices": [],
         "type": "viewWebInputBool",
         "valueData": ""
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "55",
+      "position": {
+        "x": 27.31940774415071,
+        "y": 1724.9920557980163
+      },
+      "positionAbsolute": {
+        "x": 27.31940774415071,
+        "y": 1724.9920557980163
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input value ",
+        "id": "57",
+        "inputHandle": [],
+        "label": "variable Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "test_ContreReaction_value"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "57",
+      "position": {
+        "x": -100.38485569303495,
+        "y": 1849.0165109064358
+      },
+      "positionAbsolute": {
+        "x": -100.38485569303495,
+        "y": 1849.0165109064358
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "58",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "Bye"
+      },
+      "dragging": false,
+      "height": 91,
+      "id": "58",
+      "position": {
+        "x": -79.83916525495715,
+        "y": 2219.731643262241
+      },
+      "positionAbsolute": {
+        "x": -79.83916525495715,
+        "y": 2219.731643262241
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "58",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "Hi"
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 91,
+      "id": "59",
+      "position": {
+        "x": -77.60419031484253,
+        "y": 2082.7182876534544
+      },
+      "positionAbsolute": {
+        "x": -77.60419031484253,
+        "y": 2082.7182876534544
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 221
+    },
+    {
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "58",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "empty"
       },
       "draggable": true,
       "dragging": false,
       "height": 91,
       "id": "60",
       "position": {
-        "x": -418.3387208965893,
-        "y": 2199.0465887311657
+        "x": -92.0549658805433,
+        "y": 1959.7298238668081
       },
       "positionAbsolute": {
-        "x": -418.3387208965893,
-        "y": 2199.0465887311657
+        "x": -92.0549658805433,
+        "y": 1959.7298238668081
       },
       "selected": false,
       "type": "inputNode",
@@ -2500,25 +2340,29 @@
     },
     {
       "data": {
-        "accordion": "Communication",
-        "display": "bool To string Node",
-        "id": "52",
+        "accordion": "Logical gate",
+        "display": "SR Node",
+        "id": "61",
         "inputHandle": [
           {
             "dataType": "bool",
-            "name": "x"
+            "name": "S"
+          },
+          {
+            "dataType": "bool",
+            "name": "R1"
           }
         ],
-        "label": "bool to string",
+        "label": "SR",
         "outputHandle": [
           {
-            "dataType": "value",
-            "name": "Output"
+            "dataType": "bool",
+            "name": "Q"
           }
         ],
         "parameterNameData": null,
         "parameterValueData": [
-          "announce",
+          "",
           "",
           ""
         ],
@@ -2526,41 +2370,85 @@
         "selectedFriendlyNameData": "default",
         "selectedServiceData": "default",
         "selectedSubServiceData": "default",
-        "services": [
-          {
-            "friendlyName": "testFN",
-            "nameServices": [
-              "testNS1",
-              "testNS2"
-            ]
-          }
-        ],
-        "stretchable": true,
+        "services": [],
+        "stretchable": false,
         "subServices": [],
-        "type": "BToSNode",
+        "type": "SRNode",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
       "height": 181,
       "id": "61",
       "position": {
-        "x": 25.613980500315336,
-        "y": 2089.438437550961
+        "x": 604.8851419525438,
+        "y": 1729.5997123679895
       },
       "positionAbsolute": {
-        "x": 25.613980500315336,
-        "y": 2089.438437550961
+        "x": 604.8851419525438,
+        "y": 1729.5997123679895
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 246
+      "width": 101
+    },
+    {
+      "data": {
+        "accordion": "Handling value",
+        "display": "Retain Value Node",
+        "id": "62",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "pass"
+          },
+          {
+            "dataType": "value",
+            "name": "strIn"
+          }
+        ],
+        "label": "Retain value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "strOut"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RetainValueNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 181,
+      "id": "62",
+      "position": {
+        "x": 734.3383918140896,
+        "y": 1921.1235645693605
+      },
+      "positionAbsolute": {
+        "x": 734.3383918140896,
+        "y": 1921.1235645693605
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
     },
     {
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
-        "id": "39",
+        "id": "64",
         "inputHandle": [
           {
             "dataType": "bool",
@@ -2589,17 +2477,16 @@
         "type": "NotNode",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
       "height": 141,
-      "id": "62",
+      "id": "64",
       "position": {
-        "x": -133.25167806025087,
-        "y": 2427.6460907222972
+        "x": 406.86061346393836,
+        "y": 1797.6062589846201
       },
       "positionAbsolute": {
-        "x": -133.25167806025087,
-        "y": 2427.6460907222972
+        "x": 406.86061346393836,
+        "y": 1797.6062589846201
       },
       "selected": false,
       "type": "LogicalNode",
@@ -2607,12 +2494,12 @@
     },
     {
       "data": {
-        "accordion": "View web",
+        "accordion": "Variables",
         "dataType": "",
-        "display": "Input bool",
-        "id": "6",
+        "display": "Input bool ",
+        "id": "65",
         "inputHandle": [],
-        "label": "view Input bool",
+        "label": "variable Input bool",
         "outputHandle": [
           {
             "dataType": "bool",
@@ -2620,12 +2507,8 @@
           }
         ],
         "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "Light",
-          "relay On"
+          "name",
+          "default value"
         ],
         "primaryType": "inputNode",
         "selectedFriendlyNameData": "",
@@ -2643,20 +2526,19 @@
         ],
         "stretchable": false,
         "subServices": [],
-        "type": "viewWebInputBool",
+        "type": "variableInputBool",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
       "height": 91,
-      "id": "64",
+      "id": "65",
       "position": {
-        "x": 1961.3016558669365,
-        "y": 339.1669157312512
+        "x": 55.8298988056467,
+        "y": 2368.6061727237557
       },
       "positionAbsolute": {
-        "x": 1961.3016558669365,
-        "y": 339.1669157312512
+        "x": 55.8298988056467,
+        "y": 2368.6061727237557
       },
       "selected": false,
       "type": "inputNode",
@@ -2664,137 +2546,75 @@
     },
     {
       "data": {
-        "accordion": "Communication",
-        "display": "bool To string Node",
-        "id": "4",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "x"
-          }
-        ],
-        "label": "bool to string",
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input value ",
+        "id": "66",
+        "inputHandle": [],
+        "label": "variable Input value",
         "outputHandle": [
           {
             "dataType": "value",
             "name": "Output"
           }
         ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "GET",
-          "GET",
-          "",
-          ""
+        "parameterNameData": [
+          "name",
+          "default value"
         ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
         "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [
-          {
-            "friendlyName": "testFN",
-            "nameServices": [
-              "testNS1",
-              "testNS2"
-            ]
-          }
-        ],
-        "stretchable": true,
-        "subServices": [],
-        "type": "BToSNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 221,
-      "id": "65",
-      "position": {
-        "x": 2521.349129854612,
-        "y": 996.404780730018
-      },
-      "positionAbsolute": {
-        "x": 2521.349129854612,
-        "y": 996.404780730018
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output value",
-        "id": "9",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "Input"
-          }
-        ],
-        "label": "view Output Value",
-        "outputHandle": [],
-        "parameterNameData": null,
-        "primaryType": "outputNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "Light",
-        "selectedSubServiceData": "Response",
+        "selectedSubServiceData": "",
         "services": [
           {
             "friendlyName": "",
             "nameServices": [
-              "DO1",
-              "DO2",
-              "DO3",
-              "DO4",
-              "DO5",
-              "DO6",
-              "DO7",
-              "DO8"
+              "value",
+              "number",
+              "string"
             ]
           }
         ],
         "stretchable": false,
         "subServices": [],
-        "type": "viewWebOutputValue",
+        "type": "variableInputValue",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
-      "height": 81,
+      "height": 91,
       "id": "66",
       "position": {
-        "x": 3124.1798047942593,
-        "y": 745.0171913683416
+        "x": 301.3680316092909,
+        "y": 2368.054101243352
       },
       "positionAbsolute": {
-        "x": 3124.1798047942593,
-        "y": 745.0171913683416
+        "x": 301.3680316092909,
+        "y": 2368.054101243352
       },
       "selected": false,
-      "type": "outputNode",
+      "type": "inputNode",
       "width": 221
     },
     {
       "data": {
-        "accordion": "View web",
+        "accordion": "Variables",
         "dataType": "",
-        "display": "Output Bool",
-        "id": "10",
+        "display": "Output Bool ",
+        "id": "67",
         "inputHandle": [
           {
             "dataType": "bool",
             "name": "Input"
           }
         ],
-        "label": "view Output Bool",
+        "label": "variable Output Bool",
         "outputHandle": [],
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "Light",
-        "selectedSubServiceData": "xDone",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
         "services": [
           {
             "friendlyName": "",
@@ -2812,20 +2632,19 @@
         ],
         "stretchable": false,
         "subServices": [],
-        "type": "viewWebOutputBool",
+        "type": "variableOutputBool",
         "valueData": ""
       },
-      "draggable": true,
       "dragging": false,
       "height": 81,
       "id": "67",
       "position": {
-        "x": 3133.071696306888,
-        "y": 610.724256882394
+        "x": 59.63480431874311,
+        "y": 2474.0207108088075
       },
       "positionAbsolute": {
-        "x": 3133.071696306888,
-        "y": 610.724256882394
+        "x": 59.63480431874311,
+        "y": 2474.0207108088075
       },
       "selected": false,
       "type": "outputNode",
@@ -2833,1039 +2652,23 @@
     },
     {
       "data": {
-        "accordion": "Edge Detection",
-        "display": "RF_trig Node",
-        "id": "15",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "RF_trig",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RFtrigNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 141,
-      "id": "68",
-      "position": {
-        "x": 2255.604223478686,
-        "y": 357.4343567533881
-      },
-      "positionAbsolute": {
-        "x": 2255.604223478686,
-        "y": 357.4343567533881
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "Or Node",
-        "id": "18",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "\u003e=1",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "OrNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 301,
-      "id": "69",
-      "position": {
-        "x": 2639.1481829945997,
-        "y": 490.44120953985134
-      },
-      "positionAbsolute": {
-        "x": 2639.1481829945997,
-        "y": 490.44120953985134
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
+        "accordion": "Variables",
         "dataType": "",
-        "display": "Input bool",
-        "id": "6",
-        "inputHandle": [],
-        "label": "view Input bool",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "Light",
-          "relay Off"
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "bool",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebInputBool",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "70",
-      "position": {
-        "x": 1779.2879113128934,
-        "y": 475.22324966243553
-      },
-      "positionAbsolute": {
-        "x": 1779.2879113128934,
-        "y": 475.22324966243553
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Edge Detection",
-        "display": "RF_trig Node",
-        "id": "15",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "RF_trig",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RFtrigNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 141,
-      "id": "71",
-      "position": {
-        "x": 2061.386922908154,
-        "y": 487.46475362155047
-      },
-      "positionAbsolute": {
-        "x": 2061.386922908154,
-        "y": 487.46475362155047
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Logical gate",
-        "display": "Or Node",
-        "id": "18",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "\u003e=1",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "OrNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 181,
-      "id": "72",
-      "position": {
-        "x": 2235.6472939619516,
-        "y": 500.2537069721815
-      },
-      "positionAbsolute": {
-        "x": 2235.6472939619516,
-        "y": 500.2537069721815
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Input bool",
-        "id": "6",
-        "inputHandle": [],
-        "label": "view Input bool",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "Light",
-          "SendNewGain"
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "bool",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebInputBool",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "75",
-      "position": {
-        "x": 1763.8317883502286,
-        "y": 1154.6131597547044
-      },
-      "positionAbsolute": {
-        "x": 1763.8317883502286,
-        "y": 1154.6131597547044
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Handling value",
-        "display": "Concat Node",
-        "id": "76",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "label": "Concat",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "ConcatNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 221,
-      "id": "76",
-      "position": {
-        "x": 2088.9876811555446,
-        "y": 1309.411770384065
-      },
-      "positionAbsolute": {
-        "x": 2088.9876811555446,
-        "y": 1309.411770384065
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Edge Detection",
-        "display": "RF_trig Node",
-        "id": "15",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "RF_trig",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RFtrigNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 141,
-      "id": "79",
-      "position": {
-        "x": 2061.869769635043,
-        "y": 1147.520365351153
-      },
-      "positionAbsolute": {
-        "x": 2061.869769635043,
-        "y": 1147.520365351153
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Input value",
-        "id": "80",
-        "inputHandle": [],
-        "label": "view Input value",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "Light",
-          "Gain"
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "value",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebInputValue",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 91,
-      "id": "80",
-      "position": {
-        "x": 1817.4829526844353,
-        "y": 1411.4423812415896
-      },
-      "positionAbsolute": {
-        "x": 1817.4829526844353,
-        "y": 1411.4423812415896
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Constant",
-        "dataType": "",
-        "display": "Constant value",
-        "id": "81",
-        "inputHandle": [],
-        "label": "Constant value Input",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "",
-        "selectedSubServiceData": "",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "constantInput",
-        "valueData": "\u0026gain="
-      },
-      "dragging": false,
-      "height": 91,
-      "id": "81",
-      "position": {
-        "x": 1797.235981158021,
-        "y": 1287.350305741225
-      },
-      "positionAbsolute": {
-        "x": 1797.235981158021,
-        "y": 1287.350305741225
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Handling value",
-        "display": "Concat Node",
-        "id": "76",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "label": "Concat",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "ConcatNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 221,
-      "id": "82",
-      "position": {
-        "x": 2274.358392083271,
-        "y": 803.0969330774006
-      },
-      "positionAbsolute": {
-        "x": 2274.358392083271,
-        "y": 803.0969330774006
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Input bool",
-        "id": "6",
-        "inputHandle": [],
-        "label": "view Input bool",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "Light",
-          "SendNewColor"
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "bool",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebInputBool",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "83",
-      "position": {
-        "x": 1292.9251874631932,
-        "y": 587.8135962391547
-      },
-      "positionAbsolute": {
-        "x": 1292.9251874631932,
-        "y": 587.8135962391547
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Handling value",
-        "display": "Concat Node",
-        "id": "76",
-        "inputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "label": "Concat",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "str"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": true,
-        "subServices": [],
-        "type": "ConcatNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 381,
-      "id": "84",
-      "position": {
-        "x": 1632.8696403336742,
-        "y": 780.8874021411851
-      },
-      "positionAbsolute": {
-        "x": 1632.8696403336742,
-        "y": 780.8874021411851
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Edge Detection",
-        "display": "RF_trig Node",
-        "id": "15",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Input"
-          }
-        ],
-        "label": "RF_trig",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RFtrigNode",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 141,
-      "id": "86",
-      "position": {
-        "x": 1590.5783468362015,
-        "y": 604.6940677947553
-      },
-      "positionAbsolute": {
-        "x": 1590.5783468362015,
-        "y": 604.6940677947553
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Input value",
-        "id": "80",
-        "inputHandle": [],
-        "label": "view Input value",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "Light",
-          "Red"
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "value",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebInputValue",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "87",
-      "position": {
-        "x": 1318.8837248996547,
-        "y": 818.316260010412
-      },
-      "positionAbsolute": {
-        "x": 1318.8837248996547,
-        "y": 818.316260010412
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Constant",
-        "dataType": "",
-        "display": "Constant value",
-        "id": "81",
-        "inputHandle": [],
-        "label": "Constant value Input",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "",
-        "selectedSubServiceData": "",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "constantInput",
-        "valueData": "\u0026red="
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "88",
-      "position": {
-        "x": 1319.052368229197,
-        "y": 720.4013427298895
-      },
-      "positionAbsolute": {
-        "x": 1319.052368229197,
-        "y": 720.4013427298895
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Input value",
-        "id": "80",
-        "inputHandle": [],
-        "label": "view Input value",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "Light",
-          "Green"
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "value",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebInputValue",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "94",
-      "position": {
-        "x": 1270.441717866116,
-        "y": 1030.3304727157122
-      },
-      "positionAbsolute": {
-        "x": 1270.441717866116,
-        "y": 1030.3304727157122
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Input value",
-        "id": "80",
-        "inputHandle": [],
-        "label": "view Input value",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": [
-          "appliance name",
-          "signal name"
-        ],
-        "parameterValueData": [
-          "Light",
-          "Blue"
-        ],
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "value",
-              "number",
-              "string"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "viewWebInputValue",
-        "valueData": ""
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "95",
-      "position": {
-        "x": 1329.7692014410663,
-        "y": 1254.2864557726452
-      },
-      "positionAbsolute": {
-        "x": 1329.7692014410663,
-        "y": 1254.2864557726452
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Constant",
-        "dataType": "",
-        "display": "Constant value",
-        "id": "81",
-        "inputHandle": [],
-        "label": "Constant value Input",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "",
-        "selectedSubServiceData": "",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "constantInput",
-        "valueData": "\u0026green="
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "97",
-      "position": {
-        "x": 1272.8999916044195,
-        "y": 931.5573976244476
-      },
-      "positionAbsolute": {
-        "x": 1272.8999916044195,
-        "y": 931.5573976244476
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Constant",
-        "dataType": "",
-        "display": "Constant value",
-        "id": "81",
-        "inputHandle": [],
-        "label": "Constant value Input",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "",
-        "selectedSubServiceData": "",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "constantInput",
-        "valueData": "\u0026blue="
-      },
-      "draggable": true,
-      "dragging": false,
-      "height": 91,
-      "id": "100",
-      "position": {
-        "x": 1292.0590086117152,
-        "y": 1149.60521396442
-      },
-      "positionAbsolute": {
-        "x": 1292.0590086117152,
-        "y": 1149.60521396442
-      },
-      "selected": false,
-      "type": "inputNode",
-      "width": 221
-    },
-    {
-      "data": {
-        "accordion": "View web",
-        "dataType": "",
-        "display": "Output value",
-        "id": "102",
+        "display": "Output Value ",
+        "id": "68",
         "inputHandle": [
           {
             "dataType": "value",
             "name": "Input"
           }
         ],
-        "label": "view Output Value",
+        "label": "variable Output Value",
         "outputHandle": [],
         "parameterNameData": null,
         "primaryType": "outputNode",
         "selectedFriendlyNameData": "default",
-        "selectedServiceData": "Debug",
-        "selectedSubServiceData": "light_PathURL",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
         "services": [
           {
             "friendlyName": "",
@@ -3883,288 +2686,28 @@
         ],
         "stretchable": false,
         "subServices": [],
-        "type": "viewWebOutputValue",
+        "type": "variableOutputValue",
         "valueData": ""
       },
       "dragging": false,
       "height": 81,
-      "id": "102",
+      "id": "68",
       "position": {
-        "x": 3205.6855595486404,
-        "y": 1100.6749543570324
+        "x": 303.0175740968887,
+        "y": 2472.6259671424577
       },
       "positionAbsolute": {
-        "x": 3205.6855595486404,
-        "y": 1100.6749543570324
+        "x": 303.0175740968887,
+        "y": 2472.6259671424577
       },
       "selected": false,
       "type": "outputNode",
       "width": 221
-    },
-    {
-      "data": {
-        "accordion": "Handling value",
-        "display": "Retain Value Node",
-        "id": "103",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "pass"
-          },
-          {
-            "dataType": "value",
-            "name": "strIn"
-          }
-        ],
-        "label": "Retain value",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "strOut"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RetainValueNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 181,
-      "id": "103",
-      "position": {
-        "x": 2260.44854660137,
-        "y": 1225.6859839684478
-      },
-      "positionAbsolute": {
-        "x": 2260.44854660137,
-        "y": 1225.6859839684478
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Handling value",
-        "display": "Retain Value Node",
-        "id": "104",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "pass"
-          },
-          {
-            "dataType": "value",
-            "name": "strIn"
-          }
-        ],
-        "label": "Retain value",
-        "outputHandle": [
-          {
-            "dataType": "value",
-            "name": "strOut"
-          }
-        ],
-        "parameterNameData": null,
-        "parameterValueData": [
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "RetainValueNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 181,
-      "id": "104",
-      "position": {
-        "x": 1817.3563749644798,
-        "y": 804.103141051795
-      },
-      "positionAbsolute": {
-        "x": 1817.3563749644798,
-        "y": 804.103141051795
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Communication",
-        "display": "HTTP Node",
-        "id": "106",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xSend"
-          },
-          {
-            "dataType": "value",
-            "name": "url path"
-          },
-          {
-            "dataType": "value",
-            "name": "method"
-          },
-          {
-            "dataType": "value",
-            "name": "body"
-          }
-        ],
-        "label": "HTTP Client",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xDone"
-          },
-          {
-            "dataType": "value",
-            "name": "response"
-          }
-        ],
-        "parameterNameData": [
-          "url",
-          "user",
-          "password",
-          "header Key 1",
-          "header Value 1",
-          "header Key 2",
-          "header Value 2"
-        ],
-        "parameterValueData": [
-          "http://192.168.39.223/color/0?",
-          "",
-          "",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "ConfigurableNodeHttp",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 425,
-      "id": "106",
-      "position": {
-        "x": 2830.8972705024426,
-        "y": 558.5719431425381
-      },
-      "positionAbsolute": {
-        "x": 2830.8972705024426,
-        "y": 558.5719431425381
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 250
-    },
-    {
-      "data": {
-        "accordion": "Communication",
-        "display": "HTTP Node",
-        "id": "108",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xSend"
-          },
-          {
-            "dataType": "value",
-            "name": "url path"
-          },
-          {
-            "dataType": "value",
-            "name": "method"
-          },
-          {
-            "dataType": "value",
-            "name": "body"
-          }
-        ],
-        "label": "HTTP Client",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xDone"
-          },
-          {
-            "dataType": "value",
-            "name": "response"
-          }
-        ],
-        "parameterNameData": [
-          "url",
-          "user",
-          "password",
-          "header Key 1",
-          "header Value 1",
-          "header Key 2",
-          "header Value 2"
-        ],
-        "parameterValueData": [
-          "http://192.168.37.58/",
-          "",
-          "",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "ConfigurableNodeHttp",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 425,
-      "id": "108",
-      "position": {
-        "x": 1159.4490882785938,
-        "y": -141.6282266001844
-      },
-      "positionAbsolute": {
-        "x": 1159.4490882785938,
-        "y": -141.6282266001844
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 250
     }
   ],
   "viewport": {
-    "x": -317.2316244001818,
-    "y": 146.50272458953737,
-    "zoom": 0.5
+    "x": 343.41222911180637,
+    "y": -1597.3614730882296,
+    "zoom": 0.9201876506248752
   }
 }

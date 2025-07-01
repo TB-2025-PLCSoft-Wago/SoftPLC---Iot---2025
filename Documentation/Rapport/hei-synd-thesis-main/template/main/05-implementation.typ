@@ -198,6 +198,68 @@ La sortie est *result* qui peut être de format de type *int* ou *float*, c'est 
 )
 #infobox[Noter que l'on utilise des blocs *RF_trig*. Cela permet de générer des impulsions à chaque clic sur les boutons.]
 
+=== Concat
+Le bloc *Concat* est utilisable pour assembler des chaînes de caractère de manière dynamique.
+
+#figure(
+  image("/resources/img/42_Concact_Exemple_1.png", width: 100%),
+  caption: [
+    exemple - utilisation *Concat*
+  ],
+)
+#label("fig:blocFonctionnementConcat-vs-vue")
+#figure(
+  image("/resources/img/42_Concact_Exemple_2.png", width: 80%),
+  caption: [
+    exemple - utilisation *Concat* - visualisation des états
+  ],
+)
+#label("fig:blocFonctionnementConcat_result-vs-vue")
+=== Retain value
+Le bloc *Retain Value* sert à bloquer une valeur _strIn_ et à ne la transmettre sur _strOut_ uniquement si _pass_ est à _true_.
+
+#infobox()[ Si _pass_ = true alors  _strOut_ = _strIn_ sinon _strOut_ = \"\"
+]
+#figure(
+  image("/resources/img/43_retainValue.png", width: 25%),
+  caption: [
+    bloc *Retain Value*
+  ],
+)
+#label("fig:blocRetainValue-vs-vue")
+#pagebreak()
+=== Variables
+Afin de permettre des fonctions de type boucle de contre-réaction, il a été choisi de rajouter un système de variable. Les blocs @fig:blocsVariables-vs-vue s'utilisent de la manière suivante : il faut faire correspondre les noms pour que les valeurs correspondent. Pour un même nom, une seule *output* doit être définie, mais plusieurs *Input* peuvent porter ce nom.
+
+L'exemple @fig:blocsVariablesContreReactionBool-vs-vue montre le fonctionnement d'un programme qui, à chaque cycle, change l'état d'un booléen.
+
+L'exemple @fig:blocsVariablesContreReactionValue-vs-vue montre le fonctionnement d'un programme qui, à chaque cycle, change l'état d'une valeur (*BoolToString_Output*) lorsqu'on a "start". La séquence est la suivante : "empty" → "Hi" → "Bye" → etc.
+
+#figure(
+  image("/resources/img/44_blocs_variables_possibles.png", width: 100%),
+  caption: [
+    blocs variable
+  ],
+)
+#label("fig:blocsVariables-vs-vue")
+#figure(
+  image("/resources/img/44_blocs_variables_ContreReaction_Bool.png", width: 100%),
+  caption: [
+    exemple - variable bool - contre-réaction
+  ],
+)
+#label("fig:blocsVariablesContreReactionBool-vs-vue")
+
+#figure(
+  image("/resources/img/44_blocs_variables_ContreReaction_Value.png", width: 120%),
+  caption: [
+    exemple - variable value - contre-réaction
+  ],
+)
+#label("fig:blocsVariablesContreReactionValue-vs-vue")
+
+
+
   == Intégration des blocs logiques complexes
   === MQTT
   === WebSocket
@@ -214,10 +276,178 @@ La sortie est *result* qui peut être de format de type *int* ou *float*, c'est 
   - ctrl + y : rétablit la modification annulée (redo)  
 
   *undo / redo* : Le principe est d'avoir deux piles _redoStack_ et _undoStack_. On utilise _pushToUndoStack()_ pour créer une pile, et _useDebouncedUndo.tsx_ qui vérifie lorsqu'il y a des modifications et utilise un petit délai pour éviter de pousser plusieurs fois à cause d'une modification mineure survenant au même moment.
-  === CSS
 
+  #pagebreak()
+    === Nodes 
+  Un node standard est constitué de trois éléments principaux, comme le montre @fig:blocCSS_Node_Basique-vs-vue. Pour chacun de ces éléments, une classe CSS a été créée. Il est également possible de spécifier plus particulièrement pour des blocs un peu plus complexes, comme le montre @fig:blocCSS_Communication_Modife-vs-vue, par exemple pour agrandir légèrement pour les blocs de communication. Cette structure permet de changer les couleurs et tailles pour chaque type de node.
+
+  #figure(
+  image("/resources/img/45_css_base.png", width: 50%),
+  caption: [
+    exemple - node standard
+  ],
+)
+#label("fig:blocCSS_Node_Basique-vs-vue")
+#figure(
+    align(left,
+    ```css
+      /*Communication*/
+        .ntb-Communication{
+            height: 60px;
+        }
+        .react-flow__node .dl-Communication{
+            top: 15px;
+        }
+
+
+        .ns-Communication{
+            top: 60px;
+        }
+    ```
+    ),
+    caption: [*css*, exemple pour agrandir légèrement pour les blocs de communication],
+  
+  )
+#label("fig:blocCSS_Communication_Modife-vs-vue")
+
+Un autre type de node @fig:nodeSelect-vs-vue est celui avec un "menu déroulant". Ils sont conçus pour changer le _Node_ de manière rapide sans refaire les connexions. Cela est possible uniquement si les nodes ont les mêmes entrées et sorties, et qu'elles sont du même type. Cela est donc possible pour les _timer_ et les _trigger_.
+
+  #figure(
+    image("/resources/img/50_nodeSelect.png", width: 100%),
+    caption: [
+      Node avec menu déroulant
+    ],
+  )
+  #label("fig:nodeSelect-vs-vue")
+  === Couleurs de connection dynamique
+  Pour que l'utilisateur puisse améliorer la lisibilité, il a été rajouté un outil permettant de choisir la couleur des connexions sélectionnées. Cet outil a été inspiré de "Custom Nodes"
+ @CustomNodes2025, qui montre un exemple d'utilisation de l'_input_ de type _color_ @fig:colorConnections-vs-vue.
+  #figure(
+    image("/resources/img/46_colorConnections.png", width: 40%),
+    caption: [
+      outil modification couleur (_input_ de type _color_)
+    ],
+  )
+  #label("fig:colorConnections-vs-vue")
+  === Elément sélectionnées
+  Quand une connection est sélectionnée, elle devient plus large @fig:selectConnections-vs-vue. C'est le meilleur critère d'apparence qu'on peu modifier pour garder la même couleur.
+  #figure(
+    image("/resources/img/47_selectConnection.png", width: 50%),
+    caption: [
+      connection : select VS not select 
+    ],
+  )
+  #label("fig:selectConnections-vs-vue")
+
+  Quand un Node est sélectionné, il devient coloré sur le tour avec une légère ombre @fig:selectNode-vs-vue.
+  #figure(
+    image("/resources/img/48_selectNode.png", width: 50%),
+    caption: [
+      Node : select VS not select 
+    ],
+  )
+  #label("fig:selectNode-vs-vue")
+  === Accordion - css
+  #figure(
+    image("/resources/img/49_accordion.png", width: 100%),
+    caption: [
+      Accordion - css sélecteurs
+    ],
+  )
+  #label("fig:accordionCss-vs-vue")
+
+  === Boutons
+  L'exemple de @CSSButtons a été utilisé.
+  Plusieurs classes de boutons ont été définies dans le _css_ (@fig:blocCSS_Bouttons-vs-vue). Le sélecteur de classe de base est ".button". Un exemple d'utilisation serait : 
+  #figure(
+    align(left,
+    ```tsx
+    <button className={"button button1"} onClick={openView}>Open view</button>
+    ```
+    ),
+  )
+  Tous les styles définis dans les deux sélecteurs de classe CSS (dans l'exemple _.button_ et _.button1_) correspondants seront cumulés, et les styles de _.button1_ peuvent écraser ceux de _.button_ s'ils affectent les mêmes propriétés.
+
+  On peut utiliser les sélecteurs définis dans @fig:blocCSS_Bouttons-vs-vue, de la même manière que _.button1_. Ils sont représentés en @fig:bouttonsVisu-vs-vue.
+
+#figure(
+    align(left,
+    ```css
+      /*Buttons*/
+      .button {
+          background-color: #04AA6D; /* Green */
+          border: none;
+          color: white;
+          padding: 8px 16px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 4px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+      }
+      .button1 {
+          background-color: white;
+          color: black;
+          border: 2px solid #04AA6D;
+      }
+
+      .button1:hover {
+          background-color: #04AA6D;
+          color: white;
+      }
+
+      .buttonNode {
+          background-color: white;
+          color: black;
+          border: 1px solid #1a192b;
+          font-style: italic;
+      }
+
+      .buttonNode:hover {
+          background-color: #1a192b;
+          color: white;
+      }
+    ```
+    ),
+    caption: [*css*, Bouttons],
+  
+  )
+#label("fig:blocCSS_Bouttons-vs-vue")
+
+#figure(
+    image("/resources/img/52_boutonsImageListe.png", width: 100%),
+    caption: [
+      exemple - bouttons - visualisation
+    ],
+  )
+  #label("fig:bouttonsVisu-vs-vue")
+#pagebreak()
   == Gestion des erreurs
-  === Timer
+  Pour envoyer un message d'erreur sur la page de programmation, il faut utiliser dans le programme : *serverResponse.ResponseProcessGraph* = "message à envoyer". Cela doit se faire avant la fin de la vérification, donc pour mettre des messages pour un *Node* précis, il faut utiliser l'appel dans la méthode *GetOutput* de celui-ci. C'est ce qui a été utilisé pour @sec:timer.
+
+  === Outputs
+  Il est interdit d'avoir deux fois la même _Output_, même si le type est le même. 
+  #figure(
+  image("/resources/img/51_erreur_Output.png", width: 100%),
+  caption: [
+    exemple - erreur *Output*
+  ],
+  )
+  #figure(
+  image("/resources/img/51_erreur_viewWebOutput.png", width: 100%),
+  caption: [
+    exemple - erreur *view Output*
+  ],
+  )
+  #figure(
+  image("/resources/img/51_erreur_variableOutput.png", width: 100%),
+  caption: [
+    exemple - erreur *variable Output*
+  ],
+  )
+  === Timer <sec:timer>
   #figure(
   image("/resources/img/41_erreur_Tof.png", width: 100%),
   caption: [
@@ -231,6 +461,8 @@ La sortie est *result* qui peut être de format de type *int* ou *float*, c'est 
     exemple - erreur *TON*
   ],
   )
+
+  
 
   == Conclusion
 

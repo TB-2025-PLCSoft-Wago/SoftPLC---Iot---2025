@@ -173,20 +173,20 @@ input[type='number'] {
 }
 /* scrollbar */
 .Sidebar::-webkit-scrollbar {
-    width: 8px;  /* Largeur de la barre */
+    width: 8px;
 }
 
 .Sidebar::-webkit-scrollbar-thumb {
-    background-color: #888;  /* Couleur de la barre */
-    border-radius: 4px;  /* Arrondi */
+    background-color: #888;
+    border-radius: 4px;
 }
 
 .Sidebar::-webkit-scrollbar-thumb:hover {
-    background-color: #555; /* Couleur au survol */
+    background-color: #555;
 }
 
 .Sidebar::-webkit-scrollbar-track {
-    background: #f0f0f0; /* Fond de la barre */
+    background: #f0f0f0;
 }
 
 /* settings */
@@ -317,10 +317,6 @@ input[type='number'] {
     color: white;
 }
 
-
-
-
-
 .buttonNode {
     background-color: white;
     color: black;
@@ -420,6 +416,6 @@ legend {
 
 /* Handle */
 .inputhandleClass{
-    background-color: #07bc0c;
+    background-color: #E9C572; /* CFC9CE */
 
 }
