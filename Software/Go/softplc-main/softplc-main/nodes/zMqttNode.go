@@ -26,6 +26,7 @@ type MqttNode struct {
 	lastTopic          []string
 	clientID           uint16
 	topicToReceive     []string
+	topicToReceiveSave []string
 }
 
 var mqttDescription = nodeDescription{
@@ -92,60 +93,100 @@ func init() {
 }
 
 func (n *MqttNode) ProcessLogic() {
-	if n.connectionIsInit {
-		if n.input == nil {
-			n.output[0].Output = "0"
-			return
-		}
-		if *n.input[0].Input == "1" {
-			var topicToSend, msgToSend []string
-			if n.input[1].Input != nil {
-				topicToSend = strings.Split(*n.input[1].Input, " ,, ")
-			} else {
-				topicToSend = []string{}
+	go func() {
+		if n.connectionIsInit {
+			if n.input == nil {
+				n.output[0].Output = "0"
+				return
 			}
-			if n.input[2].Input != nil {
-				msgToSend = strings.Split(*n.input[2].Input, " ,, ")
-			} else {
-				msgToSend = []string{}
+			if *n.input[0].Input == "1" {
+				var topicToSend, msgToSend []string
+				if n.input[1].Input != nil {
+					topicToSend = strings.Split(*n.input[1].Input, " ,, ")
+				} else {
+					topicToSend = []string{}
+				}
+				if n.input[2].Input != nil {
+					msgToSend = strings.Split(*n.input[2].Input, " ,, ")
+				} else {
+					msgToSend = []string{}
+				}
+
+				publish(n.client, topicToSend, msgToSend)
+
+				//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
+				//sub(n.client, topicToReceive)
+				//publish(client, "topic/test2", "Bonjour")
+				//n.client.Disconnect(250)
 			}
-
-			publish(n.client, topicToSend, msgToSend)
-
-			//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-			//sub(n.client, topicToReceive)
-			//publish(client, "topic/test2", "Bonjour")
-			//n.client.Disconnect(250)
-		}
-		//A message has been read
-		if n.outputFlag {
-			n.output[0].Output = "1"
 			topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-			var newMsg []string
-		OuterLoop:
-			for i, topicTemp := range n.lastTopic {
-				for _, topicTempToReceive := range topicToReceive {
-					if topicTempToReceive == topicTemp {
-						newMsg = append(newMsg, n.lastPayload[i])
-						continue OuterLoop
+
+			//A message has been read
+			if n.outputFlag {
+				n.output[0].Output = "1"
+
+				var newMsg []string
+			OuterLoop:
+				for i, topicTemp := range n.lastTopic {
+					for _, topicTempToReceive := range topicToReceive {
+						if topicTempToReceive == topicTemp {
+							newMsg = append(newMsg, n.lastPayload[i])
+							continue OuterLoop
+						}
+					}
+					//token := n.client.Unsubscribe(topicTemp)
+					//token.Wait()
+				}
+				n.output[1].Output = strings.Join(n.lastPayload, " ,, ")
+				n.outputFlag = false
+			} else {
+				n.output[0].Output = "0"
+			}
+
+			//Handle : Subscibe and Unsubscribe
+			flagSave := false
+		OuterLoop2:
+			for _, tempReceive := range topicToReceive {
+				for _, tempOldReceive := range n.topicToReceiveSave {
+					if tempOldReceive == tempReceive {
+						continue OuterLoop2
 					}
 				}
-				//token := n.client.Unsubscribe(topicTemp)
-				//token.Wait()
+				if tempReceive != "null" && tempReceive != "empty" {
+					if n.connectionIsInit && n.client != nil && n.client.IsConnected() {
+						sub(n.client, []string{tempReceive})
+						flagSave = true
+					}
+				}
 			}
-			n.output[1].Output = strings.Join(n.lastPayload, " ,, ")
-			n.outputFlag = false
-			return
-		} else {
-			n.output[0].Output = "0"
-		}
-	} else {
-		//initConnection(n, "broker.hivemq.com", 1883, "go_mqtt_client")
-		initConnection(n)
-		//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-		//sub(n.client, topicToReceive)
 
-	}
+		OuterLoop3:
+			for _, tempOldReceive := range n.topicToReceiveSave {
+				for _, tempReceive := range topicToReceive {
+					if tempOldReceive == tempReceive {
+						continue OuterLoop3
+					}
+				}
+				if tempOldReceive != "null" && tempOldReceive != "empty" {
+					if n.connectionIsInit && n.client != nil && n.client.IsConnected() {
+						token := n.client.Unsubscribe(tempOldReceive)
+						token.Wait()
+						flagSave = true
+					}
+				}
+			}
+
+			if flagSave {
+				n.topicToReceiveSave = topicToReceive
+			}
+		} else {
+			//initConnection(n, "broker.hivemq.com", 1883, "go_mqtt_client")
+			initConnection(n)
+			//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
+			//sub(n.client, topicToReceive)
+
+		}
+	}()
 }
 
 func (n *MqttNode) GetNodeType() string {
@@ -224,6 +265,7 @@ func initConnection(n *MqttNode) {
 	}
 
 	n.topicToReceive = strings.Split(*n.input[3].Input, " ,, ")
+	n.topicToReceiveSave = n.topicToReceive
 	sub(n.client, n.topicToReceive)
 }
 func sub(client mqtt.Client, topic []string) {

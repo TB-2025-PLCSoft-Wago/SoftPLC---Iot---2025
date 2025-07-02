@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import TextInputSender from "./TextInputSender.tsx";
 import {useNavigate} from "react-router-dom";
 import {Panel} from "reactflow";
+import CompressedMessageList from "./CompressedMessageList.tsx";
 
 type Appliance = {
     name: string;
@@ -20,6 +21,7 @@ type Output = {
 
 const WebSocketView = () => {
     const [messages, setMessages] = useState<string[]>([]);
+    const [timestamps, setTimestamps] = useState<number[]>([]);
     const [input, setInput] = useState('');
     const [appliances, setAppliances] = useState<Appliance[]>([]);
     const ws = useRef<WebSocket | null>(null);
@@ -45,9 +47,11 @@ const WebSocketView = () => {
                     }));
                 } else {
                     setMessages((prev) => [...prev, event.data]);
+                    setTimestamps((prev) => [...prev, Date.now()]); //capture timestamp
                 }
             } catch {
                 setMessages((prev) => [...prev, event.data]);
+                setTimestamps((prev) => [...prev, Date.now()]);
             }
         };
 
@@ -200,12 +204,8 @@ const WebSocketView = () => {
             )}
 
 
-            <div style={{border: '1px solid #ccc', padding: '1rem', height: '300px', overflowY: 'auto'}}>
-                <h4>📨 Messages :</h4>
-                {messages.map((msg, idx) => (
-                    <div key={idx}>• {msg}</div>
-                ))}
-            </div>
+            <CompressedMessageList messages={messages} timestamps={timestamps} />
+
         </div>
         </>
     );
