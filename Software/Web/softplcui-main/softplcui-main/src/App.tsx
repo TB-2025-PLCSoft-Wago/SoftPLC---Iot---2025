@@ -27,6 +27,11 @@ import {edgeTypes, initialEdges} from './edges';
 /*color*/
 import ConnectionLine from './nodes/utils/ConnectionLine.tsx';
 import ColorSelectorNode from './nodes/utils/ColorSelectorNode';
+import WebSocketManager from "./webSocketInterface/WebSocketManager.tsx";
+import {sendEdgeClicked} from "./webSocketInterface/WebSocketInstanceEdgeClicked.tsx";
+import ToolsMenu from "./nodes/Tool/ToolsMenu.tsx";
+import {ToolProvider, useTool} from "./nodes/Tool/ToolContext.tsx";
+import useCustomCursor from "./nodes/Tool/CustomCursor.tsx";
 export interface NodesData {
     nodes: Array<{
         accordion: string;
@@ -191,6 +196,7 @@ export default function App() {
     );
 
     const onBuild = () => {
+        onBuildSaveToDebug()
         const data = {nodes, edges};
         const selectedElements = {
             nodes: data.nodes.map(node => ({
@@ -357,6 +363,143 @@ export default function App() {
             }
         )
     };
+    const onDebug = () => {
+        const restorePromise = fetch("http://localhost:8889/debug")
+            .then((response) => response.json())
+            .then((data) => {
+                if (!data) {
+                    throw new Error("No data to debug");
+                }
+
+                // Ajouter un fallback si la propriété label n'existe pas
+                const edgesWithLabels = data.edges.map((edge: any) => ({
+                    ...edge,
+                    label: edge.label ?? '???', // ou undefined
+                    labelBgPadding: [8, 4],
+                    labelBgBorderRadius: 4,
+                    labelBgStyle: { fill: 'white', color: '#333', fillOpacity: 0.8 },
+                    style: {
+                        ...edge.style,
+                        strokeWidth: 1
+                    }
+                }));
+
+                setNodes(data.nodes);
+                setEdges(edgesWithLabels);
+
+                const highestId = Math.max(...data.nodes.map((node: Node) => Number(node.id)));
+                if (!isNaN(highestId)) {
+                    id = highestId + 1;
+                }
+            })
+            .catch((error) => {
+                if (error.message === "Failed to fetch") {
+                    throw new Error("Server isn't running.");
+                }
+                throw error;
+            });
+
+        toast.promise(
+            restorePromise,
+            {
+                pending: "Waiting debug graph...",
+                success: "Debug started successfully!",
+                error: {
+                    render: ({data}) => data.message,
+                    autoClose: 7000
+                }
+            }
+        );
+    };
+
+
+    const onDebugStop = () => {
+        const restorePromise = fetch("http://localhost:8889/debugStop")
+            .then((response) => response.json())
+            .then((data) => {
+                if (data === null) {
+                    throw new Error("No data to restore after debug");
+                }
+                setNodes(data.nodes);
+                setEdges(data.edges);
+
+                // Find the highest id among the nodes
+                const highestId = Math.max(...data.nodes.map((node: Node) => Number(node.id)));
+                // If highestId is a number (not NaN), set id to highestId + 1
+                if (!isNaN(highestId)) {
+                    id = highestId + 1;
+                }
+
+            })
+            .catch((error) => {
+                if (error.message === "Failed to fetch") {
+                    throw new Error("Server isn't running.")
+                }
+                throw error; // Rethrow the error to handle it in toast.promise
+            });
+
+        toast.promise(
+            restorePromise,
+            {
+                pending: "Waiting stop debug...",
+                success: "debug stop successfully!",
+                error: {
+                    render: ({data}) => {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-expect-error
+                        return data.message;
+                    },
+                    autoClose: 7000
+                }
+            }
+        )
+    };
+    const onBuildSaveToDebug = () => {
+        if (!reactFlowInstance) {
+            return;
+        }
+        const elements = reactFlowInstance.toObject();
+        const json = JSON.stringify(elements);
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        const requestOptions: RequestInit = {
+            method: "POST",
+            headers: myHeaders,
+            body: json,
+            redirect: "follow",
+        };
+
+        const savePromise = fetch("http://localhost:8889/json-save-toDebug", requestOptions)
+            .then((response) => response.text())
+            .then((result) => {
+                if (result != "Graph saved to debug") {
+                    throw new Error("Failed to save graph to debug");
+                }
+            })
+            .catch((error) => {
+                if (error.message === "Failed to fetch") {
+                    throw new Error("Server isn't running.")
+                }
+                throw error; // Rethrow the error to handle it in toast.promise
+            });
+
+        toast.promise(
+            savePromise,
+            {
+                pending: "preparing debug...",
+                success: "Graph saved to debug successfully!",
+                error: {
+                    render: ({data}) => {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-expect-error
+                        return data.message;
+                    },
+                    autoClose: 7000
+                }
+            }
+        )
+    };
+
     const navigate = useNavigate();
 
     const openView = () => {
@@ -410,11 +553,44 @@ export default function App() {
 
     useKeyboardShortcuts({ nodes, edges, setNodes, setEdges, getId, isDragging });
 
+    /* Debug */
+    const [checked, setChecked] = React.useState(false);
+
+    const handleToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked(event.target.checked);
+        console.log("checked :",event.target.checked)
+        if (event.target.checked == true){
+            onDebug()
+        }else{
+            onDebugStop()
+        }
+    };
+
+    /* tools */
+    const { tool } = useTool();
+    const { emoji } = useTool(); //cursor appearance
+
+    const handleEdgeClick = (_event: React.MouseEvent, edge: Edge) => {
+        console.log(`🖱️ Edge clicked: ${edge.source}, sourceHandle: ${edge.sourceHandle},  Tool: ${tool}`);
+        sendEdgeClicked({
+            source: edge.source,
+            sourceHandle: edge.sourceHandle,
+            tool: tool,
+        });
+    };
+    useCustomCursor(emoji, tool);
+    const emojiCursor =
+        tool === 'default'
+            ? 'auto'
+            : `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='32' width='32'><text y='24' font-size='24'>${emoji}</text></svg>") 16 16, auto`;
+
+
+
 
     return (
         <ReactFlowProvider>
             <div className="dndflow">
-                <div className="reactflow-wrapper" ref={reactFlowWrapper} style={{height: '100vh', width: '100%'}}>
+                <div className="reactflow-wrapper" ref={reactFlowWrapper} style={{height: '100vh', width: '100%',cursor: emojiCursor,}}>
 
                     <ReactFlow
 
@@ -438,22 +614,25 @@ export default function App() {
                         connectionLineComponent={ConnectionLine}
                         connectionLineStyle={connectionLineStyle}
                         onSelectionChange={onSelectionChange}
+
+                        onEdgeClick={handleEdgeClick}
                         fitView
                     >
-                        <Panel position="top-right">
-                            {/* Color Picker flottant */}
-                            <div style={{
-                                position: 'absolute',
-                                top: 50,
-                                //left: 300,
-                                background: 'white',
-                                padding: '8px',
-                                borderRadius: '8px',
-                                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-                                zIndex: 1000,
-                            }}>
-                                <label style={{ marginRight: 6 }}>🎨 Color of the connections</label>
-                                <input type="color" value={color} onChange={handleColorChange} />
+                        <Panel position="top-right" className="menu-panel">
+                            {/* Color Picker */}
+                            <div className="color-picker">
+                                <label>🎨 Color of the connections</label>
+                                <input type="color" value={color} onChange={handleColorChange}/>
+                            </div>
+                            {/* tools */}
+                            <ToolsMenu/>
+                            {/*toggle debug*/}
+                            <div className="switch-container">
+                            <span className="switch-label">debug</span>
+                                <label className="switch">
+                                    <input type="checkbox" checked={checked} onChange={handleToggleChange}/>
+                                    <span className="slider round"></span>
+                                </label>
                             </div>
                             {/*button*/}
                             <button className={"button button1"} onClick={openView}>Open view</button>
@@ -462,7 +641,7 @@ export default function App() {
                             <button className={"button button1"} onClick={onBuild}>Build</button>
                         </Panel>
                         {/*<MiniMap />*/}
-                        <Controls />
+                        <Controls/>
                         <Background
                             color="red"
                             variant={BackgroundVariant.Dots}
@@ -480,6 +659,8 @@ export default function App() {
                             autoClose={3000}
                             pauseOnFocusLoss={false}
             />
+            {/*Debug webScoket*/}
+            {checked && <WebSocketManager setEdges={setEdges} />}
         </ReactFlowProvider>
     );
 }

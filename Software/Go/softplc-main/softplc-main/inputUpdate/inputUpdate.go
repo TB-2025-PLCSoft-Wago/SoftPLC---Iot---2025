@@ -174,7 +174,7 @@ func CreateMonitoringLists() {
 		"data": map[string]interface{}{
 			"type": "monitoring-lists",
 			"attributes": map[string]interface{}{
-				"timeout": 600,
+				"timeout": 660,
 			},
 			"relationships": map[string]interface{}{
 				"parameters": map[string]interface{}{
@@ -195,21 +195,23 @@ func CreateMonitoringLists() {
 	if err != nil {
 		fmt.Println("Error request createMonitoringLists : ", err)
 		CreateMonitoringLists()
+		return
 		//panic(err)
 	}
 	req.SetBasicAuth(username, password)
 	req.Header.Set("Content-Type", "application/vnd.api+json")
-
-	client := &http.Client{
-		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-		},
-	}
-	//client := createHTTPClient()
+	/*
+		client := &http.Client{
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+			},
+		}*/
+	client := createHTTPClient()
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println("Error client createMonitoringLists : ", err)
 		CreateMonitoringLists()
+		return
 		//panic(err)
 	}
 	defer resp.Body.Close()
@@ -605,6 +607,7 @@ func fetchValues(client *http.Client, username string, password string) map[stri
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println("HTTP request failed:", err)
+		CreateMonitoringLists()
 		return results
 	}
 	defer resp.Body.Close()

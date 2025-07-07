@@ -18,7 +18,6 @@ type Output = {
     value: string;
 };
 
-
 const WebSocketView = () => {
     const [messages, setMessages] = useState<string[]>([]);
     const [timestamps, setTimestamps] = useState<number[]>([]);
@@ -46,8 +45,11 @@ const WebSocketView = () => {
                         [data.appliance]: data.outputs
                     }));
                 } else {
-                    setMessages((prev) => [...prev, event.data]);
-                    setTimestamps((prev) => [...prev, Date.now()]); //capture timestamp
+                    if (data.edges) { /* empty */ }else {
+                        setMessages((prev) => [...prev, event.data]);
+                        setTimestamps((prev) => [...prev, Date.now()]); //capture timestamp
+                    }
+
                 }
             } catch {
                 setMessages((prev) => [...prev, event.data]);

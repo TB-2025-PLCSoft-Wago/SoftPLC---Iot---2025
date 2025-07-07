@@ -53,6 +53,7 @@ func main() {
 				outputUpdate.UpdateOutput()
 				server.UpdateOutputValueView()
 				variable.UpdateVariableInputs()
+				server.DebugMode()
 				processGraph.Mutex.Unlock()
 				//fmt.Printf("total time value is  %s\n", time.Since(start))
 				start2 = time.Now()

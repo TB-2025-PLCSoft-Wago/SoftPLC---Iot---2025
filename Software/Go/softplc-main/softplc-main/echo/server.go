@@ -73,7 +73,6 @@ func EchoServer() {
 		for _, v := range processGraph.ConstValue {
 			fmt.Println(v)
 		}
-
 		return c.HTML(http.StatusOK, serverResponse.ResponseProcessGraph)
 	})
 
@@ -119,6 +118,52 @@ func EchoServer() {
 			return c.JSON(http.StatusInternalServerError, err)
 		}
 		return c.JSON(http.StatusOK, answer)
+	})
+
+	e.GET("/debug", func(c echo.Context) error {
+		// read file
+		//jsonData, err2 := os.ReadFile("graph_marcelin_tof.json")
+		/*if err2 != nil {
+			return err2
+		}
+		// Désérialiser le JSON
+		var data interface{}
+		if err := json.Unmarshal(jsonData, &data); err != nil {
+			return err
+		}*/
+		return c.JSON(http.StatusOK, server.DebugGraphJson)
+		//return c.JSON(http.StatusOK, savedJson)
+	})
+	e.GET("/debugStop", func(c echo.Context) error {
+		// read file
+		/*
+			jsonData, err2 := os.ReadFile("graph_marcelin_tof.json")
+			if err2 != nil {
+				return err2
+			}
+			// Désérialiser le JSON
+			var data interface{}
+			if err := json.Unmarshal(jsonData, &data); err != nil {
+				return err
+			}
+			return c.JSON(http.StatusOK, data)
+		*/
+		server.RemoveLabelsFromDebugGraph()
+		return c.JSON(http.StatusOK, server.DebugGraphJson)
+	})
+	e.POST("/json-save-toDebug", func(c echo.Context) error {
+		var jsonBody interface{}
+		if err := c.Bind(&jsonBody); err != nil {
+			return err
+		}
+		server.DebugGraphJson = jsonBody
+
+		// Convert to JSON to save in file
+		//jsonData, err := json.MarshalIndent(jsonBody, "", "  ")
+		/*if err != nil {
+			return err
+		}*/
+		return c.HTML(http.StatusOK, "Graph saved to debug")
 	})
 
 	e.Logger.Fatal(e.Start(":8889"))

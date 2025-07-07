@@ -112,9 +112,9 @@ func (n *ModbusReadBoolNode) ProcessLogic() {
 	if n.input[3].Input != nil {
 		addresses = strings.Split(*n.input[3].Input, " ,, ")
 	}
-	quantites := []string{"1"}
+	quantities := []string{"1"}
 	if n.input[4].Input != nil {
-		quantites = strings.Split(*n.input[4].Input, " ,, ")
+		quantities = strings.Split(*n.input[4].Input, " ,, ")
 	}
 	if !n.connectionIsInit {
 		if err := n.initConnection(unitID); err != nil {
@@ -133,7 +133,13 @@ func (n *ModbusReadBoolNode) ProcessLogic() {
 
 	for i, addrStr := range addresses {
 		address := uint16(atoiDefault(addrStr, 0))
-		quantity := uint16(atoiDefault(quantites[i], 1))
+		var quantity uint16
+		if len(quantities) > i {
+			quantity = uint16(atoiDefault(quantities[i], 1))
+		} else {
+			quantity = 1
+		}
+
 		var res []byte
 		var err error
 		bits := make([]bool, quantity)
@@ -147,7 +153,12 @@ func (n *ModbusReadBoolNode) ProcessLogic() {
 			for i2 := 0; uint16(i2) < quantity; i2++ {
 				byteIndex := i2 / 8
 				bitIndex := uint(i2 % 8)
-				bits[i2] = (res[byteIndex] & (1 << bitIndex)) != 0
+				if len(res) > byteIndex {
+					bits[i2] = (res[byteIndex] & (1 << bitIndex)) != 0
+				} else {
+					bits[i2] = false
+				}
+
 			}
 			for _, bit := range bits {
 				if bit {

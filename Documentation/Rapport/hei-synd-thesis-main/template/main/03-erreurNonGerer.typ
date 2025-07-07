@@ -31,7 +31,7 @@ Cependant, le save est possible et le restore peut être fait après avoir relan
   ],
 )
 
-==== Plusieurs Output pour un Input
+==== Plusieurs Output pour une Input
 #importantbox()[Cela devrait être faisable, pourtant c’est interdit.]
 #figure(
   image("/resources/img/2output_1input.png", width: 100%),

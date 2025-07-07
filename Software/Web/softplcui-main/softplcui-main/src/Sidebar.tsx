@@ -14,7 +14,7 @@ const Sidebar: React.FC<{ nodesData: NodesData }> = ({ nodesData }) => {
             if (!acc[node.accordion]) {
                 acc[node.accordion] = [];
             }
-            console.log("accordion : ", node)
+            //console.log("accordion : ", node)
             acc[node.accordion].push(node); // add different node to accordion
             return acc;
         }, {});
