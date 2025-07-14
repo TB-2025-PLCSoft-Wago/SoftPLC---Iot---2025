@@ -31,7 +31,7 @@
 #include("/main/00-Durability.typ")
 //#include "/main/01-Environnement.typ"
 #include "/main/02-introduction.typ"
-#include "/main/05_Wdx.typ"
+
 //#include "/main/03-analysis.typ"
 //#include "/main/03-erreurNonGerer.typ"
 #include "/main/04_EtatDeArt.typ"

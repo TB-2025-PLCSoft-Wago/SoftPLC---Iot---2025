@@ -44,13 +44,13 @@ var mqttDescription = nodeDescription{
 		{DataType: "value", Name: "msgToSend"},
 		{DataType: "value", Name: "topicToReceive"},
 	},
-	Output:            []dataTypeNameStruct{{DataType: "bool", Name: "xDone"}, {DataType: "value", Name: "msg"}},
-	ParameterNameData: []string{"broker", "port", "user", "passwordServer"},
+	Output:            []dataTypeNameStruct{{DataType: "bool", Name: "xReceive"}, {DataType: "value", Name: "msgLastReceived"}},
+	ParameterNameData: []string{"broker", "port", "user", "password"},
 }
 
 func (n *MqttNode) messageHandler() mqtt.MessageHandler {
 	return func(client mqtt.Client, msg mqtt.Message) {
-		fmt.Printf("Received message: %s from topic: %s to clientID %d\n", msg.Payload(), msg.Topic(), n.clientID)
+		//fmt.Printf("Received message: %s from topic: %s to clientID %d\n", msg.Payload(), msg.Topic(), n.clientID)
 		if !n.outputFlag {
 			n.lastPayload = []string{}
 			n.lastTopic = []string{}
@@ -69,15 +69,31 @@ var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) {
 	fmt.Println("Connected")
 }
 
-var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err error) {
-	fmt.Printf("Connect lost: %v", err)
-	time.Sleep(2 * time.Second)
+/*
+	var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err error) {
+		fmt.Printf("Connect lost: %v", err)
+		time.Sleep(2 * time.Second)
 
-	// Tentative de reconnexion manuelle si AutoReconnect ne suffit pas
-	if token := client.Connect(); token.Wait() && token.Error() != nil {
-		fmt.Printf("Reconnection failed: %v\n", token.Error())
-	} else {
-		fmt.Println("Reconnected successfully")
+		// Manual reconnection attempt if AutoReconnect is not sufficient
+		if token := n.client.Connect(); token.Wait() && token.Error() != nil {
+			fmt.Printf("Reconnection failed: %v\n", token.Error())
+		} else {
+			fmt.Println("Reconnected successfully")
+			n.connectionIsInit = false
+		}
+	}
+*/
+func makeConnectLostHandler(n *MqttNode) mqtt.ConnectionLostHandler {
+	return func(client mqtt.Client, err error) {
+		fmt.Printf("Connect lost for client %d: %v\n", n.clientID, err)
+		time.Sleep(2 * time.Second)
+		// Manual reconnection attempt if AutoReconnect is not sufficient
+		if token := n.client.Connect(); token.Wait() && token.Error() != nil {
+			fmt.Printf("Reconnection failed for client %d: %v\n", n.clientID, token.Error())
+		} else {
+			fmt.Printf("Reconnected successfully for client %d\n", n.clientID)
+			n.connectionIsInit = false
+		}
 	}
 }
 
@@ -97,6 +113,7 @@ func (n *MqttNode) ProcessLogic() {
 		if n.connectionIsInit {
 			if n.input == nil {
 				n.output[0].Output = "0"
+				n.output[1].Output = ""
 				return
 			}
 			if *n.input[0].Input == "1" {
@@ -127,17 +144,19 @@ func (n *MqttNode) ProcessLogic() {
 
 				var newMsg []string
 			OuterLoop:
-				for i, topicTemp := range n.lastTopic {
-					for _, topicTempToReceive := range topicToReceive {
+				for _, topicTempToReceive := range topicToReceive {
+					for i, topicTemp := range n.lastTopic {
 						if topicTempToReceive == topicTemp {
 							newMsg = append(newMsg, n.lastPayload[i])
 							continue OuterLoop
 						}
 					}
+					newMsg = append(newMsg, "")
 					//token := n.client.Unsubscribe(topicTemp)
 					//token.Wait()
 				}
-				n.output[1].Output = strings.Join(n.lastPayload, " ,, ")
+				n.output[1].Output = strings.Join(newMsg, " ,, ")
+				//n.output[1].Output = strings.Join(n.lastPayload, " ,, ")
 				n.outputFlag = false
 			} else {
 				n.output[0].Output = "0"
@@ -253,7 +272,7 @@ func initConnection(n *MqttNode) {
 	opts.SetPassword(n.parameterValueData[3]) //public
 	opts.SetDefaultPublishHandler(n.messageHandler())
 	opts.OnConnect = connectHandler
-	opts.OnConnectionLost = connectLostHandler
+	opts.OnConnectionLost = makeConnectLostHandler(n)
 
 	opts.AutoReconnect = true
 	opts.ConnectRetry = true

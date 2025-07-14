@@ -649,12 +649,15 @@ func ResetAll() {
 }
 
 /** Debug Mode **/
+var IsActiveDebug bool = false
 var DebugGraphJson interface{}
+var DebugGraphJsonCopy interface{}
 
 type DebugState struct {
 	ID           string
 	Value        *string
 	SourceHandle string
+	Type_        string
 }
 type debugList struct {
 	id           string
@@ -665,86 +668,14 @@ var test bool
 var LogicalsStateWeb []DebugState
 var toDebugList []debugList
 
-func AddDebugState(id string, valuePtr *string, sourceHandle string) {
+func AddDebugState(id string, valuePtr *string, sourceHandle string, type_ string) {
 	if valuePtr != nil {
 		LogicalsStateWeb = append(LogicalsStateWeb, DebugState{
 			ID:           id,
 			Value:        valuePtr,
 			SourceHandle: sourceHandle,
+			Type_:        type_,
 		})
-	}
-}
-
-func DebugMode() {
-	// Cast vers map
-	graphMap := DebugGraphJson.(map[string]interface{})
-	edges := graphMap["edges"].([]interface{})
-
-	// Parcourir les edges
-	for _, edge := range edges {
-		edgeMap := edge.(map[string]interface{})
-
-		sourceVal, ok1 := edgeMap["source"]
-		sourceHandleVal, ok2 := edgeMap["sourceHandle"]
-
-		if !ok1 || sourceVal == nil {
-			fmt.Println("source is missing or nil in edge:", edgeMap)
-			continue
-		}
-		if !ok2 || sourceHandleVal == nil {
-			fmt.Println("sourceHandle is missing or nil in edge:", edgeMap)
-			continue
-		}
-
-		sourceID, ok1 := sourceVal.(string)
-		sourceHandle, ok2 := sourceHandleVal.(string)
-
-		if !ok1 || !ok2 {
-			fmt.Println("source or sourceHandle is not a string in edge:", edgeMap)
-			continue
-		}
-		isInDebugList := false
-		// Chercher l'état correspondant
-		for _, state := range LogicalsStateWeb {
-			if state.ID == sourceID && (state.SourceHandle == sourceHandle || state.SourceHandle == "") {
-				for _, toDebugItem := range toDebugList {
-					if state.ID == toDebugItem.id && state.SourceHandle == toDebugItem.sourceHandle {
-						isInDebugList = true
-						edgeMap["label"] = *state.Value
-						// Vérifie si "style" existe, sinon l'initialise
-						styleMap, ok := edgeMap["style"].(map[string]interface{})
-						if !ok {
-							styleMap = make(map[string]interface{})
-							edgeMap["style"] = styleMap
-						}
-
-						styleMap["strokeDasharray"] = "8 4"
-						styleMap["animation"] = "dash 1s linear infinite"
-						break
-					}
-				}
-			}
-			if isInDebugList {
-				break
-			} else {
-				if edgeMap, ok := edge.(map[string]interface{}); ok {
-					delete(edgeMap, "label")
-					styleMap, ok := edgeMap["style"].(map[string]interface{})
-					if !ok {
-						styleMap = make(map[string]interface{})
-						edgeMap["style"] = styleMap
-					}
-					delete(styleMap, "strokeDasharray")
-					delete(styleMap, "animation")
-				}
-
-			}
-		}
-	}
-
-	modifiedJSON, err := json.MarshalIndent(graphMap, "", "  ")
-	if err == nil {
-		SendToWebSocket(string(modifiedJSON))
 	}
 }
 
@@ -761,15 +692,122 @@ func RemoveLabelsFromDebugGraph() {
 
 	for _, edge := range edges {
 		if edgeMap, ok := edge.(map[string]interface{}); ok {
+			if dataMap, ok := edgeMap["data"].(map[string]interface{}); ok {
+				delete(dataMap, "label")
+			}
+			edgeMap["type"] = "step"
 			delete(edgeMap, "label")
+
 			styleMap, ok := edgeMap["style"].(map[string]interface{})
 			if !ok {
 				styleMap = make(map[string]interface{})
 				edgeMap["style"] = styleMap
 			}
+
 			delete(styleMap, "strokeDasharray")
 			delete(styleMap, "animation")
 		}
+	}
+}
+
+func DebugMode() {
+
+	// Cast to map
+	graphMap := DebugGraphJson.(map[string]interface{})
+	edges := graphMap["edges"].([]interface{})
+
+	// go through the edges
+	for _, edge := range edges {
+		edgeMap := edge.(map[string]interface{})
+
+		sourceVal, ok1 := edgeMap["source"]
+		sourceHandleVal, ok2 := edgeMap["sourceHandle"]
+		sourcetypeVal, ok3 := edgeMap["type"]
+
+		if !ok1 || sourceVal == nil {
+			fmt.Println("source is missing or nil in edge:", edgeMap)
+			continue
+		}
+		if !ok2 || sourceHandleVal == nil {
+			fmt.Println("sourceHandle is missing or nil in edge:", edgeMap)
+			continue
+		}
+		if !ok3 || sourcetypeVal == nil {
+			fmt.Println("type is missing or nil in edge:", edgeMap)
+			continue
+		}
+
+		sourceID, ok1 := sourceVal.(string)
+		sourceHandle, ok2 := sourceHandleVal.(string)
+		_, ok3 = sourceHandleVal.(string)
+		if !ok1 || !ok2 || !ok3 {
+			fmt.Println("source or sourceHandle or sourcetype is not a string in edge:", edgeMap)
+			continue
+		}
+
+		isInDebugList := false
+
+		// go through the states
+		for _, state := range LogicalsStateWeb {
+			if state.ID == sourceID && (state.SourceHandle == sourceHandle || state.SourceHandle == "") {
+				for _, toDebugItem := range toDebugList {
+					if state.ID == toDebugItem.id && state.SourceHandle == toDebugItem.sourceHandle {
+						isInDebugList = true
+						edgeMap["type"] = "customDebugEdge"
+						/* "data" */
+						dataMap, ok := edgeMap["data"].(map[string]interface{})
+						if !ok {
+							dataMap = make(map[string]interface{})
+							edgeMap["data"] = dataMap
+						}
+
+						dataMap["label"] = *state.Value
+
+						/*  "style"  */
+						styleMap, ok := edgeMap["style"].(map[string]interface{})
+						if !ok {
+							styleMap = make(map[string]interface{})
+							edgeMap["style"] = styleMap
+						}
+						if state.Type_ == "bool" {
+							if *state.Value == "1" {
+								styleMap["stroke"] = "#00FF00"
+							} else {
+								styleMap["stroke"] = "#FF0000"
+							}
+						}
+
+						styleMap["strokeDasharray"] = "8 4"
+						styleMap["animation"] = "dash 1s linear infinite"
+						break
+					}
+				}
+			}
+
+			if isInDebugList {
+				break
+			} else {
+				// delete old label
+				if dataMap, ok := edgeMap["data"].(map[string]interface{}); ok {
+					delete(dataMap, "label")
+				}
+
+				// clean of the style
+				styleMap, ok := edgeMap["style"].(map[string]interface{})
+				if !ok {
+					styleMap = make(map[string]interface{})
+					edgeMap["style"] = styleMap
+				}
+				delete(styleMap, "strokeDasharray")
+				delete(styleMap, "animation")
+			}
+		}
+	}
+
+	// Sérialisation
+	modifiedJSON, err := json.MarshalIndent(graphMap, "", "  ")
+	if err == nil {
+		SendToWebSocket(string(modifiedJSON))
 	}
 }
 
@@ -781,4 +819,22 @@ func removeFromDebugList(id, sourceHandle string) {
 		}
 	}
 	toDebugList = filtered
+}
+
+// Deep copy of an interface{} in GB
+func CopyInterface(src interface{}) interface{} {
+	bytes, err := json.Marshal(src)
+	if err != nil {
+		log.Println("Erreur lors du marshal :", err)
+		return nil
+	}
+
+	var dst interface{}
+	err = json.Unmarshal(bytes, &dst)
+	if err != nil {
+		log.Println("Erreur lors du unmarshal :", err)
+		return nil
+	}
+
+	return dst
 }

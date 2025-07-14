@@ -24,6 +24,8 @@ import Sidebar from './Sidebar';
 import useKeyboardShortcuts from './hooks/useKeyboardShortcuts';
 import {initialNodes, nodeTypes} from './nodes';
 import {edgeTypes, initialEdges} from './edges';
+import CustomEdgeStartEndDebug  from "./edges/CustomEdgeStartEndDebug.tsx";
+import CustomEdgeStepControl from "./CustomEdgeStepControl.tsx";
 /*color*/
 import ConnectionLine from './nodes/utils/ConnectionLine.tsx';
 import ColorSelectorNode from './nodes/utils/ColorSelectorNode';
@@ -32,6 +34,8 @@ import {sendEdgeClicked} from "./webSocketInterface/WebSocketInstanceEdgeClicked
 import ToolsMenu from "./nodes/Tool/ToolsMenu.tsx";
 import {ToolProvider, useTool} from "./nodes/Tool/ToolContext.tsx";
 import useCustomCursor from "./nodes/Tool/CustomCursor.tsx";
+import type { Node } from 'reactflow';
+
 export interface NodesData {
     nodes: Array<{
         accordion: string;
@@ -47,9 +51,7 @@ export interface NodesData {
     }>;
 }
 
-type Node = {
-    id: string;
-};
+
 type Connection = {
     source: string | null;
     target: string | null;
@@ -329,7 +331,34 @@ export default function App() {
                 if (data === null) {
                     throw new Error("No data to restore");
                 }
-                setNodes(data.nodes);
+                // Adds onChange to "commentNode" nodes
+                const restoredNodes = data.nodes.map((node: Node) => {
+                    if (node.type === "commentNode") {
+                        return {
+                            ...node,
+                            data: {
+                                ...node.data,
+                                onChange: (newText: string) => {
+                                    setNodes((nds) =>
+                                        nds.map((n) =>
+                                            n.id === node.id
+                                                ? {
+                                                    ...n,
+                                                    data: {
+                                                        ...n.data,
+                                                        text: newText,
+                                                    },
+                                                }
+                                                : n
+                                        )
+                                    );
+                                },
+                            },
+                        };
+                    }
+                    return node;
+                });
+                setNodes(restoredNodes);
                 setEdges(data.edges);
 
                 // Find the highest id among the nodes
@@ -387,7 +416,9 @@ export default function App() {
                 setNodes(data.nodes);
                 setEdges(edgesWithLabels);
 
+                // Find the highest id among the nodes
                 const highestId = Math.max(...data.nodes.map((node: Node) => Number(node.id)));
+                // If highestId is a number (not NaN), set id to highestId + 1
                 if (!isNaN(highestId)) {
                     id = highestId + 1;
                 }
@@ -500,6 +531,7 @@ export default function App() {
         )
     };
 
+    /* view websocket */
     const navigate = useNavigate();
 
     const openView = () => {
@@ -554,7 +586,7 @@ export default function App() {
     useKeyboardShortcuts({ nodes, edges, setNodes, setEdges, getId, isDragging });
 
     /* Debug */
-    const [checked, setChecked] = React.useState(false);
+    const [checkedDebug, setChecked] = React.useState(false);
 
     const handleToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setChecked(event.target.checked);
@@ -565,6 +597,14 @@ export default function App() {
             onDebugStop()
         }
     };
+    useEffect(() => {
+        // Ajoute ou enlève la classe "debug-active" sur le body
+        if (checkedDebug) {
+            document.body.classList.add('debug-active');
+        } else {
+            document.body.classList.remove('debug-active');
+        }
+    }, [checkedDebug]);
 
     /* tools */
     const { tool } = useTool();
@@ -572,6 +612,7 @@ export default function App() {
 
     const handleEdgeClick = (_event: React.MouseEvent, edge: Edge) => {
         console.log(`🖱️ Edge clicked: ${edge.source}, sourceHandle: ${edge.sourceHandle},  Tool: ${tool}`);
+        console.log(edge);
         sendEdgeClicked({
             source: edge.source,
             sourceHandle: edge.sourceHandle,
@@ -586,6 +627,141 @@ export default function App() {
 
 
 
+    /* add comment */
+    const onPaneClick = useCallback(
+        (event: React.MouseEvent) => {
+            if (tool === 'comment') {
+                const bounds = reactFlowWrapper.current?.getBoundingClientRect();
+                if (!bounds || !reactFlowInstance) return;
+
+                const position = reactFlowInstance.screenToFlowPosition({
+                    x: event.clientX - bounds.left,
+                    y: event.clientY - bounds.top,
+                });
+
+                const nodeId = getId();
+                const newNode = {
+                    id: nodeId,
+                    type: 'commentNode',
+                    position,
+                    data: {
+                        text: '',
+                        onChange: (newText: string) => {
+                            setNodes((nds) =>
+                                nds.map((node) =>
+                                    node.id === nodeId
+                                        ? { ...node, data: { ...node.data, text: newText } }
+                                        : node
+                                )
+                            );
+                        },
+                    },
+                };
+
+                setNodes((nds) => [...nds, newNode]);
+            }
+        },
+        [tool, reactFlowInstance, setNodes]
+    );
+
+    /* file manager */
+    //Save As
+    const handleSaveAs = async () => {
+        try {
+            if (!reactFlowInstance) {
+                return;
+            }
+            const elements = reactFlowInstance.toObject();
+            const json = JSON.stringify(elements, null, 2); // ← jolie mise en forme
+
+            const options = {
+                types: [
+                    {
+                        description: "JSON Files",
+                        accept: { "application/json": [".json"] },
+                    },
+                ],
+                suggestedName: "reactflow-diagram.json",
+            };
+
+            // Ouvre la boîte de dialogue pour enregistrer
+            const handle = await (window as any).showSaveFilePicker(options);
+
+            const writable = await handle.createWritable();
+            await writable.write(json);
+            await writable.close();
+
+            toast.success("Graph saved successfully in file!");
+        } catch (err: any) {
+            if (err.name !== "AbortError") {
+                toast.error("Error saving file: " + err.message);
+            }
+            // sinon, utilisateur a annulé, ne rien faire
+        }
+    };
+
+
+    //Open File
+    const handleOpen = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            try {
+                const text = e.target?.result as string;
+                const data = JSON.parse(text);
+
+                if (!data || !data.nodes || !data.edges) {
+                    throw new Error("Invalid file format");
+                }
+
+                const restoredNodes = data.nodes.map((node: Node) => {
+                    if (node.type === "commentNode") {
+                        return {
+                            ...node,
+                            data: {
+                                ...node.data,
+                                onChange: (newText: string) => {
+                                    setNodes((nds) =>
+                                        nds.map((n) =>
+                                            n.id === node.id
+                                                ? {
+                                                    ...n,
+                                                    data: {
+                                                        ...n.data,
+                                                        text: newText,
+                                                    },
+                                                }
+                                                : n
+                                        )
+                                    );
+                                },
+                            },
+                        };
+                    }
+                    return node;
+                });
+
+                setNodes(restoredNodes);
+                setEdges(data.edges);
+
+                // Find the highest id among the nodes
+                const highestId = Math.max(...data.nodes.map((node: Node) => Number(node.id)));
+                // If highestId is a number (not NaN), set id to highestId + 1
+                if (!isNaN(highestId)) {
+                    id = highestId + 1;
+                }
+
+                toast.success("Graph loaded from file!");
+            } catch (error: any) {
+                toast.error(`Error loading file: ${error.message}`);
+            }
+        };
+
+        reader.readAsText(file);
+    };
 
     return (
         <ReactFlowProvider>
@@ -616,6 +792,7 @@ export default function App() {
                         onSelectionChange={onSelectionChange}
 
                         onEdgeClick={handleEdgeClick}
+                        onPaneClick={onPaneClick}
                         fitView
                     >
                         <Panel position="top-right" className="menu-panel">
@@ -628,17 +805,44 @@ export default function App() {
                             <ToolsMenu/>
                             {/*toggle debug*/}
                             <div className="switch-container">
-                            <span className="switch-label">debug</span>
+                                <span className="switch-label">debug</span>
                                 <label className="switch">
-                                    <input type="checkbox" checked={checked} onChange={handleToggleChange}/>
+                                    <input type="checkbox" checked={checkedDebug} onChange={handleToggleChange}/>
                                     <span className="slider round"></span>
                                 </label>
                             </div>
                             {/*button*/}
                             <button className={"button button1"} onClick={openView}>Open view</button>
-                            <button className={"button button1"} onClick={onSave}>Save</button>
-                            <button className={"button button1"} onClick={onRestore}>Restore</button>
-                            <button className={"button button1"} onClick={onBuild}>Build</button>
+                            <button className={"button button1 hide-when-debug"} onClick={onSave}>Save</button>
+                            <button className={"button button1 hide-when-debug"} onClick={onRestore}>Restore</button>
+                            <button className={"button button1 hide-when-debug"} onClick={onBuild}>Build</button>
+                            <button className={"button button1 hide-when-debug"} onClick={handleSaveAs}>Save As</button>
+                            {/*open File*/}
+                            {!checkedDebug && (
+                                <>
+                                    <input
+                                        type="file"
+                                        accept=".json"
+                                        onChange={handleOpen}
+                                        style={{ display: "none" }}
+                                        id="fileUpload"
+                                    />
+
+                                    <label
+                                        htmlFor="fileUpload"
+                                        className="button button1"
+                                        style={{
+                                            display: "inline-flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            boxSizing: "border-box",
+                                        }}
+                                    >
+                                        Open File
+                                    </label>
+                                </>
+                            )}
+
                         </Panel>
                         {/*<MiniMap />*/}
                         <Controls/>
@@ -660,7 +864,7 @@ export default function App() {
                             pauseOnFocusLoss={false}
             />
             {/*Debug webScoket*/}
-            {checked && <WebSocketManager setEdges={setEdges} />}
+            {checkedDebug && <WebSocketManager setEdges={setEdges} />}
         </ReactFlowProvider>
     );
 }

@@ -41,15 +41,18 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
 
     useEffect(() => {
         const baseLength = data.parameterNameData?.length || 0;
-
         const dynamicParamCount = Math.max(
             numberOfConnectedTargetHandles + 1,
             getParameterElementUsingNumber(data.parameterValueData ?? [])
         ) + 1;
+        let totalParams;
+        if (data.type.includes("ConfigurableNode")) {
+            totalParams = Math.max(baseLength, getParameterElementUsingNumber(data.parameterValueData ?? []));
+        }else{
+            // We want at least as many fields as parameterized or dynamically required names
+            totalParams = Math.max(baseLength, dynamicParamCount);
 
-        // We want at least as many fields as parameterized or dynamically required names
-        const totalParams = Math.max(baseLength, dynamicParamCount);
-
+        }
         const initialValues = Array.from(
             { length: totalParams },
             (_, i) => inputValues[i] || ""
@@ -109,6 +112,8 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
                 width, // garde l’ancien height, calculé par le useEffect
             }));
         };
+        //console.log("communication data : ", data)
+        //console.log("communication inputValues : ", inputValues)
         content = (
             <CommunicationHandles
                 data={data}

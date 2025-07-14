@@ -21,9 +21,32 @@
   minitoc-title: i18n("toc-title", lang: option.lang)
 )[
   #pagebreak()
-  == Section 1
+ == WDA défauts
+Le principal défaut de WDA, en plus d’être lent, est qu’il n’est pas possible d’écrire plusieurs *outputs* en une seule requête. Il est donc nécessaire de faire une requête pour chaque *output* que l’on souhaite écrire, ce qui ajoute environ 500 ms à chaque fois.
 
-  #lorem(50)
+Cela peut être problématique si l’on souhaite écrire plusieurs *outputs* en même temps, car cela ralentit le temps de cycle. Par exemple, si l’on souhaite écrire 8 *outputs*, il faudra faire 8 requêtes, ce qui ajoutera environ 4 secondes au temps de cycle. À cela s’ajoutent le temps de la requête pour lire les *inputs*, ainsi que le temps de la requête pour la création de la *monitoring list*.
+
+On ne peut donc pas garantir un temps de cycle inférieur à 5 secondes, ce qui est problématique pour une application qui demande de la rapidité ou un temps de cycle précis. La figure @fig:programmeLentWda-vs-vue présente le programme qui prend le plus de temps, et la figure @fig:programmeLentWdaAnalyse-vs-vue montre le temps de cycle de ce programme selon les étapes effectuées. On remarque de grandes variations du temps de cycle.
+
+
+  #figure(
+    image("/resources/img/58_wdaProblem8Outs.png", width: 100%),
+    caption: [
+      Programme - 8 outputs
+    ],
+  )
+  #label("fig:programmeLentWda-vs-vue")
+
+  #figure(
+    image("/resources/img/58_wdaProblem8OutsAnalyse.png", width: 100%),
+    caption: [
+      Analyse programme - 8 outputs
+    ],
+  )
+  #label("fig:programmeLentWdaAnalyse-vs-vue")
+
+
+  
 
   == Section 2
 

@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
 
-export type Tool = 'default' | 'DisplayConnectionDebug' | 'Paint' | 'disconnect';
+export type Tool = 'default' | 'DisplayConnectionDebug' | 'Paint' | 'disconnect' | 'comment';
 
 const emojiMap: Record<Tool, string> = {
     default: '🖱️',
     DisplayConnectionDebug: '🔍',
     Paint: '🔫',
-    disconnect: '❌',
+    comment : '📝'
 };
 
 const ToolContext = createContext<{

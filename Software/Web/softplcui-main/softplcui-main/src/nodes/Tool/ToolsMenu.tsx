@@ -6,7 +6,7 @@ const toolLabels: Record<string, string> = {
     default: '🖱️ Default',
     DisplayConnectionDebug: '🔍 Display connection (debug)',
     Paint: '🔫 Paint connection',
-    disconnect: '❌ Disconnect',
+    comment : '📝 add comment',
 };
 
 const ToolsMenu = () => {

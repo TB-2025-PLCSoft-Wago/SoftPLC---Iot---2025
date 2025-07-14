@@ -1,5 +1,7 @@
 package nodes
 
+import "strconv"
+
 // GTNode that wor like a logical greater than
 type GTNode struct {
 	id       int
@@ -36,15 +38,29 @@ func init() {
 }
 
 func (n *GTNode) ProcessLogic() {
-	if n.input == nil {
+	if n.input == nil || n.input[0].Input == nil || n.input[1].Input == nil {
 		n.output[0].Output = "0"
 		return
 	}
 
-	if *n.input[0].Input > *n.input[1].Input {
-		n.output[0].Output = "1"
+	val0 := *n.input[0].Input
+	val1 := *n.input[1].Input
+
+	f0, err0 := strconv.ParseFloat(val0, 64)
+	f1, err1 := strconv.ParseFloat(val1, 64)
+
+	if err0 == nil && err1 == nil {
+		if f0 > f1 {
+			n.output[0].Output = "1"
+		} else {
+			n.output[0].Output = "0"
+		}
 	} else {
-		n.output[0].Output = "0"
+		if val0 > val1 {
+			n.output[0].Output = "1"
+		} else {
+			n.output[0].Output = "0"
+		}
 	}
 }
 

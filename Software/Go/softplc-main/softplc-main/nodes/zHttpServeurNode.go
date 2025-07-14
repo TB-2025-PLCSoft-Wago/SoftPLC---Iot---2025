@@ -61,6 +61,7 @@ var httpServerDescription = nodeDescription{
 		{DataType: "bool", Name: "xDone"},
 		{DataType: "value", Name: "receive"},
 		{DataType: "value", Name: "Resource ID"},
+		{DataType: "value", Name: "receive URL path"},
 	},
 	ParameterNameData: []string{"url server", "user server", "password server"},
 }
@@ -115,7 +116,7 @@ func flatten(data map[string]interface{}, prefix string, flat map[string]interfa
 
 // http://localhost:8080/msgTest
 func h1(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+	bus.Publish("Last path : " + r.URL.Path[1:])
 }
 
 func h2(w http.ResponseWriter, _ *http.Request) {
@@ -404,7 +405,10 @@ func (n *HttpServerNode) ProcessLogic() {
 			http.HandleFunc("/flatten", flattenHandler)
 			http.HandleFunc("/flatten/", getOrDeleteFlattenedHandler)
 			http.HandleFunc("/parameters/flatten/", patchFlattenedHandler) //id/...
-			http.ListenAndServe(urlServer, nil)
+			err := http.ListenAndServe(urlServer, nil)
+			if err != nil {
+				fmt.Println("Erreur serveur HTTP :", err)
+			}
 
 		}()
 		serveurHttpIsInit = true
@@ -441,9 +445,13 @@ func (n *HttpServerNode) ProcessLogic() {
 
 			n.output[1].Output = strings.Join(temp, " ,, ") //n.lastReceive
 
+		} else if strings.Contains(msg, "Last path : ") {
+			n.output[0].Output = "1"
+			n.output[3].Output = strings.TrimPrefix(msg, "Last path : ")
 		}
 	default:
 		n.output[0].Output = "0"
+		n.output[3].Output = ""
 		return
 	}
 }

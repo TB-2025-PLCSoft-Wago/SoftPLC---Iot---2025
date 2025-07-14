@@ -58,14 +58,14 @@ body{
     flex-grow: 1;
     height: 100%;
 }
-
+/*Accordion*/
 .dndflow aside {
     border-right: 1px solid #eee;
     padding: 15px 10px;
     font-size: 12px;
     background: #fcfcfc;
 }
-/*Accordion*/
+
 .dndflow aside .description {
     margin-bottom: 10px;
 }
@@ -152,7 +152,7 @@ input[type='number'] {
     width: 1px;
     transform: translate(10px, -40%); /* move text 10px left */
     font-size: 12px;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 .outputhandletext {
@@ -160,7 +160,7 @@ input[type='number'] {
     right: 10px;
     top: -80%;
     font-size: 12px;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 
@@ -331,18 +331,20 @@ input[type='number'] {
     margin: 4px 4px;
     transition-duration: 0.4s;
     cursor: pointer;
+    font-family: Arial, sans-serif;
+    height: 37px;
 }
 .button1 {
     background-color: white;
     color: black;
-    border: 2px solid #04AA6D;
+    border: 2px solid #6EC800;
 }
 
 .button1:hover {
-    background-color: #04AA6D;
+    background-color: #6EC800;
     color: white;
 }
-
+/* button Settings node */
 .buttonNode {
     background-color: white;
     color: black;
@@ -354,7 +356,12 @@ input[type='number'] {
     background-color: #1a192b;
     color: white;
 }
-
+.closeSetting{
+    border: 1px solid #ff6060;
+}
+.closeSetting:hover{
+    background-color: #ff6060;
+}
 
 
 
@@ -431,7 +438,7 @@ legend {
 
 /* edge edges Connection*/
 .react-flow__edge-path {
-    transition: stroke 5.2s, filter 0.2s, stroke-opacity 0.2s;
+    transition: stroke 0.1s, filter 0.2s, stroke-opacity 0.2s;
 }
 .react-flow__edge.selected .react-flow__edge-path {
     //stroke: #00bcd4 !important;
@@ -446,13 +453,13 @@ legend {
 
 }
 
-/*** tooggle ***/
+/*** tooggle (debug) ***/
 /* The switch - the box around the slider */
 .switch-container {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 0px; /* Optionnel : espace en dessous */
+    margin-bottom: 0px;
     margin-top: -15px;
     right: 0px;
     position: relative;
@@ -461,7 +468,7 @@ legend {
 .switch-label {
     font-size: 12px;
     margin-bottom: 0px;
-    color: #333; /* Tu peux ajuster la couleur */
+    color: #333;
 }
 .switch {
     position: relative;
@@ -503,11 +510,11 @@ legend {
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #6EC800;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #6EC800;
 }
 
 input:checked + .slider:before {
@@ -541,3 +548,18 @@ input:checked + .slider:before {
 }
 
 
+
+/** debug **/
+.debug-active .dndflow aside {/* hide accordion */
+    display: none;
+}
+.debug-active .color-picker{/* hide color piker */
+    display: none;
+}
+.debug-active .hide-when-debug {/* hide button */
+    display: none;
+}
+
+.debug-active .menu-panel {
+    left: max(140px, calc(100vw - 230px));
+}

@@ -36,9 +36,11 @@ Cette section décrit les différentes étapes qui ont été implémentées dura
   == WDA
   L'intégration de WDA est une partie importante du projet. Cette section décrit comment WDA a été utilisé pour communiquer avec l'automate et comment il a été intégré dans le programme.
 
+  C'est pour utiliser WDA qu'il a été choisi de remplacer l'automate 751-9401 par un 751-9402. L'analyse de la raison de cette décision se trouve @sec:WDA_AnalysePR4. Vous y trouverez également une analyse de comment était récuperé les I/O dans le programme du TB 2024 qui utilisait une méthode plus rapide.
+
   Pour implémenter WDA, il a fallu modifier le programme backend (`softplc-main`) et plus particulièrement les fichiers `inputUpdate.go` et `outputUpdate.go`.
   
-  Un des principaux problèmes de WDA est la vitesse, qui est très lente. Après une commande GET sur une I/O, cela peut prendre jusqu'à environ 500ms avant qu'on ait la réponse. Sachant qu'on a besoin de faire une requête GET pour chaque Input et Output, cela représente au total 22 requêtes. La première version du programme faisait une requête GET pour chaque Input et Output, ce qui prenait plusieurs secondes pour récupérer l'état de tous les Inputs et Outputs. Pour résoudre ce problème, il a été trouvé la solution d'utiliser une *Monitoring Lists* (@sec:monitoring-lists). Cela nous permet de récupérer les I/O en une seule requête GET pour récupérer l'état de tous les Inputs et Outputs en une seule fois. Cela permet de réduire le temps de récupération à environ 500ms.
+  Un des principaux problèmes de WDA est la vitesse, qui est très lente. Après une commande GET sur une I/O, cela peut prendre jusqu'à environ 500ms avant qu'on ait la réponse. Sachant qu'on a besoin de faire une requête GET pour chaque Input et Output, cela représente au total 22 requêtes. La première version du programme faisait une requête GET pour chaque Input et Output, ce qui prenait plusieurs secondes pour récupérer l'état de tous les Inputs et Outputs. Pour résoudre ce problème, il a été trouvé la solution d'utiliser une *Monitoring Lists* (@sec:monitoring-lists). Cela nous permet de récupérer l'état de des I/O en une seule requête GET. Cela permet de réduire le temps de récupération à environ 500ms. Cependant, la *Monitoring Lists* a un temps de vie limité, donc il faut la recréer périodiquement. Cela est fait toutes les 600 secondes dans le programme.
 
   Toutes les requêtes via WDA doivent avoir le header @fig:header-vs-vue et l'authentification @fig:Authentification-vs-vue.
 
@@ -87,13 +89,7 @@ En parallèle, la fonction *CreateMonitoringLists* est appelée périodiquement 
   Dans `outputUpdate.go`, l'idée est de mettre à jour les *outputs* après que le programme ait été exécuté. La logique pour déclencher l'envoi des nouvelles valeurs des *outputs* est restée la même que pour l'ancien programme. La différence est que l'on utilise *WDA* pour envoyer les nouvelles valeurs des *outputs*. C’est-à-dire que l'on crée des requêtes *PATCH* pour les *AO* et *DO*, exemple de requête *PATCH* (@sec:exemplePatchOutput-vs-vue).
 
   #pagebreak()
-  == Interface webSocket
-  react-router-dom : pour naviguer entre les routes (avec useNavigate).
 
-  const openView = () => {
-        navigate('/websocket');
-    };
-   #pagebreak()
   == Intégration des blocs logiques simples
   L'intégration des blocs logiques simples est une étape importante du projet. Cette section décrit comment ces blocs logiques simples ont été intégrés dans le programme. 
 
@@ -209,7 +205,7 @@ Le bloc *Concat* est utilisable pour assembler des chaînes de caractère de man
 )
 #label("fig:blocFonctionnementConcat-vs-vue")
 #figure(
-  image("/resources/img/42_Concact_Exemple_2.png", width: 80%),
+  image("/resources/img/42_Concact_Exemple_2.png", width: 50%),
   caption: [
     exemple - utilisation *Concat* - visualisation des états
   ],
@@ -221,12 +217,34 @@ Le bloc *Retain Value* sert à bloquer une valeur _strIn_ et à ne la transmettr
 #infobox()[ Si _pass_ = true alors  _strOut_ = _strIn_ sinon _strOut_ = \"\"
 ]
 #figure(
-  image("/resources/img/43_retainValue.png", width: 25%),
+  image("/resources/img/43_retainValue.png", width: 20%),
   caption: [
     bloc *Retain Value*
   ],
 )
 #label("fig:blocRetainValue-vs-vue")
+
+=== Comparator EQ
+Le bloc *EQ* permet de comparer si deux valeur sont égale et d'activer la sortie si c'est le cas.
+#figure(
+  image("/resources/img/56_ComparatorEQNode.png", width: 100%),
+  caption: [
+    bloc *x = y*
+  ],
+)
+=== Comparator GT
+Le bloc *GT* permet de comparer deux valeurs. Si la première valeur est plus grande ou égale, alors la sortie est activée.  
+Le bloc compare les valeurs si elles peuvent être converties en _float_, sinon il compare leur taille (longueur).
+
+La figure @fig:ComparatorGTNode-vs-vue montre la différence entre ces deux cas.
+
+#figure(
+  image("/resources/img/56_ComparatorGTNode.png", width: 100%),
+  caption: [
+    bloc *x > y*
+  ],
+)
+#label("fig:ComparatorGTNode-vs-vue")
 #pagebreak()
 === Variables
 Afin de permettre des fonctions de type boucle de contre-réaction, il a été choisi de rajouter un système de variable. Les blocs @fig:blocsVariables-vs-vue s'utilisent de la manière suivante : il faut faire correspondre les noms pour que les valeurs correspondent. Pour un même nom, une seule *output* doit être définie, mais plusieurs *Input* peuvent porter ce nom.
@@ -260,11 +278,69 @@ L'exemple @fig:blocsVariablesContreReactionValue-vs-vue montre le fonctionnement
 
 
 
-  == Intégration des blocs logiques complexes
-  === MQTT
-  === WebSocket
-  === HTTP
+== Intégration des blocs logiques de communication
 
+Cette section décrit comment les blocs logiques de communication ont été intégrés dans le programme. Ces blocs peuvent être utilisés pour créer des communications MQTT, HTTP et MODBUS.
+
+Le principe des blocs logiques de communication a été défini dans le schéma @fig:communication-Bloc-principe. Cependant, il a été adapté aux besoins du projet. En effet, il est parfois nécessaire d’avoir plus d’entrées ou de sorties que ce qui a été défini dans le schéma. De plus, afin d’éviter que l’utilisation ne devienne trop complexe, il a été décidé de séparer le client et le serveur, comme c’est le cas pour HTTP. Toutefois, le principe de base — l’utilisation de blocs permettant la conversion de booléens en chaînes de caractères et inversement — est resté le même. Il a même été élargi pour permettre l’utilisation de constantes, de résultats de concaténation, de variables, etc. En bref, tous les blocs dont la sortie est de type *value* sont compatibles.
+
+La figure @fig:BlocMqttHttpClientServeur_fermer-vs-vue montre la *vue programmation* sans les _settings_.  
+La figure @fig:BlocMqttHttpClientServeur_ouvert-vs-vue montre les _settings_ dans la *vue programmation*. Il est possible de les ouvrir en cliquant sur le bouton "_settings_" du bloc. Il est également possible d’ouvrir les _settings_ de plusieurs blocs en même temps, même s’ils sont du même type. Cela est pratique si l’on souhaite modifier plusieurs blocs logiques de communication simultanément, copier les _settings_ d’un bloc à l’autre, ou comparer les _settings_ de plusieurs blocs.
+
+Dans la *vue programmation*, les blocs logiques de communication sont définis par le composant *CommunicationHandles* dans le fichier _CommunicationHandles.tsx_. C’est notamment là que l’on retrouve la logique liée à l’affichage de la vue "_settings_". Un élément React basé sur le composant *CommunicationHandles* est créé dans le fichier _LogicalNode.tsx_, où sont générés dynamiquement tous les _Logical Nodes_. On y calcule également le nombre d’éléments de chaque type à afficher (inputs/outputs).
+
+// TO DO : mettre dans gestion data  
+Le tableau *parameterNameData* contient les noms des _settings_ affichés en _placeholder_, et le tableau *parameterValueData* contient les valeurs des _settings_ des blocs logiques de communication.
+
+Dans la partie *backend*, les blocs logiques de communication se trouvent à la fin du package _nodes_. Ils ont tous été conçus pour ne pas faire planter le reste du programme en cas de perte de connexion ou de problème de communication. Pour cela, ils utilisent la méthode *go func()* afin de lancer une *goroutine* qui s’occupe de la communication. Cela permet de ne pas bloquer le reste du programme en cas d’erreur de communication.
+ 
+#figure(
+  image("/resources/img/60_BlocMqttHttpClientServeur_fermer.png", width: 100%),
+  caption: [
+    blocs logiques complexes - Bloc MQTT, HTTP client et HTTP Serveur
+  ],
+)
+#label("fig:BlocMqttHttpClientServeur_fermer-vs-vue")
+#figure(
+  image("/resources/img/60_BlocMqttHttpClientServeur_Ouvert.png", width: 100%),
+  caption: [
+    blocs logiques complexes - Bloc MQTT, HTTP client et HTTP Serveur - Settings
+  ],
+)
+#label("fig:BlocMqttHttpClientServeur_ouvert-vs-vue")
+  === MQTT
+  Le bloc *MQTT* permet de communiquer avec un broker MQTT. Il est possible de publier des messages sur des topics ou de s'abonner à des topics pour recevoir des messages. 
+  
+  Le bloc *MQTT* a les entrées suivantes :
+  - *xEnable* : l'entrée pour activer le bloc. Si cette entrée est à _false_, le bloc ne fera rien.
+  - *topicToSend* : les topics sur lesquels publier (exemple : topic/test1 ,, topic/test2).
+  - *msgToSend* : le message à publier sur les topics de *topicToSend*.
+  - *topicToReceive* : les topics sur lesquels s'abonner (exemple : topic/test1 ,, topic/test2).
+
+  Les sorties sont :
+  - *xReceive* : impulsions lorsque le bloc a reçu un message sur un des topics auxquels on s'est abonné.
+  - *msgLastReceived* : le dernier message reçu sur les topics auxquels on s'est abonné.
+  
+  Des *exemples* d'utilisations du bloc *MQTT* sont présentés en annexe au @sec:exempleUtililationMqttSimple-vs-vue. 
+
+  Lorsqu'un message est reçu, la fonction _messageHandler()_ est appelée. Cette fonction s'occupe de ne pas rater de messages, cependant c'est ensuite la fonction _ProcessLogic()_ qui s'occupe de traiter les messages reçus, gérer dynamiquement les _subscribes_ et _unsubscribes_ et écrire les sorties.
+  
+   L'ordre des topics données sur *topicToReceive* est le même que l'ordre des messages reçus sur *msgLastReceived*. Cela permet de traiter les messages dans le même ordre que les topics auxquels on s'est abonné.
+
+   La fonction _makeConnectLostHandler(n \*MqttNode)_ permet de gérer la perte de connexion avec le broker MQTT. Elle s'assure de relancer la connexion et de réabonner aux topics si la connexion a un problème.
+  === HTTP
+  === Client HTTP
+  Le bloc *HTTP Client* permet d'envoyer des requêtes HTTP à un serveur. Dans les settings du bloc, il est possible de définir l'URL du serveur, 
+  === MODBUS
+  == Vue programmation
+ == Vue WebSocket
+  react-router-dom : pour naviguer entre les routes (avec useNavigate).
+
+  const openView = () => {
+        navigate('/websocket');
+    };
+  == Vue mode debug
+  
   == Améliorations interface
   === Rajouter des raccourcies
   Le fichier _useKeyboardShortcuts.tsx_ a été créé pour l'occasion. Il est appelé dans _App.tsx_.  
@@ -417,13 +493,56 @@ Un autre type de node @fig:nodeSelect-vs-vue est celui avec un "menu déroulant"
 #label("fig:blocCSS_Bouttons-vs-vue")
 
 #figure(
-    image("/resources/img/52_boutonsImageListe.png", width: 100%),
+    image("/resources/img/52_boutonsImageListe.png", width: 80%),
     caption: [
       exemple - bouttons - visualisation
     ],
   )
   #label("fig:bouttonsVisu-vs-vue")
-#pagebreak()
+=== Tools
+Pour permettre de modifier la manière d’interagir avec le graphique, un menu déroulant appelé *Tool* a été ajouté. Il permet de choisir entre différents outils.
+
+Plusieurs outils ont été définis :
+- *DisplayConnectionDebug* : permet de sélectionner les connexions à afficher en mode debug.
+- *comment* : permet d’ajouter un commentaire à l’endroit où l’on clique.
+
+Les outils peuvent fonctionner de deux manières :
+- En récupérant les informations depuis le backend, comme illustré en @fig:MessageWebSocketClicEdge-vs-vue.
+- En les utilisant directement depuis le frontend, comme illustré en @fig:MessageWebSocketClicComent-vs-vue.
+
+#figure(
+  image("/resources/img/57_toolsAll.png", width: 40%),
+  caption: [
+    menu déroulant *Tool*
+  ],
+  )
+#figure(
+    align(left,
+    ```go
+    map[source:40 sourceHandle:Output tool:DisplayConnectionDebug type:edge_clicked] 
+    ```
+    ),
+    caption: [*Message WebSocket au backend* : clic effectué sur un edge avec l'outil "DisplayConnectionDebug"],
+  
+  )
+  #label("fig:MessageWebSocketClicEdge-vs-vue")
+
+  #figure(
+    align(left,
+    ```tsx
+    /* add comment */
+    const onPaneClick = useCallback(
+        (event: React.MouseEvent) => {
+            if (tool === 'comment') {
+              ...
+    ```
+    ),
+    caption: [*Extrait code App.tsx* : Exemple utilisation de l'outil "comment"],
+  
+  )
+  #label("fig:MessageWebSocketClicComent-vs-vue")
+ 
+   #pagebreak()
   == Gestion des erreurs
   Pour envoyer un message d'erreur sur la page de programmation, il faut utiliser dans le programme : *serverResponse.ResponseProcessGraph* = "message à envoyer". Cela doit se faire avant la fin de la vérification, donc pour mettre des messages pour un *Node* précis, il faut utiliser l'appel dans la méthode *GetOutput* de celui-ci. C'est ce qui a été utilisé pour @sec:timer.
 

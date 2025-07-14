@@ -28,6 +28,8 @@ const CommunicationHandles: React.FC<Props> = ({
         setShowConfig(false);
         onResize?.(225, (data.inputHandle.length + 2) * 40); // normal size
     };
+    const [parameterNames, setParameterNames] = useState<string[]>(data.parameterNameData || []);
+    console.log("parameterNames : ",parameterNames)
 
     return (
         <>
@@ -59,29 +61,58 @@ const CommunicationHandles: React.FC<Props> = ({
                     <h4>Settings configuration</h4>
 
                     <div className="config-inputs">
-                        {inputValues.map((val, index) => (
-                            <div key={index} style={{marginBottom: "8px"}}>
-                                <input
-                                    type="text"
-                                    value={val}
-                                    onChange={handleInputChange(index)}
-                                    placeholder={
-                                        data.parameterNameData?.[index] === "setting" || !data.parameterNameData?.[index]
-                                            ? `setting ${index - data.parameterNameData.length + 1}`
-                                            : data.parameterNameData[index]
-                                    }
-                                    style={{padding: "4px", width: "80%"}}
-                                />
-                            </div>
-                        ))}
+                            {/* show settings, choose table parameterNames or inputValues */}
+                            {(parameterNames.length < inputValues.length ? inputValues : parameterNames).map((val, index) => (
+                                <div key={index} style={{ marginBottom: "8px" }}>
+                                    <input
+                                        type="text"
+                                        value={inputValues[index] || ""}
+                                        onChange={handleInputChange(index)}
+                                        placeholder={
+                                            data.parameterNameData?.[index] === "setting" || !data.parameterNameData?.[index]
+                                                ? parameterNames[index] || `setting ${index + 1}`
+                                                : data.parameterNameData[index]
+                                        }
+                                        style={{ padding: "4px", width: "80%" }}
+                                    />
+                                </div>
+                            ))}
                     </div>
 
                     <div className="config-buttons">
-                        <button onClick={() => setInputValues([...inputValues, ""])} style={{marginRight: "10px"}}>
-                            + Add a setting
-                        </button>
-                        <button onClick={handleCloseConfig}>Close</button>
+                        {data.label === "HTTP Client" && (
+                            <>
+                                <button
+                                    className="buttonNode"
+                                    onClick={() => {
+                                        setInputValues(prev => [...prev, ""]);
+                                        setParameterNames(prev => [
+                                            ...prev,
+                                            `header Key ${Math.floor((prev.length)/2)}`,
+                                            `header Value ${Math.floor((prev.length)/2)}`
+                                        ]);
+                                    }}
+                                    style={{marginRight: "10px"}}
+                                >
+                                    + Add a header
+                                </button>
+                                <button
+                                    className="buttonNode"
+                                    onClick={() => {
+                                        setInputValues(prev => prev.slice(0, -2));
+                                        setParameterNames(prev => prev.slice(0, -2));
+                                    }}
+                                    disabled={inputValues.length <= data.parameterNameData.length && parameterNames.length <= data.parameterNameData.length}
+                                    style={{marginRight: "10px"}}
+                                >
+                                    − Remove last header
+                                </button>
+
+                            </>
+                        )}
+                        <button className="buttonNode closeSetting" onClick={handleCloseConfig}>Close</button>
                     </div>
+
                 </div>
             )}
 

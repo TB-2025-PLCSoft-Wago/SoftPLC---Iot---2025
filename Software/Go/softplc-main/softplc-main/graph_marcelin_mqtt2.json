@@ -36,6 +36,7 @@
     },
     {
       "id": "reactflow__edge-24Output-1x0",
+      "selected": false,
       "source": "24",
       "sourceHandle": "Output",
       "target": "1",
@@ -44,58 +45,11 @@
     },
     {
       "id": "reactflow__edge-24Output-3x0",
+      "selected": false,
       "source": "24",
       "sourceHandle": "Output",
       "target": "3",
       "targetHandle": "x0",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-14Output-26xEnable",
-      "source": "14",
-      "sourceHandle": "Output",
-      "target": "26",
-      "targetHandle": "xEnable",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-1Output-26topicToSend",
-      "source": "1",
-      "sourceHandle": "Output",
-      "target": "26",
-      "targetHandle": "topicToSend",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-3Output-26msgToSend",
-      "source": "3",
-      "sourceHandle": "Output",
-      "target": "26",
-      "targetHandle": "msgToSend",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-4Output-26topicToReceive",
-      "source": "4",
-      "sourceHandle": "Output",
-      "target": "26",
-      "targetHandle": "topicToReceive",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-26xDone-20Input",
-      "source": "26",
-      "sourceHandle": "xDone",
-      "target": "20",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
-      "id": "reactflow__edge-26msg-27Input",
-      "source": "26",
-      "sourceHandle": "msg",
-      "target": "27",
-      "targetHandle": "Input",
       "type": "step"
     },
     {
@@ -233,6 +187,90 @@
       "target": "44",
       "targetHandle": "Input",
       "type": "step"
+    },
+    {
+      "id": "reactflow__edge-42Output-45Input",
+      "source": "42",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "45",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-14Output-46xEnable",
+      "source": "14",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "46",
+      "targetHandle": "xEnable",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-1Output-46topicToSend",
+      "source": "1",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "46",
+      "targetHandle": "topicToSend",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-3Output-46msgToSend",
+      "source": "3",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "46",
+      "targetHandle": "msgToSend",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-4Output-46topicToReceive",
+      "source": "4",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "46",
+      "targetHandle": "topicToReceive",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-46msgLastReceived-27Input",
+      "source": "46",
+      "sourceHandle": "msgLastReceived",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "27",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-46xReceive-20Input",
+      "source": "46",
+      "sourceHandle": "xReceive",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "20",
+      "targetHandle": "Input",
+      "type": "step"
     }
   ],
   "nodes": [
@@ -255,7 +293,7 @@
           }
         ],
         "parameterValueData": [
-          "topic/test",
+          "topic/test100",
           "",
           ""
         ],
@@ -278,7 +316,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 181,
+      "height": 182,
       "id": "1",
       "position": {
         "x": 424.13418946264136,
@@ -290,7 +328,7 @@
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 246
+      "width": 247
     },
     {
       "data": {
@@ -331,19 +369,19 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 91,
+      "height": 92,
       "id": "2",
       "position": {
-        "x": 365.2417122494345,
-        "y": 77.5433856887669
+        "x": 337.2417122494345,
+        "y": 64.39468733376988
       },
       "positionAbsolute": {
-        "x": 365.2417122494345,
-        "y": 77.5433856887669
+        "x": 337.2417122494345,
+        "y": 64.39468733376988
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -387,7 +425,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 181,
+      "height": 182,
       "id": "3",
       "position": {
         "x": 420.45532930811623,
@@ -399,7 +437,7 @@
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 246
+      "width": 247
     },
     {
       "data": {
@@ -447,7 +485,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 301,
+      "height": 302,
       "id": "4",
       "position": {
         "x": 467.2824727096656,
@@ -459,7 +497,7 @@
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 246
+      "width": 247
     },
     {
       "data": {
@@ -500,19 +538,19 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 91,
+      "height": 92,
       "id": "8",
       "position": {
-        "x": -76.06898248895513,
-        "y": 208.5148240181017
+        "x": 13.657555443601694,
+        "y": 220.39039521505777
       },
       "positionAbsolute": {
-        "x": -76.06898248895513,
-        "y": 208.5148240181017
+        "x": 13.657555443601694,
+        "y": 220.39039521505777
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -548,7 +586,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 141,
+      "height": 142,
       "id": "14",
       "position": {
         "x": 627.4101780540674,
@@ -560,7 +598,7 @@
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 101
+      "width": 102
     },
     {
       "data": {
@@ -600,19 +638,19 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 181,
+      "height": 182,
       "id": "20",
       "position": {
-        "x": 1249.9981089400144,
-        "y": 244.19617380931368
+        "x": 1146.2285842649696,
+        "y": 222.45268203432857
       },
       "positionAbsolute": {
-        "x": 1249.9981089400144,
-        "y": 244.19617380931368
+        "x": 1146.2285842649696,
+        "y": 222.45268203432857
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 101
+      "width": 102
     },
     {
       "data": {
@@ -640,19 +678,19 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 91,
+      "height": 92,
       "id": "21",
       "position": {
-        "x": 1054.1809735282689,
-        "y": 494.4369647286549
+        "x": 1125.9838876429335,
+        "y": 425.51506342883283
       },
       "positionAbsolute": {
-        "x": 1054.1809735282689,
-        "y": 494.4369647286549
+        "x": 1125.9838876429335,
+        "y": 425.51506342883283
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -690,19 +728,19 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 81,
+      "height": 82,
       "id": "22",
       "position": {
-        "x": 1489.8112390583392,
-        "y": 238.8108554846475
+        "x": 1291.9450818284165,
+        "y": 289.2457732344992
       },
       "positionAbsolute": {
-        "x": 1489.8112390583392,
-        "y": 238.8108554846475
+        "x": 1291.9450818284165,
+        "y": 289.2457732344992
       },
       "selected": false,
       "type": "outputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -737,91 +775,19 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 141,
+      "height": 142,
       "id": "24",
       "position": {
-        "x": 195.45823333204186,
-        "y": 205.45198574385438
+        "x": 253.51658140604917,
+        "y": 194.8959224576712
       },
       "positionAbsolute": {
-        "x": 195.45823333204186,
-        "y": 205.45198574385438
+        "x": 253.51658140604917,
+        "y": 194.8959224576712
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 101
-    },
-    {
-      "data": {
-        "accordion": "Communication",
-        "display": "mqtt Node",
-        "id": "26",
-        "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xEnable"
-          },
-          {
-            "dataType": "value",
-            "name": "topicToSend"
-          },
-          {
-            "dataType": "value",
-            "name": "msgToSend"
-          },
-          {
-            "dataType": "value",
-            "name": "topicToReceive"
-          }
-        ],
-        "label": "MQTT",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xDone"
-          },
-          {
-            "dataType": "value",
-            "name": "msg"
-          }
-        ],
-        "parameterNameData": [
-          "broker",
-          "port",
-          "user",
-          "password"
-        ],
-        "parameterValueData": [
-          "broker.hivemq.com",
-          "1883",
-          "",
-          "",
-          ""
-        ],
-        "primaryType": "LogicalNode",
-        "selectedFriendlyNameData": "default",
-        "selectedServiceData": "default",
-        "selectedSubServiceData": "default",
-        "services": [],
-        "stretchable": false,
-        "subServices": [],
-        "type": "ConfigurableNode",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 421,
-      "id": "26",
-      "position": {
-        "x": 770.691382233143,
-        "y": 181.6888731523234
-      },
-      "positionAbsolute": {
-        "x": 770.691382233143,
-        "y": 181.6888731523234
-      },
-      "selected": false,
-      "type": "LogicalNode",
-      "width": 246
+      "width": 102
     },
     {
       "data": {
@@ -863,19 +829,19 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 81,
+      "height": 82,
       "id": "27",
       "position": {
-        "x": 1107.1575332977418,
-        "y": 390.61385072348395
+        "x": 1124.3880086226975,
+        "y": 529.6063516781251
       },
       "positionAbsolute": {
-        "x": 1107.1575332977418,
-        "y": 390.61385072348395
+        "x": 1124.3880086226975,
+        "y": 529.6063516781251
       },
       "selected": false,
       "type": "outputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -917,7 +883,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 81,
+      "height": 82,
       "id": "32",
       "position": {
         "x": 582.1038119488278,
@@ -929,7 +895,7 @@
       },
       "selected": false,
       "type": "outputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -974,7 +940,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 91,
+      "height": 92,
       "id": "33",
       "position": {
         "x": 96.68353156060365,
@@ -986,7 +952,7 @@
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1031,7 +997,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 91,
+      "height": 92,
       "id": "34",
       "position": {
         "x": 98.59561704774589,
@@ -1043,7 +1009,7 @@
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1088,7 +1054,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 91,
+      "height": 92,
       "id": "35",
       "position": {
         "x": 114.11485109639366,
@@ -1100,7 +1066,7 @@
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1143,7 +1109,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 81,
+      "height": 82,
       "id": "36",
       "position": {
         "x": 582.3906198947363,
@@ -1155,7 +1121,7 @@
       },
       "selected": false,
       "type": "outputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1200,7 +1166,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 91,
+      "height": 92,
       "id": "37",
       "position": {
         "x": 92.97464184898061,
@@ -1212,7 +1178,7 @@
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1255,7 +1221,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 81,
+      "height": 82,
       "id": "38",
       "position": {
         "x": 584.4336513482386,
@@ -1267,7 +1233,7 @@
       },
       "selected": false,
       "type": "outputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1310,7 +1276,7 @@
       },
       "draggable": true,
       "dragging": false,
-      "height": 81,
+      "height": 82,
       "id": "39",
       "position": {
         "x": 591.550582950707,
@@ -1322,7 +1288,7 @@
       },
       "selected": false,
       "type": "outputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1365,7 +1331,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 91,
+      "height": 92,
       "id": "40",
       "position": {
         "x": 5.247914259764997,
@@ -1377,7 +1343,7 @@
       },
       "selected": false,
       "type": "inputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1413,7 +1379,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 141,
+      "height": 142,
       "id": "42",
       "position": {
         "x": 285.31901885033756,
@@ -1425,7 +1391,7 @@
       },
       "selected": false,
       "type": "LogicalNode",
-      "width": 101
+      "width": 102
     },
     {
       "data": {
@@ -1467,7 +1433,7 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 81,
+      "height": 82,
       "id": "43",
       "position": {
         "x": 442.0181202436397,
@@ -1479,7 +1445,7 @@
       },
       "selected": false,
       "type": "outputNode",
-      "width": 221
+      "width": 222
     },
     {
       "data": {
@@ -1521,24 +1487,164 @@
         "valueData": ""
       },
       "dragging": false,
-      "height": 85,
+      "height": 82,
       "id": "44",
       "position": {
-        "x": 428.08931123090184,
-        "y": 1373.5571863940147
+        "x": 454.47946944635964,
+        "y": 1479.7775732112325
       },
       "positionAbsolute": {
-        "x": 428.08931123090184,
-        "y": 1373.5571863940147
+        "x": 454.47946944635964,
+        "y": 1479.7775732112325
       },
       "selected": false,
       "type": "outputNode",
-      "width": 225
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Output",
+        "dataType": "",
+        "display": "Digital output",
+        "id": "11",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Output",
+        "outputHandle": [],
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "DO2",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "digitalOutput",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "45",
+      "position": {
+        "x": 449.865728581569,
+        "y": 1386.1138501079965
+      },
+      "positionAbsolute": {
+        "x": 449.865728581569,
+        "y": 1386.1138501079965
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Communication",
+        "display": "mqtt Node",
+        "id": "46",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xEnable"
+          },
+          {
+            "dataType": "value",
+            "name": "topicToSend"
+          },
+          {
+            "dataType": "value",
+            "name": "msgToSend"
+          },
+          {
+            "dataType": "value",
+            "name": "topicToReceive"
+          }
+        ],
+        "label": "MQTT",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xReceive"
+          },
+          {
+            "dataType": "value",
+            "name": "msgLastReceived"
+          }
+        ],
+        "parameterNameData": [
+          "broker",
+          "port",
+          "user",
+          "password"
+        ],
+        "parameterValueData": [
+          "broker.hivemq.com",
+          "1883",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "ConfigurableNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 425,
+      "id": "46",
+      "position": {
+        "x": 799.9155525336542,
+        "y": 143.30350519526354
+      },
+      "positionAbsolute": {
+        "x": 799.9155525336542,
+        "y": 143.30350519526354
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 250
+    },
+    {
+      "data": {
+        "text": "DO3 s'allume 3 secondes après réception d'un message"
+      },
+      "dragging": false,
+      "height": 131,
+      "id": "47",
+      "position": {
+        "x": 1285.0745126707122,
+        "y": 137.41128664804222
+      },
+      "positionAbsolute": {
+        "x": 1285.0745126707122,
+        "y": 137.41128664804222
+      },
+      "selected": false,
+      "type": "commentNode",
+      "width": 222
     }
   ],
   "viewport": {
-    "x": 450.8040912318992,
-    "y": -657.8574615061269,
-    "zoom": 0.7791645796605
+    "x": -23.203152622935022,
+    "y": -213.89439269578293,
+    "zoom": 1.0000000000000007
   }
 }

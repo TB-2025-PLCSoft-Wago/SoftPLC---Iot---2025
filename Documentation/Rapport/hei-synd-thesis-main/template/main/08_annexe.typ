@@ -33,12 +33,15 @@
   image("/resources/img/Part_02_p2_Planning_V1.png", width: 100%),
 
 )
-#pagebreak()
+
 
 
 #set page(
   flipped: false,
   )
+#pagebreak()
+#include "/main/05_Wdx.typ"
+#pagebreak()
 == WDA Monitoring Lists <sec:monitoring-lists>
 Documentation (accessible uniquement si l’automate est disponible) : https://192.168.37.134/openapi/WDA.openapi.html#tag/Monitoring-Lists
 
@@ -436,7 +439,7 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
 )
 #figure(
     align(left,
-    ```rust
+    ```json
       {
         "data": {
           "id": "0-0-io-channels-9-dovalue",
@@ -461,7 +464,7 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
 
     
 
-
+#include "/main/08_a0_ExempleCodeAvecExtrait.typ"
 
 
 

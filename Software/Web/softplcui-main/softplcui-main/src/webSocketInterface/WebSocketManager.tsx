@@ -16,7 +16,7 @@ const WebSocketManager = ({ setEdges }: Props) => {
             try {
                 const data = JSON.parse(event.data);
                 if (data.edges) {
-                    console.log('🔄 Updating edges from WebSocket:', data.edges);
+                    //console.log('🔄 Updating edges from WebSocket:', data.edges);
 
                     const newEdgesFromWS: Edge[] = data.edges.map((edge: any) => ({
                         ...edge,
@@ -27,7 +27,8 @@ const WebSocketManager = ({ setEdges }: Props) => {
                         style: {
                             ...edge.style,
                             strokeWidth: 1
-                        }
+                        },
+                        type : "customDebugEdge"
                     }));
 
                     setEdges((prevEdges: Edge[]): Edge[] => {
@@ -49,7 +50,7 @@ const WebSocketManager = ({ setEdges }: Props) => {
                     });
                 }
             } catch (err) {
-                console.error('❌ Error parsing WebSocket message:', err);
+                console.error('Error parsing WebSocket message:', err);
             }
         };
 

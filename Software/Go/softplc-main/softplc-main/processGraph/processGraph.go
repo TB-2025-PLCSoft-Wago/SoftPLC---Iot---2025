@@ -187,7 +187,7 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson nodeJson, g 
 									//valStrCopy := valStr
 									valStrCopy := ConstValue[i].Value
 									inputHandle = nodes.InputHandle{Input: &valStrCopy, Name: description.Output[0].Name, DataType: description.Output[0].DataType}
-									server.AddDebugState(edge.Source, &ConstValue[i].Value, edge.SourceHandle)
+									server.AddDebugState(edge.Source, &ConstValue[i].Value, edge.SourceHandle, description.Output[0].DataType)
 									break
 								}
 							}
@@ -320,7 +320,7 @@ func linkNodes(g Graph) {
 					inputLink := inputUpdate.InputsOutputsState[j]
 					if inputLink.Service == inputHandle.Service && inputLink.SubService == inputHandle.SubService && inputLink.FriendlyName == inputHandle.FriendlyName {
 						InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &inputUpdate.InputsOutputsState[j].Value
-						server.AddDebugState(edge.Source, &inputUpdate.InputsOutputsState[j].Value, edge.SourceHandle)
+						server.AddDebugState(edge.Source, &inputUpdate.InputsOutputsState[j].Value, edge.SourceHandle, InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
 						ableToConnect = true
 						break
 					}
@@ -339,7 +339,7 @@ func linkNodes(g Graph) {
 						inputLink := server.InputsStateWeb[j]
 						if strconv.Itoa(inputLink.IRCode) == inputHandle.FriendlyName {
 							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &server.InputsStateWeb[j].Value
-							server.AddDebugState(edge.Source, &server.InputsStateWeb[j].Value, edge.SourceHandle)
+							server.AddDebugState(edge.Source, &server.InputsStateWeb[j].Value, edge.SourceHandle, InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
 							ableToConnect = true
 							break
 						}
@@ -355,7 +355,7 @@ func linkNodes(g Graph) {
 						inputLink := variable.InputsStateVariable[j]
 						if inputLink.Name == inputHandle.FriendlyName {
 							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &variable.InputsStateVariable[j].Value
-							server.AddDebugState(edge.Source, &variable.InputsStateVariable[j].Value, edge.SourceHandle)
+							server.AddDebugState(edge.Source, &variable.InputsStateVariable[j].Value, edge.SourceHandle, InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
 							ableToConnect = true
 							break
 						}
@@ -399,8 +399,8 @@ func linkNodes(g Graph) {
 							targetNodeHandle := LogicalNode[i][l].GetOutput(findLinkedEdgeName(strconv.Itoa(actualNode.GetId()), in.Name, g))
 							if targetNodeHandle.DataType == actualNodeInputs[k].DataType {
 								fmt.Println("logical link : " + strconv.Itoa(actualNode.GetId()) + " (" + actualNode.GetNodeType() + ")" + " and " + strconv.Itoa(nodeJsonId) + " (" + srcNodeJson.Type + ")")
-								actualNodeInputs[k].Input = &targetNodeHandle.Output                                            // we pass the output address of the first logical node to the input of the second
-								server.AddDebugState(strconv.Itoa(nodeJsonId), &targetNodeHandle.Output, targetNodeHandle.Name) //value 1 out
+								actualNodeInputs[k].Input = &targetNodeHandle.Output                                                                       // we pass the output address of the first logical node to the input of the second
+								server.AddDebugState(strconv.Itoa(nodeJsonId), &targetNodeHandle.Output, targetNodeHandle.Name, targetNodeHandle.DataType) //value 1 out
 							} else {
 								serverResponse.ResponseProcessGraph = "Data type mismatch"
 								fmt.Println("Data type mismatch on two logical nodes " + strconv.Itoa(actualNode.GetId()) + " and " + strconv.Itoa(nodeJsonId))
@@ -428,7 +428,7 @@ func linkNodes(g Graph) {
 							if dataTypeScr == dataTypeTarget {
 								isLinked = true
 								OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = InputNodes[j].GetOutput(srcHandleName).InputHandle.Input //we pass the input address to the output
-								server.AddDebugState(edge.Source, InputNodes[j].GetOutput(srcHandleName).InputHandle.Input, srcHandleName)
+								server.AddDebugState(edge.Source, InputNodes[j].GetOutput(srcHandleName).InputHandle.Input, srcHandleName, dataTypeTarget)
 								break
 							}
 						}
@@ -443,7 +443,7 @@ func linkNodes(g Graph) {
 								if dataTypeScr == dataTypeTarget {
 									isLinked = true
 									OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = &LogicalNode[j][k].GetOutput(srcHandleName).Output //we pass the input address to the output
-									server.AddDebugState(edge.Source, &LogicalNode[j][k].GetOutput(srcHandleName).Output, srcHandleName)
+									server.AddDebugState(edge.Source, &LogicalNode[j][k].GetOutput(srcHandleName).Output, srcHandleName, dataTypeTarget)
 									break
 								}
 							}

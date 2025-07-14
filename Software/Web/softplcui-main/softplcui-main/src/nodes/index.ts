@@ -2,6 +2,7 @@ import type { Node, NodeTypes } from "reactflow";
 import InputNode from "./InputNode.tsx";
 import LogicalNode from "./LogicalNode.tsx";
 import OutputNode from "./outputNode.tsx";
+import CommentNode from "./CommentNode.tsx";
 
 /*const nodeDataWithId = {
   ...NodeJson.nodes[1],
@@ -24,5 +25,6 @@ export const nodeTypes = {
   "outputNode": OutputNode,
   "LogicalNode": LogicalNode,
   "inputNode": InputNode,
+  "commentNode": CommentNode,
   // Add any of your custom nodes here!
 } satisfies NodeTypes;

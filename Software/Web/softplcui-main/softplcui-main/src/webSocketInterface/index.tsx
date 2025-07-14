@@ -89,7 +89,7 @@ const WebSocketView = () => {
     const goBackView = () => {
         navigate(-1);
     };
-    console.log("appliances:",appliances);
+    //console.log("appliances:",appliances);
     return (
         <>
             {/* button */}
@@ -119,7 +119,7 @@ const WebSocketView = () => {
                 />
                 <button onClick={sendMessage}>Send</button>
             </div>
-            {appliances.length > 0 && (
+            {appliances.length >= 0 && (
                 <div>
                     {/*<h4>Devices :</h4>*/}
                     {appliances.map((device, idx) => {
@@ -176,7 +176,7 @@ const WebSocketView = () => {
                         );
                     })}
 
-                    {/* Orphaned outputs (without associated button) */}
+                    {/* Outputs (without associated button) */}
                     {Object.entries(outputs)
                         .filter(([applianceName]) => !appliances.some(dev => dev.name === applianceName))
                         .map(([applianceName, deviceOutputs]) => (

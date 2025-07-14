@@ -222,6 +222,7 @@ func CreateMonitoringLists() {
 		//panic(resp.StatusCode)
 	}
 	resp.Body.Close()
+	fmt.Println("CreateMonitoringLists is completed")
 
 }
 func getMonitoringListID(respBody io.Reader) (string, error) {
