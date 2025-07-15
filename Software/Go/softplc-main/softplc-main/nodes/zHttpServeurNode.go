@@ -451,6 +451,8 @@ func (n *HttpServerNode) ProcessLogic() {
 		}
 	default:
 		n.output[0].Output = "0"
+		n.output[1].Output = ""
+		n.output[2].Output = ""
 		n.output[3].Output = ""
 		return
 	}

@@ -25,7 +25,7 @@ var modbusReadValueDescription = nodeDescription{
 	AccordionName: "Communication",
 	PrimaryType:   "LogicalNode",
 	Type_:         "ConfigurableNodeModbusReadValue",
-	Display:       "Modbus Read Value Node",
+	Display:       "Modbus Read Value (0x04)",
 	Label:         "Modbus Read Value",
 	Stretchable:   false,
 	Services:      []servicesStruct{},
@@ -33,7 +33,6 @@ var modbusReadValueDescription = nodeDescription{
 	Input: []dataTypeNameStruct{
 		{DataType: "bool", Name: "xEnable"},
 		{DataType: "value", Name: "UnitID"},
-		//{DataType: "value", Name: "FunctionCode"},
 		{DataType: "value", Name: "Addresses"},
 		{DataType: "value", Name: "Quantity"},
 	},
@@ -85,93 +84,92 @@ func (n *ModbusReadValueNode) initConnection(unitID byte) error {
 }
 
 func (n *ModbusReadValueNode) ProcessLogic() {
-	if n.input == nil || len(n.input) < 4 {
-		n.output[0].Output = "0"
-		return
-	}
-	if n.input[0].Input == nil {
-		n.output[0].Output = "0"
-		return
-	}
-
-	if *n.input[0].Input != "1" {
-		n.output[0].Output = "0"
-		return
-	}
-	unitID := byte(0)
-	if n.input[1].Input != nil {
-		unitID = byte(atoiDefault(*n.input[1].Input, 0))
-	}
-
-	/*
-		n.functionCode = 4
-		if n.input[2].Input != nil {
-			n.functionCode = atoiDefault(*n.input[2].Input, 2)
-		}*/
-	addresses := []string{"0"}
-	if n.input[2].Input != nil {
-		addresses = strings.Split(*n.input[2].Input, " ,, ")
-	}
-	quantites := []string{"1"}
-	if n.input[3].Input != nil {
-		quantites = strings.Split(*n.input[3].Input, " ,, ")
-	}
-	if !n.connectionIsInit {
-		if err := n.initConnection(unitID); err != nil {
-			fmt.Println("ModbusReadValue connection error:", err)
+	go func() {
+		if n.input == nil || len(n.input) < 4 {
 			n.output[0].Output = "0"
 			return
 		}
-	}
-	if n.handler == nil || n.client == nil || !n.connectionIsInit {
-		fmt.Println("Handler not ready")
-		n.output[0].Output = "0"
-		return
-	}
-
-	results := []string{}
-
-	for i, addrStr := range addresses {
-		address := uint16(atoiDefault(addrStr, 0))
-		quantity := uint16(atoiDefault(quantites[i], 1))
-		var res []byte
-		var err error
-		//bits := make([]bool, quantity)
-
-		res, err = n.client.ReadInputRegisters(address, quantity)
-		//Convert to Value
-		/*
-			for i2 := 0; uint16(i2) < quantity; i2++ {
-				byteIndex := i2 / 8
-				bitIndex := uint(i2 % 8)
-				bits[i2] = (res[byteIndex] & (1 << bitIndex)) != 0
-			}
-			for _, bit := range bits {
-				if bit {
-					results = append(results, "1")
-				} else {
-					results = append(results, "0")
-				}
-			}*/
-
-		if err != nil {
-			fmt.Println("ModbusReadValue read error:", err)
-			n.connectionIsInit = false
-			n.handler.Close()
-			n.handler = nil
-			n.client = nil
-			results = append(results, "error: "+err.Error())
-			continue
-		} else {
-			val := fmt.Sprintf("%d", bytesToUint16(res))
-			results = append(results, val)
+		if n.input[0].Input == nil {
+			n.output[0].Output = "0"
+			return
 		}
-	}
 
-	n.lastValues = results
-	n.outputFlag = true
-	n.output[0].Output = "1"
-	n.output[1].Output = strings.Join(n.lastValues, " ,, ")
+		if *n.input[0].Input != "1" {
+			n.output[0].Output = "0"
+			return
+		}
+		unitID := byte(0)
+		if n.input[1].Input != nil {
+			unitID = byte(atoiDefault(*n.input[1].Input, 0))
+		}
+
+		addresses := []string{"0"}
+		if n.input[2].Input != nil {
+			addresses = strings.Split(*n.input[2].Input, " ,, ")
+		}
+		quantites := []string{"1"}
+		if n.input[3].Input != nil {
+			quantites = strings.Split(*n.input[3].Input, " ,, ")
+		}
+
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Println("Recovered from panic in modbusReadValue:", r)
+				n.connectionIsInit = false
+				if n.handler != nil {
+					n.handler.Close()
+				}
+				n.handler = nil
+				n.client = nil
+				n.output[0].Output = "0"
+				n.output[1].Output = "error: panic"
+			}
+		}()
+
+		if !n.connectionIsInit {
+			if err := n.initConnection(unitID); err != nil {
+				fmt.Println("ModbusReadValue connection error:", err)
+				n.output[0].Output = "0"
+				return
+			}
+		}
+		if n.handler == nil || n.client == nil || !n.connectionIsInit {
+			fmt.Println("Handler not ready")
+			n.output[0].Output = "0"
+			return
+		}
+
+		results := []string{}
+
+		for i, addrStr := range addresses {
+			address := uint16(atoiDefault(addrStr, 0))
+			quantity := uint16(atoiDefault(quantites[i], 1))
+			var res []byte
+			var err error
+
+			res, err = n.client.ReadInputRegisters(address, quantity)
+
+			if err != nil {
+				fmt.Println("ModbusReadValue read error:", err)
+				n.connectionIsInit = false
+				if n.handler != nil {
+					n.handler.Close()
+				}
+				n.handler = nil
+				n.client = nil
+				results = append(results, "error: "+err.Error())
+				continue
+			} else {
+				val := fmt.Sprintf("%d", bytesToUint16(res))
+				results = append(results, val)
+			}
+		}
+
+		n.lastValues = results
+		n.outputFlag = true
+		n.output[0].Output = "1"
+		n.output[1].Output = strings.Join(n.lastValues, " ,, ")
+	}()
 }
 
 func (n *ModbusReadValueNode) GetNodeType() string { return n.nodeType }

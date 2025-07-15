@@ -157,6 +157,8 @@ func configureControleMode(nb uint8) {
 	resp.Body.Close()
 }
 
+var delayBackOff = 2 * time.Second
+
 func CreateMonitoringLists() {
 	username := "admin"
 	password := "wago"
@@ -188,12 +190,16 @@ func CreateMonitoringLists() {
 	jsonBytes, err := json.Marshal(payload)
 	if err != nil {
 		fmt.Println("JSON encoding error:", err)
+		time.Sleep(time.Second * time.Duration(delayBackOff)) // increase time to avoid stack flow panic
+		delayBackOff = delayBackOff * 2
 		CreateMonitoringLists()
 		//panic(err)
 	}
 	req, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonBytes))
 	if err != nil {
 		fmt.Println("Error request createMonitoringLists : ", err)
+		time.Sleep(time.Second * time.Duration(delayBackOff)) // increase time to avoid stack flow panic
+		delayBackOff = delayBackOff * 2
 		CreateMonitoringLists()
 		return
 		//panic(err)
@@ -210,6 +216,8 @@ func CreateMonitoringLists() {
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println("Error client createMonitoringLists : ", err)
+		time.Sleep(time.Second * time.Duration(delayBackOff)) // increase time to avoid stack flow panic
+		delayBackOff = delayBackOff * 2
 		CreateMonitoringLists()
 		return
 		//panic(err)
@@ -218,9 +226,12 @@ func CreateMonitoringLists() {
 	postID, err = getMonitoringListID(resp.Body)
 	if resp.StatusCode != 201 {
 		fmt.Println("Error createMonitoringLists not 201 is : ", resp.StatusCode)
+		time.Sleep(time.Second * time.Duration(delayBackOff)) // increase time to avoid stack flow panic
+		delayBackOff = delayBackOff * 2
 		CreateMonitoringLists()
 		//panic(resp.StatusCode)
 	}
+	delayBackOff = 2 * time.Second
 	resp.Body.Close()
 	fmt.Println("CreateMonitoringLists is completed")
 

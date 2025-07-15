@@ -598,7 +598,7 @@ export default function App() {
         }
     };
     useEffect(() => {
-        // Ajoute ou enlève la classe "debug-active" sur le body
+        // add or remove the class "debug-active" on the body
         if (checkedDebug) {
             document.body.classList.add('debug-active');
         } else {

@@ -27,7 +27,7 @@ var modbusWriteValueDescription = nodeDescription{
 	AccordionName: "Communication",
 	PrimaryType:   "LogicalNode",
 	Type_:         "ConfigurableNodeModbusWriteValue",
-	Display:       "Modbus Write Value Node",
+	Display:       "Modbus Write Value (0x06)",
 	Label:         "Modbus Write Value",
 	Stretchable:   false,
 	Services:      []servicesStruct{},
@@ -85,145 +85,119 @@ func (n *ModbusWriteValueNode) initConnection(unitID byte) error {
 }
 
 func (n *ModbusWriteValueNode) ProcessLogic() {
-	if n.input == nil || len(n.input) < 4 {
-		n.output[0].Output = "0"
-		return
-	}
-
-	if n.input[0].Input == nil {
-		n.output[0].Output = "0"
-		return
-	}
-
-	if *n.input[0].Input != "1" {
-		n.output[0].Output = "0"
-		return
-	}
-	unitID := byte(0)
-	if n.input[1].Input != nil {
-		unitID = byte(atoiDefault(*n.input[1].Input, 0))
-	}
-
-	addresses := []string{"0"}
-	if n.input[2].Input != nil {
-		addresses = strings.Split(*n.input[2].Input, " ,, ")
-	}
-
-	newValue := []string{"0"}
-	if n.input[3].Input != nil {
-		newValue = strings.Split(*n.input[3].Input, " ,, ")
-	}
-	var err error
-	if !n.connectionIsInit {
-		if err = n.initConnection(unitID); err != nil {
-			fmt.Println("ModbusWriteValue connection error:", err)
+	go func() {
+		if n.input == nil || len(n.input) < 4 {
 			n.output[0].Output = "0"
-			//return
-		}
-	}
-	if n.handler == nil || n.client == nil || !n.connectionIsInit {
-		fmt.Println("Handler not ready")
-		n.output[0].Output = "0"
-		return
-	}
-	/* prepare to send */
-	results := []string{}
-	if len(addresses) == len(newValue) {
-		server.SendToWebSocket("modbus value : send the corresponding value to each respective address")
-		for i, addrStr := range addresses {
-			var res []byte
-			address := uint16(atoiDefault(addrStr, 0))
-
-			// Convert the first element of the slice to uint16
-			var newValueConvert uint16
-			if value, err2 := strconv.ParseUint(newValue[i], 10, 16); err2 == nil {
-				newValueConvert = uint16(value)
-			}
-			//send
-			res, err = n.client.WriteSingleRegister(address, newValueConvert)
-			if err != nil {
-				fmt.Println("ModbusWriteValue write error:", err)
-				n.connectionIsInit = false
-				n.handler.Close()
-				n.handler = nil
-				n.client = nil
-				results = append(results, "error: "+err.Error())
-			} else {
-				val := fmt.Sprintf("%d", bytesToUint16(res))
-				results = append(results, val)
-			}
+			return
 		}
 
-	} else if len(addresses) < len(newValue) {
-		server.SendToWebSocket("modbus value : send the corresponding value to each respective address and then send the remaining values starting from address " + addresses[len(addresses)-1])
-		//send the corresponding value to each respective address
-		for i, addrStr := range addresses {
-			var res []byte
-
-			address := uint16(atoiDefault(addrStr, 0))
-
-			// Convert the element of the slice to uint16
-			var newValueConvert uint16
-			if value, err2 := strconv.ParseUint(newValue[i], 10, 16); err2 == nil {
-				newValueConvert = uint16(value)
-			}
-			//send
-			res, err = n.client.WriteSingleRegister(address, newValueConvert)
-			if err != nil {
-				fmt.Println("ModbusWriteValue write error:", err)
-				n.connectionIsInit = false
-				n.handler.Close()
-				n.handler = nil
-				n.client = nil
-				results = append(results, "error: "+err.Error())
-			} else {
-				val := fmt.Sprintf("%d", bytesToUint16(res))
-				results = append(results, val)
-			}
-		}
-		//send the remaining values starting from address addresses[len(addresses)-1]
-		dataBytes := stringsToBytes(newValue[len(newValue)-len(addresses):])
-		address := uint16(atoiDefault(addresses[len(addresses)-1], 0) + 1)
-		quantity := uint16(len(newValue) - len(addresses))
-		var res []byte
-		res, err = n.client.WriteMultipleRegisters(address, quantity, dataBytes)
-		if err != nil {
-			fmt.Println("ModbusWriteValue write error:", err)
-			n.connectionIsInit = false
-			n.handler.Close()
-			n.handler = nil
-			n.client = nil
-			results = append(results, "error: "+err.Error())
-		} else {
-			val := fmt.Sprintf("%d", bytesToUint16(res))
-			results = append(results, val)
+		if n.input[0].Input == nil {
+			n.output[0].Output = "0"
+			return
 		}
 
-	} else {
-		server.SendToWebSocket("modbus value : send the corresponding value to each respective address and then send the last value " + newValue[len(newValue)-1] + "to each address")
-		for i, addrStr := range addresses {
-			var res []byte
+		if *n.input[0].Input != "1" {
+			n.output[0].Output = "0"
+			return
+		}
+		unitID := byte(0)
+		if n.input[1].Input != nil {
+			unitID = byte(atoiDefault(*n.input[1].Input, 0))
+		}
 
-			address := uint16(atoiDefault(addrStr, 0))
+		addresses := []string{"0"}
+		if n.input[2].Input != nil {
+			addresses = strings.Split(*n.input[2].Input, " ,, ")
+		}
 
-			// Convert the first element of the slice to uint16
-			var newValueConvert uint16
-			if len(newValue) > i {
+		newValue := []string{"0"}
+		if n.input[3].Input != nil {
+			newValue = strings.Split(*n.input[3].Input, " ,, ")
+		}
+		var err error
+		if !n.connectionIsInit {
+			if err = n.initConnection(unitID); err != nil {
+				fmt.Println("ModbusWriteValue connection error:", err)
+				n.output[0].Output = "0"
+				//return
+			}
+		}
+		if n.handler == nil || n.client == nil || !n.connectionIsInit {
+			fmt.Println("Handler not ready")
+			n.output[0].Output = "0"
+			return
+		}
+		/* prepare to send */
+		results := []string{}
+		if len(addresses) == len(newValue) {
+			server.SendToWebSocket("modbus value : send the corresponding value to each respective address")
+			for i, addrStr := range addresses {
+				var res []byte
+				address := uint16(atoiDefault(addrStr, 0))
+
+				// Convert the first element of the slice to uint16
+				var newValueConvert uint16
 				if value, err2 := strconv.ParseUint(newValue[i], 10, 16); err2 == nil {
 					newValueConvert = uint16(value)
 				}
-			} else {
-				if value, err2 := strconv.ParseUint(newValue[len(newValue)-1], 10, 16); err2 == nil {
-					newValueConvert = uint16(value)
+				//send
+				res, err = n.client.WriteSingleRegister(address, newValueConvert)
+				if err != nil {
+					fmt.Println("ModbusWriteValue write error:", err)
+					n.connectionIsInit = false
+					if n.handler != nil {
+						n.handler.Close()
+					}
+					n.handler = nil
+					n.client = nil
+					results = append(results, "error: "+err.Error())
+				} else {
+					val := fmt.Sprintf("%d", bytesToUint16(res))
+					results = append(results, val)
 				}
 			}
 
-			//send
-			res, err = n.client.WriteSingleRegister(address, newValueConvert)
+		} else if len(addresses) < len(newValue) {
+			server.SendToWebSocket("modbus value : send the corresponding value to each respective address and then send the remaining values starting from address " + addresses[len(addresses)-1])
+			//send the corresponding value to each respective address
+			for i, addrStr := range addresses {
+				var res []byte
+
+				address := uint16(atoiDefault(addrStr, 0))
+
+				// Convert the element of the slice to uint16
+				var newValueConvert uint16
+				if value, err2 := strconv.ParseUint(newValue[i], 10, 16); err2 == nil {
+					newValueConvert = uint16(value)
+				}
+				//send
+				res, err = n.client.WriteSingleRegister(address, newValueConvert)
+				if err != nil {
+					fmt.Println("ModbusWriteValue write error:", err)
+					n.connectionIsInit = false
+					if n.handler != nil {
+						n.handler.Close()
+					}
+					n.handler = nil
+					n.client = nil
+					results = append(results, "error: "+err.Error())
+				} else {
+					val := fmt.Sprintf("%d", bytesToUint16(res))
+					results = append(results, val)
+				}
+			}
+			//send the remaining values starting from address addresses[len(addresses)-1]
+			dataBytes := stringsToBytes(newValue[len(newValue)-len(addresses):])
+			address := uint16(atoiDefault(addresses[len(addresses)-1], 0) + 1)
+			quantity := uint16(len(newValue) - len(addresses))
+			var res []byte
+			res, err = n.client.WriteMultipleRegisters(address, quantity, dataBytes)
 			if err != nil {
 				fmt.Println("ModbusWriteValue write error:", err)
 				n.connectionIsInit = false
-				n.handler.Close()
+				if n.handler != nil {
+					n.handler.Close()
+				}
 				n.handler = nil
 				n.client = nil
 				results = append(results, "error: "+err.Error())
@@ -231,16 +205,52 @@ func (n *ModbusWriteValueNode) ProcessLogic() {
 				val := fmt.Sprintf("%d", bytesToUint16(res))
 				results = append(results, val)
 			}
+
+		} else {
+			server.SendToWebSocket("modbus value : send the corresponding value to each respective address and then send the last value " + newValue[len(newValue)-1] + "to each address")
+			for i, addrStr := range addresses {
+				var res []byte
+
+				address := uint16(atoiDefault(addrStr, 0))
+
+				// Convert the first element of the slice to uint16
+				var newValueConvert uint16
+				if len(newValue) > i {
+					if value, err2 := strconv.ParseUint(newValue[i], 10, 16); err2 == nil {
+						newValueConvert = uint16(value)
+					}
+				} else {
+					if value, err2 := strconv.ParseUint(newValue[len(newValue)-1], 10, 16); err2 == nil {
+						newValueConvert = uint16(value)
+					}
+				}
+
+				//send
+				res, err = n.client.WriteSingleRegister(address, newValueConvert)
+				if err != nil {
+					fmt.Println("ModbusWriteValue write error:", err)
+					n.connectionIsInit = false
+					if n.handler != nil {
+						n.handler.Close()
+					}
+					n.handler = nil
+					n.client = nil
+					results = append(results, "error: "+err.Error())
+				} else {
+					val := fmt.Sprintf("%d", bytesToUint16(res))
+					results = append(results, val)
+				}
+			}
 		}
-	}
-	n.lastValues = results
-	n.outputFlag = true
-	if err == nil {
-		n.output[0].Output = "1"
-	} else {
-		n.output[0].Output = "0"
-	}
-	n.output[1].Output = strings.Join(n.lastValues, " ,, ")
+		n.lastValues = results
+		n.outputFlag = true
+		if err == nil {
+			n.output[0].Output = "1"
+		} else {
+			n.output[0].Output = "0"
+		}
+		n.output[1].Output = strings.Join(n.lastValues, " ,, ")
+	}()
 }
 
 func (n *ModbusWriteValueNode) GetNodeType() string { return n.nodeType }

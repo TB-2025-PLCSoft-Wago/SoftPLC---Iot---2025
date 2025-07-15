@@ -48,6 +48,12 @@ func (n *StringToBoolNode) ProcessLogic() {
 		}
 		return
 	}
+	if n.input[0].Input == nil {
+		for i, _ := range n.parameterValueData {
+			n.output[i].Output = "0"
+		}
+		return
+	}
 	//reset
 	for i, _ := range n.output {
 		n.output[i].Output = "0"
