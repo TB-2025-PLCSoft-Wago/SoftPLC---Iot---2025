@@ -333,29 +333,6 @@ export default function App() {
                 }
                 // Adds onChange to "commentNode" nodes
                 const restoredNodes = data.nodes.map((node: Node) => {
-                    if (node.type === "commentNode") {
-                        return {
-                            ...node,
-                            data: {
-                                ...node.data,
-                                onChange: (newText: string) => {
-                                    setNodes((nds) =>
-                                        nds.map((n) =>
-                                            n.id === node.id
-                                                ? {
-                                                    ...n,
-                                                    data: {
-                                                        ...n.data,
-                                                        text: newText,
-                                                    },
-                                                }
-                                                : n
-                                        )
-                                    );
-                                },
-                            },
-                        };
-                    }
                     return node;
                 });
                 setNodes(restoredNodes);
@@ -645,18 +622,10 @@ export default function App() {
                     type: 'commentNode',
                     position,
                     data: {
-                        text: '',
-                        onChange: (newText: string) => {
-                            setNodes((nds) =>
-                                nds.map((node) =>
-                                    node.id === nodeId
-                                        ? { ...node, data: { ...node.data, text: newText } }
-                                        : node
-                                )
-                            );
-                        },
+                        text: '', // pas de onChange ici
                     },
                 };
+
 
                 setNodes((nds) => [...nds, newNode]);
             }
@@ -718,29 +687,6 @@ export default function App() {
                 }
 
                 const restoredNodes = data.nodes.map((node: Node) => {
-                    if (node.type === "commentNode") {
-                        return {
-                            ...node,
-                            data: {
-                                ...node.data,
-                                onChange: (newText: string) => {
-                                    setNodes((nds) =>
-                                        nds.map((n) =>
-                                            n.id === node.id
-                                                ? {
-                                                    ...n,
-                                                    data: {
-                                                        ...n.data,
-                                                        text: newText,
-                                                    },
-                                                }
-                                                : n
-                                        )
-                                    );
-                                },
-                            },
-                        };
-                    }
                     return node;
                 });
 

@@ -39,11 +39,16 @@ func (n *RtrigNode) ProcessLogic() {
 		n.output[0].Output = "0"
 		return
 	}
-	if *n.input[0].Input == n.prevInput {
+	n.output[0].Output = "0"
+	if n.prevInput == "0" && *n.input[0].Input == "1" {
+		n.output[0].Output = "1"
+	}
+
+	/*if *n.input[0].Input == n.prevInput {
 		n.output[0].Output = "0"
 	} else if *n.input[0].Input == "1" {
 		n.output[0].Output = "1"
-	}
+	}*/
 
 	n.prevInput = *n.input[0].Input
 }

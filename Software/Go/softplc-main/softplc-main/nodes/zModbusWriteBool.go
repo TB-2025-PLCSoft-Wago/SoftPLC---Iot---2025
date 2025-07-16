@@ -121,6 +121,19 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 		if n.input[3].Input != nil {
 			newValue = strings.Split(*n.input[3].Input, " ,, ")
 		}
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Println("Recovered from panic in ModbusWriteBool:", r)
+				n.connectionIsInit = false
+				if n.handler != nil {
+					n.handler.Close()
+				}
+				n.handler = nil
+				n.client = nil
+				n.output[0].Output = "0"
+				n.output[1].Output = "error: panic"
+			}
+		}()
 		var err error
 		if !n.connectionIsInit {
 			if err = n.initConnection(unitID); err != nil {

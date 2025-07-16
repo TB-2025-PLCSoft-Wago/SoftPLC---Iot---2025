@@ -1,29 +1,35 @@
-// nodes/CommentNode.tsx
+// CommentNode.tsx
 import React from 'react';
-import { Handle, Position, NodeProps } from 'reactflow';
-import './CommentNode.css'; // Style optionnel
+import { NodeProps, useReactFlow } from 'reactflow';
 
-const CommentNode = ({ data }: NodeProps) => {
-    const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+export default function CommentNode({ id, data }: NodeProps) {
+    const { setNodes } = useReactFlow();
 
-    React.useEffect(() => {
-        // Ne pas focus automatiquement
-        // Optionnellement : défocus si c’est le cas
-        if (document.activeElement === textareaRef.current) {
-            textareaRef.current?.blur();
-        }
-    }, []);
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const newText = event.target.value;
+        setNodes((nds) =>
+            nds.map((node) =>
+                node.id === id
+                    ? {
+                        ...node,
+                        data: {
+                            ...node.data,
+                            text: newText,
+                        },
+                    }
+                    : node
+            )
+        );
+    };
 
     return (
-        <div className="comment-node">
+        <div style={{ padding: 5, background: '#CFC9CE', borderRadius: 8 }}>
             <textarea
-                className="comment-textarea"
-                value={data.text}
-                onChange={(e) => data.onChange(e.target.value)}
+                value={data.text || ''}
+                onChange={handleChange}
+                style={{ width: 200, height: 30, background: '#FFFBDB'}}
                 placeholder="Add a comment ..."
             />
         </div>
     );
-};
-
-export default CommentNode;
+}

@@ -26,18 +26,21 @@ export default function useKeyboardShortcuts({
     const undoStack = useRef<{ nodes: Node[]; edges: Edge[] }[]>([]);
     const redoStack = useRef<{ nodes: Node[]; edges: Edge[] }[]>([]);
     const pushToUndoStack = () => {
-        console.log("nodes push :", nodes);
+        console.log("puch to Undo")
         undoStack.current.push({
-            nodes: structuredClone(nodes),
-            edges: structuredClone(edges),
+            nodes: JSON.parse(JSON.stringify(nodes)),
+            edges: JSON.parse(JSON.stringify(edges)),
         });
-        // On vide la redo stack à chaque nouvelle action
         redoStack.current = [];
     };
+
 
     useEffect(() => {
         if(!isDragging){
             console.log("UseEffectKeyboard")
+            console.log("Nodes : ", )
+        }else{
+            //console.log("UseEffectKeyboard error")
         }
         const handleKeyDown = (event: KeyboardEvent) => {
             const activeElement = document.activeElement;
@@ -45,6 +48,7 @@ export default function useKeyboardShortcuts({
                 activeElement instanceof HTMLInputElement ||
                 activeElement instanceof HTMLTextAreaElement ||
                 (activeElement && (activeElement as HTMLElement).isContentEditable);
+
             if (isInputFocused) return;
             // Copy ctrl + c
             if ((event.ctrlKey || event.metaKey) && event.key === "c" || event.key === "x") {
@@ -89,18 +93,21 @@ export default function useKeyboardShortcuts({
                     const newId = getId();
                     idMap.set(node.id, newId);
 
+                    // Supprimer onChange du clone
+                    const { onChange, ...cleanData } = node.data || {};
+
                     return {
-                        ...structuredClone(node), // Clone profond
+                        ...node,
                         id: newId,
                         position: {
                             x: node.position.x + 40,
                             y: node.position.y + 40,
                         },
+                        data: cleanData,
                         selected: true,
                         draggable: true,
                     };
                 });
-
 
                 const newEdges = copiedEdges.map((edge) => ({
                     ...edge,
@@ -111,16 +118,45 @@ export default function useKeyboardShortcuts({
 
                 setNodes((prev) => {
                     const deselected = prev.map((n) => ({ ...n, selected: false }));
-                    return [...deselected, ...newNodes]; // Deselect old, add new
+
+                    const newNodesWithHandlers = newNodes.map((node) => {
+                        if (node.type === "commentNode") {
+                            return {
+                                ...node,
+                                data: {
+                                    ...node.data,
+                                    onChange: (newText: string) => {
+                                        setNodes((nds) =>
+                                            nds.map((n) =>
+                                                n.id === node.id
+                                                    ? {
+                                                        ...n,
+                                                        data: {
+                                                            ...n.data,
+                                                            text: newText,
+                                                        },
+                                                    }
+                                                    : n
+                                            )
+                                        );
+                                    },
+                                },
+                            };
+                        }
+                        return node;
+                    });
+
+                    return [...deselected, ...newNodesWithHandlers];
                 });
+
                 setEdges((prev) => [...prev, ...newEdges]);
 
-                //print in the developer console  Ctrl + Maj + J
                 console.log("paste :", {
                     nodes: newNodes,
                     edges: newEdges,
                 });
             }
+
 
             // Undo (Ctrl + Z)
             if ((event.ctrlKey || event.metaKey) && event.key === "z") {
