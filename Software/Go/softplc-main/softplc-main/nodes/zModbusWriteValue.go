@@ -19,7 +19,7 @@ type ModbusWriteValueNode struct {
 	handler            *modbus.TCPClientHandler
 	connectionIsInit   bool
 	outputFlag         bool
-	lastValues         []string
+	lastValuesReceived []string
 	//functionCode 		int
 }
 
@@ -40,7 +40,7 @@ var modbusWriteValueDescription = nodeDescription{
 	},
 	Output: []dataTypeNameStruct{
 		{DataType: "bool", Name: "xDone"},
-		{DataType: "value", Name: "Values"},
+		{DataType: "value", Name: "ValuesReceived"},
 	},
 	ParameterNameData: []string{"host", "port"},
 }
@@ -171,7 +171,7 @@ func (n *ModbusWriteValueNode) ProcessLogic() {
 			}
 
 		} else if len(addresses) < len(newValue) {
-			server.SendToWebSocket("modbus value : send the corresponding value to each respective address and then send the remaining values starting from address " + addresses[len(addresses)-1])
+			server.SendToWebSocket("modbus value : send the corresponding value to each respective address and then send the remaining ValuesReceived starting from address " + addresses[len(addresses)-1])
 			//send the corresponding value to each respective address
 			for i, addrStr := range addresses {
 				var res []byte
@@ -199,7 +199,7 @@ func (n *ModbusWriteValueNode) ProcessLogic() {
 					results = append(results, val)
 				}
 			}
-			//send the remaining values starting from address addresses[len(addresses)-1]
+			//send the remaining ValuesReceived starting from address addresses[len(addresses)-1]
 			dataBytes := stringsToBytes(newValue[len(newValue)-len(addresses):])
 			address := uint16(atoiDefault(addresses[len(addresses)-1], 0) + 1)
 			quantity := uint16(len(newValue) - len(addresses))
@@ -255,14 +255,14 @@ func (n *ModbusWriteValueNode) ProcessLogic() {
 				}
 			}
 		}
-		n.lastValues = results
+		n.lastValuesReceived = results
 		n.outputFlag = true
 		if err == nil {
 			n.output[0].Output = "1"
 		} else {
 			n.output[0].Output = "0"
 		}
-		n.output[1].Output = strings.Join(n.lastValues, " ,, ")
+		n.output[1].Output = strings.Join(n.lastValuesReceived, " ,, ")
 	}()
 }
 
@@ -286,7 +286,7 @@ func (n *ModbusWriteValueNode) DestroyToBuildAgain() {
 	n.client = nil
 	n.connectionIsInit = false
 	n.outputFlag = false
-	n.lastValues = nil
+	n.lastValuesReceived = nil
 }
 func stringsToBytes(strings []string) []byte {
 	var result []byte

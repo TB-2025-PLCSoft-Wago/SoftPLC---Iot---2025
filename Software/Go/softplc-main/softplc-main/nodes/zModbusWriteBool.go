@@ -19,7 +19,7 @@ type ModbusWriteBoolNode struct {
 	handler            *modbus.TCPClientHandler
 	connectionIsInit   bool
 	outputFlag         bool
-	lastValues         []string
+	lastValuesReceived []string
 	//functionCode 		int
 }
 
@@ -37,11 +37,11 @@ var modbusWriteBoolDescription = nodeDescription{
 		{DataType: "value", Name: "UnitID"},
 		{DataType: "value", Name: "Addresses"},
 		//{DataType: "value", Name: "Quantity"},
-		{DataType: "value", Name: "NewValue"},
+		{DataType: "value", Name: "NewValues"},
 	},
 	Output: []dataTypeNameStruct{
 		{DataType: "bool", Name: "xDone"},
-		{DataType: "value", Name: "Values"},
+		{DataType: "value", Name: "ValuesReceived"},
 	},
 	ParameterNameData: []string{"host", "port"},
 }
@@ -117,9 +117,9 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 			if n.input[3].Input != nil {
 				quantites = strings.Split(*n.input[3].Input, " ,, ")
 			}*/
-		newValue := []string{"0"}
+		newValues := []string{"0"}
 		if n.input[3].Input != nil {
-			newValue = strings.Split(*n.input[3].Input, " ,, ")
+			newValues = strings.Split(*n.input[3].Input, " ,, ")
 		}
 		defer func() {
 			if r := recover(); r != nil {
@@ -150,7 +150,7 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 
 		/* prepare to send */
 		results := []string{}
-		if len(addresses) == len(newValue) {
+		if len(addresses) == len(newValues) {
 			server.SendToWebSocket("modbus write bool : send the corresponding value to each respective address")
 			for i, addrStr := range addresses {
 				var res []byte
@@ -159,7 +159,7 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 
 				// Convert the first element of the slice to uint16
 				var newBoolConvert uint16
-				if value, err2 := strconv.ParseUint(newValue[i], 10, 16); err2 == nil {
+				if value, err2 := strconv.ParseUint(newValues[i], 10, 16); err2 == nil {
 					newBoolConvert = uint16(value)
 				}
 				//send
@@ -179,8 +179,8 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 				}
 			}
 
-		} else if len(addresses) < len(newValue) {
-			server.SendToWebSocket("modbus write bool : send the corresponding value to each respective address and then send the remaining values starting from address " + addresses[len(addresses)-1])
+		} else if len(addresses) < len(newValues) {
+			server.SendToWebSocket("modbus write bool : send the corresponding value to each respective address and then send the remaining ValuesReceived starting from address " + addresses[len(addresses)-1])
 			//send the corresponding value to each respective address
 			for i, addrStr := range addresses {
 				var res []byte
@@ -188,7 +188,7 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 
 				// Convert the first element of the slice to uint16
 				var dataBytes1 []byte
-				dataBytes1, err = stringBitsToByteArray([]string{newValue[i]})
+				dataBytes1, err = stringBitsToByteArray([]string{newValues[i]})
 				//send
 				res, err = n.client.WriteMultipleCoils(address, 1, dataBytes1)
 				if err != nil {
@@ -205,12 +205,12 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 					results = append(results, val)
 				}
 			}
-			//send the remaining values starting from address addresses[len(addresses)-1]
+			//send the remaining ValuesReceived starting from address addresses[len(addresses)-1]
 			var dataBytes []byte
 			var res []byte
-			dataBytes, err = stringBitsToByteArray(newValue[len(addresses):])
+			dataBytes, err = stringBitsToByteArray(newValues[len(addresses):])
 			address := uint16(atoiDefault(addresses[len(addresses)-1], 0) + 1)
-			quantity := uint16(len(newValue) - len(addresses))
+			quantity := uint16(len(newValues) - len(addresses))
 			if n.client != nil {
 				res, err = n.client.WriteMultipleCoils(address, quantity, dataBytes)
 			}
@@ -229,19 +229,19 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 			}
 
 		} else {
-			server.SendToWebSocket("modbus write bool : send the corresponding value to each respective address and then send the last value " + newValue[len(newValue)-1] + "to each address")
+			server.SendToWebSocket("modbus write bool : send the corresponding value to each respective address and then send the last value " + newValues[len(newValues)-1] + "to each address")
 			for i, addrStr := range addresses {
 				var res []byte
 				address := uint16(atoiDefault(addrStr, 0))
 
 				// Convert the first element of the slice to uint16
 				var newBoolConvert uint16
-				if len(newValue) > i {
-					if value, err2 := strconv.ParseUint(newValue[i], 10, 16); err2 == nil {
+				if len(newValues) > i {
+					if value, err2 := strconv.ParseUint(newValues[i], 10, 16); err2 == nil {
 						newBoolConvert = uint16(value)
 					}
 				} else {
-					if value, err2 := strconv.ParseUint(newValue[len(newValue)-1], 10, 16); err2 == nil {
+					if value, err2 := strconv.ParseUint(newValues[len(newValues)-1], 10, 16); err2 == nil {
 						newBoolConvert = uint16(value)
 					}
 				}
@@ -264,7 +264,7 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 			}
 		}
 
-		n.lastValues = results
+		n.lastValuesReceived = results
 		n.outputFlag = true
 		if err == nil {
 			n.output[0].Output = "1"
@@ -272,7 +272,7 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 			n.output[0].Output = "0"
 		}
 
-		n.output[1].Output = strings.Join(n.lastValues, " ,, ")
+		n.output[1].Output = strings.Join(n.lastValuesReceived, " ,, ")
 	}()
 }
 
@@ -296,7 +296,7 @@ func (n *ModbusWriteBoolNode) DestroyToBuildAgain() {
 	n.client = nil
 	n.connectionIsInit = false
 	n.outputFlag = false
-	n.lastValues = nil
+	n.lastValuesReceived = nil
 }
 
 func packBitsToBytes(bits []bool) []byte {

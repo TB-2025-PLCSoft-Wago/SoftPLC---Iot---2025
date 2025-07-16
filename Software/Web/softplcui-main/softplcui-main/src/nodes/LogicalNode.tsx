@@ -12,6 +12,8 @@ import CommunicationHandles from "./handles/CommunicationHandles.tsx";
 import StringToBoolHandles from "./handles/StringToBoolHandles.tsx";
 import TimerNode from "./TimerNode.tsx";
 import EdgeDetectionNode from "./EdgeDetectionNode.tsx";
+import ModbusNode from "./ModbusNode.tsx";
+import CommunicationHandles_select from "./handles/CommunicationHandles_select.tsx";
 
 
 const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
@@ -102,6 +104,8 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         //console.log("Mqtt type : ", data.type);
         const [nodeSize, setNodeSize] = useState({ width: 225, height: (numberOfConnectedTargetHandles + 7) * 40 });
 
+
+
         /*
         const handleResize = (width: number, height: number) => {
             setNodeSize({ width, height });
@@ -114,27 +118,44 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         };
         //console.log("communication data : ", data)
         //console.log("communication inputValues : ", inputValues)
-        content = (
-            <CommunicationHandles
-                data={data}
-                inputValues={inputValues}
-                handleInputChange={handleInputChange}
-                setInputValues={setInputValues}
-                onResize={handleResize}
-            />
-        );
-        return (
-            <div
-                className="react-flow__node-default logicalNode"
-                style={{
-                    ...nodeSize,
-                    position: "relative",
-                }}
-            >
-                {/*data.label && <div className="data-label">{data.label}</div>*/}
-                {content}
-            </div>
-        );
+        if (data.type.includes("ConfigurableNodeModbus")) {
+            //console.log("timer : ",data.type)
+            return (
+                <ModbusNode
+                    data={data}
+                    inputValues={inputValues}
+                    handleInputChange={handleInputChange}
+                    setInputValues={setInputValues}
+                    onResize={handleResize}
+                    nodeSize = {nodeSize}
+                />
+            );
+
+        }else {
+            content = (
+                <CommunicationHandles
+                    data={data}
+                    inputValues={inputValues}
+                    handleInputChange={handleInputChange}
+                    setInputValues={setInputValues}
+                    onResize={handleResize}
+                />
+            );
+            return (
+                <div
+                    className="react-flow__node-default logicalNode"
+                    style={{
+                        ...nodeSize,
+                        position: "relative",
+                    }}
+                >
+                    {/*data.label && <div className="data-label">{data.label}</div>*/}
+                    {content}
+                </div>
+            );
+        }
+
+
     } else if (!data.stretchable) {
         content = <FixedHandles data={data} />;
         if (data.type.includes("TON") || (data.type.includes("TOF"))) {

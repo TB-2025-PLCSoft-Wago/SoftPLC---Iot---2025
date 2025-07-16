@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>16</zoom_level>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>448</x>
+      <y>1024</y>
+      <w>288</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>
+Read each Quantiy[i] 
+start at
+Addresses[i]
+
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>864</y>
+      <w>368</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+len(Addresses) == len(Quantity)</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>96</x>
+      <y>816</y>
+      <w>432</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+len(Addresses) == 1 &amp;&amp; len(Quantity)</panel_attributes>
+    <additional_attributes>250.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>0</x>
+      <y>1008</y>
+      <w>288</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>
+Read Quantiy[0] 
+start at
+Addresses[0]
+
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>768</x>
+      <y>784</y>
+      <w>464</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+len(Addresses) &gt; len(Quantity)</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>880</x>
+      <y>1024</y>
+      <w>304</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>
+Read each Quantiy[i] 
+start at
+Addresses[i]
+until i = len(Quantity) 
+then is like Quantiy[i] = 1
+
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>192</x>
+      <y>512</y>
+      <w>1008</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>
+Read each Quantiy[i] 
+start at
+Addresses[i]
+until i == len(Addresses) 
+then stop
+
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>672</y>
+      <w>352</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+len(Addresses) &lt; len(Quantity)</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>496</x>
+      <y>768</y>
+      <w>288</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>
+Modbus Read
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>192</x>
+      <y>0</y>
+      <w>1008</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>
+Read each Quantiy[i] 
+start at
+Addresses[i]
+until i == len(Addresses) 
+then is like Quantiy[len(Addresses)] = sum(Quantiy[len(Addresses) to Quantiy[len(Quantiy))
+
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>32</x>
+      <y>560</y>
+      <w>192</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.&gt;
+same</panel_attributes>
+    <additional_attributes>10.0;270.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>400</x>
+      <y>1680</y>
+      <w>288</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>
+Modbus Write
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>96</x>
+      <y>1424</y>
+      <w>1008</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>
+Write each NewValues[i] 
+start at
+Addresses[i]
+until i == len(Addresses) 
+then is like Addresses[i] = Addresses[i-1] + 1
+
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>1584</y>
+      <w>400</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+len(Addresses) &lt;= len(NewValues)</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>1696</y>
+      <w>496</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+len(Addresses) &gt; len(NewValues)</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>784</x>
+      <y>1936</y>
+      <w>304</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>
+Write each NewValues[i] 
+start at
+Addresses[i]
+until i = len(NewValues) 
+then stop
+
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>384</x>
+      <y>672</y>
+      <w>128</w>
+      <h>384</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.&gt;
+same</panel_attributes>
+    <additional_attributes>40.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>352</x>
+      <y>1936</y>
+      <w>288</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>
+Write each NewValues[i] 
+start at
+Addresses[i]
+
+valign=top
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>464</x>
+      <y>1776</y>
+      <w>400</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+len(Addresses) == len(NewValues)</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>224</x>
+      <y>1584</y>
+      <w>160</w>
+      <h>448</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.&gt;
+same</panel_attributes>
+    <additional_attributes>80.0;260.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

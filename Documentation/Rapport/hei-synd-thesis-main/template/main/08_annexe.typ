@@ -466,7 +466,7 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
 
 #include "/main/08_a0_ExempleCodeAvecExtrait.typ"
 
-
+#include "/main/08_a1_Exemple_Modbus.typ"
 
 <sec:endAnnex>
 ]

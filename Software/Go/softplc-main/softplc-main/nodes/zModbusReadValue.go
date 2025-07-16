@@ -17,7 +17,7 @@ type ModbusReadValueNode struct {
 	handler            *modbus.TCPClientHandler
 	connectionIsInit   bool
 	outputFlag         bool
-	lastValues         []string
+	lastValuesReceived []string
 	functionCode       int
 }
 
@@ -38,7 +38,7 @@ var modbusReadValueDescription = nodeDescription{
 	},
 	Output: []dataTypeNameStruct{
 		{DataType: "bool", Name: "xDone"},
-		{DataType: "value", Name: "Values"},
+		{DataType: "value", Name: "ValuesReceived"},
 	},
 	ParameterNameData: []string{"host", "port"},
 }
@@ -165,10 +165,10 @@ func (n *ModbusReadValueNode) ProcessLogic() {
 			}
 		}
 
-		n.lastValues = results
+		n.lastValuesReceived = results
 		n.outputFlag = true
 		n.output[0].Output = "1"
-		n.output[1].Output = strings.Join(n.lastValues, " ,, ")
+		n.output[1].Output = strings.Join(n.lastValuesReceived, " ,, ")
 	}()
 }
 
@@ -192,5 +192,5 @@ func (n *ModbusReadValueNode) DestroyToBuildAgain() {
 	n.client = nil
 	n.connectionIsInit = false
 	n.outputFlag = false
-	n.lastValues = nil
+	n.lastValuesReceived = nil
 }

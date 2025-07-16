@@ -10,7 +10,7 @@ interface Props {
 const FixedHandles: React.FC<Props> = ({ data }) => {
     return (
         <>
-            {data.label && !['TON', 'TOF', 'Ftrig','Rtrig', 'RF_trig'].includes(data.label) && (
+            {data.label && !['TON', 'TOF', 'Ftrig','Rtrig', 'RF_trig', 'Modbus Read Bool', 'Modbus Read Value'].includes(data.label) && (
                 <>
                     {/* colored background above the line */}
                     <div className="node-top-background ntb-fixed" />

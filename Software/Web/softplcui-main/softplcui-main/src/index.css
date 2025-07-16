@@ -250,17 +250,18 @@ input[type='number'] {
 /* Style for data.label container: green rectangle */
 .react-flow__node .data-label {
     position: absolute;
-    background-color: #FFFBDB; /* light green */
+    background-color: #FFFBDB; /* light yellow */
     /*border: 2px solid #4caf50;*/ /* darker green border */
     border-radius: 6px;
     padding: 6px 10px;
     font-weight: bold;
     color: #123F15;
+    text-align: center;
     top: 5px;
     transform: translateX(-50%);
     display: inline-block;
     margin-bottom: 4px;
-    text-align: center;
+
     z-index: 2;
 
 }
@@ -414,20 +415,28 @@ legend {
     padding: 3px 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #eeeeee;
-    font-size: 14px;
+    background-color: #FFFBDB;
+    font-size: 12px;
     color: #1b5e20;
     outline: none;
     appearance: none;
     background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
     background-repeat: no-repeat;
-    background-position: right 10px center;
+    background-position: right -0px center;
     background-size: 12px;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    white-space: normal;
+    word-break: break-word;
+
+    font-weight: bold;
+    color: #123F15;
+    text-align: center;
 }
 
 .custom-select:hover {
     border-color: #888;
+    background-color: #FFF399;
+    color: #247F2A;
 }
 
 .custom-select:focus {

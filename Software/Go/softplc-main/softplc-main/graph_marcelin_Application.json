@@ -82,15 +82,6 @@
       "type": "step"
     },
     {
-      "id": "reactflow__edge-36Output-37Input",
-      "selected": false,
-      "source": "36",
-      "sourceHandle": "Output",
-      "target": "37",
-      "targetHandle": "Input",
-      "type": "step"
-    },
-    {
       "id": "reactflow__edge-37Output-33Input",
       "selected": false,
       "source": "37",
@@ -1091,6 +1082,777 @@
       "target": "148",
       "targetHandle": "Input",
       "type": "step"
+    },
+    {
+      "id": "reactflow__edge-155Output-153xEnable",
+      "source": "155",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "153",
+      "targetHandle": "xEnable",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-156Output-153UnitID",
+      "source": "156",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "153",
+      "targetHandle": "UnitID",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-157Output-153Addresses",
+      "source": "157",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "153",
+      "targetHandle": "Addresses",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-158Output-153Quantity",
+      "source": "158",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "153",
+      "targetHandle": "Quantity",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-153Values-160str",
+      "source": "153",
+      "sourceHandle": "Values",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "160",
+      "targetHandle": "str",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-153xDone-162Input",
+      "source": "153",
+      "sourceHandle": "xDone",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "162",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-160x0-163Input",
+      "source": "160",
+      "sourceHandle": "x0",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "163",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-165Output-164xEnable",
+      "source": "165",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "164",
+      "targetHandle": "xEnable",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-164Values-166Input",
+      "source": "164",
+      "sourceHandle": "Values",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "166",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-168Output-164UnitID",
+      "source": "168",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "164",
+      "targetHandle": "UnitID",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-164xDone-169Input",
+      "source": "164",
+      "sourceHandle": "xDone",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "169",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-171Output-164NewValue",
+      "source": "171",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "164",
+      "targetHandle": "NewValue",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-188Output-171x0",
+      "source": "188",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "171",
+      "targetHandle": "x0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-189Output-164Addresses",
+      "source": "189",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "164",
+      "targetHandle": "Addresses",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-129Output-197Input",
+      "selected": false,
+      "source": "129",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "197",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-201Q-190Input",
+      "selected": false,
+      "source": "201",
+      "sourceHandle": "Q",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "190",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-202Q-191Input",
+      "selected": false,
+      "source": "202",
+      "sourceHandle": "Q",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "191",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-219Output-202S",
+      "selected": false,
+      "source": "219",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "202",
+      "targetHandle": "S",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-175Output-222Input",
+      "selected": false,
+      "source": "175",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "222",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-222Output-219Input0",
+      "selected": false,
+      "source": "222",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "219",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-174Output-223Input",
+      "selected": false,
+      "source": "174",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "223",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-214Output-230Input",
+      "source": "214",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "230",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-160x10-234Input",
+      "source": "160",
+      "sourceHandle": "x10",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "234",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-176Output-236Input0",
+      "selected": false,
+      "source": "176",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "236",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-235Output-236Input1",
+      "selected": false,
+      "source": "235",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "236",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-245Output-176Input0",
+      "selected": false,
+      "source": "245",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "176",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-246Output-176Input1",
+      "selected": false,
+      "source": "246",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "176",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-236Output-247S",
+      "source": "236",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "247",
+      "targetHandle": "S",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-247Q-183Input",
+      "source": "247",
+      "sourceHandle": "Q",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "183",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-230Output-247R1",
+      "source": "230",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#868985",
+        "strokeWidth": 1
+      },
+      "target": "247",
+      "targetHandle": "R1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-248Q-204Input",
+      "source": "248",
+      "sourceHandle": "Q",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "204",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-209Output-248R1",
+      "source": "209",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "248",
+      "targetHandle": "R1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-230Output-248S",
+      "source": "230",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "248",
+      "targetHandle": "S",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-207Output-209Input1",
+      "source": "207",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "209",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-214Output-209Input0",
+      "selected": false,
+      "source": "214",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "209",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-251Output-253Input",
+      "source": "251",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "253",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-215Output-255Input",
+      "source": "215",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "255",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-223Output-257Input0",
+      "source": "223",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "257",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-257Output-201S",
+      "source": "257",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "201",
+      "targetHandle": "S",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-259Output-260Input",
+      "source": "259",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "260",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-260Output-257Input1",
+      "source": "260",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "257",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-253Output-219Input1",
+      "source": "253",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "219",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-225Output-262Input",
+      "selected": false,
+      "source": "225",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "262",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-241Output-268Input0",
+      "source": "241",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "268",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-185Output-269Input",
+      "source": "185",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "269",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-269Output-268Input1",
+      "source": "269",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "268",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-268Output-171x1",
+      "source": "268",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "171",
+      "targetHandle": "x1",
+      "type": "step"
+    },
+    {
+      "id": "272",
+      "source": "271",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "270",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-270Output-171x2",
+      "source": "270",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "171",
+      "targetHandle": "x2",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-242Output-270Input0",
+      "source": "242",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "270",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-187Output-271Input",
+      "source": "187",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "271",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-237Output-274Input0",
+      "source": "237",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "274",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-274Output-273Input",
+      "source": "274",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "273",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-160x9-275Input",
+      "source": "160",
+      "sourceHandle": "x9",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "275",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-160x8-276Input",
+      "source": "160",
+      "sourceHandle": "x8",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "276",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-277Output-37Input",
+      "source": "277",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "37",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-37Output-278Input",
+      "source": "37",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "278",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-255Output-279Input0",
+      "source": "255",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "279",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-279Output-201R1",
+      "source": "279",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "201",
+      "targetHandle": "R1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-222Output-279Input1",
+      "source": "222",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "279",
+      "targetHandle": "Input1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-280Output-202R1",
+      "source": "280",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "202",
+      "targetHandle": "R1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-223Output-280Input0",
+      "selected": false,
+      "source": "223",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#d400ff",
+        "strokeWidth": 1
+      },
+      "target": "280",
+      "targetHandle": "Input0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-262Output-280Input1",
+      "selected": false,
+      "source": "262",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "280",
+      "targetHandle": "Input1",
+      "type": "step"
     }
   ],
   "nodes": [
@@ -1726,69 +2488,15 @@
       "height": 82,
       "id": "33",
       "position": {
-        "x": 146.8313361355854,
-        "y": 1552.9495294066278
+        "x": 121.83133613558542,
+        "y": 1504.9495294066278
       },
       "positionAbsolute": {
-        "x": 146.8313361355854,
-        "y": 1552.9495294066278
+        "x": 121.83133613558542,
+        "y": 1504.9495294066278
       },
       "selected": false,
       "type": "outputNode",
-      "width": 222
-    },
-    {
-      "data": {
-        "accordion": "Input",
-        "dataType": "",
-        "display": "Digital Input",
-        "id": "36",
-        "inputHandle": [],
-        "label": "Input",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "Output"
-          }
-        ],
-        "parameterNameData": null,
-        "primaryType": "inputNode",
-        "selectedFriendlyNameData": "",
-        "selectedServiceData": "DI4",
-        "selectedSubServiceData": "",
-        "services": [
-          {
-            "friendlyName": "",
-            "nameServices": [
-              "DI1",
-              "DI2",
-              "DI3",
-              "DI4",
-              "DI5",
-              "DI6",
-              "DI7",
-              "DI8"
-            ]
-          }
-        ],
-        "stretchable": false,
-        "subServices": [],
-        "type": "digitalInput",
-        "valueData": ""
-      },
-      "dragging": false,
-      "height": 92,
-      "id": "36",
-      "position": {
-        "x": -301.7307450006979,
-        "y": 1494.8722404402142
-      },
-      "positionAbsolute": {
-        "x": -301.7307450006979,
-        "y": 1494.8722404402142
-      },
-      "selected": false,
-      "type": "inputNode",
       "width": 222
     },
     {
@@ -1828,12 +2536,12 @@
       "height": 142,
       "id": "37",
       "position": {
-        "x": -26.043139801409552,
-        "y": 1492.5748437302202
+        "x": -92.04313980140951,
+        "y": 1478.5748437302202
       },
       "positionAbsolute": {
-        "x": -26.043139801409552,
-        "y": 1492.5748437302202
+        "x": -92.04313980140951,
+        "y": 1478.5748437302202
       },
       "selected": false,
       "type": "LogicalNode",
@@ -2251,12 +2959,12 @@
       "height": 142,
       "id": "50",
       "position": {
-        "x": 205.171114529225,
-        "y": 1710.2090427371609
+        "x": 249.17111452922495,
+        "y": 1748.2090427371606
       },
       "positionAbsolute": {
-        "x": 205.171114529225,
-        "y": 1710.2090427371609
+        "x": 249.17111452922495,
+        "y": 1748.2090427371606
       },
       "selected": false,
       "type": "LogicalNode",
@@ -5172,11 +5880,11 @@
       "height": 222,
       "id": "135",
       "position": {
-        "x": 2283.410286389785,
+        "x": 2296.2938772051234,
         "y": 2261.2917598092213
       },
       "positionAbsolute": {
-        "x": 2283.410286389785,
+        "x": 2296.2938772051234,
         "y": 2261.2917598092213
       },
       "selected": false,
@@ -5511,12 +6219,12 @@
       "height": 82,
       "id": "147",
       "position": {
-        "x": 2266.2070942603723,
-        "y": 2151.0872610416423
+        "x": 2407.3944407130716,
+        "y": 2044.2071202690381
       },
       "positionAbsolute": {
-        "x": 2266.2070942603723,
-        "y": 2151.0872610416423
+        "x": 2407.3944407130716,
+        "y": 2044.2071202690381
       },
       "selected": false,
       "type": "outputNode",
@@ -5566,12 +6274,12 @@
       "height": 82,
       "id": "148",
       "position": {
-        "x": 2276.09403405204,
-        "y": 2533.802565317425
+        "x": 2286.09403405204,
+        "y": 2548.10977099752
       },
       "positionAbsolute": {
-        "x": 2276.09403405204,
-        "y": 2533.802565317425
+        "x": 2286.09403405204,
+        "y": 2548.10977099752
       },
       "selected": false,
       "type": "outputNode",
@@ -5741,11 +6449,3548 @@
       "selected": false,
       "type": "outputNode",
       "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Communication",
+        "display": "Modbus Read Bool (0x02)",
+        "id": "153",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xEnable"
+          },
+          {
+            "dataType": "value",
+            "name": "UnitID"
+          },
+          {
+            "dataType": "value",
+            "name": "Addresses"
+          },
+          {
+            "dataType": "value",
+            "name": "Quantity"
+          }
+        ],
+        "label": "Modbus Read Bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xDone"
+          },
+          {
+            "dataType": "value",
+            "name": "Values"
+          }
+        ],
+        "parameterNameData": [
+          "host",
+          "port"
+        ],
+        "parameterValueData": [
+          "localhost",
+          "1502"
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "ConfigurableNodeModbusReadBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 422,
+      "id": "153",
+      "position": {
+        "x": -133.4192249385391,
+        "y": 2737.9658808540953
+      },
+      "positionAbsolute": {
+        "x": -133.4192249385391,
+        "y": 2737.9658808540953
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 247
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Not Node",
+        "id": "155",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Not",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "NotNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 142,
+      "id": "155",
+      "position": {
+        "x": -342.0369648752832,
+        "y": 2708.036285677392
+      },
+      "positionAbsolute": {
+        "x": -342.0369648752832,
+        "y": 2708.036285677392
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "156",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "6"
+      },
+      "dragging": false,
+      "height": 92,
+      "id": "156",
+      "position": {
+        "x": -448.24413359741027,
+        "y": 2848.194926368067
+      },
+      "positionAbsolute": {
+        "x": -448.24413359741027,
+        "y": 2848.194926368067
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "156",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "0"
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "157",
+      "position": {
+        "x": -437.8428527494785,
+        "y": 2954.356769178573
+      },
+      "positionAbsolute": {
+        "x": -437.8428527494785,
+        "y": 2954.356769178573
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "156",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "13"
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "158",
+      "position": {
+        "x": -448.3703809142847,
+        "y": 3054.2953086093016
+      },
+      "positionAbsolute": {
+        "x": -448.3703809142847,
+        "y": 3054.2953086093016
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Communication",
+        "display": "string To bool Node",
+        "id": "160",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "str"
+          }
+        ],
+        "label": "string to bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "x"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "StringToBoolNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 662,
+      "id": "160",
+      "position": {
+        "x": 409.97557906541124,
+        "y": 2675.208936469015
+      },
+      "positionAbsolute": {
+        "x": 409.97557906541124,
+        "y": 2675.208936469015
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 247
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "162",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "xDoneReadGarage",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "162",
+      "position": {
+        "x": 162.2816377240147,
+        "y": 2797.431083872216
+      },
+      "positionAbsolute": {
+        "x": 162.2816377240147,
+        "y": 2797.431083872216
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "162",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "btn_garage_1",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "163",
+      "position": {
+        "x": 765.7394066997814,
+        "y": 2674.38733151317
+      },
+      "positionAbsolute": {
+        "x": 765.7394066997814,
+        "y": 2674.38733151317
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Communication",
+        "display": "Modbus Write Bool (0x15)",
+        "id": "164",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xEnable"
+          },
+          {
+            "dataType": "value",
+            "name": "UnitID"
+          },
+          {
+            "dataType": "value",
+            "name": "Addresses"
+          },
+          {
+            "dataType": "value",
+            "name": "NewValue"
+          }
+        ],
+        "label": "Modbus Write Bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xDone"
+          },
+          {
+            "dataType": "value",
+            "name": "Values"
+          }
+        ],
+        "parameterNameData": [
+          "host",
+          "port"
+        ],
+        "parameterValueData": [
+          "localhost",
+          "1502"
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "ConfigurableNodeModbusWriteBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 422,
+      "id": "164",
+      "position": {
+        "x": -116.6715108920911,
+        "y": 3256.7589232683567
+      },
+      "positionAbsolute": {
+        "x": -116.6715108920911,
+        "y": 3256.7589232683567
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 247
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Not Node",
+        "id": "155",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Not",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "NotNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 142,
+      "id": "165",
+      "position": {
+        "x": -322.2822043052563,
+        "y": 3255.713990050647
+      },
+      "positionAbsolute": {
+        "x": -322.2822043052563,
+        "y": 3255.713990050647
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "166",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage",
+        "selectedSubServiceData": "door values",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "166",
+      "position": {
+        "x": 281.63747448305804,
+        "y": 3480.507229794949
+      },
+      "positionAbsolute": {
+        "x": 281.63747448305804,
+        "y": 3480.507229794949
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "156",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "6"
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "168",
+      "position": {
+        "x": -416.24413359741027,
+        "y": 3387.1949263680667
+      },
+      "positionAbsolute": {
+        "x": -416.24413359741027,
+        "y": 3387.1949263680667
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "162",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "xDoneWriteGarage",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "169",
+      "position": {
+        "x": 157.4824018791304,
+        "y": 3248.715889909848
+      },
+      "positionAbsolute": {
+        "x": 157.4824018791304,
+        "y": 3248.715889909848
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Communication",
+        "display": "bool To string Node",
+        "id": "170",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "x"
+          }
+        ],
+        "label": "bool to string",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "0 ,, 0",
+          "1 ,, 0",
+          "0 ,, 1",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [
+          {
+            "friendlyName": "testFN",
+            "nameServices": [
+              "testNS1",
+              "testNS2"
+            ]
+          }
+        ],
+        "stretchable": true,
+        "subServices": [],
+        "type": "BToSNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 262,
+      "id": "171",
+      "position": {
+        "x": -423.325332168243,
+        "y": 3663.5543860719135
+      },
+      "positionAbsolute": {
+        "x": -423.325332168243,
+        "y": 3663.5543860719135
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 247
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input bool",
+        "id": "174",
+        "inputHandle": [],
+        "label": "view Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "Garage",
+          "door open"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 92,
+      "id": "174",
+      "position": {
+        "x": -1687.566869822757,
+        "y": 2694.2356742536535
+      },
+      "positionAbsolute": {
+        "x": -1687.566869822757,
+        "y": 2694.2356742536535
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input bool",
+        "id": "174",
+        "inputHandle": [],
+        "label": "view Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "Garage",
+          "door close"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "175",
+      "position": {
+        "x": -1771.906139933989,
+        "y": 3106.590615660964
+      },
+      "positionAbsolute": {
+        "x": -1771.906139933989,
+        "y": 3106.590615660964
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "And Node",
+        "id": "176",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u0026",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "AndNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 222,
+      "id": "176",
+      "position": {
+        "x": -1443.5708804638423,
+        "y": 1825.640575078433
+      },
+      "positionAbsolute": {
+        "x": -1443.5708804638423,
+        "y": 1825.640575078433
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "183",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "door don't move",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "183",
+      "position": {
+        "x": -909.8456271765126,
+        "y": 2072.0784775071097
+      },
+      "positionAbsolute": {
+        "x": -909.8456271765126,
+        "y": 2072.0784775071097
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "185",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "door don't move"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 92,
+      "id": "185",
+      "position": {
+        "x": -1094.2636122379272,
+        "y": 3789.042748721092
+      },
+      "positionAbsolute": {
+        "x": -1094.2636122379272,
+        "y": 3789.042748721092
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "185",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "door don't move"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "187",
+      "position": {
+        "x": -1065.4032137440138,
+        "y": 4040.148493352076
+      },
+      "positionAbsolute": {
+        "x": -1065.4032137440138,
+        "y": 4040.148493352076
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "185",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "door don't move"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "188",
+      "position": {
+        "x": -835.954957267685,
+        "y": 3584.817250591421
+      },
+      "positionAbsolute": {
+        "x": -835.954957267685,
+        "y": 3584.817250591421
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "189",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "4"
+      },
+      "dragging": false,
+      "height": 92,
+      "id": "189",
+      "position": {
+        "x": -431.4703504703258,
+        "y": 3486.737465909845
+      },
+      "positionAbsolute": {
+        "x": -431.4703504703258,
+        "y": 3486.737465909845
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "183",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage door open",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "190",
+      "position": {
+        "x": -900.2513174979639,
+        "y": 2751.4151086276784
+      },
+      "positionAbsolute": {
+        "x": -900.2513174979639,
+        "y": 2751.4151086276784
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "183",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage door close",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "191",
+      "position": {
+        "x": -901.9725819775667,
+        "y": 3204.60616013333
+      },
+      "positionAbsolute": {
+        "x": -901.9725819775667,
+        "y": 3204.60616013333
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "197",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "mqtt short1",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "197",
+      "position": {
+        "x": 2433.196250257752,
+        "y": 2146.986602675514
+      },
+      "positionAbsolute": {
+        "x": 2433.196250257752,
+        "y": 2146.986602675514
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "SR Node",
+        "id": "182",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "S"
+          },
+          {
+            "dataType": "bool",
+            "name": "R1"
+          }
+        ],
+        "label": "SR",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Q"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "SRNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 182,
+      "id": "201",
+      "position": {
+        "x": -1075.3062357625886,
+        "y": 2739.0091821806545
+      },
+      "positionAbsolute": {
+        "x": -1075.3062357625886,
+        "y": 2739.0091821806545
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "SR Node",
+        "id": "182",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "S"
+          },
+          {
+            "dataType": "bool",
+            "name": "R1"
+          }
+        ],
+        "label": "SR",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Q"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "SRNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 182,
+      "id": "202",
+      "position": {
+        "x": -1064.1538188305678,
+        "y": 3185.7996731921935
+      },
+      "positionAbsolute": {
+        "x": -1064.1538188305678,
+        "y": 3185.7996731921935
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "183",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage door last go up",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "204",
+      "position": {
+        "x": -848.2296321789086,
+        "y": 2353.7989046483513
+      },
+      "positionAbsolute": {
+        "x": -848.2296321789086,
+        "y": 2353.7989046483513
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "207",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door last go up"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 92,
+      "id": "207",
+      "position": {
+        "x": -1682.230489129725,
+        "y": 2506.2009556982325
+      },
+      "positionAbsolute": {
+        "x": -1682.230489129725,
+        "y": 2506.2009556982325
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "And Node",
+        "id": "209",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u0026",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "AndNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 222,
+      "id": "209",
+      "position": {
+        "x": -1225.2322885653282,
+        "y": 2407.3127784609255
+      },
+      "positionAbsolute": {
+        "x": -1225.2322885653282,
+        "y": 2407.3127784609255
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "text": "Retain last push"
+      },
+      "dragging": false,
+      "height": 81,
+      "id": "211",
+      "position": {
+        "x": -1690.5464603652172,
+        "y": 2265.0803598628613
+      },
+      "positionAbsolute": {
+        "x": -1690.5464603652172,
+        "y": 2265.0803598628613
+      },
+      "selected": false,
+      "type": "commentNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "207",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "mqtt short1"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "214",
+      "position": {
+        "x": -1689.126904768661,
+        "y": 2353.0359107678983
+      },
+      "positionAbsolute": {
+        "x": -1689.126904768661,
+        "y": 2353.0359107678983
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "207",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door last go up"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "215",
+      "position": {
+        "x": -1704.710296860369,
+        "y": 2900.7531052938925
+      },
+      "positionAbsolute": {
+        "x": -1704.710296860369,
+        "y": 2900.7531052938925
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Or Node",
+        "id": "219",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u003e=1",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "OrNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 222,
+      "id": "219",
+      "position": {
+        "x": -1347.8763394829791,
+        "y": 3166.888611913191
+      },
+      "positionAbsolute": {
+        "x": -1347.8763394829791,
+        "y": 3166.888611913191
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "RF_trig Node",
+        "id": "222",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "RF_trig",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RFtrigNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 142,
+      "id": "222",
+      "position": {
+        "x": -1502.6883643522747,
+        "y": 3086.7293475757892
+      },
+      "positionAbsolute": {
+        "x": -1502.6883643522747,
+        "y": 3086.7293475757892
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "RF_trig Node",
+        "id": "222",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "RF_trig",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RFtrigNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 142,
+      "id": "223",
+      "position": {
+        "x": -1403.0114368902155,
+        "y": 2661.423747564763
+      },
+      "positionAbsolute": {
+        "x": -1403.0114368902155,
+        "y": 2661.423747564763
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "207",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door last go up"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "225",
+      "position": {
+        "x": -1795.8789456177137,
+        "y": 3388.7575892137133
+      },
+      "positionAbsolute": {
+        "x": -1795.8789456177137,
+        "y": 3388.7575892137133
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "Rtrig Node",
+        "id": "230",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Rtrig",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RtrigNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 142,
+      "id": "230",
+      "position": {
+        "x": -1361.4782620732851,
+        "y": 2235.3241866395633
+      },
+      "positionAbsolute": {
+        "x": -1361.4782620732851,
+        "y": 2235.3241866395633
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "text": "Garage open logique"
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 81,
+      "id": "231",
+      "position": {
+        "x": -1676.966522530149,
+        "y": 2624.6601551921317
+      },
+      "positionAbsolute": {
+        "x": -1676.966522530149,
+        "y": 2624.6601551921317
+      },
+      "selected": false,
+      "type": "commentNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "text": "Garage close logique"
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 81,
+      "id": "232",
+      "position": {
+        "x": -1770.2368215182112,
+        "y": 3026.2053227439046
+      },
+      "positionAbsolute": {
+        "x": -1770.2368215182112,
+        "y": 3026.2053227439046
+      },
+      "selected": false,
+      "type": "commentNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "162",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage IR Detector",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "234",
+      "position": {
+        "x": 753.7032964213593,
+        "y": 3085.029081713289
+      },
+      "positionAbsolute": {
+        "x": 753.7032964213593,
+        "y": 3085.029081713289
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "235",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage IR Detector"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 92,
+      "id": "235",
+      "position": {
+        "x": -1606.8087435887787,
+        "y": 2093.626356523841
+      },
+      "positionAbsolute": {
+        "x": -1606.8087435887787,
+        "y": 2093.626356523841
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Or Node",
+        "id": "236",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u003e=1",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "OrNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 222,
+      "id": "236",
+      "position": {
+        "x": -1273.749814310099,
+        "y": 1906.3894289139803
+      },
+      "positionAbsolute": {
+        "x": -1273.749814310099,
+        "y": 1906.3894289139803
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "235",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage IR Detector"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "237",
+      "position": {
+        "x": -1780.6138724346276,
+        "y": 3576.867631915274
+      },
+      "positionAbsolute": {
+        "x": -1780.6138724346276,
+        "y": 3576.867631915274
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "185",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door open"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "241",
+      "position": {
+        "x": -1066.2593061112166,
+        "y": 3673.1214753764502
+      },
+      "positionAbsolute": {
+        "x": -1066.2593061112166,
+        "y": 3673.1214753764502
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "185",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door close"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "242",
+      "position": {
+        "x": -1080.092602366045,
+        "y": 3927.6620160443094
+      },
+      "positionAbsolute": {
+        "x": -1080.092602366045,
+        "y": 3927.6620160443094
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "185",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door open"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "245",
+      "position": {
+        "x": -1828.2066679510933,
+        "y": 1834.6050966814942
+      },
+      "positionAbsolute": {
+        "x": -1828.2066679510933,
+        "y": 1834.6050966814942
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "185",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door close"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "246",
+      "position": {
+        "x": -1810.2196004889136,
+        "y": 1932.3495239864174
+      },
+      "positionAbsolute": {
+        "x": -1810.2196004889136,
+        "y": 1932.3495239864174
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "SR Node",
+        "id": "247",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "S"
+          },
+          {
+            "dataType": "bool",
+            "name": "R1"
+          }
+        ],
+        "label": "SR",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Q"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "SRNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 182,
+      "id": "247",
+      "position": {
+        "x": -1066.5706149916696,
+        "y": 2013.9354230549034
+      },
+      "positionAbsolute": {
+        "x": -1066.5706149916696,
+        "y": 2013.9354230549034
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "SR Node",
+        "id": "182",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "S"
+          },
+          {
+            "dataType": "bool",
+            "name": "R1"
+          }
+        ],
+        "label": "SR",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Q"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "SRNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 182,
+      "id": "248",
+      "position": {
+        "x": -1035.35156167421,
+        "y": 2331.50111485183
+      },
+      "positionAbsolute": {
+        "x": -1035.35156167421,
+        "y": 2331.50111485183
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "207",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door last go up"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "251",
+      "position": {
+        "x": -1785.8789456177137,
+        "y": 3238.7575892137133
+      },
+      "positionAbsolute": {
+        "x": -1785.8789456177137,
+        "y": 3238.7575892137133
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "Ftrig Node",
+        "id": "253",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Ftrig",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "FtrigNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 142,
+      "id": "253",
+      "position": {
+        "x": -1510.8009060755542,
+        "y": 3236.9909594618903
+      },
+      "positionAbsolute": {
+        "x": -1510.8009060755542,
+        "y": 3236.9909594618903
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "RF_trig Node",
+        "id": "222",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Ftrig",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "FtrigNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 142,
+      "id": "255",
+      "position": {
+        "x": -1439.4620978348987,
+        "y": 2902.708085747858
+      },
+      "positionAbsolute": {
+        "x": -1439.4620978348987,
+        "y": 2902.708085747858
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Or Node",
+        "id": "219",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u003e=1",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "OrNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 222,
+      "id": "257",
+      "position": {
+        "x": -1231.7824855399062,
+        "y": 2678.1604433244192
+      },
+      "positionAbsolute": {
+        "x": -1231.7824855399062,
+        "y": 2678.1604433244192
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "207",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "Garage door last go up"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 92,
+      "id": "259",
+      "position": {
+        "x": -1694.3090160124373,
+        "y": 2792.7595095335514
+      },
+      "positionAbsolute": {
+        "x": -1694.3090160124373,
+        "y": 2792.7595095335514
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "RF_trig Node",
+        "id": "222",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Rtrig",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RtrigNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 142,
+      "id": "260",
+      "position": {
+        "x": -1417.7436596641173,
+        "y": 2764.245220272152
+      },
+      "positionAbsolute": {
+        "x": -1417.7436596641173,
+        "y": 2764.245220272152
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "RF_trig Node",
+        "id": "222",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Rtrig",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RtrigNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 142,
+      "id": "262",
+      "position": {
+        "x": -1396.8051202333886,
+        "y": 3390.3068048999257
+      },
+      "positionAbsolute": {
+        "x": -1396.8051202333886,
+        "y": 3390.3068048999257
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "And Node",
+        "id": "268",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u0026",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "AndNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 222,
+      "id": "268",
+      "position": {
+        "x": -645.0926967653915,
+        "y": 3695.3853368598866
+      },
+      "positionAbsolute": {
+        "x": -645.0926967653915,
+        "y": 3695.3853368598866
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Not Node",
+        "id": "269",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Not",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "NotNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 142,
+      "id": "269",
+      "position": {
+        "x": -797.0397443014292,
+        "y": 3787.1238237374273
+      },
+      "positionAbsolute": {
+        "x": -797.0397443014292,
+        "y": 3787.1238237374273
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "And Node",
+        "id": "268",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u0026",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "AndNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 222,
+      "id": "270",
+      "position": {
+        "x": -603.3052494282815,
+        "y": 3937.542923607197
+      },
+      "positionAbsolute": {
+        "x": -603.3052494282815,
+        "y": 3937.542923607197
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Not Node",
+        "id": "269",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Not",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "NotNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 142,
+      "id": "271",
+      "position": {
+        "x": -778.22626406426,
+        "y": 4037.3222989697165
+      },
+      "positionAbsolute": {
+        "x": -778.22626406426,
+        "y": 4037.3222989697165
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "273",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage door stop",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "273",
+      "position": {
+        "x": -1321.7677045488917,
+        "y": 3577.713973838245
+      },
+      "positionAbsolute": {
+        "x": -1321.7677045488917,
+        "y": 3577.713973838245
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Or Node",
+        "id": "274",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u003e=1",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "OrNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 182,
+      "id": "274",
+      "position": {
+        "x": -1506.7485233836144,
+        "y": 3580.660763714711
+      },
+      "positionAbsolute": {
+        "x": -1506.7485233836144,
+        "y": 3580.660763714711
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "162",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage Door Closed",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "275",
+      "position": {
+        "x": 761.036887975338,
+        "y": 2999.158332210826
+      },
+      "positionAbsolute": {
+        "x": 761.036887975338,
+        "y": 2999.158332210826
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "162",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage Door Open",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 82,
+      "id": "276",
+      "position": {
+        "x": 739.650367031667,
+        "y": 2906.5331326411656
+      },
+      "positionAbsolute": {
+        "x": 739.650367031667,
+        "y": 2906.5331326411656
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "277",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "clk"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 92,
+      "id": "277",
+      "position": {
+        "x": -362.38031528343106,
+        "y": 1506.8714732088438
+      },
+      "positionAbsolute": {
+        "x": -362.38031528343106,
+        "y": 1506.8714732088438
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "278",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "clk",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "278",
+      "position": {
+        "x": 115.6196847165688,
+        "y": 1592.8714732088438
+      },
+      "positionAbsolute": {
+        "x": 115.6196847165688,
+        "y": 1592.8714732088438
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 222
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Or Node",
+        "id": "219",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u003e=1",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "OrNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 222,
+      "id": "279",
+      "position": {
+        "x": -1231.2678899129205,
+        "y": 2923.0891282786542
+      },
+      "positionAbsolute": {
+        "x": -1231.2678899129205,
+        "y": 2923.0891282786542
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Or Node",
+        "id": "219",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u003e=1",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "OrNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "height": 222,
+      "id": "280",
+      "position": {
+        "x": -1204.0445865331437,
+        "y": 3338.6425215191002
+      },
+      "positionAbsolute": {
+        "x": -1204.0445865331437,
+        "y": 3338.6425215191002
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 102
     }
   ],
   "viewport": {
-    "x": -58.564437648900366,
-    "y": 147.14532027205382,
-    "zoom": 0.5
+    "x": 2167.386789574555,
+    "y": -2753.0832557396684,
+    "zoom": 1.0000000000000004
   }
 }

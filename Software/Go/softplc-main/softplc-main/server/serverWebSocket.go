@@ -666,7 +666,7 @@ type debugList struct {
 
 var test bool
 var LogicalsStateWeb []DebugState
-var toDebugList []debugList
+var toDebugList []debugList // the list of all edges that were added
 
 func AddDebugState(id string, valuePtr *string, sourceHandle string, type_ string) {
 	if valuePtr != nil {
@@ -750,61 +750,110 @@ func DebugMode() {
 		// go through the states
 		for _, state := range LogicalsStateWeb {
 			if state.ID == sourceID && (state.SourceHandle == sourceHandle || state.SourceHandle == "") {
-				for _, toDebugItem := range toDebugList {
-					if state.ID == toDebugItem.id && state.SourceHandle == toDebugItem.sourceHandle {
-						isInDebugList = true
-						edgeMap["type"] = "customDebugEdge"
-						/* "data" */
-						dataMap, ok := edgeMap["data"].(map[string]interface{})
-						if !ok {
-							dataMap = make(map[string]interface{})
-							edgeMap["data"] = dataMap
-						}
-
-						dataMap["label"] = *state.Value
-
-						/*  "style"  */
-						styleMap, ok := edgeMap["style"].(map[string]interface{})
-						if !ok {
-							styleMap = make(map[string]interface{})
-							edgeMap["style"] = styleMap
-						}
-						if state.Type_ == "bool" {
-							if *state.Value == "1" {
-								styleMap["stroke"] = "#00FF00"
-							} else {
-								styleMap["stroke"] = "#FF0000"
+				/* show when in Debug list */
+				/*for _, toDebugItem := range toDebugList {
+						if state.ID == toDebugItem.id && state.SourceHandle == toDebugItem.sourceHandle {
+							isInDebugList = true
+							edgeMap["type"] = "customDebugEdge"
+							// "data"
+							dataMap, ok := edgeMap["data"].(map[string]interface{})
+							if !ok {
+								dataMap = make(map[string]interface{})
+								edgeMap["data"] = dataMap
 							}
-						}
 
-						styleMap["strokeDasharray"] = "8 4"
-						styleMap["animation"] = "dash 1s linear infinite"
-						break
+							dataMap["label"] = *state.Value
+
+							//"style"
+							styleMap, ok := edgeMap["style"].(map[string]interface{})
+							if !ok {
+								styleMap = make(map[string]interface{})
+								edgeMap["style"] = styleMap
+							}
+							if state.Type_ == "bool" {
+								if *state.Value == "1" {
+									styleMap["stroke"] = "#00FF00"
+								} else {
+									styleMap["stroke"] = "#FF0000"
+								}
+							}
+
+							styleMap["strokeDasharray"] = "8 4"
+							styleMap["animation"] = "dash 1s linear infinite"
+							break
+						}
 					}
 				}
-			}
 
-			if isInDebugList {
-				break
-			} else {
-				// delete old label
-				if dataMap, ok := edgeMap["data"].(map[string]interface{}); ok {
-					delete(dataMap, "label")
-				}
+				if isInDebugList {
+					break
+				} else {
+					// delete old label
+					if dataMap, ok := edgeMap["data"].(map[string]interface{}); ok {
+						delete(dataMap, "label")
+					}
 
-				// clean of the style
-				styleMap, ok := edgeMap["style"].(map[string]interface{})
-				if !ok {
-					styleMap = make(map[string]interface{})
-					edgeMap["style"] = styleMap
+					// clean of the style
+					styleMap, ok := edgeMap["style"].(map[string]interface{})
+					if !ok {
+						styleMap = make(map[string]interface{})
+						edgeMap["style"] = styleMap
+					}
+					delete(styleMap, "strokeDasharray")
+					delete(styleMap, "animation")
+				}*/
+
+				/* show when NOT in Debug list */
+				isInDebugList = false
+				for _, item := range toDebugList {
+					if state.ID == item.id && state.SourceHandle == item.sourceHandle {
+						isInDebugList = true
+					}
 				}
-				delete(styleMap, "strokeDasharray")
-				delete(styleMap, "animation")
+				if !isInDebugList {
+					// "data"
+					dataMap, ok := edgeMap["data"].(map[string]interface{})
+					if !ok {
+						dataMap = make(map[string]interface{})
+						edgeMap["data"] = dataMap
+					}
+					dataMap["label"] = *state.Value
+
+					//"style"
+					styleMap, ok := edgeMap["style"].(map[string]interface{})
+					if !ok {
+						styleMap = make(map[string]interface{})
+						edgeMap["style"] = styleMap
+					}
+					if state.Type_ == "bool" {
+						if *state.Value == "1" {
+							styleMap["stroke"] = "#00FF00"
+						} else {
+							styleMap["stroke"] = "#FF0000"
+						}
+					}
+
+					styleMap["strokeDasharray"] = "8 4"
+					styleMap["animation"] = "dash 1s linear infinite"
+				} else {
+					// delete old label
+					if dataMap, ok := edgeMap["data"].(map[string]interface{}); ok {
+						delete(dataMap, "label")
+					}
+					// clean of the style
+					styleMap, ok := edgeMap["style"].(map[string]interface{})
+					if !ok {
+						styleMap = make(map[string]interface{})
+						edgeMap["style"] = styleMap
+					}
+					delete(styleMap, "strokeDasharray")
+					delete(styleMap, "animation")
+				}
 			}
 		}
 	}
 
-	// Sérialisation
+	// Serialize
 	modifiedJSON, err := json.MarshalIndent(graphMap, "", "  ")
 	if err == nil {
 		SendToWebSocket(string(modifiedJSON))
@@ -821,18 +870,18 @@ func removeFromDebugList(id, sourceHandle string) {
 	toDebugList = filtered
 }
 
-// Deep copy of an interface{} in GB
+// Deep copy of an interface{}
 func CopyInterface(src interface{}) interface{} {
 	bytes, err := json.Marshal(src)
 	if err != nil {
-		log.Println("Erreur lors du marshal :", err)
+		log.Println("error during marshal :", err)
 		return nil
 	}
 
 	var dst interface{}
 	err = json.Unmarshal(bytes, &dst)
 	if err != nil {
-		log.Println("Erreur lors du unmarshal :", err)
+		log.Println("error during unmarshal :", err)
 		return nil
 	}
 

@@ -328,10 +328,67 @@ Dans la partie *backend*, les blocs logiques de communication se trouvent à la 
    L'ordre des topics données sur *topicToReceive* est le même que l'ordre des messages reçus sur *msgLastReceived*. Cela permet de traiter les messages dans le même ordre que les topics auxquels on s'est abonné.
 
    La fonction _makeConnectLostHandler(n \*MqttNode)_ permet de gérer la perte de connexion avec le broker MQTT. Elle s'assure de relancer la connexion et de réabonner aux topics si la connexion a un problème.
-  === HTTP
+  
   === Client HTTP
   Le bloc *HTTP Client* permet d'envoyer des requêtes HTTP à un serveur. Dans les settings du bloc, il est possible de définir l'URL du serveur, 
+
   === MODBUS
+
+#figure(
+  image("/resources/img/63_accordionModbus.png", width: 30%),
+  caption: [
+    Accordion – Modbus
+  ],
+)
+#label("fig:accordionModbus-vs-vue")
+
+Les blocs Modbus ont été réalisés dans le but de permettre la lecture et l’écriture de toutes les valeurs de _Home-IO_, ce qui peut expliquer certains choix de fonctions utilisés. Les blocs logiques de communication MODBUS développés sont les suivants :
+
+- *Modbus Read Bool* : permet de lire des valeurs booléennes dans un dispositif esclave MODBUS, correspondant au code fonction 0x02. Dans le programme Go, la fonction _ReadDiscreteInputs_ est utilisée pour la lecture. La fonction _ReadCoils_ n’a pas été retenue car elle ne convient pas à _Home-IO_. Des exemples d’utilisation sont présentés en annexe à la section @sec:exempleUtililationModbusReadBool-vs-vue.
+
+- *Modbus Read Value* : permet de lire des valeurs entières dans un dispositif esclave MODBUS, correspondant au code fonction 0x04. Dans le programme Go, la fonction _ReadInputRegisters_ est utilisée. Voir la section @sec:exempleUtililationModbusReadValue-vs-vue pour des exemples.
+
+- *Modbus Write Bool* : permet d’écrire des valeurs booléennes dans un dispositif esclave MODBUS, correspondant au code fonction 0x15. Dans le programme Go, la fonction _WriteMultipleCoils_ est utilisée. Voir la section @sec:exempleUtililationModbusWriteBool-vs-vue.
+
+- *Modbus Write Value* : permet d’écrire des valeurs entières dans un dispositif esclave MODBUS, correspondant au code fonction 0x06. Dans le programme Go, la fonction _WriteSingleRegister_ est utilisée. Voir la section @sec:exempleUtililationModbusWriteValue-vs-vue.
+
+Ces blocs se configurent à l’aide du *host* et du *port* du serveur MODBUS.
+
+Il existe deux types de blocs Modbus : les blocs de lecture (_Read_) et les blocs d’écriture (_Write_). Les deux types possèdent les entrées suivantes :
+
+- *xEnable* : permet d’activer le bloc.
+- *UnitID* : identifiant de l’esclave MODBUS auquel accéder.
+- *Addresses* : adresses des registres à lire ou écrire. On peut spécifier plusieurs adresses séparées par des virgules (ex. : 0 ,, 2 ,, 4). Il faudra définir _Quantity_ pour la lecture ou fournir _NewValues_ pour l’écriture. Le comportement de ces blocs dépend de la relation entre *Addresses* et *Quantity* ou *NewValues* (@fig:ModbusGestionQuantity-vs-vue et @fig:ModbusGestionNewValues-vs-vue).
+
+Et les sorties suivantes :
+
+- *xDone* : activée si la communication avec l’esclave est établie et qu’aucune erreur ne s’est produite.
+- *ValuesReceived* : valeur(s) reçue(s) pour les blocs de lecture. Pour les blocs d’écriture, cette sortie contient la réponse du serveur, et peut aussi signaler les erreurs de communication.
+
+Les blocs de lecture ont également l’entrée :
+
+- *Quantity* (@fig:ModbusGestionQuantity-vs-vue) : nombre de registres à lire. Par défaut, cette valeur est fixée à 1.
+
+Les blocs d’écriture ont également l’entrée :
+
+- *NewValues* (@fig:ModbusGestionNewValues-vs-vue) : valeurs à écrire dans les registres. Plusieurs valeurs peuvent être fournies, séparées par des virgules (ex. : `0 ,, 2 ,, 4`).
+
+#figure(
+  image("/resources/img/64_ModbusRead_gestionQuantity.png", width: 80%),
+  caption: [
+    Modbus Read – Comportement en fonction de la relation entre la quantité (*Quantity*) et le nombre d’adresses (*Addresses*)
+  ],
+)
+#label("fig:ModbusGestionQuantity-vs-vue")
+
+#figure(
+  image("/resources/img/64_ModbusRead_gestionNewValues.png", width: 80%),
+  caption: [
+    Modbus Write – Comportement en fonction de la relation entre *NewValues* et le nombre d’adresses (*Addresses*)
+  ],
+)
+#label("fig:ModbusGestionNewValues-vs-vue")
+
   == Vue programmation
  == Vue WebSocket
   react-router-dom : pour naviguer entre les routes (avec useNavigate).
@@ -354,7 +411,7 @@ Dans la partie *backend*, les blocs logiques de communication se trouvent à la 
   *undo / redo* : Le principe est d'avoir deux piles _redoStack_ et _undoStack_. On utilise _pushToUndoStack()_ pour créer une pile, et _useDebouncedUndo.tsx_ qui vérifie lorsqu'il y a des modifications et utilise un petit délai pour éviter de pousser plusieurs fois à cause d'une modification mineure survenant au même moment.
 
   #pagebreak()
-    === Nodes 
+  === Nodes 
   Un node standard est constitué de trois éléments principaux, comme le montre @fig:blocCSS_Node_Basique-vs-vue. Pour chacun de ces éléments, une classe CSS a été créée. Il est également possible de spécifier plus particulièrement pour des blocs un peu plus complexes, comme le montre @fig:blocCSS_Communication_Modife-vs-vue, par exemple pour agrandir légèrement pour les blocs de communication. Cette structure permet de changer les couleurs et tailles pour chaque type de node.
 
   #figure(
