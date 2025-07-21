@@ -1,0 +1,493 @@
+{
+  "nodes": [
+    {
+      "width": 249,
+      "height": 384,
+      "data": {
+        "accordion": "Communication",
+        "display": "HTTP Server Node",
+        "id": "53",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Parameters to receive"
+          }
+        ],
+        "label": "HTTP Server",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xDone"
+          },
+          {
+            "dataType": "value",
+            "name": "Values received"
+          },
+          {
+            "dataType": "value",
+            "name": "Resource ID"
+          },
+          {
+            "dataType": "value",
+            "name": "Received URL path"
+          }
+        ],
+        "parameterNameData": [
+          "url server",
+          "user server",
+          "password server"
+        ],
+        "parameterValueData": [
+          "",
+          "admin",
+          "secret"
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "ConfigurableNodeHttpServer",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "55",
+      "position": {
+        "x": 2598.764136359907,
+        "y": 1440.0200683607995
+      },
+      "positionAbsolute": {
+        "x": 2598.764136359907,
+        "y": 1440.0200683607995
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "draggable": true
+    },
+    {
+      "width": 249,
+      "height": 424,
+      "data": {
+        "accordion": "Communication",
+        "display": "HTTP Client Node",
+        "id": "50",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xSend"
+          },
+          {
+            "dataType": "value",
+            "name": "url path"
+          },
+          {
+            "dataType": "value",
+            "name": "method"
+          },
+          {
+            "dataType": "value",
+            "name": "body"
+          }
+        ],
+        "label": "HTTP Client",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xDone"
+          },
+          {
+            "dataType": "value",
+            "name": "response"
+          }
+        ],
+        "parameterNameData": [
+          "url",
+          "user",
+          "password",
+          "header Key 1",
+          "header Value 1",
+          "header Key 2",
+          "header Value 2"
+        ],
+        "parameterValueData": [
+          "https://192.168.37.134/wda/",
+          "admin",
+          "wago",
+          "Content-Type",
+          "application/vnd.api+json",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "ConfigurableNodeHttp",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "56",
+      "position": {
+        "x": 2340.302802890948,
+        "y": 1438.3764279420975
+      },
+      "positionAbsolute": {
+        "x": 2340.302802890948,
+        "y": 1438.3764279420975
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "draggable": true
+    },
+    {
+      "width": 247,
+      "height": 422,
+      "id": "57",
+      "type": "LogicalNode",
+      "position": {
+        "x": 2078.3385219796373,
+        "y": 1436.4495496070322
+      },
+      "data": {
+        "accordion": "Communication",
+        "primaryType": "LogicalNode",
+        "type": "ConfigurableNode",
+        "display": "mqtt Node",
+        "label": "MQTT",
+        "stretchable": false,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xEnable"
+          },
+          {
+            "dataType": "value",
+            "name": "topicToSend"
+          },
+          {
+            "dataType": "value",
+            "name": "msgToSend"
+          },
+          {
+            "dataType": "value",
+            "name": "topicToReceive"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xReceive"
+          },
+          {
+            "dataType": "value",
+            "name": "msgLastReceived"
+          }
+        ],
+        "parameterNameData": [
+          "broker",
+          "port",
+          "user",
+          "password"
+        ],
+        "id": "57",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2078.3385219796373,
+        "y": 1436.4495496070322
+      },
+      "dragging": false
+    },
+    {
+      "width": 247,
+      "height": 422,
+      "id": "58",
+      "type": "LogicalNode",
+      "position": {
+        "x": 2056.0622901566962,
+        "y": 1993.2328054038103
+      },
+      "data": {
+        "accordion": "Communication",
+        "primaryType": "LogicalNode",
+        "type": "ConfigurableNodeModbusReadBool",
+        "display": "Modbus Read Bool (0x02)",
+        "label": "Modbus Read Bool",
+        "stretchable": false,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xEnable"
+          },
+          {
+            "dataType": "value",
+            "name": "UnitID"
+          },
+          {
+            "dataType": "value",
+            "name": "Addresses"
+          },
+          {
+            "dataType": "value",
+            "name": "Quantity"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xDone"
+          },
+          {
+            "dataType": "value",
+            "name": "ValuesReceived"
+          }
+        ],
+        "parameterNameData": [
+          "host",
+          "port"
+        ],
+        "id": "58",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": [
+          "",
+          ""
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2056.0622901566962,
+        "y": 1993.2328054038103
+      },
+      "dragging": false
+    },
+    {
+      "width": 247,
+      "height": 422,
+      "id": "59",
+      "type": "LogicalNode",
+      "position": {
+        "x": 2322.180640702511,
+        "y": 1995.5952578293059
+      },
+      "data": {
+        "accordion": "Communication",
+        "primaryType": "LogicalNode",
+        "type": "ConfigurableNodeModbusReadValue",
+        "display": "Modbus Read Value (0x04)",
+        "label": "Modbus Read Value",
+        "stretchable": false,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xEnable"
+          },
+          {
+            "dataType": "value",
+            "name": "UnitID"
+          },
+          {
+            "dataType": "value",
+            "name": "Addresses"
+          },
+          {
+            "dataType": "value",
+            "name": "Quantity"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xDone"
+          },
+          {
+            "dataType": "value",
+            "name": "ValuesReceived"
+          }
+        ],
+        "parameterNameData": [
+          "host",
+          "port"
+        ],
+        "id": "59",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": [
+          "",
+          ""
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2322.180640702511,
+        "y": 1995.5952578293059
+      },
+      "dragging": false
+    },
+    {
+      "width": 247,
+      "height": 422,
+      "id": "60",
+      "type": "LogicalNode",
+      "position": {
+        "x": 2059.94136140083,
+        "y": 2420.780941157327
+      },
+      "data": {
+        "accordion": "Communication",
+        "primaryType": "LogicalNode",
+        "type": "ConfigurableNodeModbusWriteBool",
+        "display": "Modbus Write Bool (0x15)",
+        "label": "Modbus Write Bool",
+        "stretchable": false,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xEnable"
+          },
+          {
+            "dataType": "value",
+            "name": "UnitID"
+          },
+          {
+            "dataType": "value",
+            "name": "Addresses"
+          },
+          {
+            "dataType": "value",
+            "name": "NewValues"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xDone"
+          },
+          {
+            "dataType": "value",
+            "name": "ValuesReceived"
+          }
+        ],
+        "parameterNameData": [
+          "host",
+          "port"
+        ],
+        "id": "60",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": [
+          "",
+          ""
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2059.94136140083,
+        "y": 2420.780941157327
+      },
+      "dragging": false
+    },
+    {
+      "width": 247,
+      "height": 422,
+      "id": "61",
+      "type": "LogicalNode",
+      "position": {
+        "x": 2319.7995391342747,
+        "y": 2423.1620427255625
+      },
+      "data": {
+        "accordion": "Communication",
+        "primaryType": "LogicalNode",
+        "type": "ConfigurableNodeModbusWriteValue",
+        "display": "Modbus Write Value (0x06)",
+        "label": "Modbus Write Value",
+        "stretchable": false,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xEnable"
+          },
+          {
+            "dataType": "value",
+            "name": "UnitID"
+          },
+          {
+            "dataType": "value",
+            "name": "Addresses"
+          },
+          {
+            "dataType": "value",
+            "name": "NewValues"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "xDone"
+          },
+          {
+            "dataType": "value",
+            "name": "ValuesReceived"
+          }
+        ],
+        "parameterNameData": [
+          "host",
+          "port"
+        ],
+        "id": "61",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": [
+          "",
+          ""
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2319.7995391342747,
+        "y": 2423.1620427255625
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [],
+  "viewport": {
+    "x": -492.2566024019743,
+    "y": -932.1123127180251,
+    "zoom": 0.6803950056398558
+  }
+}

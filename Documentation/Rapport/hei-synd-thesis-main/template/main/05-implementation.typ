@@ -308,6 +308,13 @@ Dans la partie *backend*, les blocs logiques de communication se trouvent à la 
   ],
 )
 #label("fig:BlocMqttHttpClientServeur_ouvert-vs-vue")
+
+#figure(
+  image("/resources/img/60_BlocModbusAll_Fermer.png", width: 100%),
+  caption: [
+    blocs logiques complexes - Bloc MQTT, HTTP client et HTTP Serveur
+  ],
+)
 #pagebreak()
   === MQTT
   Le bloc *MQTT* permet de communiquer avec un broker MQTT. Il est possible de publier des messages sur des topics ou de s'abonner à des topics pour recevoir des messages. 

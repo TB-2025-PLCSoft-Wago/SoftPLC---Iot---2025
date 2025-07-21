@@ -43,12 +43,14 @@ func main() {
 				inputUpdate.UpdateInputs()
 				processGraph.Mutex.Lock()
 				for _, v := range processGraph.LogicalNode {
+					variable.UpdateVariableInputs()
 					for _, n := range v {
 						if logicalNode, ok := n.(nodes.LogicalNodeInterface); ok {
 							logicalNode.ProcessLogic()
 
 						}
 					}
+					outputUpdate.UpdateVariables()
 				}
 				outputUpdate.UpdateOutput()
 				server.UpdateOutputValueView()

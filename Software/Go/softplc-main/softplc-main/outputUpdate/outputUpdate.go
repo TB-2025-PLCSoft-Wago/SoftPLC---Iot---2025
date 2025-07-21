@@ -35,7 +35,25 @@ Selon le type de donnée (booléen ou flottant), on adapte la structure de la do
 Enfin, si l’élément est un équipement (FriendlyName non vide), on affiche un message car
 la gestion des appliances n’est pas encore implémentée.
 */
+func UpdateVariables() {
+	for _, output := range processGraph.OutputNodes {
+		for _, nodeOutputList := range output.GetOutputList() {
+			/*** Variable output ***/
+			if strings.Contains(output.GetNodeType(), "variable") {
+				for _, ccIOState := range variable.OutputsStateVariable {
+					if ccIOState.Name == nodeOutputList.FriendlyName {
+						if ccIOState.Value != *nodeOutputList.OutputHandle.Input {
+							//ccIOState.Value = *nodeOutputList.OutputHandle.Input
+							variable.UpdateVariableOutput(ccIOState.Name, *nodeOutputList.OutputHandle.Input)
+						}
+					}
+				}
+				continue
+			}
+		}
+	}
 
+}
 func UpdateOutput() {
 
 	for _, output := range processGraph.OutputNodes {
