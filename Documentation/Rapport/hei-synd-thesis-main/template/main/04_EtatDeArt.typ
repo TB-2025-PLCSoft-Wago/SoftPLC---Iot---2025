@@ -49,7 +49,7 @@ Au niveau visuel, la structure doit être améliorée. En effet, on ne peut pas 
 
 Le code ne permet pas de changer le type d'un bloc de manière dynamique, car c'est le programme backend qui l'envoie à l'initialisation du programme. Cela est donc impossible sans de grosses modifications.
 
-Il n'y a pas non plus de méthode permettant de réinitialiser les nodes, ce qui est nécessaire pour pouvoir créer des blocs plus complexes. 
+Il n'y a pas non plus de méthode permettant de réinitialiser les nodes, ce qui est nécessaire pour pouvoir créer des blocs plus complexes. En effet, il peut être nécessaire de réinitialiser certaints nodes pour pouvoir faire un nouveau _build_ proprement. 
 
 
 === Ajouter des blocs simples
@@ -59,7 +59,7 @@ Pour ajouter un bloc simple, il suffit de créer un fichier dans le dossier *nod
 On peut, par exemple, copier-coller puis renommer un fichier existant selon le type de bloc à ajouter. Il existe trois types de blocs : `LogicalNode`, `OutputNode` et `InputNode`.
 
 #warningbox()[
-* renommer un fichier :* il peut parfois y avoir des problèmes si le nom du bloc commence par une lettre en début d'alphabet.
+* nommer un fichier :* il peut parfois y avoir des problèmes si le nom du bloc commence par une lettre en début d'alphabet.
 #label("warn-alpha")
 ]
 Vous pouvez copier le fichier `OrNode`, puis le modifier. Pour cela, utilisez la fonctionnalité _rechercher/remplacer_ afin de remplacer `"Or"` par le nom de votre nouveau bloc. Il faut le faire deux fois :  

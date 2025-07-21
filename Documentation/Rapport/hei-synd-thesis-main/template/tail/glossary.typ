@@ -74,7 +74,21 @@
     short: "strechable",
     description: "Strechable fait référence à la capacité d'un bloc d'étendre son nombre d'entrées ou sorties en fonction des besoins. Cela permet une flexibilité dans la conception. C'est un paramètre pouvant être choisi lors de la création d'un bloc.",
     group: "termes généraux"
-  )
+  ),
+  (
+    key: "WDA",
+    short: "WDA",
+    long: "WAGO Device Access (accès aux paramètres et IO)",
+    description: "WDA est une interface REST qui permet d'accéder aux paramètres et aux entrées/sorties des automates WAGO. Elle facilite la communication entre le logiciel de contrôle et l'automate en utilisant des requêtes HTTP pour récupérer et modifier les données.",
+    group: "termes généraux"
+  ),
+  (
+    key: "vue",
+    short: "vue",
+    long: "Vue",
+    description: "Une vue est une représentation graphique d'un programme ou d'une partie d'un programme. Elle permet de visualiser les entrées, sorties et autres éléments du programme.",
+    group: "termes généraux"
+  ),
 )
 
 

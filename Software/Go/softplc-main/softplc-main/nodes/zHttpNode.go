@@ -81,7 +81,13 @@ func (n *HttpNode) ProcessLogic() {
 
 	if *n.input[0].Input == "1" {
 		go func() {
-			url := n.parameterValueData[_URL] + *n.input[1].Input
+			var url string
+			if n.input[1].Input != nil && *n.input[1].Input != "empty" && *n.input[1].Input != "null" {
+				url = n.parameterValueData[_URL] + *n.input[1].Input
+			} else {
+				url = n.parameterValueData[_URL]
+			}
+
 			method := strings.ToUpper(*n.input[2].Input)
 			payload := ""
 			if n.input[3].Input != nil && *n.input[3].Input != "empty" && *n.input[3].Input != "null" {

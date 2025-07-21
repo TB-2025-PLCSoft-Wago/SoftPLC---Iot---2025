@@ -69,6 +69,11 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         data.parameterNameData?.length,
     ]);
 
+    useEffect(() => {
+        if (Array.isArray(data.parameterValueData)) {
+            setInputValues(data.parameterValueData);
+        }
+    }, [data.parameterValueData]);
 
     const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValues = [...inputValues];
@@ -77,6 +82,8 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         data.parameterValueData = newValues;
         console.log("newValues : ",newValues)
     };
+
+
 
     let content;
     if (data.label === "bool to string") {

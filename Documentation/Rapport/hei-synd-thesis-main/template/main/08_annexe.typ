@@ -2,13 +2,24 @@
 #import "/metadata.typ": *
 #import "@preview/muchpdf:0.1.0": muchpdf
 
+
 #pagebreak()
+
 = Annexe <sec:annexe>
 #add-chapter(
   after: <sec:annexe>,
   before: <sec:endAnnex>,
-  minitoc-title: i18n("toc-title", lang: option.lang)
+  minitoc-title: i18n("toc-title", lang: option.lang),
+  //heading-offset: 1,
 )[
+  //#let unary(.., last) = "A." + str(last + 1)
+  //#counter(heading).update(0)
+  //#set heading(offset: 1, numbering: "A.A.1")
+  
+
+
+
+//#show heading.where(level: 3): set text(red)
 #set page(
   flipped: true,
   )
@@ -464,11 +475,15 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
 
     
 
-#include "/main/08_a0_ExempleCodeAvecExtrait.typ"
 
-#include "/main/08_a1_Exemple_Modbus.typ"
 
-<sec:endAnnex>
+  #include "/main/08_a0_ExempleCodeAvecExtrait.typ"
+  #include "/main/08_a1_Exemple_MQTT.typ"
+  #include "/main/08_a1_Exemple_HTTP.typ"
+  #include "/main/08_a1_Exemple_HTTPServeur.typ"
+  #include "/main/08_a1_Exemple_Modbus.typ"
+
+
 ]
 
 

@@ -107,9 +107,9 @@ func (n *ModbusReadValueNode) ProcessLogic() {
 		if n.input[2].Input != nil {
 			addresses = strings.Split(*n.input[2].Input, " ,, ")
 		}
-		quantites := []string{"1"}
+		quantities := []string{"1"}
 		if n.input[3].Input != nil {
-			quantites = strings.Split(*n.input[3].Input, " ,, ")
+			quantities = strings.Split(*n.input[3].Input, " ,, ")
 		}
 
 		defer func() {
@@ -143,7 +143,12 @@ func (n *ModbusReadValueNode) ProcessLogic() {
 
 		for i, addrStr := range addresses {
 			address := uint16(atoiDefault(addrStr, 0))
-			quantity := uint16(atoiDefault(quantites[i], 1))
+			var quantity uint16
+			if len(quantities) > i {
+				quantity = uint16(atoiDefault(quantities[i], 1))
+			} else {
+				quantity = 1
+			}
 			var res []byte
 			var err error
 

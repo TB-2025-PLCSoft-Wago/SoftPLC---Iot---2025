@@ -34,7 +34,7 @@ Cette section décrit les différentes étapes qui ont été implémentées dura
 )[
   #pagebreak()
   == WDA
-  L'intégration de WDA est une partie importante du projet. Cette section décrit comment WDA a été utilisé pour communiquer avec l'automate et comment il a été intégré dans le programme.
+  L'intégration de #gls("WDA") est une partie importante du projet. Cette section décrit comment WDA a été utilisé pour communiquer avec l'automate et comment il a été intégré dans le programme.
 
   C'est pour utiliser WDA qu'il a été choisi de remplacer l'automate 751-9401 par un 751-9402. L'analyse de la raison de cette décision se trouve @sec:WDA_AnalysePR4. Vous y trouverez également une analyse de comment était récuperé les I/O dans le programme du TB 2024 qui utilisait une méthode plus rapide.
 
@@ -282,7 +282,7 @@ L'exemple @fig:blocsVariablesContreReactionValue-vs-vue montre le fonctionnement
 
 Cette section décrit comment les blocs logiques de communication ont été intégrés dans le programme. Ces blocs peuvent être utilisés pour créer des communications MQTT, HTTP et MODBUS.
 
-Le principe des blocs logiques de communication a été défini dans le schéma @fig:communication-Bloc-principe. Cependant, il a été adapté aux besoins du projet. En effet, il est parfois nécessaire d’avoir plus d’entrées ou de sorties que ce qui a été défini dans le schéma. De plus, afin d’éviter que l’utilisation ne devienne trop complexe, il a été décidé de séparer le client et le serveur, comme c’est le cas pour HTTP. Toutefois, le principe de base — l’utilisation de blocs permettant la conversion de booléens en chaînes de caractères et inversement — est resté le même. Il a même été élargi pour permettre l’utilisation de constantes, de résultats de concaténation, de variables, etc. En bref, tous les blocs dont la sortie est de type *value* sont compatibles.
+Le principe des blocs logiques de communication a été défini dans le schéma @fig:communication-Bloc-principe. Cependant, il a été adapté aux besoins du projet. En effet, il est parfois nécessaire d’avoir plus d’entrées ou de sorties que ce qui a été défini dans le schéma. De plus, afin d’éviter que l’utilisation ne devienne trop complexe, il a parfois été décidé de séparer le client et le serveur, comme c’est le cas pour HTTP. Toutefois, le principe de base avec l’utilisation de blocs permettant la conversion de booléens en chaînes de caractères et inversement est resté le même. Il a même été élargi pour permettre l’utilisation de constantes, de résultats de concaténation, de variables, etc. En bref, tous les blocs dont la sortie est de type *value* sont compatibles.
 
 La figure @fig:BlocMqttHttpClientServeur_fermer-vs-vue montre la *vue programmation* sans les _settings_.  
 La figure @fig:BlocMqttHttpClientServeur_ouvert-vs-vue montre les _settings_ dans la *vue programmation*. Il est possible de les ouvrir en cliquant sur le bouton "_settings_" du bloc. Il est également possible d’ouvrir les _settings_ de plusieurs blocs en même temps, même s’ils sont du même type. Cela est pratique si l’on souhaite modifier plusieurs blocs logiques de communication simultanément, copier les _settings_ d’un bloc à l’autre, ou comparer les _settings_ de plusieurs blocs.
@@ -308,29 +308,152 @@ Dans la partie *backend*, les blocs logiques de communication se trouvent à la 
   ],
 )
 #label("fig:BlocMqttHttpClientServeur_ouvert-vs-vue")
+#pagebreak()
   === MQTT
   Le bloc *MQTT* permet de communiquer avec un broker MQTT. Il est possible de publier des messages sur des topics ou de s'abonner à des topics pour recevoir des messages. 
   
-  Le bloc *MQTT* a les entrées suivantes :
+  Le bloc *MQTT* a les *inputs* suivantes :
   - *xEnable* : l'entrée pour activer le bloc. Si cette entrée est à _false_, le bloc ne fera rien.
   - *topicToSend* : les topics sur lesquels publier (exemple : topic/test1 ,, topic/test2).
   - *msgToSend* : le message à publier sur les topics de *topicToSend*.
   - *topicToReceive* : les topics sur lesquels s'abonner (exemple : topic/test1 ,, topic/test2).
 
-  Les sorties sont :
+  Les *outputs* sont :
   - *xReceive* : impulsions lorsque le bloc a reçu un message sur un des topics auxquels on s'est abonné.
   - *msgLastReceived* : le dernier message reçu sur les topics auxquels on s'est abonné.
   
-  Des *exemples* d'utilisations du bloc *MQTT* sont présentés en annexe au @sec:exempleUtililationMqttSimple-vs-vue. 
+   #iconbox(linecolor: hei-pink)[Des *exemples* d'utilisations du bloc *MQTT* sont présentés en annexe au @sec:exempleUtililationMqttSimple-vs-vue. ]
+  
 
-  Lorsqu'un message est reçu, la fonction _messageHandler()_ est appelée. Cette fonction s'occupe de ne pas rater de messages, cependant c'est ensuite la fonction _ProcessLogic()_ qui s'occupe de traiter les messages reçus, gérer dynamiquement les _subscribes_ et _unsubscribes_ et écrire les sorties.
+  Lorsqu'un message est reçu, la fonction _messageHandler()_ est appelée. Cette fonction s'occupe de ne pas rater de messages, cependant c'est ensuite la fonction _ProcessLogic()_ qui s'occupe de traiter les messages reçus, gérer dynamiquement les _subscribes_ et _unsubscribes_ et écrire les *outputs*.
   
    L'ordre des topics données sur *topicToReceive* est le même que l'ordre des messages reçus sur *msgLastReceived*. Cela permet de traiter les messages dans le même ordre que les topics auxquels on s'est abonné.
 
    La fonction _makeConnectLostHandler(n \*MqttNode)_ permet de gérer la perte de connexion avec le broker MQTT. Elle s'assure de relancer la connexion et de réabonner aux topics si la connexion a un problème.
   
-  === Client HTTP
-  Le bloc *HTTP Client* permet d'envoyer des requêtes HTTP à un serveur. Dans les settings du bloc, il est possible de définir l'URL du serveur, 
+  === Node HTTP client
+Le package Go @HttpPackageNetb a été utilisé.
+Pour le Node HTTP client, il est possible de configurer les paramètres suivants :
+- *url* : l'URL de la requête HTTP.
+- *user* : l'utilisateur pour l'authentification HTTP.
+- *password* : le mot de passe pour l'authentification HTTP.
+- *Headers* : les en-têtes HTTP à envoyer avec la requête.
+  - *key* x : le nom de l'en-tête x.
+  - *value* x : la valeur de l'en-tête x.
+#infobox()[les _Headers_ sont des paires clé-valeur, par exemple : `{"Content-Type": "application/json"}`. Il faut donc deux paramètres pour chaque Header. De plus, il est possible de mettre plusieurs Headers. ]
+  
+Le bloc peut prendre dynamiquement les _inputs_ suivantes :
+- *xSend* : un booléen pour envoyer lorsque qu'il passe à _true_.
+- *url path* : la suite du chemin de l'URL de la requête HTTP. Il est ajouté à la suite du paramètre _URL_ pour donner l'URL final.
+- *Method* : la méthode HTTP à utiliser (GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS), par défaut GET.
+- *Body* : le corps de la requête HTTP, qui peut être au format JSON ou autre.
+Le bloc nous retournera les paramètres suivants :
+- *xDone* : un booléen pour indiquer si la requête a été effectuée avec succès.
+- *Response* : la réponse de la requête HTTP.
+  
+   #iconbox(linecolor: hei-pink)[Des *exemples* d'utilisations du bloc *HTTP client* sont présentés en annexe /* et TO DO : PLUS SIMPLE */ au @sec:httpClientExampleWDA qui montre comment l'utiliser avec WDA.]
+
+/*
+#figure(
+  image("/resources/img/34_http_settingExemple.png", width: 90%),
+  caption: [
+    exemple de paramétrage de "HTTP"
+  ],
+)*/
+#pagebreak()
+=== Node HTTP serveur
+
+Le package Go @HttpPackageNetb a été utilisé.  
+L’exemple @soysouvanhClientsServeursHTTP permet d’en comprendre davantage sur la création d’un serveur HTTP en Go. Pour le déploiement d’un serveur HTTP sur Docker, la documentation @nicholsonCraignicholsonSimplehttp2023 a été trouvée.
+
+Le Node HTTP serveur permet de créer un serveur HTTP qui écoute les requêtes entrantes. Le but est de pouvoir recevoir une requête venant de n’importe où, par exemple une *appliance* HTTP qui veut activer une sortie automate. Il doit être possible de créer une ressource (POST), de modifier une ressource (PATCH), de lire une ressource (GET) et de supprimer une ressource (DELETE). 
+
+Cette ressource peut être créée avec une requête POST sur `http://192.168.39.56:8080/flatten`, par exemple.  
+Cette ressource s'appelle *flatten* car elle permet d’aplatir les données pour les rendre plus digestes pour une utilisation dans le programme de l’automaticien. Il est possible de créer plusieurs ressources, mais elles doivent être uniques, c’est pourquoi on retourne un *id* après un POST, suivi de *result*: { ... } qui contient les paramètres. La figure @fig:RequetePostServerHttp-vs-vue montre un exemple de requête POST sur le serveur HTTP.
+
+#figure(
+  image("/resources/img/71_ServeurHTTP_ExemplePost.png", width: 100%),
+  caption: [
+    exemple de requête POST sur le serveur HTTP
+  ],
+)
+#label("fig:RequetePostServerHttp-vs-vue") 
+
+On doit également pouvoir recevoir des requêtes HTTP qui ne possèdent pas de _body_ ou de _headers_. Ce qui est le cas pour les requêtes envoyées par certaines *appliances*, comme les boutons _shelly_, ce qui est possible via l'output *Received URL path*.
+
+Pour le Node HTTP Server, il est possible de configurer les paramètres suivants :
+- *url* : l'URL du serveur HTTP (par défaut : localhost:8080).
+- *user* : l'utilisateur pour l'authentification HTTP des requêtes autorisées.
+- *password* : le mot de passe pour l'authentification HTTP des requêtes autorisées.
+
+Le bloc peut prendre dynamiquement les _inputs_ suivants :
+- *Parameters to receive* : les paramètres à recevoir dans la requête HTTP. Ils sont séparés par des virgules (exemple : `param1 ,, param2 ,, param3`). Ils sont liés à la sortie _Values received_.
+
+Les *outputs* sont :
+- *xDone* : un booléen pour indiquer si la requête a été effectuée avec succès.
+- *Values received* : les valeurs dans le _body_ reçues des paramètres donnés dans _Parameters to receive_. Elles sont dans le même ordre que les _Parameters to receive_. C’est-à-dire que si on a _param1 ,, param3 ,, data-attributes-value_ dans *Parameters to receive* et qu’on exécute la requête POST @fig:RequetePostServerHttp-vs-vue, alors *Values received* sera _value1 ,, value3 ,, true_. Elle fonctionne également pour les requêtes PATCH et PUT.
+- *Resource ID* : l’identifiant de la ressource créée lors d’une requête POST, ou modifiée lors d’un PATCH, ou supprimée lors d’un DELETE.
+- *Received URL path* : le chemin de l’URL de la requête HTTP reçue, sans le _host_ et le _port_. Par exemple, si on reçoit la requête GET : http://192.168.39.56:8080/short1, alors _Received URL path_ sera _short1_.
+
+#iconbox(linecolor: hei-pink)[Des *exemples* d’utilisations du bloc *HTTP serveur* sont présentés en annexe au @sec:httpServerExample qui montre comment l’utiliser.]
+
+Exemples de requêtes HTTP (ici _localhost:8080_ est équivalent à _192.168.39.56:8080_) :
+- GET : http://192.168.39.56:8080/short1, alors _Received URL path_ sera égal à _short1_ (@fig:RequeteGetShortServerHttp-vs-vue).
+- POST : http://192.168.39.56:8080/flatten, alors une ressource sera créée avec un _id_ (@fig:RequetePostServerHttp-vs-vue).
+- PATCH : http://localhost:8080/parameters/flatten/7 (deux possibilités équivalentes : @fig:RequetePatchServerHttp-vs-vue et @fig:RequetePatchServerHttp_v2-vs-vue), alors la ressource avec l’_id_ 7 sera modifiée.
+- GET : http://localhost:8080/parameters/flatten/7, alors la ressource avec l’_id_ 7 sera lue (@fig:RequeteGETServerHttpResource-vs-vue).
+- DELETE : http://localhost:8080/parameters/flatten/7, alors la ressource avec l’_id_ 7 sera supprimée (@fig:RequeteDeleteServerHttp-vs-vue).
+- PUT : http://localhost:8080/message, alors si les paramètres du body sont parmi les _Parameters to receive_, alors ils seront renvoyés dans _Values received_ (@fig:RequetePutServerHttp-vs-vue).
+
+
+#figure(
+  image("/resources/img/71_ServeurHTTP_ExemplePatch.png", width: 100%),
+  caption: [
+    exemple de requête PATCH sur le serveur HTTP
+  ],
+)
+#label("fig:RequetePatchServerHttp-vs-vue")
+#figure(
+  image("/resources/img/71_ServeurHTTP_ExemplePatch_v2.png", width: 100%),
+  caption: [
+    exemple de requête PATCH sur le serveur HTTP version 2 
+  ],
+)
+#label("fig:RequetePatchServerHttp_v2-vs-vue") 
+
+#figure(
+  image("/resources/img/71_ServeurHTTP_ExempleGet.png", width: 100%),
+  caption: [
+    exemple de requête GET sur le serveur HTTP pour lire une ressource
+  ],
+)
+#label("fig:RequeteGETServerHttpResource-vs-vue")
+
+
+#figure(
+  image("/resources/img/71_ServeurHTTP_ExempleDelete.png", width: 100%),
+  caption: [
+    exemple de requête DELETE sur le serveur HTTP pour supprimer la ressource 7
+  ],
+)
+#label("fig:RequeteDeleteServerHttp-vs-vue")
+
+#figure(
+  image("/resources/img/71_ServeurHTTP_ExemplePut.png", width: 100%),
+  caption: [
+    exemple de requête PUT sur le serveur HTTP
+  ],
+)
+#label("fig:RequetePutServerHttp-vs-vue")
+
+#figure(
+  image("/resources/img/71_ServeurHTTP_ExempleGet_short.png", width: 100%),
+  caption: [
+    exemple de requête GET sur le serveur HTTP avec un path quelconque
+  ],
+)
+#label("fig:RequeteGetShortServerHttp-vs-vue")
+#pagebreak()
 
   === MODBUS
 
@@ -354,22 +477,22 @@ Les blocs Modbus ont été réalisés dans le but de permettre la lecture et l�
 
 Ces blocs se configurent à l’aide du *host* et du *port* du serveur MODBUS.
 
-Il existe deux types de blocs Modbus : les blocs de lecture (_Read_) et les blocs d’écriture (_Write_). Les deux types possèdent les entrées suivantes :
+Il existe deux types de blocs Modbus : les blocs de lecture (_Read_) et les blocs d’écriture (_Write_). Les deux types possèdent les *inputs* suivantes :
 
 - *xEnable* : permet d’activer le bloc.
 - *UnitID* : identifiant de l’esclave MODBUS auquel accéder.
 - *Addresses* : adresses des registres à lire ou écrire. On peut spécifier plusieurs adresses séparées par des virgules (ex. : 0 ,, 2 ,, 4). Il faudra définir _Quantity_ pour la lecture ou fournir _NewValues_ pour l’écriture. Le comportement de ces blocs dépend de la relation entre *Addresses* et *Quantity* ou *NewValues* (@fig:ModbusGestionQuantity-vs-vue et @fig:ModbusGestionNewValues-vs-vue).
 
-Et les sorties suivantes :
+Et les *outputs* suivantes :
 
 - *xDone* : activée si la communication avec l’esclave est établie et qu’aucune erreur ne s’est produite.
 - *ValuesReceived* : valeur(s) reçue(s) pour les blocs de lecture. Pour les blocs d’écriture, cette sortie contient la réponse du serveur, et peut aussi signaler les erreurs de communication.
 
-Les blocs de lecture ont également l’entrée :
+Les blocs de lecture ont également l’*input* :
 
 - *Quantity* (@fig:ModbusGestionQuantity-vs-vue) : nombre de registres à lire. Par défaut, cette valeur est fixée à 1.
 
-Les blocs d’écriture ont également l’entrée :
+Les blocs d’écriture ont également l’*input* :
 
 - *NewValues* (@fig:ModbusGestionNewValues-vs-vue) : valeurs à écrire dans les registres. Plusieurs valeurs peuvent être fournies, séparées par des virgules (ex. : `0 ,, 2 ,, 4`).
 
@@ -556,7 +679,7 @@ Un autre type de node @fig:nodeSelect-vs-vue est celui avec un "menu déroulant"
     ],
   )
   #label("fig:bouttonsVisu-vs-vue")
-=== Tools
+=== Tools <sec:toolsMenu>
 Pour permettre de modifier la manière d’interagir avec le graphique, un menu déroulant appelé *Tool* a été ajouté. Il permet de choisir entre différents outils.
 
 Plusieurs outils ont été définis :

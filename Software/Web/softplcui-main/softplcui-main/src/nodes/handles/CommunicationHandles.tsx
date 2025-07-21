@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Position } from "reactflow";
 import CustomHandle from "../CustomHandle";
 import { LogicalNodeData } from "../types.ts";
@@ -31,6 +31,12 @@ const CommunicationHandles: React.FC<Props> = ({
     const [parameterNames, setParameterNames] = useState<string[]>(data.parameterNameData || []);
     console.log("parameterNames : ",parameterNames)
 
+    const [inputValuesTemp, setParameterValueData] = useState(inputValues);
+
+    useEffect(() => {
+        setParameterValueData(inputValues);
+    }, [inputValues]);
+
     return (
         <>
             {/* colored background above the line */}
@@ -62,11 +68,11 @@ const CommunicationHandles: React.FC<Props> = ({
 
                     <div className="config-inputs">
                             {/* show settings, choose table parameterNames or inputValues */}
-                            {(parameterNames.length < inputValues.length ? inputValues : parameterNames).map((val, index) => (
+                            {(parameterNames.length < inputValuesTemp.length ? inputValuesTemp : parameterNames).map((val, index) => (
                                 <div key={index} style={{ marginBottom: "8px" }}>
                                     <input
                                         type="text"
-                                        value={inputValues[index] || ""}
+                                        value={inputValuesTemp[index] || ""}
                                         onChange={handleInputChange(index)}
                                         placeholder={
                                             data.parameterNameData?.[index] === "setting" || !data.parameterNameData?.[index]
@@ -102,7 +108,7 @@ const CommunicationHandles: React.FC<Props> = ({
                                         setInputValues(prev => prev.slice(0, -2));
                                         setParameterNames(prev => prev.slice(0, -2));
                                     }}
-                                    disabled={inputValues.length <= data.parameterNameData.length && parameterNames.length <= data.parameterNameData.length}
+                                    disabled={inputValuesTemp.length <= data.parameterNameData.length && parameterNames.length <= data.parameterNameData.length}
                                     style={{marginRight: "10px"}}
                                 >
                                     − Remove last header

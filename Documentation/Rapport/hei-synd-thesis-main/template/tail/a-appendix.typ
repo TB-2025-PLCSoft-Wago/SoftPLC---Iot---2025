@@ -4,3 +4,4 @@
 = #i18n("appendix-title", lang: option.lang) <sec:appendix>
 
 #lorem(50)
+1234

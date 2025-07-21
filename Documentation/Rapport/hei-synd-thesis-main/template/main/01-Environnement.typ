@@ -9,6 +9,7 @@
   [Automate WAGO CC100], [192.168.37.134], [softplc-main],
   [PC], [localhost], [softplcui-main],
 )
+//TO DO : Rajouter les autres appareils
 
 La salle *23.N320* utilisé pour connecté l’automate WAGO CC100 sur le réseau.
 

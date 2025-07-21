@@ -72,9 +72,9 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 
   La vue programmation permet de créer des programmes PLC en utilisant une interface graphique. Elle est représentée par la "Programming Page" sur le schéma @fig:schemaPrincipe-vs-vue. Cette vue permet de créer par *drag and drop* des blocs logiques, des *Inputs* et des *Outputs*, et de les connecter entre eux pour créer un programme PLC.
 
-  === Vue WebSocket <sec:websocketVUE>
+  === Vue User WebSocket <sec:websocketVUE>
 
-  La vue WebSocket permet de visualiser en temps réel l'état des _Outputs_ et de gérer les des _Inputs_ spécifiques à cette vue. Sur le schéma @fig:schemaPrincipe-vs-vue, elle est représentée par la "View Page".
+  La vue user WebSocket permet de visualiser en temps réel l'état des _Outputs_ et de gérer les des _Inputs_ spécifiques à cette vue. Sur le schéma @fig:schemaPrincipe-vs-vue, elle est représentée par la "View Page".
 
   Cette vue s'accompagne de blocs logiques qui permettent sa création. Ces blocs sont représentés dans la figure @fig:blocWebSocket-vs-vue. Ils permettent de créer des Inputs et Outputs spécifiques à cette vue, permettant ainsi de visualiser l'état de n'importe quelle connexion dans le programme PLC. Un exemple de ce à quoi pourrait ressembler la vue WebSocket est présenté dans la figure @fig:vuePrincipeWebSocket-vs-vue, et le programme qui crée cette vue est présenté dans la figure @fig:ProgrammePrincipeWebSocket-vs-vue. Les parties _recevoir_ et _envoyer_ les messages sont prévues pour du débogage. Les autres parties sont prévues pour contrôler et tester le programme PLC. Remarquez l’impact du champ _Appliance Name_, qui permet de créer des groupes dans la vue WebSocket. Cela facilite le regroupement des Inputs et Outputs par groupe, ce qui est très utile pour la visualisation. L'idée a été inspirée de "Remote Controller" vue en cours de Data Engineering, où une page WebSocket est générée à partir d'un fichier JSON, dont voici le lien https://cyberlearn.hes-so.ch/pluginfile.php/3312976/mod_resource/content/2/index.html. 
   
@@ -126,7 +126,8 @@ En figure @fig:vuePrincipeModedebug-vs-vue se trouve un exemple démontrant enti
 )
 #label("fig:vuePrincipeModedebug-vs-vue")
 
-L'outil en question est représenté par une loupe. Quand il est sélectionné, il ajoute ou enlève les edges de la liste des edges dont on veut afficher les valeurs dans la vue de debug.
+
+L'outil en question est représenté par une loupe. Quand il est sélectionné, il ajoute ou enlève les edges de la liste des edges dont on veut afficher les valeurs dans la vue de debug. La boîte à outil est expliquée plue en détail dans la section @sec:toolsMenu.
 #figure(
   image("/resources/img/54_ExempleModeDebugTool.png", width: 50%),
   caption: [
@@ -139,97 +140,14 @@ L'outil en question est représenté par une loupe. Quand il est sélectionné, 
 La *transmission des données* ainsi que les mécanismes principaux sont décrit dans le schéma se trouvant @sec:debugModeData.
 #pagebreak()
 == Gestion et stockage des données
-La gestion et le stockage des données sont des aspects importantes du système. Dans notre cas, les données sont stockées et transmises en format JSON. 
-=== Node MQTT 
-Aucun des paramètres n'est obligatoire, par défaut le port est *1883* et le serveur tourne sur l'automate. Les "Settings" rentrés dans la vue sont données par *parameterValueData*.
-#figure(
-  image("/resources/img/33_mqtt_settingExemple.png", width: 90%),
-  caption: [
-    exemple de paramétrage de "Mqtt"
-  ],
-)
-#figure(
-    align(left,
-    ```rust
-      "inputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xEnable"
-          },
-          {
-            "dataType": "value",
-            "name": "topicToSend"
-          },
-          {
-            "dataType": "value",
-            "name": "msgToSend"
-          },
-          {
-            "dataType": "value",
-            "name": "topicToReceive"
-          }
-        ],
-        "label": "MQTT",
-        "outputHandle": [
-          {
-            "dataType": "bool",
-            "name": "xDone"
-          },
-          {
-            "dataType": "value",
-            "name": "msg"
-          }
-        ],
-        "parameterNameData": [
-          "broker",
-          "port",
-          "user",
-          "password"
-        ],
-        "parameterValueData": [
-          "broker.hivemq.com",
-          "1883",
-          "",
-          ""
-        ]
-    ```
-    ),
-    caption: [mqtt, extrait de la structure JSON d'un exemple],
-  
-  )
-=== Node HTTP client
-Le package Go @HttpPackageNetb a été trouvé.
-Pour le Node HTTP client, il est possible de configurer les paramètres suivants :
-- *URL* : l'URL de la requête HTTP.
-- *user* : l'utilisateur pour l'authentification HTTP.
-- *password* : le mot de passe pour l'authentification HTTP.
-- *Headers* : les en-têtes HTTP à envoyer avec la requête.
-#infobox()[les _Headers_ sont des paires clé-valeur, par exemple : `{"Content-Type": "application/json"}`. Il faut donc deux paramètres pour chaque Header. De plus, il faut que ce soit possible de mettre plusieurs Headers. ]
-  
-Le bloc peut prendre dynamiquement les paramètres suivants :
-- *xSend* : un booléen pour envoyer lorsque qu'il passe à _true_.
-- *url path* : la suite du chemin de l'URL de la requête HTTP. Il est ajouté à la suite du paramètre _URL_ pour donner l'URL final.
-- *Method* : la méthode HTTP à utiliser (GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS), par défaut GET.
-- *Body* : le corps de la requête HTTP, qui peut être au format JSON ou autre.
-Le bloc nous retournera les paramètres suivants :
-- *xDone* : un booléen pour indiquer si la requête a été effectuée avec succès.
-- *Response* : la réponse de la requête HTTP.
-/*
-#figure(
-  image("/resources/img/34_http_settingExemple.png", width: 90%),
-  caption: [
-    exemple de paramétrage de "HTTP"
-  ],
-)*/
-=== Node HTTP serveur
 
-Le package Go @HttpPackageNetb a été utilisé.  
-L’exemple @soysouvanhClientsServeursHTTP permet d’en comprendre davantage sur la création d’un serveur HTTP en Go. Pour le déploiement d’un serveur HTTP sur Docker, la documentation @nicholsonCraignicholsonSimplehttp2023 a été trouvée.
+La gestion et le stockage des données sont des aspects importants du système. Dans notre cas, les données sont stockées et transmises au format JSON.
 
-Le Node HTTP serveur permet de créer un serveur HTTP qui écoute les requêtes entrantes. Le but est de pouvoir recevoir une requête venant de n’importe où, par exemple une *appliance* HTTP qui veut activer une sortie automate. Il doit être possible de créer une ressource (POST), de modifier une ressource (PUT, PATCH), de lire une ressource (GET) et de supprimer une ressource (DELETE).
 
-=== Node WebSocket output
 
+
+=== Node View User WebSocket output
+//TO DO : Mettre les autres
 Pour cette fois, nous n’utilisons pas *parameterValueData* car les *outputs* ont un fonctionnement différent dans le programme, ce qui rend cette implémentation plus complexe. De plus, cela n’est pas nécessaire car, généralement, les *outputs* n’ont pas de paramètres. Il est donc possible de se passer de cette fonctionnalité en utilisant *selectedServiceData* et *selectedSubServiceData*.
 
 
@@ -255,7 +173,7 @@ Pour cette fois, nous n’utilisons pas *parameterValueData* car les *outputs* o
   
   )
 
-=== WebSocket data
+=== View WebSocket data
 Le *WebSocket* est un protocole de communication bidirectionnelle qui permet d'envoyer et de recevoir des données en temps réel. Il est utilisé pour la vue *WebSocket* décrite dans le @sec:websocketVUE.
 
 Dans les figures @fig:vuePrincipeWebSocketInput-vs-vue et @fig:vuePrincipeWebSocketOutput-vs-vue, on peut voir le principe de transmission des données. Les schémas permettent de visualiser toutes les structures de données nécessaires, ainsi que les fonctions (en brun) et les variables (en violet) les plus utiles.
@@ -276,7 +194,7 @@ Dans les figures @fig:vuePrincipeWebSocketInput-vs-vue et @fig:vuePrincipeWebSoc
 #label("fig:vuePrincipeWebSocketOutput-vs-vue")
 
 === Mode debug data <sec:debugModeData>
-Le schéma @fig:vuePrincipeModeDebugData-vs-vue permet de comprendre les mécanismes principaux du mode debug.
+Le schéma @fig:vuePrincipeModeDebugData-vs-vue permet de comprendre les mécanismes principaux du mode debug qui utilise également la technologie WebSocket.
 #figure(
   image("/resources/img/55_ModeDebugPrincipe.png", width: 100%),
   caption: [
@@ -284,6 +202,20 @@ Le schéma @fig:vuePrincipeModeDebugData-vs-vue permet de comprendre les mécani
   ],
 )
 #label("fig:vuePrincipeModeDebugData-vs-vue")
+
+=== Node : blocs complexes – transmission des _Settings_
+
+Pour les blocs complexes, nous devons pouvoir transmettre autant de données que nécessaire. Pour cela, deux tableaux de chaînes (_String_) sont utilisés :
+
+- Un tableau *parameterValueData* contenant les #underline("valeurs") des paramètres (définis dans le frontend).
+- Un tableau *parameterNameData* contenant les #underline("noms") des paramètres (définis dans le backend).
+
+Ces tableaux permettent la transmission des données entre le backend et le frontend pour les _nodes_ qui le nécessitent, comme les blocs de communication (MQTT, HTTP, MODBUS), ainsi que les blocs *string to bool* et *bool to string*.
+
+
+ #iconbox(linecolor: hei-pink)[Un exemple de la structure JSON d’un bloc _MQTT_ est présenté en annexe, à la section @sec:mqttConfiguration.]
+
+//TO DO : Mettre en annexe comment rajouter parameterValueData et parameterValueData
   == Conclusion
 
 /*

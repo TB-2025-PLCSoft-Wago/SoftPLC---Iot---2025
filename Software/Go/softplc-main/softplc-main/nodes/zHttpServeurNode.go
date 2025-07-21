@@ -59,9 +59,9 @@ var httpServerDescription = nodeDescription{
 	},
 	Output: []dataTypeNameStruct{
 		{DataType: "bool", Name: "xDone"},
-		{DataType: "value", Name: "receive"},
+		{DataType: "value", Name: "Values received"},
 		{DataType: "value", Name: "Resource ID"},
-		{DataType: "value", Name: "receive URL path"},
+		{DataType: "value", Name: "Received URL path"},
 	},
 	ParameterNameData: []string{"url server", "user server", "password server"},
 }
@@ -92,7 +92,7 @@ func (n *HttpServerNode) InitNode(id_ int, nodeType_ string, input_ []InputHandl
 	/*
 		go func() {
 			for msg := range n.subBus {
-				fmt.Println("Abonné ", &n, " a reçu :", msg)
+				fmt.Println("subscriber ", &n, " has receive :", msg)
 			}
 		}()*/
 
@@ -155,19 +155,7 @@ func h3(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer r.Body.Close()
-	/*
-		// Parser dynamiquement le JSON
-		//var data map[string]interface{}
-		var data interface{}
-		err = json.Unmarshal(body, &data)
-		switch data.(type) {
-		case map[string]interface{}:
-			fmt.Println("Objet JSON")
-		case []interface{}:
-			fmt.Println("Tableau JSON")
-		default:
-			fmt.Println("Autre type JSON")
-		}*/
+
 	var input map[string]interface{}
 	if err := json.Unmarshal(body, &input); err != nil {
 		http.Error(w, "JSON invalid", http.StatusBadRequest)
@@ -181,42 +169,6 @@ func h3(w http.ResponseWriter, r *http.Request) {
 	lastMessage = flat
 	mu.Unlock()
 	bus.Publish("messagePut")
-	/*
-		if err != nil {
-			http.Error(w, "JSON invalide", http.StatusBadRequest)
-			return
-		}
-
-		// Exemple : afficher tous les champs reçus
-		fmt.Println("JSON reçu :")
-		for k, v := range data {
-			fmt.Printf("  %s: %v\n", k, v)
-		}
-
-		// Réponse
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(map[string]string{
-			"status": "ok",
-		})
-	*/
-
-	/*
-		var msg Message
-		err = json.Unmarshal(body, &msg)
-		if err != nil {
-			http.Error(w, "Format JSON invalide", http.StatusBadRequest)
-			return
-		}
-
-		// Affiche le message reçu dans la console
-		fmt.Printf("Message reçu: %s\n", msg.Text)
-
-		// Répond avec un JSON
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
-		response := map[string]string{"status": "Message reçu", "text": msg.Text}
-		json.NewEncoder(w).Encode(response)
-	*/
 
 }
 func flattenHandler(w http.ResponseWriter, r *http.Request) {
@@ -326,7 +278,7 @@ func getOrDeleteFlattenedHandler(w http.ResponseWriter, r *http.Request) {
 // PATCH /flatten/{id}/{parameter result}
 func patchFlattenedHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPatch {
-		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
+		http.Error(w, "Methode not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 	// Check the Authorization header
@@ -341,27 +293,27 @@ func patchFlattenedHandler(w http.ResponseWriter, r *http.Request) {
 
 	parts := strings.Split(r.URL.Path, "/")
 	if len(parts) != 4 {
-		http.Error(w, "URL invalide", http.StatusBadRequest)
+		http.Error(w, "URL invalid", http.StatusBadRequest)
 		return
 	}
 
 	idStr := parts[3]
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
-		http.Error(w, "ID invalide", http.StatusBadRequest)
+		http.Error(w, "ID invalid", http.StatusBadRequest)
 		return
 	}
 
 	body, err := io.ReadAll(r.Body)
 	if err != nil {
-		http.Error(w, "Erreur de lecture du body", http.StatusBadRequest)
+		http.Error(w, "Error reading the body", http.StatusBadRequest)
 		return
 	}
 	defer r.Body.Close()
 
 	var data map[string]interface{}
 	if err := json.Unmarshal(body, &data); err != nil {
-		http.Error(w, "JSON invalide", http.StatusBadRequest)
+		http.Error(w, "JSON invalid", http.StatusBadRequest)
 		return
 	}
 	if !outputFlag {
@@ -372,7 +324,7 @@ func patchFlattenedHandler(w http.ResponseWriter, r *http.Request) {
 	for k, v := range flat {
 		mu.Lock()
 		if storage[id][k] == nil {
-			http.Error(w, "Aucun JSON avec cet ID", http.StatusNotFound)
+			http.Error(w, "No JSON with this ID", http.StatusNotFound)
 			mu.Unlock()
 			return
 		}
@@ -407,7 +359,7 @@ func (n *HttpServerNode) ProcessLogic() {
 			http.HandleFunc("/parameters/flatten/", patchFlattenedHandler) //id/...
 			err := http.ListenAndServe(urlServer, nil)
 			if err != nil {
-				fmt.Println("Erreur serveur HTTP :", err)
+				fmt.Println("Error server HTTP :", err)
 			}
 
 		}()
@@ -439,7 +391,11 @@ func (n *HttpServerNode) ProcessLogic() {
 			var temp []string
 			for i := 0; i < len(paramToSend); i++ {
 				value := fmt.Sprintf("%v", lastMessage[paramToSend[i]])
-				temp = append(temp, value)
+				if value == "<nil>" {
+					temp = append(temp, "null")
+				} else {
+					temp = append(temp, value)
+				}
 
 			}
 

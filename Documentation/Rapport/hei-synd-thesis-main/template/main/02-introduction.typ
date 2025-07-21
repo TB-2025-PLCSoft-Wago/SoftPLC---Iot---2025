@@ -24,8 +24,8 @@ Le travail effectué précédemment nous prouve la faisabilité du développemen
 Les fonctionnalités implémentées par ce précédent projet sont :
 #[
   #set list(marker: ([•], [o]),  spacing: auto, indent: 2em)
-  -	Digital Input / output
-  -	Analogue Input / output
+  -	Digital input / output
+  -	Analogue input / output
   -	Ton (timer retardé à la montée)
 ]
 

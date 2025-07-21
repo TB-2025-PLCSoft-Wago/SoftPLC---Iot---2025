@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>16</zoom_level>
+  <zoom_level>14</zoom_level>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>448</x>
-      <y>1024</y>
-      <w>288</w>
-      <h>176</h>
+      <x>392</x>
+      <y>910</y>
+      <w>252</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>
 Read each Quantiy[i] 
@@ -21,10 +21,10 @@ valign=top
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>864</y>
-      <w>368</w>
-      <h>192</h>
+      <x>490</x>
+      <y>770</y>
+      <w>322</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 len(Addresses) == len(Quantity)</panel_attributes>
@@ -33,10 +33,10 @@ len(Addresses) == len(Quantity)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>96</x>
-      <y>816</y>
-      <w>432</w>
-      <h>224</h>
+      <x>84</x>
+      <y>728</y>
+      <w>378</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 len(Addresses) == 1 &amp;&amp; len(Quantity)</panel_attributes>
@@ -46,9 +46,9 @@ len(Addresses) == 1 &amp;&amp; len(Quantity)</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>0</x>
-      <y>1008</y>
-      <w>288</w>
-      <h>176</h>
+      <y>896</y>
+      <w>252</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>
 Read Quantiy[0] 
@@ -62,25 +62,25 @@ valign=top
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>768</x>
-      <y>784</y>
-      <w>464</w>
-      <h>272</h>
+      <x>1302</x>
+      <y>756</y>
+      <w>364</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 len(Addresses) &gt; len(Quantity)</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;90.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>880</x>
-      <y>1024</y>
-      <w>304</w>
-      <h>176</h>
+      <x>1316</x>
+      <y>882</y>
+      <w>266</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>
-Read each Quantiy[i] 
+Read each Quantity[i] 
 start at
 Addresses[i]
 until i = len(Quantity) 
@@ -93,13 +93,13 @@ valign=top
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>192</x>
-      <y>512</y>
-      <w>1008</w>
-      <h>176</h>
+      <x>896</x>
+      <y>882</y>
+      <w>294</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>
-Read each Quantiy[i] 
+Read each Quantity[i] 
 start at
 Addresses[i]
 until i == len(Addresses) 
@@ -112,22 +112,22 @@ valign=top
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>640</x>
-      <y>672</y>
-      <w>352</w>
-      <h>128</h>
+      <x>896</x>
+      <y>756</y>
+      <w>308</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
-len(Addresses) &lt; len(Quantity)</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+len(Addresses) &lt;= len(Quantity)</panel_attributes>
+    <additional_attributes>150.0;10.0;60.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>496</x>
-      <y>768</y>
-      <w>288</w>
-      <h>112</h>
+      <x>1078</x>
+      <y>672</y>
+      <w>252</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>
 Modbus Read
@@ -138,10 +138,10 @@ valign=top
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>192</x>
+      <x>714</x>
       <y>0</y>
-      <w>1008</w>
-      <h>176</h>
+      <w>882</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>
 Read each Quantiy[i] 
@@ -157,10 +157,10 @@ valign=top
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>32</x>
-      <y>560</y>
-      <w>192</w>
-      <h>464</h>
+      <x>28</x>
+      <y>504</y>
+      <w>168</w>
+      <h>406</h>
     </coordinates>
     <panel_attributes>lt=&lt;.&gt;
 same</panel_attributes>
@@ -169,10 +169,10 @@ same</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>400</x>
-      <y>1680</y>
-      <w>288</w>
-      <h>112</h>
+      <x>966</x>
+      <y>1288</y>
+      <w>252</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>
 Modbus Write
@@ -183,10 +183,10 @@ valign=top
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>96</x>
-      <y>1424</y>
-      <w>1008</w>
-      <h>176</h>
+      <x>714</x>
+      <y>1456</y>
+      <w>406</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>
 Write each NewValues[i] 
@@ -202,34 +202,34 @@ valign=top
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>544</x>
-      <y>1584</y>
-      <w>400</w>
-      <h>128</h>
+      <x>812</x>
+      <y>1372</y>
+      <w>322</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 len(Addresses) &lt;= len(NewValues)</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>160.0;10.0;60.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
-      <y>1696</y>
-      <w>496</w>
-      <h>272</h>
+      <x>1134</x>
+      <y>1372</y>
+      <w>322</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 len(Addresses) &gt; len(NewValues)</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;150.0</additional_attributes>
+    <additional_attributes>50.0;10.0;170.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>784</x>
-      <y>1936</y>
-      <w>304</w>
-      <h>176</h>
+      <x>1260</x>
+      <y>1456</y>
+      <w>266</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>
 Write each NewValues[i] 
@@ -245,10 +245,10 @@ valign=top
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>384</x>
-      <y>672</y>
-      <w>128</w>
-      <h>384</h>
+      <x>336</x>
+      <y>602</y>
+      <w>112</w>
+      <h>336</h>
     </coordinates>
     <panel_attributes>lt=&lt;.&gt;
 same</panel_attributes>
@@ -257,10 +257,10 @@ same</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>352</x>
-      <y>1936</y>
-      <w>288</w>
-      <h>176</h>
+      <x>476</x>
+      <y>1820</y>
+      <w>252</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>
 Write each NewValues[i] 
@@ -274,25 +274,25 @@ valign=top
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>464</x>
-      <y>1776</y>
-      <w>400</w>
-      <h>192</h>
+      <x>574</x>
+      <y>1694</y>
+      <w>392</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 len(Addresses) == len(NewValues)</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>80.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>1584</y>
-      <w>160</w>
-      <h>448</h>
+      <x>462</x>
+      <y>1652</y>
+      <w>126</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>lt=&lt;.&gt;
 same</panel_attributes>
-    <additional_attributes>80.0;260.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;70.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -639,6 +639,7 @@ func fetchValues(client *http.Client, username string, password string) map[stri
 	data, ok := response["data"].([]interface{})
 	if !ok {
 		fmt.Println("Unexpected JSON structure: missing `data` array")
+		CreateMonitoringLists()
 		return results
 	}
 

@@ -50,9 +50,8 @@ On ne peut donc pas garantir un temps de cycle inférieur à 5 secondes, ce qui 
 
   == Section 2
 
-  #lorem(50)
 
   == Conclusion
 
-  #lorem(50)
+  
 ]

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Position } from "reactflow";
 import CustomHandle from "../CustomHandle";
 import { LogicalNodeData } from "../types.ts";
@@ -17,10 +17,18 @@ const BoolToStringHandles: React.FC<Props> = ({
                                                   inputValues,
                                                   handleInputChange,
                                               }) => {
+    const [parameterValueData, setParameterValueData] = useState(data.parameterValueData);
+
+    useEffect(() => {
+        setParameterValueData(data.parameterValueData);
+    }, [data.parameterValueData]);
+
     const maxHandles = Math.max(
         numberOfConnectedTargetHandles + 1,
-        getParameterElementUsingNumber(data.parameterValueData ?? []) + 1
+        getParameterElementUsingNumber(parameterValueData ?? []) + 1
     );
+
+
 
     return (
         <>
