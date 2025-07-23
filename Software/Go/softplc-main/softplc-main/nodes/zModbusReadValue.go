@@ -19,6 +19,7 @@ type ModbusReadValueNode struct {
 	outputFlag         bool
 	lastValuesReceived []string
 	functionCode       int
+	unitIDRetain       byte
 }
 
 var modbusReadValueDescription = nodeDescription{
@@ -102,6 +103,10 @@ func (n *ModbusReadValueNode) ProcessLogic() {
 		if n.input[1].Input != nil {
 			unitID = byte(atoiDefault(*n.input[1].Input, 0))
 		}
+		//reload for a new unitID (dynamic)
+		if unitID != n.unitIDRetain {
+			n.connectionIsInit = false
+		}
 
 		addresses := []string{"0"}
 		if n.input[2].Input != nil {
@@ -133,6 +138,7 @@ func (n *ModbusReadValueNode) ProcessLogic() {
 				n.output[1].Output = "connection error"
 				return
 			}
+			n.unitIDRetain = unitID
 		}
 		if n.handler == nil || n.client == nil || !n.connectionIsInit {
 			fmt.Println("Handler not ready")

@@ -21,6 +21,7 @@ type ModbusWriteBoolNode struct {
 	outputFlag         bool
 	lastValuesReceived []string
 	//functionCode 		int
+	unitIDRetain byte
 }
 
 var modbusWriteBoolDescription = nodeDescription{
@@ -106,6 +107,10 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 		if n.input[1].Input != nil {
 			unitID = byte(atoiDefault(*n.input[1].Input, 0))
 		}
+		//reload for a new unitID (dynamic)
+		if unitID != n.unitIDRetain {
+			n.connectionIsInit = false
+		}
 		//n.functionCode = 15
 
 		addresses := []string{"0"}
@@ -142,6 +147,7 @@ func (n *ModbusWriteBoolNode) ProcessLogic() {
 				n.output[1].Output = "connection error"
 				return
 			}
+			n.unitIDRetain = unitID
 		}
 		if n.handler == nil || n.client == nil || !n.connectionIsInit {
 			fmt.Println("Handler not ready")

@@ -1,6 +1,9 @@
 package nodes
 
-import "SoftPLC/server"
+import (
+	"SoftPLC/server"
+	"SoftPLC/serverResponse"
+)
 
 type ViewWebInputValueNode struct {
 	id                 int
@@ -56,6 +59,12 @@ func (n *ViewWebInputValueNode) InitNode(id_ int, nodeType_ string, output_ []In
 	n.nodeType = nodeType_
 	n.output = output_
 	n.parameterValueData = parameterValueData_
+	if n.parameterValueData[1] == "" {
+		serverResponse.ResponseProcessGraph = "view Input Value - signal name : empty"
+	}
+	if n.parameterValueData[0] == "" {
+		serverResponse.ResponseProcessGraph = "view Input Value - appliance name : empty"
+	}
 	n.output[0].FriendlyName = server.AddInputToAppliance(n.parameterValueData[0], n.parameterValueData[1], "string") //save the irCode
 
 }

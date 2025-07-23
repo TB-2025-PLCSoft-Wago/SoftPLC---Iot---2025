@@ -492,18 +492,20 @@ Il existe deux types de blocs Modbus : les blocs de lecture (_Read_) et les bloc
 - *UnitID* : identifiant de l’esclave MODBUS auquel accéder.
 - *Addresses* : adresses des registres à lire ou écrire. On peut spécifier plusieurs adresses séparées par des virgules (ex. : 0 ,, 2 ,, 4). Il faudra définir _Quantity_ pour la lecture ou fournir _NewValues_ pour l’écriture. Le comportement de ces blocs dépend de la relation entre *Addresses* et *Quantity* ou *NewValues* (@fig:ModbusGestionQuantity-vs-vue et @fig:ModbusGestionNewValues-vs-vue).
 
+Les blocs de lecture ont également l’*input* :
+
+- *Quantity* (@fig:ModbusGestionQuantity-vs-vue) : nombre de registres à lire. Par défaut, cette valeur est fixée à 1. Plusieurs valeurs peuvent être fournies, séparées par des virgules (ex. : 0 ,, 2 ,, 4).
+
+Les blocs d’écriture ont également l’*input* :
+
+- *NewValues* (@fig:ModbusGestionNewValues-vs-vue) : valeurs à écrire dans les registres. Plusieurs valeurs peuvent être fournies, séparées par des virgules (ex. : 0 ,, 2 ,, 4).
+
 Et les *outputs* suivantes :
 
 - *xDone* : activée si la communication avec l’esclave est établie et qu’aucune erreur ne s’est produite.
 - *ValuesReceived* : valeur(s) reçue(s) pour les blocs de lecture. Pour les blocs d’écriture, cette sortie contient la réponse du serveur, et peut aussi signaler les erreurs de communication.
 
-Les blocs de lecture ont également l’*input* :
 
-- *Quantity* (@fig:ModbusGestionQuantity-vs-vue) : nombre de registres à lire. Par défaut, cette valeur est fixée à 1.
-
-Les blocs d’écriture ont également l’*input* :
-
-- *NewValues* (@fig:ModbusGestionNewValues-vs-vue) : valeurs à écrire dans les registres. Plusieurs valeurs peuvent être fournies, séparées par des virgules (ex. : `0 ,, 2 ,, 4`).
 
 #figure(
   image("/resources/img/64_ModbusRead_gestionQuantity.png", width: 80%),

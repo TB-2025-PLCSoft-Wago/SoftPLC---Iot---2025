@@ -364,7 +364,7 @@ func linkNodes(g Graph) {
 			}
 		}
 		if !ableToConnect {
-			serverResponse.ResponseProcessGraph = "Input node not connected" + strconv.Itoa(InputNodes[i].GetId())
+			serverResponse.ResponseProcessGraph = "Input node not connected : " + InputNodes[i].GetNodeType() //+ strconv.Itoa(InputNodes[i].GetId())
 			fmt.Println("Input node not connected" + strconv.Itoa(InputNodes[i].GetId()))
 			break
 		}

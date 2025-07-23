@@ -25,10 +25,8 @@ const BoolToStringHandles: React.FC<Props> = ({
 
     const maxHandles = Math.max(
         numberOfConnectedTargetHandles + 1,
-        getParameterElementUsingNumber(parameterValueData ?? []) + 1
+        getParameterElementUsingNumber(data.parameterValueData ?? []) + 1
     );
-
-
 
     return (
         <>

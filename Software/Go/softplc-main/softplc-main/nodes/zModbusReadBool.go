@@ -105,6 +105,10 @@ func (n *ModbusReadBoolNode) ProcessLogic() {
 		if n.input[1].Input != nil {
 			unitID = byte(atoiDefault(*n.input[1].Input, 0))
 		}
+		//reload for a new unitID (dynamic)
+		if unitID != n.unitIDRetain {
+			n.connectionIsInit = false
+		}
 
 		n.functionCode = 2
 		/*	if n.input[2].Input != nil {
@@ -134,6 +138,11 @@ func (n *ModbusReadBoolNode) ProcessLogic() {
 		}()
 
 		if !n.connectionIsInit {
+			if n.handler != nil {
+				n.handler.Close()
+			}
+			n.handler = nil
+			n.client = nil
 			if err := n.initConnection(unitID); err != nil {
 				fmt.Println("ModbusReadBool connection error:", err)
 				n.output[0].Output = "0"

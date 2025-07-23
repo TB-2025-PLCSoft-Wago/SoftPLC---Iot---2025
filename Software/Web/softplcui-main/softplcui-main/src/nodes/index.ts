@@ -2,7 +2,7 @@ import type { Node, NodeTypes } from "reactflow";
 import InputNode from "./InputNode.tsx";
 import LogicalNode from "./LogicalNode.tsx";
 import OutputNode from "./outputNode.tsx";
-import CommentNode from "./CommentNode.tsx";
+import CommentNode from "./0_CommentNode.tsx";
 
 /*const nodeDataWithId = {
   ...NodeJson.nodes[1],

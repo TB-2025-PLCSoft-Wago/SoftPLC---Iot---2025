@@ -1,6 +1,9 @@
 package nodes
 
-import "SoftPLC/server"
+import (
+	"SoftPLC/server"
+	"SoftPLC/serverResponse"
+)
 
 type ViewWebInputBoolNode struct {
 	id                 int
@@ -64,6 +67,13 @@ func (n *ViewWebInputBoolNode) InitNode(id_ int, nodeType_ string, output_ []Inp
 	n.nodeType = nodeType_
 	n.output = output_
 	n.parameterValueData = parameterValueData_
+	if n.parameterValueData[1] == "" {
+		serverResponse.ResponseProcessGraph = "view Input Bool - signal name : empty"
+	}
+	if n.parameterValueData[0] == "" {
+		serverResponse.ResponseProcessGraph = "view Input Bool - appliance name : empty"
+	}
+
 	n.output[0].FriendlyName = server.AddInputToAppliance(n.parameterValueData[0], n.parameterValueData[1], "bool") //save the irCode // to find where use in processGraph.go : if strconv.Itoa(inputLink.IRCode) == inputHandle.FriendlyName {
 
 }

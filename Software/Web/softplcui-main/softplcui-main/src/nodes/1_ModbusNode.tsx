@@ -1,9 +1,6 @@
 // ModbusNode.tsx
 import React, { useState, useEffect, useMemo } from "react";
-import { getParameterElementUsingNumber } from "./utils/getParameterCount.ts";
-import FixedHandles from "./handles/FixedHandles.tsx";
 import { LogicalNodeData } from "./types.ts";
-import CommunicationHandles from "./handles/CommunicationHandles.tsx";
 import CommunicationHandles_select from "./handles/CommunicationHandles_select.tsx";
 
 interface ModbusNodeProps {
@@ -72,15 +69,26 @@ const ModbusNode: React.FC<ModbusNodeProps> = ({ data,
             }
             setSelectedType("ConfigurableNodeModbusWriteValue");
         }
+        // Force React Flow à recalculer le layout du node
+        if (onResize) {
+            onResize(nodeSize.width + 1, nodeSize.height); // petit "bump"
+            setTimeout(() => {
+                onResize(nodeSize.width, nodeSize.height); // retour
+            }, 10);
+        }
     };
 
-    const content = <CommunicationHandles_select
-                data={data}
-                inputValues={inputValues}
-                handleInputChange={handleInputChange}
-                setInputValues={setInputValues}
-                onResize={onResize}
-            />;
+    const content = useMemo(() => (
+        console.log("Modbus reload node"),
+        <CommunicationHandles_select
+            key={selectedType} // <-- forcer le remount à chaque type
+            data={data}
+            inputValues={inputValues}
+            handleInputChange={handleInputChange}
+            setInputValues={setInputValues}
+            onResize={onResize}
+        />
+    ), [selectedType, data]);
 
 
     return (

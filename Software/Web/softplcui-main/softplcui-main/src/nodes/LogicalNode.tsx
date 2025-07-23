@@ -10,9 +10,9 @@ import { LogicalNodeData } from "./types.ts";
 import { getParameterElementUsingNumber } from "./utils/getParameterCount.ts";
 import CommunicationHandles from "./handles/CommunicationHandles.tsx";
 import StringToBoolHandles from "./handles/StringToBoolHandles.tsx";
-import TimerNode from "./TimerNode.tsx";
+import TimerNode from "./1_TimerNode.tsx";
 import EdgeDetectionNode from "./EdgeDetectionNode.tsx";
-import ModbusNode from "./ModbusNode.tsx";
+import ModbusNode from "./1_ModbusNode.tsx";
 import CommunicationHandles_select from "./handles/CommunicationHandles_select.tsx";
 
 

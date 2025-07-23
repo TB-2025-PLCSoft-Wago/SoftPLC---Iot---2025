@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Position } from "reactflow";
 import CustomHandle from "../CustomHandle";
 import { LogicalNodeData } from "../types.ts";
-
+//Use to show for instance Modbus
 interface Props {
     data: LogicalNodeData;
     inputValues: string[];
