@@ -388,6 +388,12 @@ Cette ressource s'appelle *flatten* car elle permet d’aplatir les données pou
 
 On doit également pouvoir recevoir des requêtes HTTP qui ne possèdent pas de _body_ ou de _headers_. Ce qui est le cas pour les requêtes envoyées par certaines *appliances*, comme les boutons _shelly_, ce qui est possible via l'output *Received URL path*.
 
+Le node utilise *bus.go* pour ne pas perdre d’événements. Les messages stockés dans le bus sont ensuite traités tranquillement dans la fonction _ProcessLogic()_ du node.
+
+Les ressources sont stockées dans une variable *storage*, commune à tous les nodes HTTP serveur. L’accès concurrent à *storage* est protégé par un verrou (`sync.Mutex`).
+
+Le node supporte l’authentification HTTP Basic.
+
 Pour le Node HTTP Server, il est possible de configurer les paramètres suivants :
 - *url* : l'URL du serveur HTTP (par défaut : localhost:8080).
 - *user* : l'utilisateur pour l'authentification HTTP des requêtes autorisées.
@@ -403,6 +409,7 @@ Les *outputs* sont :
 - *Received URL path* : le chemin de l’URL de la requête HTTP reçue, sans le _host_ et le _port_. Par exemple, si on reçoit la requête GET : http://192.168.39.56:8080/short1, alors _Received URL path_ sera _short1_.
 
 #iconbox(linecolor: hei-pink)[Des *exemples* d’utilisations du bloc *HTTP serveur* sont présentés en annexe au @sec:httpServerExample qui montre comment l’utiliser.]
+
 
 Exemples de requêtes HTTP (ici _localhost:8080_ est équivalent à _192.168.39.56:8080_) :
 - GET : http://192.168.39.56:8080/short1, alors _Received URL path_ sera égal à _short1_ (@fig:RequeteGetShortServerHttp-vs-vue).

@@ -1,4 +1,3 @@
-// hooks/useDebouncedUndo.ts
 import { useEffect, useRef } from "react";
 import { Node, Edge } from "reactflow";
 
@@ -9,11 +8,17 @@ export default function useDebouncedUndo(
     edges: Edge[],
     pushToUndoStack: () => void,
     undoStack: UndoStack,
-    delay: number = 1000
+    manualPushRef: React.MutableRefObject<boolean>,
+    delay: number = 500
 ) {
     const debounceTimeout = useRef<number | null>(null);
 
     useEffect(() => {
+        if (manualPushRef.current) {
+            manualPushRef.current = false; // Ignore this one, it's manual
+            return;
+        }
+
         if (debounceTimeout.current !== null) {
             clearTimeout(debounceTimeout.current);
         }
@@ -30,6 +35,7 @@ export default function useDebouncedUndo(
 
             if (isDifferent) {
                 pushToUndoStack();
+                console.log("pushToUndoStack");
             }
         }, delay);
 
@@ -38,5 +44,5 @@ export default function useDebouncedUndo(
                 clearTimeout(debounceTimeout.current);
             }
         };
-    }, [nodes, edges, pushToUndoStack, undoStack, delay]);
+    }, [nodes, edges, pushToUndoStack, undoStack, delay, manualPushRef]);
 }
