@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import TextInputSender from "./TextInputSender.tsx";
 import {useNavigate} from "react-router-dom";
-import {Panel} from "reactflow";
 import CompressedMessageList from "./CompressedMessageList.tsx";
 
 type Appliance = {
@@ -105,7 +104,7 @@ const WebSocketView = () => {
             {/* main content
  */}
         <div style={{height: '100vh', overflowY: 'auto', padding: '1rem'}}>
-            <h2>WebSocket Interface</h2>
+            <h2>User Interface</h2>
             <div style={{marginBottom: '1rem'}}>
                 <input
                     type="text"

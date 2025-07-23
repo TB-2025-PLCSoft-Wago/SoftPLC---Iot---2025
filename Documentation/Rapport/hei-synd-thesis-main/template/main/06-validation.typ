@@ -48,25 +48,25 @@ On ne peut donc pas garantir un temps de cycle inférieur à 5 secondes, ce qui 
 
   
 
-  == proof of concept : maison intelligente
-  Le programme de la maison intelligente est un exemple d’application qui peut être développé grâce aux nouvelles fonctionnalitée développées durant ce TB. Il démontre les possibilitées de connectivité d'appareils qui communique dans différents protocole de communication et prouve que le point principal du cahier des charges est respecté. 
-  
-  L'exemple permet de contrôler la porte du garage, le chauffage et les lumières et d'une partie de la maison. Il est possible pour l'utilisateur de paramètrer différentes choses comme la couleur et luminosité de la lampe _Shelly_, l'allumage de la lampe manuellement et l'allumage et les consignes de chauffage.
+  == Proof of Concept : maison intelligente
+Le programme de la maison intelligente est un exemple d’application développé grâce aux nouvelles fonctionnalités mises en œuvre durant ce TB. Il démontre les possibilités de connectivité entre des appareils utilisant différents protocoles de communication, et prouve que le point principal du cahier des charges est respecté.
 
-  Le schéma des différents appareils connectée a déjà été défini sur la figure @fig:applicationMaison-vs-vue.
+Cet exemple permet de contrôler la porte du garage, le chauffage et les lumières d’une partie de la maison. L’utilisateur peut paramétrer différents éléments, comme la couleur et la luminosité de la lampe _Shelly_, l’allumage manuel des lampes, ainsi que les consignes et l’activation du chauffage.
 
+Le schéma des différents appareils connectés a déjà été défini en @fig:applicationMaison-vs-vue.
 
-  Le programme est présenté en annexe au @sec:homeController-vs-vue. Il est divisé en plusieurs parties, chacune correspondant à un élément de la maison.
+Le programme est présenté en annexe au @sec:homeController-vs-vue. Il est divisé en plusieurs parties, chacune correspondant à un élément de la maison.
 
-  La section @sec:configurationAppareils-vs-vue présente la configuration des appareils.
+La section @sec:configurationAppareils-vs-vue présente la configuration des appareils.
 
-  La section @sec:enclenchementChauffage-vs-vue présente le programme responsable de l'enclenchement du chauffage. Il est possible de le contrôler manuellement grâce à l'interface utilisateur ou automatiquement en fonction de la température.
+La section @sec:enclenchementChauffage-vs-vue détaille le programme responsable de l’enclenchement du chauffage. Il est possible de le contrôler manuellement grâce à l’interface utilisateur, ou automatiquement en fonction de la température.
 
-  La section @sec:porteGarage-vs-vue présente le programme responsable de la porte du garage. Il est possible de l'ouvrir et de la fermer grâce à un bouton qui envoie une requête HTTP.
+La section @sec:porteGarage-vs-vue décrit le programme de la porte du garage. Celle-ci peut être ouverte ou fermée grâce à un bouton déclenchant une requête HTTP.
 
-  La section @sec:lampe-vs-vue présente le programme responsable de la lampe _Shelly Bulb_. Il est possible de contrôler la couleur et la luminosité de la lampe grâce à l'interface utilisateur. Il est également possible de l'allumer ou l'éteindre manuellement de puis se même interface.
+La section @sec:lampe-vs-vue présente le programme de la lampe _Shelly Bulb_. L’utilisateur peut en contrôler la couleur et la luminosité via l’interface utilisateur. Il est également possible de l’allumer ou de l’éteindre manuellement depuis cette même interface.
 
-  La section @sec:lampe2-vs-vue présente le programme responsable des lumières. Il permet de contrôler les lumières selon oû on se trouve dans la maison. Un short press sur le bouton _Shelly_ allume les lampe, dans la pièce ou on se trouve, un long press les éteintes toutes. 
+La section @sec:lampe2-vs-vue présente le programme des autres lumières. Il permet de contrôler les éclairages selon l’emplacement dans la maison : un appui court sur le bouton _Shelly_ allume les lampes de la pièce où l'on se trouve, tandis qu’un appui long les éteint toutes. Cette fonctionnalité est uniquement disponible pour les pièces *Kitchen* et *Garage*.
+
 
 
     #table(

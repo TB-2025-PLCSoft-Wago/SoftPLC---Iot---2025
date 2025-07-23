@@ -531,15 +531,77 @@ Et les *outputs* suivantes :
 #label("fig:ModbusGestionNewValues-vs-vue")
 
   == Vue programmation
- == Vue WebSocket
-  react-router-dom : pour naviguer entre les routes (avec useNavigate).
+  La vue programmation permet de créer des programmes PLC en utilisant une interface graphique. Elle est représentée par la "Programming Page" sur le schéma @fig:schemaPrincipe-vs-vue. Cette vue permet de créer par *drag and drop* des blocs logiques, des *Inputs* et des *Outputs*, et de les connecter entre eux pour créer un programme PLC.
 
-  const openView = () => {
-        navigate('/websocket');
-    };
-  == Vue mode debug
+
+ Du côté *frontend*, la majorité de la logique est centralisée dans le fichier *_App.tsx_*. Les fichiers _InputNode.tsx_, _LogicalNode.tsx_ et _OutputNode.tsx_ jouent également un rôle important, car ils gèrent l'affichage des _nodes_ selon leur _primaryType_. 
+
+On retrouve ensuite différents fichiers dans le dossier "handles", dédiés à des types particuliers, comme par exemple les _nodes_ de communication.
+
+La section @sec:ameliorationInterface-vs-vue décrit plus en détail les aspects liés à l'interface visuelle.
+
+#iconbox(linecolor: hei-pink)[Tous les nodes réalisés sont présentés en annexe au @sec:EnsembleBlocs.]
+
+ == Vue User
+
+#figure(
+  image("/resources/img/74_exempleBidonUserView.png", width: 80%),
+  caption: [
+    vue User : bref aperçu
+  ],
+)
+
+Le rôle de cette vue a déjà été expliqué @sec:websocketVUE.  
+Elle est implémentée côté *backend* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent en @fig:vuePrincipeWebSocketInput-vs-vue et @fig:vuePrincipeWebSocketOutput-vs-vue.
+
+Du côté *frontend*, la vue est créée dans le fichier *user.tsx* du dossier *webSocketInterface*. C’est là qu’on gère l’affichage des éléments triés dans les appliances.
+
+Pour passer d’une vue à l’autre, on utilise react-router-dom @ReactRouterUseNavigate : pour naviguer entre les routes (avec `useNavigate`).
+
+
+#figure(
+    align(left,
+    ```tsx
+      const navigate = useNavigate();
+      const openView = () => { navigate('/websocket'); };
+      ...
+      const navigate = useNavigate();
+      const goBackView = () => { navigate(-1); };
+    ```
+    ),
+    caption: [*Vue User* : navigation entre les pages],
+  )
   
-  == Améliorations interface
+  == Vue mode debug
+
+Le rôle de cette vue a déjà été expliqué @sec:modeDebugDesign.  
+Elle est implémentée côté *backend* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent @sec:debugModeData.
+
+Après avoir dû déboguer avec cet outil, il a finalement été choisi d’afficher la valeur des connexions par défaut, et que l’outil *display connection* permette de cacher celles qui prennent trop de place, par exemple. Cependant, côté *backend*, dans la fonction _DebugMode_, il y a la première version en commentaire.
+
+Les outils communiquent avec le *backend* par la fonction _handleIncomingMessage_, responsable de recevoir les messages _webSocket_. C’est à ce moment-là qu’on ajoute ou enlève les *edges* de la variable _toDebugList_.
+
+Les connexions reçoivent l’animation "dash 1s linear infinite" pour donner l’impression d’un flux de données.
+
+Du côté *frontend*, la vue est créée grâce au fichier *debug.tsx* du dossier *webSocketInterface*.
+
+La vue debug est également réduite comparée à la vue programmatation.
+
+#figure(
+  image("/resources/img/76_debugSansDebug.png", width: 100%),
+  caption: [
+    vue programmatation : plus d'éléments visible que vue debug
+  ],
+)
+#figure(
+  image("/resources/img/76_debugAvecDebug.png", width: 100%),
+  caption: [
+    vue debug : moins d'éléments visible que vue debug
+  ],
+)
+
+
+  == Améliorations interface <sec:ameliorationInterface-vs-vue>
   === Rajouter des raccourcies
   Le fichier _useKeyboardShortcuts.tsx_ a été créé pour l'occasion. Il est appelé dans _App.tsx_.  
   Les raccourcis qui ont été rajoutés sont :
@@ -739,7 +801,12 @@ Les outils peuvent fonctionner de deux manières :
   
   )
   #label("fig:MessageWebSocketClicComent-vs-vue")
- 
+ #figure(
+  image("/resources/img/75_exempleCommentaire.png", width: 100%),
+  caption: [
+   *Tool :* exemple commentaires
+  ],
+  )
    #pagebreak()
   == Gestion des erreurs
   Pour envoyer un message d'erreur sur la page de programmation, il faut utiliser dans le programme : *serverResponse.ResponseProcessGraph* = "message à envoyer". Cela doit se faire avant la fin de la vérification, donc pour mettre des messages pour un *Node* précis, il faut utiliser l'appel dans la méthode *GetOutput* de celui-ci. C'est ce qui a été utilisé pour @sec:timer.

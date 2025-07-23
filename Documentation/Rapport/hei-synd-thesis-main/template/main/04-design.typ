@@ -68,9 +68,7 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
   == User Interface (UI) Design
   L'interface utilisateur utilise _React_, la documentation @UsingTypeScriptReact peut aider. On utilise également _React flow_, dont la documentation @Quickstart2025, qui s'occupe plus particulièrement des mécanismes liés aux Nodes, Edges, Handle, etc.
 
-  === Vue programmation
-
-  La vue programmation permet de créer des programmes PLC en utilisant une interface graphique. Elle est représentée par la "Programming Page" sur le schéma @fig:schemaPrincipe-vs-vue. Cette vue permet de créer par *drag and drop* des blocs logiques, des *Inputs* et des *Outputs*, et de les connecter entre eux pour créer un programme PLC.
+  
 
   === Vue User WebSocket <sec:websocketVUE>
 
@@ -114,7 +112,7 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 
 
 #pagebreak()
-=== Vue mode debug
+=== Vue mode debug <sec:modeDebugDesign>
 Il est également intéressant d'avoir une vue "debug" qui nous permettrait de visualiser les états des I/O de chaque node et même de changer la couleur des edges pour les booléens (rouge = off et vert = on). Pour ce faire, nous utiliserons la technologie des WebSocket également utilisée pour la vue WebSocket (@sec:websocketVUE). L'idée étant de transmettre un graphique modifié à chaque cycle, la modification du graphique se fera surtout au niveau des _Edges_. Un exemple d'un petit programme qui montre comment sont transmises et affichées les données est détaillé en annexe (@sec:exempleUtililationDebugSimple-vs-vue).
 
 En figure @fig:vuePrincipeModedebug-vs-vue se trouve un exemple démontrant entièrement le fonctionnement de ce mode debug. Les edges qui affichent "???" sont ceux qu'on n'a pas sélectionnés avec l'outil.
@@ -173,8 +171,8 @@ Pour cette fois, nous n’utilisons pas *parameterValueData* car les *outputs* o
   
   )
 
-=== View WebSocket data
-Le *WebSocket* est un protocole de communication bidirectionnelle qui permet d'envoyer et de recevoir des données en temps réel. Il est utilisé pour la vue *WebSocket* décrite dans le @sec:websocketVUE.
+=== View User WebSocket data
+Le *WebSocket* est un protocole de communication bidirectionnelle qui permet d'envoyer et de recevoir des données en temps réel. Il est utilisé pour la vue *User* décrite dans le @sec:websocketVUE.
 
 Dans les figures @fig:vuePrincipeWebSocketInput-vs-vue et @fig:vuePrincipeWebSocketOutput-vs-vue, on peut voir le principe de transmission des données. Les schémas permettent de visualiser toutes les structures de données nécessaires, ainsi que les fonctions (en brun) et les variables (en violet) les plus utiles.
 

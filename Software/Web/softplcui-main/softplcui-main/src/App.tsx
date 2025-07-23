@@ -29,7 +29,7 @@ import CustomEdgeStepControl from "./CustomEdgeStepControl.tsx";
 /*color*/
 import ConnectionLine from './nodes/utils/ConnectionLine.tsx';
 import ColorSelectorNode from './nodes/utils/ColorSelectorNode';
-import WebSocketManager from "./webSocketInterface/WebSocketManager.tsx";
+import Debug from "./webSocketInterface/debug.tsx";
 import {sendEdgeClicked} from "./webSocketInterface/WebSocketInstanceEdgeClicked.tsx";
 import ToolsMenu from "./nodes/Tool/ToolsMenu.tsx";
 import {ToolProvider, useTool} from "./nodes/Tool/ToolContext.tsx";
@@ -810,7 +810,7 @@ export default function App() {
                             pauseOnFocusLoss={false}
             />
             {/*Debug webScoket*/}
-            {checkedDebug && <WebSocketManager setEdges={setEdges} />}
+            {checkedDebug && <Debug setEdges={setEdges} />}
         </ReactFlowProvider>
     );
 }

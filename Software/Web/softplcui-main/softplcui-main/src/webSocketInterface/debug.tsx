@@ -5,7 +5,7 @@ type Props = {
     setEdges: (edges: any[]) => void;
 };
 
-const WebSocketManager = ({ setEdges }: Props) => {
+const Debug = ({ setEdges }: Props) => {
     const ws = useRef<WebSocket | null>(null);
 
     useEffect(() => {
@@ -64,4 +64,4 @@ const WebSocketManager = ({ setEdges }: Props) => {
     return null; // invisible
 };
 
-export default WebSocketManager;
+export default Debug;

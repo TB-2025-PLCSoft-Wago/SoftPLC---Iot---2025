@@ -352,7 +352,7 @@ func handleIncomingMessage(conn *websocket.Conn, msg []byte) {
 		fmt.Println("🖱️ edge clicked:", data)
 
 		if data["tool"] == "DisplayConnectionDebug" {
-			fmt.Println("🖱️ edge clicked DisplayConnectionDebug")
+			//fmt.Println("🖱️ edge clicked DisplayConnectionDebug")
 			//delete if exist else append
 			source, ok1 := data["source"].(string)
 			sourceHandle, ok2 := data["sourceHandle"].(string)

@@ -1,7 +1,7 @@
 
 = Application: Home Controller <sec:homeController-vs-vue>
 
-= Configuration des appareils <sec:configurationAppareils-vs-vue>
+== Configuration des appareils <sec:configurationAppareils-vs-vue>
 
 == Gestion enclenchement du chauffage <sec:enclenchementChauffage-vs-vue> 
 

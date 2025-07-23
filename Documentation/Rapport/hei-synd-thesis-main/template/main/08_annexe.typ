@@ -483,7 +483,7 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
   #include "/main/08_a1_Exemple_HTTPServeur.typ"
   #include "/main/08_a1_Exemple_Modbus.typ"
   #include "08_a1_homeController.typ"
-
+  #include "08_a2_tousBloc.typ"
   #pagebreak()
   = Autres annexes
   == My Strom : documentation <sec:myStromDoc-vs-vue>
