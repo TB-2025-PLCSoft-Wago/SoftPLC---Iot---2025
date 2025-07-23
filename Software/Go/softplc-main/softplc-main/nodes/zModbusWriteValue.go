@@ -132,12 +132,14 @@ func (n *ModbusWriteValueNode) ProcessLogic() {
 			if err = n.initConnection(unitID); err != nil {
 				fmt.Println("ModbusWriteValue connection error:", err)
 				n.output[0].Output = "0"
+				n.output[1].Output = "connection error"
 				//return
 			}
 		}
 		if n.handler == nil || n.client == nil || !n.connectionIsInit {
 			fmt.Println("Handler not ready")
 			n.output[0].Output = "0"
+			n.output[1].Output = "Handler not ready"
 			return
 		}
 		/* prepare to send */

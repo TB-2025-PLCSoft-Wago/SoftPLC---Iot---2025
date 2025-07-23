@@ -16,7 +16,7 @@ func NewEventBus() *EventBus {
 func (e *EventBus) Subscribe() <-chan string {
 	e.mu.Lock()
 	defer e.mu.Unlock()
-	ch := make(chan string, 1)
+	ch := make(chan string, 16)
 	e.subscribers = append(e.subscribers, ch)
 	return ch
 }

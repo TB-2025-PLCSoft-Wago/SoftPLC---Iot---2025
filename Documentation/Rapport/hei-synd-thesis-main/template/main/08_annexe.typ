@@ -482,7 +482,18 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
   #include "/main/08_a1_Exemple_HTTP.typ"
   #include "/main/08_a1_Exemple_HTTPServeur.typ"
   #include "/main/08_a1_Exemple_Modbus.typ"
+  #include "08_a1_homeController.typ"
 
+  #pagebreak()
+  = Autres annexes
+  == My Strom : documentation <sec:myStromDoc-vs-vue>
+  My Strom est un relais qui permet de contrôler le chauffage. Il est possible de le contrôler via une requête HTTP.
+  #figure(
+  image("/resources/img/73_myStromDoc.png", width: 100%),
+  caption: [
+    *My Strom :* Documentation
+  ],
+)
 
 ]
 

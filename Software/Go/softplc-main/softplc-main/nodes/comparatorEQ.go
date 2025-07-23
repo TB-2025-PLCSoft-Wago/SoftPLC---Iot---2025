@@ -36,7 +36,7 @@ func init() {
 }
 
 func (n *EQNode) ProcessLogic() {
-	if n.input == nil {
+	if n.input == nil || n.input[0].Input == nil || n.input[1].Input == nil {
 		n.output[0].Output = "0"
 		return
 	}

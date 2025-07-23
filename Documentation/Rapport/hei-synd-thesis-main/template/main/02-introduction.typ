@@ -15,8 +15,8 @@ Il y a également l'article @s23167194 qui explique l'importance de l'#gls("iot"
 Le projet se construit sur la base de deux programmes déjà développés, lors du TB 2024 :
 #[
   #set list(marker: ([•], [--]),  spacing: auto, indent: 2em)
-  -	*Softplcui-main*  : Gérant l’interface web côté PC.
-  -	*Softplc-main* : Gérant l’activation des entrées / sorties selon le programme build depuis PLC UI.
+  -	*Softplcui-main*  : Gérant l’interface web (frontend).
+  -	*Softplc-main* : Gérant l’activation des entrées / sorties selon le programme build depuis PLC UI (Backend).
 
 ]
 

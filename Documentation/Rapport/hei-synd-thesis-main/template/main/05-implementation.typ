@@ -463,7 +463,9 @@ Exemples de requêtes HTTP (ici _localhost:8080_ est équivalent à _192.168.39.
 #pagebreak()
 
   === MODBUS
-
+Les documentations utilisées pour la création des blocs MODBUS sont :
+- @CodesFonctionsModbus : pour la compréhension du protocole MODBUS.
+- @GoburrowModbus2025 : pour comprendre comment l'implementer en Go.
 #figure(
   image("/resources/img/63_accordionModbus.png", width: 30%),
   caption: [

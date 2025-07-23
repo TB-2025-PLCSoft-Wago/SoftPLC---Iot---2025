@@ -19,6 +19,7 @@ type ModbusReadBoolNode struct {
 	outputFlag         bool
 	lastValuesReceived []string
 	functionCode       int
+	unitIDRetain       byte
 }
 
 var modbusDescription = nodeDescription{
@@ -136,12 +137,15 @@ func (n *ModbusReadBoolNode) ProcessLogic() {
 			if err := n.initConnection(unitID); err != nil {
 				fmt.Println("ModbusReadBool connection error:", err)
 				n.output[0].Output = "0"
+				n.output[1].Output = "connection error"
 				return
 			}
+			n.unitIDRetain = unitID
 		}
 		if n.handler == nil || n.client == nil || !n.connectionIsInit {
 			fmt.Println("Handler not ready")
 			n.output[0].Output = "0"
+			n.output[1].Output = "Handler not ready"
 			return
 		}
 
@@ -254,22 +258,3 @@ func (n *ModbusReadBoolNode) DestroyToBuildAgain() {
 	n.outputFlag = false
 	n.lastValuesReceived = nil
 }
-
-/*
-func (n *ModbusReadBoolNode) reconnect(unitID byte) bool {
-	if n.handler != nil {
-		n.handler.Close()
-	}
-	n.handler = nil
-	n.client = nil
-	n.connectionIsInit = false
-
-	time.Sleep(500 * time.Millisecond)
-
-	if err := n.initConnection(unitID); err != nil {
-		fmt.Println("Modbus reconnect failed:", err)
-		return false
-	}
-	return true
-}
-*/

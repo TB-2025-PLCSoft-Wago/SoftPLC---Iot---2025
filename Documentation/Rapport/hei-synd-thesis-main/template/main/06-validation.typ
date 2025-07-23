@@ -48,8 +48,46 @@ On ne peut donc pas garantir un temps de cycle inférieur à 5 secondes, ce qui 
 
   
 
-  == Section 2
+  == proof of concept : maison intelligente
+  Le programme de la maison intelligente est un exemple d’application qui peut être développé grâce aux nouvelles fonctionnalitée développées durant ce TB. Il démontre les possibilitées de connectivité d'appareils qui communique dans différents protocole de communication et prouve que le point principal du cahier des charges est respecté. 
+  
+  L'exemple permet de contrôler la porte du garage, le chauffage et les lumières et d'une partie de la maison. Il est possible pour l'utilisateur de paramètrer différentes choses comme la couleur et luminosité de la lampe _Shelly_, l'allumage de la lampe manuellement et l'allumage et les consignes de chauffage.
 
+  Le schéma des différents appareils connectée a déjà été défini sur la figure @fig:applicationMaison-vs-vue.
+
+
+  Le programme est présenté en annexe au @sec:homeController-vs-vue. Il est divisé en plusieurs parties, chacune correspondant à un élément de la maison.
+
+  La section @sec:configurationAppareils-vs-vue présente la configuration des appareils.
+
+  La section @sec:enclenchementChauffage-vs-vue présente le programme responsable de l'enclenchement du chauffage. Il est possible de le contrôler manuellement grâce à l'interface utilisateur ou automatiquement en fonction de la température.
+
+  La section @sec:porteGarage-vs-vue présente le programme responsable de la porte du garage. Il est possible de l'ouvrir et de la fermer grâce à un bouton qui envoie une requête HTTP.
+
+  La section @sec:lampe-vs-vue présente le programme responsable de la lampe _Shelly Bulb_. Il est possible de contrôler la couleur et la luminosité de la lampe grâce à l'interface utilisateur. Il est également possible de l'allumer ou l'éteindre manuellement de puis se même interface.
+
+  La section @sec:lampe2-vs-vue présente le programme responsable des lumières. Il permet de contrôler les lumières selon oû on se trouve dans la maison. Un short press sur le bouton _Shelly_ allume les lampe, dans la pièce ou on se trouve, un long press les éteintes toutes. 
+
+
+    #table(
+  columns: 5,
+  [*Bloc*], [*Appareil*], [*Adresse IP*], [*Rôle*], [*documentations*],
+  [MODBUS], [Home IO], [localhost:1502], [Simulateur de la maison connectée], [Aperçu @sec:HomeIO-vs-vue],
+
+  [HTTP Server], [Shellybutton], [192.168.39.225], [Ouverture/fermeture porte du garage], [ Manuel @SHELLYBUTTON1USER],
+
+  [HTTP Server], [Shellybutton], [192.168.39.226], [Lampes monitoring], [ Manuel @SHELLYBUTTON1USER],
+
+  [HTTP Client], [Shelly Bulb Duo RGBW], [192.168.39.223], [Lampe de couleur en physique], [ Modèle @DocumentationShellyBulb
+
+  Manuel @WebhooksHTTPSRequests],
+  
+  [HTTP Client], [My Strom], [192.168.39.222], [Relais chauffage], [@sec:myStromDoc-vs-vue],
+  [MQTT], [Shelly H&T], [192.168.39.224], [Capteur de température], [Manuel @ModeDemploiShelly
+  
+  Doc MQTT @MQTTShellyTechnical],
+  
+  )
 
   == Conclusion
 

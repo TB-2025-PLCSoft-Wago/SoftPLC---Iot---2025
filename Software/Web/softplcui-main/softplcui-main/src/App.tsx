@@ -604,13 +604,13 @@ export default function App() {
 
 
 
-    /* add comment */
+
     const onPaneClick = useCallback(
         (event: React.MouseEvent) => {
+            const bounds = reactFlowWrapper.current?.getBoundingClientRect();
+            /* add comment */
             if (tool === 'comment') {
-                const bounds = reactFlowWrapper.current?.getBoundingClientRect();
                 if (!bounds || !reactFlowInstance) return;
-
                 const position = reactFlowInstance.screenToFlowPosition({
                     x: event.clientX - bounds.left,
                     y: event.clientY - bounds.top,
@@ -622,7 +622,7 @@ export default function App() {
                     type: 'commentNode',
                     position,
                     data: {
-                        text: '', // pas de onChange ici
+                        text: '',
                     },
                 };
 

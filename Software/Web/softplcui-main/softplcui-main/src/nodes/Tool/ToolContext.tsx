@@ -6,7 +6,7 @@ const emojiMap: Record<Tool, string> = {
     default: '🖱️',
     DisplayConnectionDebug: '🔍',
     Paint: '🔫',
-    comment : '📝'
+    comment : '📝',
 };
 
 const ToolContext = createContext<{

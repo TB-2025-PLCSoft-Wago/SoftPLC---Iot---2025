@@ -28,7 +28,7 @@ func CreateMqtt() {
 	_ = server.AddHook(new(auth.AllowHook), nil)
 
 	// CreateMqtt a TCP listener on a standard port.
-	tcp := listeners.NewTCP(listeners.Config{ID: "t1", Address: ":1883"})
+	tcp := listeners.NewTCP(listeners.Config{ID: "t1", Address: ":1884"})
 	err := server.AddListener(tcp)
 	if err != nil {
 		log.Fatal(err)

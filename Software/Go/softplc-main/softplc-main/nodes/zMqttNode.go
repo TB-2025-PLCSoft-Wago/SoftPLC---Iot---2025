@@ -50,7 +50,7 @@ var mqttDescription = nodeDescription{
 
 func (n *MqttNode) messageHandler() mqtt.MessageHandler {
 	return func(client mqtt.Client, msg mqtt.Message) {
-		//fmt.Printf("Received message: %s from topic: %s to clientID %d\n", msg.Payload(), msg.Topic(), n.clientID)
+		fmt.Printf("Received message: %s from topic: %s to clientID %d\n", msg.Payload(), msg.Topic(), n.clientID)
 		if !n.outputFlag {
 			n.lastPayload = []string{}
 			n.lastTopic = []string{}
@@ -201,6 +201,7 @@ func (n *MqttNode) ProcessLogic() {
 		} else {
 			//initConnection(n, "broker.hivemq.com", 1883, "go_mqtt_client")
 			initConnection(n)
+			n.output[1].Output = ""
 			//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
 			//sub(n.client, topicToReceive)
 
