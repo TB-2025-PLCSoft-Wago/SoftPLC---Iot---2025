@@ -585,7 +585,7 @@ Les connexions reçoivent l’animation "dash 1s linear infinite" pour donner l�
 
 Du côté *frontend*, la vue est créée grâce au fichier *debug.tsx* du dossier *webSocketInterface*.
 
-La vue debug est également réduite comparée à la vue programmatation.
+La vue debug est également réduite comparée à la vue programmatation, en utilisant une sous-classe _css_ "hide-when-debug".
 
 #figure(
   image("/resources/img/76_debugSansDebug.png", width: 100%),

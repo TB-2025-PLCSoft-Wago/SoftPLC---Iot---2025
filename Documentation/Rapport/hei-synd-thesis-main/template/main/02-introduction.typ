@@ -47,7 +47,7 @@ L’application de démonstration d'une maison connectée @fig:applicationMaison
 Une page web doit permettre de visualiser l’état des équipements et de les contrôler.
 
 La fonctionnalité de l’application de démonstration qui a été choisie et qui sera développée est la suivante :  
-Depuis une interface web, il sera possible de contrôler une lampe en réglant son intensité et sa couleur. Depuis cette même interface, il sera également possible de régler une consigne de température. Un capteur de température enverra la température et une prise électrique s'activera si la température est trop basse.
+Depuis une interface web, il sera possible de contrôler une lampe en réglant son intensité et sa couleur. Depuis cette même interface, il sera également possible de régler une consigne de température. Un capteur de température enverra la température et une prise électrique s'activera si la température est trop basse. De plus avec un bouton _Shelley_, on pourra contrôler la porte de garage et avec un autre l'éclairage.
    
 
 #figure(

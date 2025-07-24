@@ -342,6 +342,10 @@ func (n *HttpServerNode) ProcessLogic() {
 		n.output[0].Output = "0"
 		return
 	}
+	var paramToSend []string
+	if n.input[0].Input != nil {
+		paramToSend = strings.Split(*n.input[0].Input, " ,, ")
+	}
 	if n.parameterValueData[0] == "" {
 		urlServer = ":8080"
 	} else {
@@ -373,7 +377,7 @@ func (n *HttpServerNode) ProcessLogic() {
 		if msg == "patch" || msg == "post" {
 			n.output[2].Output = strconv.Itoa(lastResourceId)
 			n.output[0].Output = "1"
-			paramToSend := strings.Split(*n.input[0].Input, " ,, ")
+			//paramToSend := strings.Split(*n.input[0].Input, " ,, ")
 			var temp []string
 			for i := 0; i < len(paramToSend); i++ {
 				value := fmt.Sprintf("%v", storage[lastResourceId][paramToSend[i]])
@@ -387,7 +391,7 @@ func (n *HttpServerNode) ProcessLogic() {
 		} else if msg == "messagePut" {
 			n.output[2].Output = "-1"
 			n.output[0].Output = "1"
-			paramToSend := strings.Split(*n.input[0].Input, " ,, ")
+			//paramToSend := strings.Split(*n.input[0].Input, " ,, ")
 			var temp []string
 			for i := 0; i < len(paramToSend); i++ {
 				value := fmt.Sprintf("%v", lastMessage[paramToSend[i]])

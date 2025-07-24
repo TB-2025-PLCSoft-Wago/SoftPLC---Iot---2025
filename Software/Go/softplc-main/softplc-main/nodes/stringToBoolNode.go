@@ -16,7 +16,7 @@ type StringToBoolNode struct {
 }
 
 var msgToBoolDescription = nodeDescription{
-	AccordionName: "Communication",
+	AccordionName: "Handling value",
 	PrimaryType:   "LogicalNode",
 	Type_:         "StringToBoolNode",
 	Display:       "string To bool Node",

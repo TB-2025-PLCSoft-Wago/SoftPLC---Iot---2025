@@ -456,8 +456,8 @@ func linkNodes(g Graph) {
 			}
 		}
 		if !isLinked {
-			serverResponse.ResponseProcessGraph = "Data type mismatch, output node not connected"
-			fmt.Println("Data type mismatch on two nodes while linking an output to a input")
+			serverResponse.ResponseProcessGraph = "Data type mismatch, output node " + OutputNodes[i].GetNodeType() + " of id " + strconv.Itoa(OutputNodes[i].GetId()) + " not connected"
+			fmt.Println("Data type mismatch on two nodes while linking an output to a input : " + OutputNodes[i].GetNodeType() + ", id :" + strconv.Itoa(OutputNodes[i].GetId()))
 			break
 		}
 	}

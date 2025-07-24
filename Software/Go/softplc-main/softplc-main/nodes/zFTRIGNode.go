@@ -38,7 +38,7 @@ func init() {
 }
 
 func (n *FtrigNode) ProcessLogic() {
-	if n.input == nil {
+	if n.input == nil || n.input[0].Input == nil {
 		n.output[0].Output = "0"
 		return
 	}

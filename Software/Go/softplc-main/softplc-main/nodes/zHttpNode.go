@@ -78,6 +78,11 @@ func (n *HttpNode) ProcessLogic() {
 		n.output[0].Output = "0"
 		return
 	}
+	if n.input[0].Input == nil {
+		n.output[0].Output = "0"
+		n.output[1].Output = ""
+		return
+	}
 
 	if *n.input[0].Input == "1" {
 		go func() {
@@ -85,7 +90,7 @@ func (n *HttpNode) ProcessLogic() {
 			if n.input[1].Input != nil && *n.input[1].Input != "empty" && *n.input[1].Input != "null" {
 				url = n.parameterValueData[_URL] + *n.input[1].Input
 			} else {
-				url = n.parameterValueData[_URL]
+				return
 			}
 			var method string
 			if n.input[2].Input != nil {

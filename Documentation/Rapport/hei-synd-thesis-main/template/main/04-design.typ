@@ -72,7 +72,7 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 
   === Vue User WebSocket <sec:websocketVUE>
 
-  La vue user WebSocket permet de visualiser en temps réel l'état des _Outputs_ et de gérer les des _Inputs_ spécifiques à cette vue. Sur le schéma @fig:schemaPrincipe-vs-vue, elle est représentée par la "View Page".
+  La vue user WebSocket permet de visualiser en temps réel l'état des _Outputs_ et de gérer les des _Inputs_ spécifiques à cette vue. Sur le schéma @fig:schemaPrincipe-vs-vue, elle est représentée par la "View page".
 
   Cette vue s'accompagne de blocs logiques qui permettent sa création. Ces blocs sont représentés dans la figure @fig:blocWebSocket-vs-vue. Ils permettent de créer des Inputs et Outputs spécifiques à cette vue, permettant ainsi de visualiser l'état de n'importe quelle connexion dans le programme PLC. Un exemple de ce à quoi pourrait ressembler la vue WebSocket est présenté dans la figure @fig:vuePrincipeWebSocket-vs-vue, et le programme qui crée cette vue est présenté dans la figure @fig:ProgrammePrincipeWebSocket-vs-vue. Les parties _recevoir_ et _envoyer_ les messages sont prévues pour du débogage. Les autres parties sont prévues pour contrôler et tester le programme PLC. Remarquez l’impact du champ _Appliance Name_, qui permet de créer des groupes dans la vue WebSocket. Cela facilite le regroupement des Inputs et Outputs par groupe, ce qui est très utile pour la visualisation. L'idée a été inspirée de "Remote Controller" vue en cours de Data Engineering, où une page WebSocket est générée à partir d'un fichier JSON, dont voici le lien https://cyberlearn.hes-so.ch/pluginfile.php/3312976/mod_resource/content/2/index.html. 
   
@@ -113,6 +113,7 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 
 #pagebreak()
 === Vue mode debug <sec:modeDebugDesign>
+ Sur le schéma @fig:schemaPrincipe-vs-vue, elle est représentée par la "Debug page".
 Il est également intéressant d'avoir une vue "debug" qui nous permettrait de visualiser les états des I/O de chaque node et même de changer la couleur des edges pour les booléens (rouge = off et vert = on). Pour ce faire, nous utiliserons la technologie des WebSocket également utilisée pour la vue WebSocket (@sec:websocketVUE). L'idée étant de transmettre un graphique modifié à chaque cycle, la modification du graphique se fera surtout au niveau des _Edges_. Un exemple d'un petit programme qui montre comment sont transmises et affichées les données est détaillé en annexe (@sec:exempleUtililationDebugSimple-vs-vue).
 
 En figure @fig:vuePrincipeModedebug-vs-vue se trouve un exemple démontrant entièrement le fonctionnement de ce mode debug. Les edges qui affichent "???" sont ceux qu'on n'a pas sélectionnés avec l'outil.

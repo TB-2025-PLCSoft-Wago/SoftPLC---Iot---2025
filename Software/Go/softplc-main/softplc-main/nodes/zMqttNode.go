@@ -116,6 +116,11 @@ func (n *MqttNode) ProcessLogic() {
 				n.output[1].Output = ""
 				return
 			}
+			if n.input[0].Input == nil {
+				n.output[0].Output = "0"
+				n.output[1].Output = ""
+				return
+			}
 			if *n.input[0].Input == "1" {
 				var topicToSend, msgToSend []string
 				if n.input[1].Input != nil {
@@ -130,14 +135,13 @@ func (n *MqttNode) ProcessLogic() {
 				}
 
 				publish(n.client, topicToSend, msgToSend)
-
-				//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-				//sub(n.client, topicToReceive)
-				//publish(client, "topic/test2", "Bonjour")
-				//n.client.Disconnect(250)
 			}
-			topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-
+			var topicToReceive []string
+			if n.input[3].Input != nil {
+				topicToReceive = strings.Split(*n.input[3].Input, " ,, ")
+			} else {
+				topicToReceive = make([]string, 0)
+			}
 			//A message has been read
 			if n.outputFlag {
 				n.output[0].Output = "1"
@@ -202,8 +206,6 @@ func (n *MqttNode) ProcessLogic() {
 			//initConnection(n, "broker.hivemq.com", 1883, "go_mqtt_client")
 			initConnection(n)
 			n.output[1].Output = ""
-			//topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-			//sub(n.client, topicToReceive)
 
 		}
 	}()
@@ -284,7 +286,12 @@ func initConnection(n *MqttNode) {
 		panic(token.Error())
 	}
 
-	n.topicToReceive = strings.Split(*n.input[3].Input, " ,, ")
+	if n.input[3].Input != nil {
+		n.topicToReceive = strings.Split(*n.input[3].Input, " ,, ")
+	} else {
+		n.topicToReceive = make([]string, 0)
+	}
+
 	n.topicToReceiveSave = n.topicToReceive
 	sub(n.client, n.topicToReceive)
 }
@@ -339,19 +346,3 @@ func (n *MqttNode) DestroyToBuildAgain() {
 	n.topicToReceive = nil
 
 }
-
-/*
-topicToReceive := strings.Split(*n.input[3].Input, " ,, ")
-			var newMsg []string
-			OuterLoop:
-			for i, topicTemp := range n.lastTopic {
-				for _, topicTempToReceive := range topicToReceive {
-					if topicTempToReceive == topicTemp {
-						newMsg = append(newMsg, n.lastPayload[i])
-						continue OuterLoop
-					}
-				}
-				token := n.client.Unsubscribe(topicTemp)
-				token.Wait()
-			}
-*/

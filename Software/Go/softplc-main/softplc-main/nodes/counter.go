@@ -64,8 +64,34 @@ func (n *CounterNode) ProcessLogic() {
 		n.output[0].Output = "0"
 		return
 	}
-	step, err := strconv.ParseFloat(*n.input[STEP].Input, 64)
-	if *n.input[STEP].Input == "" {
+	var step float64
+	var err error
+	var up string
+	var down string
+	var reset string
+	if n.input[UP].Input != nil {
+		up = *n.input[UP].Input
+	} else {
+		up = "0"
+	}
+	if n.input[DOWN].Input != nil {
+		down = *n.input[DOWN].Input
+	} else {
+		down = "0"
+	}
+	if n.input[RESET].Input != nil {
+		reset = *n.input[RESET].Input
+	} else {
+		reset = "0"
+	}
+
+	if n.input[STEP].Input != nil {
+		step, err = strconv.ParseFloat(*n.input[STEP].Input, 64)
+		if *n.input[STEP].Input == "" {
+			step = 1
+			err = nil
+		}
+	} else {
 		step = 1
 		err = nil
 	}
@@ -75,19 +101,19 @@ func (n *CounterNode) ProcessLogic() {
 		n.output[0].Output = "0"
 		return
 	}
-	if *n.input[RESET].Input == "1" {
+	if reset == "1" {
 		n.output[0].Output = "0"
 	}
 
-	if *n.input[UP].Input == "1" && *n.input[DOWN].Input == "1" {
+	if up == "1" && down == "1" {
 		return
 	}
-	if *n.input[UP].Input == "1" {
+	if up == "1" {
 		decimalPlaces := countDecimals(step)
 		n.output[0].Output = strconv.FormatFloat(result+step, 'f', decimalPlaces, 64)
 	}
 
-	if *n.input[DOWN].Input == "1" {
+	if down == "1" {
 		decimalPlaces := countDecimals(step)
 		n.output[0].Output = strconv.FormatFloat(result-step, 'f', decimalPlaces, 64)
 	}

@@ -40,6 +40,10 @@ func (n *RetainValueNode) ProcessLogic() {
 		n.output[0].Output = ""
 		return
 	}
+	if n.input[0].Input == nil || n.input[1].Input == nil {
+		n.output[0].Output = ""
+		return
+	}
 	if *n.input[0].Input == "1" {
 		n.output[0].Output = *n.input[1].Input
 		return

@@ -12,7 +12,7 @@ type BToSNode struct {
 }
 
 var boolToStringDescription = nodeDescription{
-	AccordionName: "Communication",
+	AccordionName: "Handling value",
 	PrimaryType:   "LogicalNode",
 	Type_:         "BToSNode",
 	Display:       "bool To string Node",

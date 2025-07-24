@@ -216,9 +216,18 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
             </>
         );
     }
+
+    let labelColor = "black";
+    if (data.type.includes("view")) {
+        labelColor = "#2F57A7";
+    } else if (data.type.includes("variable")) {
+        labelColor = "#8A429E";
+    } else if (data.type.includes("constant")) {
+        labelColor = "brown";
+    }
     return (
         <div className="react-flow__node-default inputNode">
-            {data.label && <div>{data.label}</div>}
+            {data.label && <div style={{ color: labelColor }}>{data.label}</div>}
             {content}
         </div>
     );
