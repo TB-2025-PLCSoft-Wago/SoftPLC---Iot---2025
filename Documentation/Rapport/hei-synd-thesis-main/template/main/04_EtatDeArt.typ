@@ -47,7 +47,7 @@ Le code est presque totalement fonctionnel malgré quelques petites erreurs. Cep
 
 Au niveau visuel, la structure doit être améliorée. En effet, on ne peut pas continuer à mettre tous les blocs logiques dans le même fichier. Il faudrait au moins créer des fichiers séparés pour chaque type de bloc logique. La taille des blocs n'est également pas adaptée aux besoins. 
 
-Le code ne permet pas de changer le type d'un bloc de manière dynamique, car c'est le programme backend qui l'envoie à l'initialisation du programme. Cela est donc impossible sans de grosses modifications.
+Le code ne permet pas de changer le type d'un bloc de manière dynamique, car c'est le programme #gls("backend") qui l'envoie à l'initialisation du programme. Cela est donc impossible sans de grosses modifications.
 
 Il n'y a pas non plus de méthode permettant de réinitialiser les nodes, ce qui est nécessaire pour pouvoir créer des blocs plus complexes. En effet, il peut être nécessaire de réinitialiser certaints nodes pour pouvoir faire un nouveau _build_ proprement. 
 
@@ -55,7 +55,7 @@ Il n'y a pas non plus de méthode permettant de réinitialiser les nodes, ce qui
 === Ajouter des blocs simples
 
 Il y a également des points positifs. La structure des "Nodes" est facile à utiliser.  
-Pour ajouter un bloc simple, il suffit de créer un fichier dans le dossier *nodes* du programme backend (`softplc-main`).  
+Pour ajouter un bloc simple, il suffit de créer un fichier dans le dossier *nodes* du programme #gls("backend") (`softplc-main`).  
 On peut, par exemple, copier-coller puis renommer un fichier existant selon le type de bloc à ajouter. Il existe trois types de blocs : `LogicalNode`, `OutputNode` et `InputNode`.
 
 #warningbox()[

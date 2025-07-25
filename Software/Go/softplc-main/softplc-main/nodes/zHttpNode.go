@@ -88,7 +88,8 @@ func (n *HttpNode) ProcessLogic() {
 		go func() {
 			var url string
 			if n.input[1].Input != nil && *n.input[1].Input != "empty" && *n.input[1].Input != "null" {
-				url = n.parameterValueData[_URL] + *n.input[1].Input
+				urlPath := strings.Split(*n.input[1].Input, " ,, ")
+				url = n.parameterValueData[_URL] + urlPath[0]
 			} else {
 				return
 			}
@@ -141,6 +142,11 @@ func (n *HttpNode) ProcessLogic() {
 				req.SetBasicAuth(n.parameterValueData[_USER], n.parameterValueData[_PASSWORD])
 			}
 
+			if n.client == nil {
+				n.lastResponse = "http client is nil"
+				n.outputFlag = true
+				return
+			}
 			resp, err := n.client.Do(req)
 			if err != nil {
 				n.lastResponse = fmt.Sprintf("http error: %v", err)

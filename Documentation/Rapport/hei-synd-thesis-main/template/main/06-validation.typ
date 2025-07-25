@@ -48,7 +48,7 @@ On ne peut donc pas garantir un temps de cycle inférieur à 5 secondes, ce qui 
 
   
 
-  == Proof of Concept : maison intelligente
+  == Proof of Concept : maison intelligente <sec:validationProofConcept>
 Le programme de la maison intelligente est un exemple d’application développé grâce aux nouvelles fonctionnalités mises en œuvre durant ce TB. Il démontre les possibilités de connectivité entre des appareils utilisant différents protocoles de communication, et prouve que le point principal du cahier des charges est respecté.
 
 Cet exemple permet de contrôler la porte du garage, le chauffage et les lumières d’une partie de la maison. L’utilisateur peut paramétrer différents éléments, comme la couleur et la luminosité de la lampe _Shelly_, l’allumage manuel des lampes, ainsi que les consignes et l’activation du chauffage.
@@ -57,7 +57,7 @@ Le schéma des différents appareils connectés a déjà été défini en @fig:a
 
 Le programme est présenté en annexe au @sec:homeController-vs-vue. Il est divisé en plusieurs parties, chacune correspondant à un élément de la maison.
 
-La section @sec:configurationAppareils-vs-vue présente la configuration des appareils.
+La section @sec:HTTPServeur_Bouttons-vs-vue présente la logique pour reçevoir les commandes des boutons _Shelly_ grâce au bloc *HTTP serveur*.
 
 La section @sec:enclenchementChauffage-vs-vue détaille le programme responsable de l’enclenchement du chauffage. Il est possible de le contrôler manuellement grâce à l’interface utilisateur, ou automatiquement en fonction de la température.
 
@@ -82,7 +82,7 @@ La section @sec:lampe2-vs-vue présente le programme des autres lumières. Il pe
 
   Manuel @WebhooksHTTPSRequests],
   
-  [HTTP Client], [My Strom], [192.168.39.222], [Relais chauffage], [@sec:myStromDoc-vs-vue],
+  [HTTP Client], [My Strom], [192.168.37.59], [Relais chauffage], [@sec:myStromDoc-vs-vue],
   [MQTT], [Shelly H&T], [192.168.39.224], [Capteur de température], [Manuel @ModeDemploiShelly
   
   Doc MQTT @MQTTShellyTechnical],

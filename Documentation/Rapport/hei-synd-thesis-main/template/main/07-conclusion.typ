@@ -65,7 +65,7 @@ Les objectifs fixés par pr4 sont atteints. Le programme a pu être testé et pe
 La documentation de WDA n'est pas suffisante pour comprendre le fonctionnement de la _library_. Il y a beaucoup de paramètres différents, mais on ne trouve pas ceux qui nous intéressent, la majorité d'entre eux sont pour modifier des paramètres de la configuration automate. Cependant, il a pu être remarqué que les modèles *741-9402* et *751-9401* ne sont pas les mêmes. La documentation du 741-9402 est plus complète, et l'utilisation des entrées/sorties (I/O) y est clairement expliquée. En revanche, il n'a toujours pas été trouvé de documentation concernant l'utilisation du module CAN.
 
 == Perspectives d'avenir
-=== Idées d’amélioration et extensions du frontend web <sec:objectif>
+=== Idées d’amélioration et extensions du #gls("frontend") web <sec:objectif>
 Il y a de nombreuse possibilités d’amélioration pour l’interface utilisateur.
 #[
   #set list(marker: ([--], [•]),  spacing: auto, indent: 2em)
@@ -73,7 +73,7 @@ Il y a de nombreuse possibilités d’amélioration pour l’interface utilisate
 -	Interdire les boucles de rétroaction (comme dans Codesys) ou les gérer proprement.
 -	Ajouter des blocs logiques contenant un champ (pour les Inputs, c’est déjà en partie fait, mais non fonctionnel, et il n’y a pas de système de seuil).
 -	Améliorer la nomenclature : éviter d’utiliser "Output" pour l’analogique et le digital, et "Input" pour les constantes. Une idée serait d’ajouter un menu déroulant sur le bloc pour choisir le type.
--	Permettre de coder le frontend indépendamment du backend, c’est-à-dire générer les accordéons à partir d’un fichier, qui peut être mis à jour lorsqu’on est connecté.
+-	Permettre de coder le #gls("frontend") indépendamment du #gls("backend"), c’est-à-dire générer les accordéons à partir d’un fichier, qui peut être mis à jour lorsqu’on est connecté.
 -	Ajout de raccourcis clavier :
 	- Rendre la touche _Delete_ fonctionnel.
 	-	Ctrl + C / V / A / Z / Y.

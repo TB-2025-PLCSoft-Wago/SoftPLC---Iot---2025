@@ -64,6 +64,19 @@
     group: "Software"
   ),
   (
+  key: "frontend",
+  short: "frontend",
+  description: "Correspond au programme softplcui-main. C’est lui qui s’occupe de l’affichage dans la page web de tous les éléments et qui transmet ensuite les blocs au backend.",
+  group: "Software"
+  ),
+  (
+    key: "backend",
+    short: "backend",
+    description: "Correspond au programme softplc-main. C’est dans celui-ci qu’on crée les blocs qui sont ensuite envoyés côté frontend. C’est lui qui est chargé d’exécuter les blocs après un build.",
+    group: "Software"
+  ),
+
+  (
     key: "I/O",
     short: "I/O",
     long: "Inputs et Output",

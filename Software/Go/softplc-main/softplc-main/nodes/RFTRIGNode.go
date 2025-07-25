@@ -74,6 +74,7 @@ func (n *RFtrigNode) InitNode(id_ int, nodeType_ string, input_ []InputHandle, o
 	n.nodeType = nodeType_
 	n.input = input_
 	n.output = output_
+	n.prevInput = "0"
 }
 func (n *RFtrigNode) DestroyToBuildAgain() {
 

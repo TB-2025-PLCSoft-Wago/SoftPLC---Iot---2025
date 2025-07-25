@@ -87,6 +87,14 @@ func makeConnectLostHandler(n *MqttNode) mqtt.ConnectionLostHandler {
 	return func(client mqtt.Client, err error) {
 		fmt.Printf("Connect lost for client %d: %v\n", n.clientID, err)
 		time.Sleep(2 * time.Second)
+		if n == nil {
+			fmt.Println("Reconnect handler: MqttNode is nil, aborting reconnect")
+			return
+		}
+		if n.client == nil {
+			fmt.Println("Reconnect handler: client is nil, aborting reconnect")
+			return
+		}
 		// Manual reconnection attempt if AutoReconnect is not sufficient
 		if token := n.client.Connect(); token.Wait() && token.Error() != nil {
 			fmt.Printf("Reconnection failed for client %d: %v\n", n.clientID, token.Error())

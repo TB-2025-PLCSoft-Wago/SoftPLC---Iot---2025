@@ -38,7 +38,7 @@ Cette section décrit les différentes étapes qui ont été implémentées dura
 
   C'est pour utiliser WDA qu'il a été choisi de remplacer l'automate 751-9401 par un 751-9402. L'analyse de la raison de cette décision se trouve @sec:WDA_AnalysePR4. Vous y trouverez également une analyse de comment était récuperé les I/O dans le programme du TB 2024 qui utilisait une méthode plus rapide.
 
-  Pour implémenter WDA, il a fallu modifier le programme backend (`softplc-main`) et plus particulièrement les fichiers `inputUpdate.go` et `outputUpdate.go`.
+  Pour implémenter WDA, il a fallu modifier le programme #gls("backend") (`softplc-main`) et plus particulièrement les fichiers `inputUpdate.go` et `outputUpdate.go`.
   
   Un des principaux problèmes de WDA est la vitesse, qui est très lente. Après une commande GET sur une I/O, cela peut prendre jusqu'à environ 500ms avant qu'on ait la réponse. Sachant qu'on a besoin de faire une requête GET pour chaque Input et Output, cela représente au total 22 requêtes. La première version du programme faisait une requête GET pour chaque Input et Output, ce qui prenait plusieurs secondes pour récupérer l'état de tous les Inputs et Outputs. Pour résoudre ce problème, il a été trouvé la solution d'utiliser une *Monitoring Lists* (@sec:monitoring-lists). Cela nous permet de récupérer l'état de des I/O en une seule requête GET. Cela permet de réduire le temps de récupération à environ 500ms. Cependant, la *Monitoring Lists* a un temps de vie limité, donc il faut la recréer périodiquement. Cela est fait toutes les 600 secondes dans le programme.
 
@@ -64,7 +64,7 @@ Cette section décrit les différentes étapes qui ont été implémentées dura
 #figure(
   image("/resources/img/15_exempleElementInputOutputState.png", width: 50%),
   caption: [
-    Exemple d'élément Input/Output State dans le programme backend 
+    Exemple d'élément Input/Output State dans le programme #gls("backend") 
   ],
 )
 #label("fig:exempleElementInputOutputState-vs-vue")
@@ -292,7 +292,7 @@ Dans la *vue programmation*, les blocs logiques de communication sont définis p
 // TO DO : mettre dans gestion data  
 Le tableau *parameterNameData* contient les noms des _settings_ affichés en _placeholder_, et le tableau *parameterValueData* contient les valeurs des _settings_ des blocs logiques de communication.
 
-Dans la partie *backend*, les blocs logiques de communication se trouvent à la fin du package _nodes_. Ils ont tous été conçus pour ne pas faire planter le reste du programme en cas de perte de connexion ou de problème de communication. Pour cela, ils utilisent la méthode *go func()* afin de lancer une *goroutine* qui s’occupe de la communication. Cela permet de ne pas bloquer le reste du programme en cas d’erreur de communication.
+Dans la partie *#gls("backend")*, les blocs logiques de communication se trouvent à la fin du package _nodes_. Ils ont tous été conçus pour ne pas faire planter le reste du programme en cas de perte de connexion ou de problème de communication. Pour cela, ils utilisent la méthode *go func()* afin de lancer une *goroutine* qui s’occupe de la communication. Cela permet de ne pas bloquer le reste du programme en cas d’erreur de communication.
  
 #figure(
   image("/resources/img/60_BlocMqttHttpClientServeur_fermer.png", width: 100%),
@@ -534,7 +534,7 @@ Et les *outputs* suivantes :
   La vue programmation permet de créer des programmes PLC en utilisant une interface graphique. Elle est représentée par la "Programming Page" sur le schéma @fig:schemaPrincipe-vs-vue. Cette vue permet de créer par *drag and drop* des blocs logiques, des *Inputs* et des *Outputs*, et de les connecter entre eux pour créer un programme PLC.
 
 
- Du côté *frontend*, la majorité de la logique est centralisée dans le fichier *_App.tsx_*. Les fichiers _InputNode.tsx_, _LogicalNode.tsx_ et _OutputNode.tsx_ jouent également un rôle important, car ils gèrent l'affichage des _nodes_ selon leur _primaryType_. 
+ Du côté *#gls("frontend")*, la majorité de la logique est centralisée dans le fichier *_App.tsx_*. Les fichiers _InputNode.tsx_, _LogicalNode.tsx_ et _OutputNode.tsx_ jouent également un rôle important, car ils gèrent l'affichage des _nodes_ selon leur _primaryType_. 
 
 On retrouve ensuite différents fichiers dans le dossier "handles", dédiés à des types particuliers, comme par exemple les _nodes_ de communication.
 
@@ -552,9 +552,9 @@ La section @sec:ameliorationInterface-vs-vue décrit plus en détail les aspects
 )
 
 Le rôle de cette vue a déjà été expliqué @sec:websocketVUE.  
-Elle est implémentée côté *backend* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent en @fig:vuePrincipeWebSocketInput-vs-vue et @fig:vuePrincipeWebSocketOutput-vs-vue.
+Elle est implémentée côté *#gls("backend")* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent en @fig:vuePrincipeWebSocketInput-vs-vue et @fig:vuePrincipeWebSocketOutput-vs-vue.
 
-Du côté *frontend*, la vue est créée dans le fichier *user.tsx* du dossier *webSocketInterface*. C’est là qu’on gère l’affichage des éléments triés dans les appliances.
+Du côté *#gls("frontend")*, la vue est créée dans le fichier *user.tsx* du dossier *webSocketInterface*. C’est là qu’on gère l’affichage des éléments triés dans les appliances.
 
 Pour passer d’une vue à l’autre, on utilise react-router-dom @ReactRouterUseNavigate : pour naviguer entre les routes (avec `useNavigate`).
 
@@ -575,15 +575,15 @@ Pour passer d’une vue à l’autre, on utilise react-router-dom @ReactRouterUs
   == Vue mode debug
 
 Le rôle de cette vue a déjà été expliqué @sec:modeDebugDesign.  
-Elle est implémentée côté *backend* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent @sec:debugModeData.
+Elle est implémentée côté *#gls("backend")* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent @sec:debugModeData.
 
-Après avoir dû déboguer avec cet outil, il a finalement été choisi d’afficher la valeur des connexions par défaut, et que l’outil *display connection* permette de cacher celles qui prennent trop de place, par exemple. Cependant, côté *backend*, dans la fonction _DebugMode_, il y a la première version en commentaire.
+Après avoir dû déboguer avec cet outil, il a finalement été choisi d’afficher la valeur des connexions par défaut, et que l’outil *display connection* permette de cacher celles qui prennent trop de place, par exemple. Cependant, côté *#gls("backend")*, dans la fonction _DebugMode_, il y a la première version qui fait l'inverse en commentaire.
 
-Les outils communiquent avec le *backend* par la fonction _handleIncomingMessage_, responsable de recevoir les messages _webSocket_. C’est à ce moment-là qu’on ajoute ou enlève les *edges* de la variable _toDebugList_.
+Les outils communiquent avec le *#gls("backend")* par la fonction _handleIncomingMessage_, responsable de recevoir les messages _webSocket_. C’est à ce moment-là qu’on ajoute ou enlève les *edges* de la variable _toDebugList_.
 
 Les connexions reçoivent l’animation "dash 1s linear infinite" pour donner l’impression d’un flux de données.
 
-Du côté *frontend*, la vue est créée grâce au fichier *debug.tsx* du dossier *webSocketInterface*.
+Du côté *#gls("frontend")*, la vue est créée grâce au fichier *debug.tsx* du dossier *webSocketInterface*.
 
 La vue debug est également réduite comparée à la vue programmatation, en utilisant une sous-classe _css_ "hide-when-debug".
 
@@ -599,6 +599,18 @@ La vue debug est également réduite comparée à la vue programmatation, en uti
     vue debug : moins d'éléments visible que vue debug
   ],
 )
+#infobox()[Remarquez que les connexions (edges) sont bien différentes en mode debug. Il a donc fallu créer un nouveau type d’edge, car le type "step" défini par la librairie ne suffisait plus. Ce type a été créé dans le fichier _*CustomEdgeStartEndDebug.tsx*_.]
+
+La @fig:sequenceDebug montre comment les données se transmettent entre le côté #gls("frontend") et le côté #gls("backend"). Cela permet notamment de comprendre comment le passage d’un graphique à l’autre est effectué.
+
+#figure(
+  image("/resources/img/76_debug_diagramme_Sequence.png", width: 100%),
+  caption: [
+    vue debug : Diagramme de séquence - Utilisation normal - lien entre #gls("frontend") et #gls("backend")
+  ],
+)
+#label("fig:sequenceDebug")
+ 
 
 
   == Améliorations interface <sec:ameliorationInterface-vs-vue>
@@ -767,8 +779,8 @@ Plusieurs outils ont été définis :
 - *comment* : permet d’ajouter un commentaire à l’endroit où l’on clique.
 
 Les outils peuvent fonctionner de deux manières :
-- En récupérant les informations depuis le backend, comme illustré en @fig:MessageWebSocketClicEdge-vs-vue.
-- En les utilisant directement depuis le frontend, comme illustré en @fig:MessageWebSocketClicComent-vs-vue.
+- En récupérant les informations depuis le #gls("backend"), comme illustré en @fig:MessageWebSocketClicEdge-vs-vue.
+- En les utilisant directement depuis le #gls("frontend"), comme illustré en @fig:MessageWebSocketClicComent-vs-vue.
 
 #figure(
   image("/resources/img/57_toolsAll.png", width: 40%),
@@ -782,7 +794,7 @@ Les outils peuvent fonctionner de deux manières :
     map[source:40 sourceHandle:Output tool:DisplayConnectionDebug type:edge_clicked] 
     ```
     ),
-    caption: [*Message WebSocket au backend* : clic effectué sur un edge avec l'outil "DisplayConnectionDebug"],
+    caption: [*Message WebSocket au #gls("backend")* : clic effectué sur un edge avec l'outil "DisplayConnectionDebug"],
   
   )
   #label("fig:MessageWebSocketClicEdge-vs-vue")

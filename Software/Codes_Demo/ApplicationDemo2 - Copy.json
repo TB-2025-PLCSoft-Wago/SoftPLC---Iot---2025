@@ -1,8 +1,8 @@
 {
   "nodes": [
     {
-      "width": 248,
-      "height": 263,
+      "width": 247,
+      "height": 262,
       "data": {
         "accordion": "Communication",
         "display": "bool To string Node",
@@ -60,8 +60,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -114,8 +114,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -168,8 +168,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -216,8 +216,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 263,
+      "width": 102,
+      "height": 262,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -267,8 +267,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -324,8 +324,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -375,8 +375,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Output",
         "dataType": "",
@@ -429,8 +429,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -477,8 +477,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -526,8 +526,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -581,8 +581,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -635,8 +635,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -690,8 +690,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -745,8 +745,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -802,8 +802,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Handling value",
         "display": "Concat Node",
@@ -852,8 +852,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -901,8 +901,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -957,8 +957,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -997,8 +997,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 303,
+      "width": 102,
+      "height": 302,
       "data": {
         "accordion": "Handling value",
         "display": "Concat Node",
@@ -1050,8 +1050,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -1107,8 +1107,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 383,
+      "width": 102,
+      "height": 382,
       "data": {
         "accordion": "Handling value",
         "display": "Concat Node",
@@ -1162,8 +1162,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -1211,8 +1211,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -1268,8 +1268,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -1309,8 +1309,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -1366,8 +1366,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -1423,8 +1423,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -1464,8 +1464,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -1505,8 +1505,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -1559,8 +1559,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Handling value",
         "display": "Retain Value Node",
@@ -1612,8 +1612,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Handling value",
         "display": "Retain Value Node",
@@ -1665,8 +1665,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "data": {
         "accordion": "Communication",
         "display": "HTTP Node",
@@ -1742,8 +1742,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "data": {
         "accordion": "Communication",
         "display": "HTTP Node",
@@ -1819,8 +1819,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "data": {
         "accordion": "Communication",
         "display": "mqtt Node",
@@ -1890,8 +1890,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -1945,8 +1945,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Output",
         "dataType": "",
@@ -2000,8 +2000,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -2054,8 +2054,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -2107,8 +2107,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -2147,8 +2147,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -2201,8 +2201,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -2242,8 +2242,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -2292,8 +2292,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -2346,8 +2346,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -2387,8 +2387,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -2441,8 +2441,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -2482,8 +2482,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -2536,8 +2536,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -2577,8 +2577,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -2631,8 +2631,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -2686,8 +2686,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -2741,8 +2741,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -2796,8 +2796,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -2851,8 +2851,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -2899,8 +2899,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -2939,8 +2939,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -2980,8 +2980,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -3021,8 +3021,8 @@
       "type": "inputNode"
     },
     {
-      "width": 248,
-      "height": 303,
+      "width": 247,
+      "height": 302,
       "data": {
         "accordion": "Communication",
         "display": "string To bool Node",
@@ -3072,8 +3072,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3127,8 +3127,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -3166,18 +3166,18 @@
       "id": "165",
       "position": {
         "x": -986.4914481308047,
-        "y": 4383.72158616707
+        "y": 4363.72158616707
       },
       "positionAbsolute": {
         "x": -986.4914481308047,
-        "y": 4383.72158616707
+        "y": 4363.72158616707
       },
       "selected": false,
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -3217,8 +3217,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3272,8 +3272,8 @@
       "type": "outputNode"
     },
     {
-      "width": 248,
-      "height": 263,
+      "width": 247,
+      "height": 262,
       "data": {
         "accordion": "Communication",
         "display": "bool To string Node",
@@ -3332,8 +3332,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -3388,8 +3388,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -3445,8 +3445,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -3495,8 +3495,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3549,8 +3549,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3593,19 +3593,19 @@
       "dragging": false,
       "id": "185",
       "position": {
-        "x": -1963.3669502817056,
+        "x": -2013.3669502817056,
         "y": 4597.873802047473
       },
       "positionAbsolute": {
-        "x": -1963.3669502817056,
+        "x": -2013.3669502817056,
         "y": 4597.873802047473
       },
       "selected": false,
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3649,19 +3649,19 @@
       "dragging": false,
       "id": "187",
       "position": {
-        "x": -1964.506551787792,
+        "x": -1984.506551787792,
         "y": 4848.979546678457
       },
       "positionAbsolute": {
-        "x": -1964.506551787792,
+        "x": -1984.506551787792,
         "y": 4848.979546678457
       },
       "selected": false,
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3716,8 +3716,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -3756,8 +3756,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3811,8 +3811,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3866,8 +3866,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -3920,8 +3920,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Logical gate",
         "display": "SR Node",
@@ -3974,8 +3974,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Logical gate",
         "display": "SR Node",
@@ -4028,8 +4028,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4083,8 +4083,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4138,8 +4138,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -4207,8 +4207,8 @@
       "type": "commentNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4263,8 +4263,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4319,8 +4319,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -4369,8 +4369,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -4417,8 +4417,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -4466,8 +4466,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4522,8 +4522,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "Rtrig Node",
@@ -4610,8 +4610,8 @@
       "type": "commentNode"
     },
     {
-      "width": 103,
-      "height": 263,
+      "width": 102,
+      "height": 262,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -4661,8 +4661,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4706,19 +4706,19 @@
       "dragging": false,
       "id": "241",
       "position": {
-        "x": -1955.362644154995,
-        "y": 4491.952528702832
+        "x": -1985.362644154995,
+        "y": 4481.952528702832
       },
       "positionAbsolute": {
-        "x": -1955.362644154995,
-        "y": 4491.952528702832
+        "x": -1985.362644154995,
+        "y": 4481.952528702832
       },
       "selected": false,
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4762,19 +4762,19 @@
       "dragging": false,
       "id": "242",
       "position": {
-        "x": -1964.1959404098234,
+        "x": -1999.1959404098234,
         "y": 4736.49306937069
       },
       "positionAbsolute": {
-        "x": -1964.1959404098234,
+        "x": -1999.1959404098234,
         "y": 4736.49306937069
       },
       "selected": false,
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4829,8 +4829,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -4885,8 +4885,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Logical gate",
         "display": "SR Node",
@@ -4938,8 +4938,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Logical gate",
         "display": "SR Node",
@@ -4992,8 +4992,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -5048,8 +5048,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "Ftrig Node",
@@ -5096,8 +5096,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -5145,8 +5145,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -5196,8 +5196,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -5252,8 +5252,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -5301,8 +5301,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -5350,8 +5350,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -5400,8 +5400,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -5448,8 +5448,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -5499,8 +5499,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -5548,8 +5548,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -5603,8 +5603,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -5658,8 +5658,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -5713,8 +5713,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -5767,8 +5767,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -5818,8 +5818,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -5869,8 +5869,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 250,
-      "height": 385,
+      "width": 247,
+      "height": 382,
       "data": {
         "accordion": "Communication",
         "display": "HTTP Server Node",
@@ -5923,19 +5923,19 @@
       "dragging": false,
       "id": "282",
       "position": {
-        "x": -3280.600225418122,
+        "x": -3279.1860118776594,
         "y": 1351.2733623357765
       },
       "positionAbsolute": {
-        "x": -3280.600225418122,
+        "x": -3279.1860118776594,
         "y": 1351.2733623357765
       },
       "selected": false,
       "type": "LogicalNode"
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "data": {
         "accordion": "Communication",
         "display": "Modbus Read Bool (0x02)",
@@ -6001,8 +6001,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "data": {
         "accordion": "Communication",
         "display": "Modbus Write Bool (0x15)",
@@ -6068,8 +6068,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -6124,8 +6124,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "Rtrig Node",
@@ -6173,8 +6173,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -6229,8 +6229,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "Rtrig Node",
@@ -6278,8 +6278,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -6329,8 +6329,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -6384,8 +6384,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Handling value",
         "display": "Retain Value Node",
@@ -6438,8 +6438,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -6494,8 +6494,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -6534,8 +6534,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "Ftrig Node",
@@ -6582,8 +6582,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "Ftrig Node",
@@ -6631,8 +6631,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -6672,8 +6672,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Handling value",
         "display": "Retain Value Node",
@@ -6765,8 +6765,8 @@
       "type": "commentNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -6819,8 +6819,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -6860,8 +6860,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -6915,8 +6915,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -6955,8 +6955,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "GT Node",
@@ -7008,8 +7008,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -7048,8 +7048,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "GT Node",
@@ -7102,8 +7102,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Logical gate",
         "display": "SR Node",
@@ -7155,8 +7155,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "Rtrig Node",
@@ -7203,8 +7203,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "Ftrig Node",
@@ -7251,8 +7251,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -7302,8 +7302,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -7355,8 +7355,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -7405,8 +7405,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -7445,8 +7445,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -7502,8 +7502,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -7556,8 +7556,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -7597,8 +7597,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Handling value",
         "display": "Retain Value Node",
@@ -7650,8 +7650,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Handling value",
         "display": "Concat Node",
@@ -7700,8 +7700,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -7741,8 +7741,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -7798,8 +7798,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -7852,8 +7852,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -7893,8 +7893,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Handling value",
         "display": "Retain Value Node",
@@ -7947,8 +7947,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Handling value",
         "display": "Concat Node",
@@ -8037,8 +8037,8 @@
       "type": "commentNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -8086,8 +8086,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "data": {
         "accordion": "Communication",
         "display": "Modbus Write Bool (0x15)",
@@ -8154,8 +8154,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -8209,8 +8209,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -8264,8 +8264,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -8313,8 +8313,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -8354,8 +8354,8 @@
       "type": "inputNode"
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "data": {
         "accordion": "Communication",
         "display": "Modbus Read Bool (0x02)",
@@ -8422,8 +8422,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -8463,8 +8463,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Comparator",
         "display": "EQ Node",
@@ -8516,8 +8516,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -8556,8 +8556,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -8611,8 +8611,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -8661,8 +8661,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -8712,8 +8712,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Logical gate",
         "display": "SR Node",
@@ -8765,8 +8765,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -8819,8 +8819,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -8874,8 +8874,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 263,
+      "width": 102,
+      "height": 262,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -8926,8 +8926,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 263,
+      "width": 102,
+      "height": 262,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -8978,8 +8978,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Logical gate",
         "display": "SR Node",
@@ -9032,8 +9032,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -9087,8 +9087,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -9143,8 +9143,8 @@
       "type": "inputNode"
     },
     {
-      "width": 248,
-      "height": 223,
+      "width": 247,
+      "height": 222,
       "data": {
         "accordion": "Communication",
         "display": "bool To string Node",
@@ -9202,8 +9202,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -9257,8 +9257,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -9311,8 +9311,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -9360,8 +9360,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "data": {
         "accordion": "Communication",
         "display": "Modbus Write Bool (0x15)",
@@ -9428,8 +9428,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -9483,8 +9483,8 @@
       "type": "outputNode"
     },
     {
-      "width": 248,
-      "height": 223,
+      "width": 247,
+      "height": 222,
       "data": {
         "accordion": "Communication",
         "display": "bool To string Node",
@@ -9542,8 +9542,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -9582,8 +9582,8 @@
       "type": "inputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -9623,8 +9623,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -9672,8 +9672,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -9778,8 +9778,8 @@
       "type": "commentNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -9828,8 +9828,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -9883,8 +9883,8 @@
       "type": "outputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -9934,8 +9934,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -10029,8 +10029,8 @@
       "type": "commentNode"
     },
     {
-      "width": 103,
-      "height": 263,
+      "width": 102,
+      "height": 262,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -10099,8 +10099,8 @@
       "type": "commentNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -10147,8 +10147,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Handling value",
         "display": "Find Node",
@@ -10205,8 +10205,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -10245,8 +10245,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Handling value",
         "display": "Find Node",
@@ -10304,8 +10304,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Constant",
         "dataType": "",
@@ -10345,8 +10345,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "data": {
         "accordion": "Logical gate",
         "display": "SR Node",
@@ -10398,8 +10398,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -10452,8 +10452,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -10506,8 +10506,8 @@
       "type": "outputNode"
     },
     {
-      "width": 203,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "Variables",
         "dataType": "",
@@ -10562,8 +10562,8 @@
       "type": "inputNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -10612,8 +10612,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 223,
+      "width": 102,
+      "height": 222,
       "data": {
         "accordion": "Logical gate",
         "display": "And Node",
@@ -10663,8 +10663,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -10711,8 +10711,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 103,
-      "height": 303,
+      "width": 102,
+      "height": 302,
       "data": {
         "accordion": "Logical gate",
         "display": "Or Node",
@@ -11353,7 +11353,7 @@
       "source": "129",
       "sourceHandle": "Output",
       "style": {
-        "stroke": "#4505f5",
+        "stroke": "#868985",
         "strokeWidth": 1
       },
       "target": "197",
@@ -11961,7 +11961,7 @@
       "source": "171",
       "sourceHandle": "Output",
       "style": {
-        "stroke": "#29a7f5",
+        "stroke": "#30362f",
         "strokeWidth": 1
       },
       "target": "284",
@@ -12180,7 +12180,7 @@
       "source": "132",
       "sourceHandle": "Output",
       "style": {
-        "stroke": "#4505f5",
+        "stroke": "#f600fa",
         "strokeWidth": 1
       },
       "target": "294",
@@ -12996,13 +12996,12 @@
       "source": "137",
       "sourceHandle": "Output",
       "style": {
-        "stroke": "#4505f5",
+        "stroke": "#c6bc53",
         "strokeWidth": 1
       },
       "target": "405",
       "targetHandle": "Input",
-      "type": "step",
-      "selected": false
+      "type": "step"
     },
     {
       "id": "409",
@@ -13218,13 +13217,12 @@
       "source": "140",
       "sourceHandle": "Output",
       "style": {
-        "stroke": "#4505f5",
+        "stroke": "#30362F",
         "strokeWidth": 1
       },
       "target": "422",
       "targetHandle": "Input",
-      "type": "step",
-      "selected": false
+      "type": "step"
     },
     {
       "id": "reactflow__edge-423Output-377R1",
@@ -13606,8 +13604,8 @@
     }
   ],
   "viewport": {
-    "x": 3677.4566261505247,
-    "y": -1368.8083024726898,
-    "zoom": 1.000000010328698
+    "x": 2375.7195399282746,
+    "y": -3664.4559439505865,
+    "zoom": 1.080059760928081
   }
 }

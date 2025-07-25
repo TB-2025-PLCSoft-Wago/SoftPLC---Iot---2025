@@ -206,10 +206,10 @@ Le schéma @fig:vuePrincipeModeDebugData-vs-vue permet de comprendre les mécani
 
 Pour les blocs complexes, nous devons pouvoir transmettre autant de données que nécessaire. Pour cela, deux tableaux de chaînes (_String_) sont utilisés :
 
-- Un tableau *parameterValueData* contenant les #underline("valeurs") des paramètres (définis dans le frontend).
-- Un tableau *parameterNameData* contenant les #underline("noms") des paramètres (définis dans le backend).
+- Un tableau *parameterValueData* contenant les #underline("valeurs") des paramètres (définis dans le #gls("frontend")).
+- Un tableau *parameterNameData* contenant les #underline("noms") des paramètres (définis dans le #gls("backend")).
 
-Ces tableaux permettent la transmission des données entre le backend et le frontend pour les _nodes_ qui le nécessitent, comme les blocs de communication (MQTT, HTTP, MODBUS), ainsi que les blocs *string to bool* et *bool to string*.
+Ces tableaux permettent la transmission des données entre le #gls("backend") et le #gls("frontend") pour les _nodes_ qui le nécessitent, comme les blocs de communication (MQTT, HTTP, MODBUS), ainsi que les blocs *string to bool* et *bool to string*.
 
 
  #iconbox(linecolor: hei-pink)[Un exemple de la structure JSON d’un bloc _MQTT_ est présenté en annexe, à la section @sec:mqttConfiguration.]
