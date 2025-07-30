@@ -44,18 +44,18 @@
   */
 = Application: Home Controller <sec:homeController-vs-vue>
 
-== Reçevoir commande bouttons - HTTP serveur <sec:HTTPServeur_Bouttons-vs-vue>
+== Reçevoir commande boutons - HTTP serveur <sec:HTTPServeur_boutons-vs-vue>
 #figure(
   image("/resources/img/83_ProofOfConcept_Boutton_Config.png", width: 100%),
   caption: [
-    *Gestion bouttons* : vue programmation - configuration du bloc _HTTP serveur_
+    *Gestion boutons* : vue programmation - configuration du bloc _HTTP serveur_
   ],
 )
 #label("fig:83_ProofOfConcept_Boutton_Config-vs-vue")
 #figure(
   image("/resources/img/83_ProofOfConcept_Boutton_complet.png", width: 100%),
   caption: [
-    *Gestion bouttons* : vue programmation - complet
+    *Gestion boutons* : vue programmation - complet
   ],
 )
 #label("fig:83_ProofOfConcept_Boutton_Config-vs-vue")

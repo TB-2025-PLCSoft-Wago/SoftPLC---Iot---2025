@@ -94,6 +94,29 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
     }, [selectedService, selectedSubService, selectedFriendlyName, inputValue]);
 
 
+    useEffect(() => {
+        setInputValue(data.valueData ?? "");
+    }, [data.valueData]);
+
+    useEffect(() => {
+        if (Array.isArray(data.parameterValueData)) {
+            setInputValues(data.parameterValueData);
+        }
+    }, [data.parameterValueData]);
+
+    useEffect(() => {
+        setSelectedFriendlyName(data.selectedFriendlyNameData ?? "default");
+    }, [data.selectedFriendlyNameData]);
+
+    useEffect(() => {
+        setSelectedService(data.selectedServiceData ?? "default");
+    }, [data.selectedServiceData]);
+
+    useEffect(() => {
+        setSelectedSubService(data.selectedSubServiceData ?? "default");
+    }, [data.selectedSubServiceData]);
+
+
     let content;
     if (data.type === "constantInput") {
         content = (

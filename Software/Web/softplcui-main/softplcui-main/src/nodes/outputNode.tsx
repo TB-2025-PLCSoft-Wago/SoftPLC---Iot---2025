@@ -102,6 +102,18 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
         data.dataType = newHandleType;
     }, [selectedService, selectedSubService, selectedFriendlyName]);
 
+    useEffect(() => {
+        setSelectedFriendlyName(data.selectedFriendlyNameData ?? "default");
+    }, [data.selectedFriendlyNameData]);
+
+    useEffect(() => {
+        setSelectedService(data.selectedServiceData ?? "default");
+    }, [data.selectedServiceData]);
+
+    useEffect(() => {
+        setSelectedSubService(data.selectedSubServiceData ?? "default");
+    }, [data.selectedSubServiceData]);
+
     let content;
     const {id, selectedServiceData, selectedSubServiceData } = data;
     if (data.type.includes("viewWeb") || data.type.includes("variable")) {

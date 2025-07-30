@@ -2,14 +2,14 @@
 #import "/metadata.typ": *
 #pagebreak()
 === Erreurs non gérées
-#infobox()[Certaines erreurs n’ont pas été traitées lors de l’ancien TB. Cette section présente ces erreurs qui devront être réglées.]
+#infobox()[Certaines erreurs n’ont pas été traitées lors de l’ancien TB. Cette section présente certaines de ces erreurs qui devront être réglées.]
 ==== Manque lien
 Le problème est que le programme plcSoft plante au lieu d’afficher simplement une erreur et de ne pas _build_ le programme dans l’automate.
 
 Cependant, le save est possible et le restore peut être fait après avoir relancé le programme.
-
+/*
 *Remarque* Bloc bleu : il y a des bloc bleu qui est le résultat d’un test explication dans la synthèse.
-
+*/
 #figure(
   image("/resources/img/02_Erreur_manque_lien .png", width: 100%),
   caption: [

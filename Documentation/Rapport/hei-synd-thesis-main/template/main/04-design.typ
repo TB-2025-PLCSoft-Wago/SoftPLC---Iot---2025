@@ -25,7 +25,8 @@
   - *Intégration et interopérabilité* : Expliquez comment votre système s’intégrera aux systèmes existants ou aux services externes, le cas échéant.
 ]
 
-#lorem(50)
+Ce chapitre permet de mieux comprendre l’architecture générale avec les liens entre le #gls("backend") et le #gls("frontend"). Pour en saisir tous les détails, il faudrait parcourir les programmes avec les schémas présentés dans ce chapitre. Il permet également de comprendre l’utilité des nouvelles interfaces créées, ainsi que la manière dont les données sont gérées.
+
 
 #add-chapter(
   after: <sec:design>,
@@ -72,7 +73,7 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 
   === Vue User WebSocket <sec:websocketVUE>
 
-  La vue user WebSocket permet de visualiser en temps réel l'état des _Outputs_ et de gérer les des _Inputs_ spécifiques à cette vue. Sur le schéma @fig:schemaPrincipe-vs-vue, elle est représentée par la "View page".
+  La vue user WebSocket permet de visualiser en temps réel l'état des _Outputs_ et de gérer les _Inputs_ spécifiques à cette vue. Sur le schéma @fig:schemaPrincipe-vs-vue, elle est représentée par la "View page".
 
   Cette vue s'accompagne de blocs logiques qui permettent sa création. Ces blocs sont représentés dans la figure @fig:blocWebSocket-vs-vue. Ils permettent de créer des Inputs et Outputs spécifiques à cette vue, permettant ainsi de visualiser l'état de n'importe quelle connexion dans le programme PLC. Un exemple de ce à quoi pourrait ressembler la vue WebSocket est présenté dans la figure @fig:vuePrincipeWebSocket-vs-vue, et le programme qui crée cette vue est présenté dans la figure @fig:ProgrammePrincipeWebSocket-vs-vue. Les parties _recevoir_ et _envoyer_ les messages sont prévues pour du débogage. Les autres parties sont prévues pour contrôler et tester le programme PLC. Remarquez l’impact du champ _Appliance Name_, qui permet de créer des groupes dans la vue WebSocket. Cela facilite le regroupement des Inputs et Outputs par groupe, ce qui est très utile pour la visualisation. L'idée a été inspirée de "Remote Controller" vue en cours de Data Engineering, où une page WebSocket est générée à partir d'un fichier JSON, dont voici le lien https://cyberlearn.hes-so.ch/pluginfile.php/3312976/mod_resource/content/2/index.html. 
   
@@ -87,13 +88,6 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 
 #figure(
   image("/resources/img/29_programmePrincipeWebSocket_1.png", width: 120%),
-  /*caption: [
-    exemple programme WebSocket
-  ],*/
-)
-
-#figure(
-  image("/resources/img/29_programmePrincipeWebSocket_2.png", width: 110%),
   caption: [
     Exemple programme WebSocket
   ],
@@ -215,7 +209,7 @@ Ces tableaux permettent la transmission des données entre le #gls("backend") et
  #iconbox(linecolor: hei-pink)[Un exemple de la structure JSON d’un bloc _MQTT_ est présenté en annexe, à la section @sec:mqttConfiguration.]
 
 //TO DO : Mettre en annexe comment rajouter parameterValueData et parameterValueData
-  == Conclusion
+
 
 /*
 == Section 1

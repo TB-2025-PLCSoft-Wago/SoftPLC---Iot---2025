@@ -13,7 +13,8 @@
   - *Confirmation or Rejection of Hypotheses*: Evaluate each result in light of the hypotheses formulated in your thesis.
 ]
 
-#lorem(50)
+Cette section permet de comprendre quels objectifs ont été atteints et quels sont les points qui posent problème et devront être améliorés.
+
 
 #add-chapter(
   after: <sec:validation>,
@@ -57,7 +58,7 @@ Le schéma des différents appareils connectés a déjà été défini en @fig:a
 
 Le programme est présenté en annexe au @sec:homeController-vs-vue. Il est divisé en plusieurs parties, chacune correspondant à un élément de la maison.
 
-La section @sec:HTTPServeur_Bouttons-vs-vue présente la logique pour reçevoir les commandes des boutons _Shelly_ grâce au bloc *HTTP serveur*.
+La section @sec:HTTPServeur_boutons-vs-vue présente la logique pour reçevoir les commandes des boutons _Shelly_ grâce au bloc *HTTP serveur*.
 
 La section @sec:enclenchementChauffage-vs-vue détaille le programme responsable de l’enclenchement du chauffage. Il est possible de le contrôler manuellement grâce à l’interface utilisateur, ou automatiquement en fonction de la température.
 
@@ -88,8 +89,6 @@ La section @sec:lampe2-vs-vue présente le programme des autres lumières. Il pe
   Doc MQTT @MQTTShellyTechnical],
   
   )
-
-  == Conclusion
 
   
 ]

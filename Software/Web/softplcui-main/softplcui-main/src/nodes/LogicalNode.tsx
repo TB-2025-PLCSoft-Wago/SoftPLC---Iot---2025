@@ -73,6 +73,7 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         if (Array.isArray(data.parameterValueData)) {
             setInputValues(data.parameterValueData);
         }
+        console.log("data.parameterValueData effect")
     }, [data.parameterValueData]);
 
     const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {

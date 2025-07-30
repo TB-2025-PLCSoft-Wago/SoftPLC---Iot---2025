@@ -10,7 +10,7 @@
   Despite not impacting the evaluation, acknowledgements contribute to the overall tone and appreciation within your thesis.
 ]
 
- Je tiens à remercier mon répondant de travail de bachelor, M. Christopher Métrailler ainsi que son assitant Michael Clausen qui ont répondu à mes différentes questions, pour leurs conseilles et pour avoir pris de leur temps pour mon travail. Je remercie aussi Arnaud Ducrey pour son TB documenté.
+ Je tiens à remercier mon répondant de travail de bachelor, M. Christopher Métrailler ainsi que son assitant Michael Clausen qui ont répondu à mes différentes questions, pour leurs conseils. Je remercie aussi Arnaud Ducrey pour son TB documenté.
 #heading(numbering:none)[Donnée de travail de bachelor]
 #muchpdf(
   read("/resources/img/Puippe Marcelin.pdf", encoding: none),

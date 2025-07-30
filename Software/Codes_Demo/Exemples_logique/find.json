@@ -1,0 +1,586 @@
+{
+  "nodes": [
+    {
+      "width": 102,
+      "height": 222,
+      "data": {
+        "accordion": "Handling value",
+        "display": "Find Node",
+        "id": "1",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "strWhereToSearch"
+          },
+          {
+            "dataType": "value",
+            "name": "strToSeek"
+          },
+          {
+            "dataType": "value",
+            "name": "iStart"
+          }
+        ],
+        "label": "Find",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "isFind"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "FindNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "1",
+      "position": {
+        "x": 803.1590138617138,
+        "y": 403.87315445122823
+      },
+      "positionAbsolute": {
+        "x": 803.1590138617138,
+        "y": 403.87315445122823
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "4",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "true ,, true ,, msg1"
+      },
+      "dragging": false,
+      "id": "4",
+      "position": {
+        "x": 518.4114033958879,
+        "y": 386.00554768862713
+      },
+      "positionAbsolute": {
+        "x": 518.4114033958879,
+        "y": 386.00554768862713
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "4",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "1"
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "5",
+      "position": {
+        "x": 543.4114033958879,
+        "y": 576.5055476886271
+      },
+      "positionAbsolute": {
+        "x": 543.4114033958879,
+        "y": 576.5055476886271
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "4",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "true"
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "6",
+      "position": {
+        "x": 531.4114033958879,
+        "y": 476.0055476886271
+      },
+      "positionAbsolute": {
+        "x": 531.4114033958879,
+        "y": 476.0055476886271
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "7",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Find",
+        "selectedSubServiceData": "find item 2 - true",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "7",
+      "position": {
+        "x": 978.9172164535729,
+        "y": 538.418357110297
+      },
+      "positionAbsolute": {
+        "x": 978.9172164535729,
+        "y": 538.418357110297
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 105,
+      "height": 225,
+      "data": {
+        "accordion": "Handling value",
+        "display": "Find Node",
+        "id": "1",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "strWhereToSearch"
+          },
+          {
+            "dataType": "value",
+            "name": "strToSeek"
+          },
+          {
+            "dataType": "value",
+            "name": "iStart"
+          }
+        ],
+        "label": "Find",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "isFind"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "FindNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "8",
+      "position": {
+        "x": 832.9426532056634,
+        "y": 719.760648177225
+      },
+      "positionAbsolute": {
+        "x": 832.9426532056634,
+        "y": 719.760648177225
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "4",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "true ,, false ,, msg1"
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "9",
+      "position": {
+        "x": 548.1950427398375,
+        "y": 701.8930414146239
+      },
+      "positionAbsolute": {
+        "x": 548.1950427398375,
+        "y": 701.8930414146239
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "4",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "1"
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "10",
+      "position": {
+        "x": 573.1950427398375,
+        "y": 892.3930414146239
+      },
+      "positionAbsolute": {
+        "x": 573.1950427398375,
+        "y": 892.3930414146239
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "4",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "true"
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "11",
+      "position": {
+        "x": 561.1950427398375,
+        "y": 791.8930414146239
+      },
+      "positionAbsolute": {
+        "x": 561.1950427398375,
+        "y": 791.8930414146239
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "7",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Find",
+        "selectedSubServiceData": "find item 2 - false",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "12",
+      "position": {
+        "x": 1008.7008557975225,
+        "y": 854.3058508362939
+      },
+      "positionAbsolute": {
+        "x": 1008.7008557975225,
+        "y": 854.3058508362939
+      },
+      "selected": false,
+      "type": "outputNode"
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-5Output-1iStart",
+      "selected": false,
+      "source": "5",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "1",
+      "targetHandle": "iStart",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-4Output-1strWhereToSearch",
+      "selected": false,
+      "source": "4",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "1",
+      "targetHandle": "strWhereToSearch",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-6Output-1strToSeek",
+      "selected": false,
+      "source": "6",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "1",
+      "targetHandle": "strToSeek",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-1isFind-7Input",
+      "selected": false,
+      "source": "1",
+      "sourceHandle": "isFind",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "7",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "13",
+      "selected": false,
+      "source": "10",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "8",
+      "targetHandle": "iStart",
+      "type": "step"
+    },
+    {
+      "id": "14",
+      "selected": false,
+      "source": "9",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "8",
+      "targetHandle": "strWhereToSearch",
+      "type": "step"
+    },
+    {
+      "id": "15",
+      "selected": false,
+      "source": "11",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "8",
+      "targetHandle": "strToSeek",
+      "type": "step"
+    },
+    {
+      "id": "16",
+      "selected": false,
+      "source": "8",
+      "sourceHandle": "isFind",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "12",
+      "targetHandle": "Input",
+      "type": "step"
+    }
+  ],
+  "viewport": {
+    "x": -175.0098257552404,
+    "y": -351.4103294087829,
+    "zoom": 1.212587541930893
+  }
+}

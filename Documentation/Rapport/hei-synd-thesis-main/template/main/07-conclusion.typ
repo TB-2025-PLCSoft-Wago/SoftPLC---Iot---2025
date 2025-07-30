@@ -16,22 +16,59 @@
 ]
 
 == Résumé du projet
-
+/*
 L’automate a été câblé et configuré. Il est prêt à être utilisé pour la suite du projet.
 Les programmes softplc-main et softplcui-main ont pu être testés et fonctionnent comme décrit dans le travail précédent de TB. Toutefois, la partie analogique n’a pas été testée, mais elle ne semble pas fonctionnelle, car elle ne figurait pas parmi les points traités dans le TB précédent.
 
 Par ailleurs, le bloc Appliance Input ne fonctionne pas et fait planter l’interface.
 De nombreuses améliorations, décrites dans la partie « @sec:objectif », restent possibles.
-
+*/
 === Fonctionnalités développées :
-- Un nouveau bloc timer de type *TOR* a été ajouté. Cela prouve la faisabilité de l’ajout de blocs simples et montre que le programme est à la fois robuste et adaptable.
 
-- Ajout de la fonctionnalité de sauvegarde/restauration via un fichier Très pratique, elle évite de devoir réécrire le code à chaque modification ou chargement du programme.
+L’intégration des blocs suivants :
+#[
+  #set list(marker: ([•], [--]), spacing: auto, indent: 2em)
+  - MQTT (@sec:implMQTT)
+  - HTTP client (@sec:implHTTPClient)
+  - HTTP serveur (@sec:implHTTPServeur)
+  - Modbus (@sec:implModbus)
+  - Bool to String (@sec:implBlocBooltoString)
+  - String to Bool (@sec:implBlocStringtoBool)
+  - Comparator GT (@sec:implComparatorGT)
+  - Comparator EQ (@sec:implComparatorEQ)
+  - Concat (@sec:implConcat)
+  - Retain Value (@sec:implRetainValue)
+  - Find (@sec:implFind)
+  - Counter (@sec:implCounter)
+  - SR (@sec:implSR)
+  - NOT
+  - TOF
+  - trigger : RF_trig, Rtrig, Ftrig
+]
 
-- Ajout d’une *SlideBar* @AccordionReactBootstrap, une fonctionnalité nécessaire pour l’ergonomie de l’interface, perment de voir les éléments plus bas.
+Ainsi que d’autres fonctionnalités :
+#[
+  #set list(marker: ([•], [--]), spacing: auto, indent: 2em)
+  - L’intégration de #gls("WDA") (@sec:implWDA)
+  - La gestion d’erreurs (@sec:implGestionErreur)
+  - Les variables (@sec:implVariables)
+]
 
-Il a été décidé de concentrer les efforts sur l’ajout de fonctionnalités permettant de gagner du temps lors du développement et des tests.
+La modification de la vue : *programming view* (@sec:implVueProgrammation) et la création des vues suivantes :
+#[
+  #set list(marker: ([•], [--]), spacing: auto, indent: 2em)
+  - User view (@sec:implVueUser)
+  - Debug view (@sec:implVueDebug)
+]
 
+Pour réaliser toutes ces fonctionnalités, il a fallu :
+#[
+  #set list(marker: ([•], [--]), spacing: auto, indent: 2em)
+- introduire des types plus complexes,
+- permettre la transmission de tableaux de chaînes de caractères entre le #gls("frontend") et le #gls("backend"),
+- prendre en charge les blocs ayant plusieurs _outputs_,
+- etc.
+]
 
 === changement de l’interface
 
@@ -49,22 +86,52 @@ Il a été décidé de concentrer les efforts sur l’ajout de fonctionnalités 
   ],
 )
 
-La différence est la *slide Bar* car avant si on ouvrait tous on n’avait pas accès aux composants du bas. On voit également le nouveau bloc de type *TOR* qui a été ajouté.
-
+La différence est la *slide Bar* car avant si on ouvrait tous on n’avait pas accès aux composants du bas.
+/*
 #infobox()[
   *Bloc bleu* : il sont le résultat d’un test qui a été fait l’objectif était de voir comment était géré le style css des blocs. Le résultat est qu’il est géré par groupe. Ainsi, tous les Blocs _LogicalNode_ ont le même type. Il faudra donc améliorer la structure pour rendre plus facile l’attribution de style si on veut plus personaliser.
-]
+]*/
 
 
 == Comparaison avec les objectifs initial
-Les objectifs fixés par pr4 sont atteints. Le programme a pu être testé et permet de créer des programmes très simples. Un nouveau bloc a été ajouté et testé sur l'automate. Le principe de fonctionnement des codes a été vus et il est possible d’ajouter de nouveaux. Cependant, le programme n’est pas parfait. Il reste des points à améliorer, notamment des erreurs .
+/*Les objectifs fixés par pr4 sont atteints. Le programme a pu être testé et permet de créer des programmes très simples. Un nouveau bloc a été ajouté et testé sur l'automate. Le principe de fonctionnement des codes a été vus et il est possible d’ajouter de nouveaux.
+*/
+Les objectifs du cahier des charges sont remplis. Des blocs de communication complexes ont été créés, tels que MQTT, client/serveur HTTP et MODBUS. De plus, plusieurs nouveaux blocs ont pu être développés, ce qui permet désormais de réaliser bien plus de fonctionnalités logiques, de traiter des chaînes de caractères, et même de travailler avec des tableaux de chaînes de caractères. L'interface REST #gls("WDA") est utilisée. 
 
+D’un point de vue utilisateur, de nombreuses améliorations ont été apportées, notamment :
+#[
+  #set list(marker: ([•], [--]), spacing: auto, indent: 2em)
+    - les contrôles automatisés (copier/coller, annuler/rétablir, couper),
+    - l'ajout d'une *slide Bar* dans l'accordion car avant si on ouvrait tous on n’avait pas accès aux composants du bas,
+    - l’amélioration du visuel,
+    - la gestion de fichiers,
+    - la possibilité de colorer les connexions pour mieux se repérer,
+    - l’ajout d’un menu déroulant sur certains blocs pour basculer plus rapidement,
+    - le redimensionnement dynamique des blocs,
+    - la possibilité d’ajouter des commentaires,
+    - l’ajout d’une boîte à outils (toolbox).
+]
+
+Deux nouvelles vues ont également été ajoutées (*user view* et *debug view*) et leur création nécessite très peu d’effort de la part de l’utilisateur.
+
+À cela s’ajoute la résolution de nombreux bugs et l’ajout de plusieurs mécanismes utiles à une future extension du #gls("HAL").
+
+Finalement, un banc de test de démonstration d’une maison connectée a pu être créé, programmé et testé. Cela prouve le bon fonctionnement des solutions mises en place.
 
 == Difficultés rencontrées
 
 La documentation de WDA n'est pas suffisante pour comprendre le fonctionnement de la _library_. Il y a beaucoup de paramètres différents, mais on ne trouve pas ceux qui nous intéressent, la majorité d'entre eux sont pour modifier des paramètres de la configuration automate. Cependant, il a pu être remarqué que les modèles *741-9402* et *751-9401* ne sont pas les mêmes. La documentation du 741-9402 est plus complète, et l'utilisation des entrées/sorties (I/O) y est clairement expliquée. En revanche, il n'a toujours pas été trouvé de documentation concernant l'utilisation du module CAN.
 
 == Perspectives d'avenir
+=== Permettre la création de fonction
+Un objectif pour la suite est d'ajouter la possibilité à l'intégrateur de créer ses propres blocs de fonction. Par exemple, on pourrait ajouter une vue similaire à la *programming view*. Dans cette vue, on pourrait créer un graphique avec, en plus, des blocs *function input* et *function output*, à qui l’on attribuerait un nom, comme pour les *variables*. Cela correspondrait aux entrées et sorties du bloc.
+
+Il faut également un moyen de permettre de modifier les paramètres de la fonction. Une possibilité serait d’avoir une coche pour chaque paramètre lorsque cette vue est activée, et ceux cochés apparaîtraient comme paramètres de la fonction.
+
+Une fois la fonction terminée, on lui donne un nom et elle apparaît dans l'accordion avec les autres blocs, prête à être utilisée.
+
+L'avantage est que si une entreprise utilise souvent les mêmes mécanismes, elle s'évite un travail redondant. Cela est également utile si l’on a une appliance complexe qui doit être utilisée plusieurs fois.
+
 === Idées d’amélioration et extensions du #gls("frontend") web <sec:objectif>
 Il y a de nombreuse possibilités d’amélioration pour l’interface utilisateur.
 #[

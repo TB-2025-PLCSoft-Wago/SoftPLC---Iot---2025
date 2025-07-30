@@ -47,7 +47,7 @@ L’application de démonstration d'une maison connectée (@fig:applicationMaiso
 Une page web doit permettre de visualiser l’état des équipements et de les contrôler.
 
 La fonctionnalité de l’application de démonstration qui a été choisie et qui sera développée est la suivante :  
-Depuis une interface web, il sera possible de contrôler une lampe en réglant son intensité et sa couleur. Depuis cette même interface, il sera également possible de régler une consigne de température. Un capteur de température enverra la température et une prise électrique s'activera si la température est trop basse. De plus avec un bouton _Shelly_, on pourra contrôler la porte de garage et avec un autre l'éclairage.
+Depuis une interface web, il sera possible de contrôler une lampe en réglant son intensité et sa couleur. Depuis cette même interface, il sera également possible de régler une consigne de température. Un capteur de température enverra la température et une prise électrique s'activera si la température est trop basse. De plus avec un bouton _Shelly_, on pourra contrôler la porte de garage. Ainsi qu'un autre bouton _Shelly_ gérant l'éclairage du garage et de la cuisine selon notre emplacement dans la maison.
    
  #iconbox(linecolor: hei-pink)[Le résultat final est présenté au @sec:validationProofConcept et l’annexe @sec:homeController-vs-vue montre le programme. Cependant, il sera difficile à comprendre sans avoir assimilé les chapitres précédents.]
 #figure(

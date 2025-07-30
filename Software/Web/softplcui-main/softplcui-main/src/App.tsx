@@ -335,6 +335,7 @@ export default function App() {
                 const restoredNodes = data.nodes.map((node: Node) => {
                     return node;
                 });
+                console.log("Restore graph : ",restoredNodes)
                 setNodes(restoredNodes);
                 setEdges(data.edges);
 

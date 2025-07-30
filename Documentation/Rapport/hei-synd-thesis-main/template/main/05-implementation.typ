@@ -33,7 +33,7 @@ Cette section décrit les différentes étapes qui ont été implémentées dura
   minitoc-title: i18n("toc-title", lang: option.lang)
 )[
   #pagebreak()
-  == WDA
+  == WDA <sec:implWDA>
   L'intégration de #gls("WDA") est une partie importante du projet. Cette section décrit comment WDA a été utilisé pour communiquer avec l'automate et comment il a été intégré dans le programme.
 
   C'est pour utiliser WDA qu'il a été choisi de remplacer l'automate 751-9401 par un 751-9402. L'analyse de la raison de cette décision se trouve @sec:WDA_AnalysePR4. Vous y trouverez également une analyse de comment était récuperé les I/O dans le programme du TB 2024 qui utilisait une méthode plus rapide.
@@ -93,7 +93,7 @@ En parallèle, la fonction *CreateMonitoringLists* est appelée périodiquement 
   == Intégration des blocs logiques simples
   L'intégration des blocs logiques simples est une étape importante du projet. Cette section décrit comment ces blocs logiques simples ont été intégrés dans le programme. 
 
-  === Bloc Bool to String
+  === Bloc Bool to String <sec:implBlocBooltoString>
   Il correspond au bloc *Pulse to frame Sender* du schéma @fig:communication-Bloc-principe. Mais il est utilisable pour d'autres fonctionnalités que la communication.  
 Le bloc *Bool to String* permet de transmettre en sortie une chaîne de caractères selon si un booléen est à _true_ en face.  
 C'est un bloc de type #gls("strechable"), c'est-à-dire que le nombre d'entrées est dynamique.  
@@ -111,7 +111,7 @@ Il est possible d'*activer plusieurs lignes de texte* en même temps. Par exempl
 
 ]
 
-=== Bloc String to Bool
+=== Bloc String to Bool <sec:implBlocStringtoBool>
 Le bloc *String to Bool* permet de recevoir une chaîne de caractères et de la convertir en booléens. Il est représenté par le bloc *Frame to Pulse Receiver* sur le schéma @fig:communication-Bloc-principe. Il est également un bloc de type #gls("strechable") mais au niveau des sorties. La figure @fig:blocStringToBool-vs-vue montre un exemple de ce à quoi pourrait ressembler le bloc *String to Bool*. Il est possible d'écrire plusieurs lignes de texte, chaque ligne de texte se trouve en face d'une sortie booléenne. Si la chaîne de caractères reçue contient la ligne de texte correspondante, la sortie booléenne sera à _true_.
 #figure(
   image("/resources/img/36_exempleDesign_StringToBool.png", width: 50%),
@@ -158,7 +158,7 @@ Ainsi, il doit être capable de gérer des caractères simples et des pseudos ta
   ],
 )
 #label("fig:blocFonctionmentStringToBoolSituation3-vs-vue")
-=== SR
+=== SR <sec:implSR>
   Le bloc *SR* est qui permet de maintenir un état booléen. Il suffit d'une impultion sur l'entrée *S* (set) pour mettre la sortie à _true_ et d'une impultion sur l'entrée *R1* (reset) pour mettre la sortie à _false_.
   Le reset à la priorité sur le set, c'est-à-dire que si on a une *S* à _true_ et une *R1* à _true_, la sortie sera à _false_.
 #figure(
@@ -176,7 +176,7 @@ Ainsi, il doit être capable de gérer des caractères simples et des pseudos ta
 )
 #label("fig:blocFonctionnementSR_result-vs-vue")
 
-=== Counter
+=== Counter <sec:implCounter>
   Le bloc *Counter* permet de compter et décompter des impulsions. 
   Les entrées sont les suivantes :
   - *Step* : l'entrée pour choisir le pas d'incrémentation ou de décrémentation du compteur, (par défaut, le pas est de 1).
@@ -194,7 +194,7 @@ La sortie est *result* qui peut être de format de type *int* ou *float*, c'est 
 )
 #infobox[Noter que l'on utilise des blocs *RF_trig*. Cela permet de générer des impulsions à chaque clic sur les boutons.]
 
-=== Concat
+=== Concat <sec:implConcat>
 Le bloc *Concat* est utilisable pour assembler des chaînes de caractère de manière dynamique.
 
 #figure(
@@ -211,7 +211,7 @@ Le bloc *Concat* est utilisable pour assembler des chaînes de caractère de man
   ],
 )
 #label("fig:blocFonctionnementConcat_result-vs-vue")
-=== Retain value
+=== Retain value <sec:implRetainValue>
 Le bloc *Retain Value* sert à bloquer une valeur _strIn_ et à ne la transmettre sur _strOut_ uniquement si _pass_ est à _true_.
 
 #infobox()[ Si _pass_ = true alors  _strOut_ = _strIn_ sinon _strOut_ = \"\"
@@ -223,8 +223,19 @@ Le bloc *Retain Value* sert à bloquer une valeur _strIn_ et à ne la transmettr
   ],
 )
 #label("fig:blocRetainValue-vs-vue")
+=== Find <sec:implFind>
+La fonction *find* permet de savoir si une chaîne de caractères (strToSeek) est présente ou non dans une autre chaîne de caractères (strWhereToSearch), à partir d’une position donnée (iStart). 
 
-=== Comparator EQ
+Dans l’exemple @fig:blocRetainValue-vs-vue, on cherche à savoir si l’élément du milieu est à _true_ ou _false_. Pour ce faire, on exclut le premier caractère, le "t".
+#figure(
+  image("/resources/img/84_findExemple.png", width: 100%),
+  caption: [
+    bloc *find* : exemple
+  ],
+)
+#label("fig:blocFindExemple-vs-vue")
+//TO DO : ajouter image exemple etc.
+=== Comparator EQ <sec:implComparatorEQ>
 Le bloc *EQ* permet de comparer si deux valeur sont égale et d'activer la sortie si c'est le cas.
 #figure(
   image("/resources/img/56_ComparatorEQNode.png", width: 100%),
@@ -232,7 +243,7 @@ Le bloc *EQ* permet de comparer si deux valeur sont égale et d'activer la sorti
     bloc *x = y*
   ],
 )
-=== Comparator GT
+=== Comparator GT <sec:implComparatorGT>
 Le bloc *GT* permet de comparer deux valeurs. Si la première valeur est plus grande ou égale, alors la sortie est activée.  
 Le bloc compare les valeurs si elles peuvent être converties en _float_, sinon il compare leur taille (longueur).
 
@@ -246,7 +257,7 @@ La figure @fig:ComparatorGTNode-vs-vue montre la différence entre ces deux cas.
 )
 #label("fig:ComparatorGTNode-vs-vue")
 #pagebreak()
-=== Variables
+=== Variables <sec:implVariables>
 Afin de permettre des fonctions de type boucle de contre-réaction, il a été choisi de rajouter un système de variable. Les blocs @fig:blocsVariables-vs-vue s'utilisent de la manière suivante : il faut faire correspondre les noms pour que les valeurs correspondent. Pour un même nom, une seule *output* doit être définie, mais plusieurs *Input* peuvent porter ce nom.
 
 L'exemple @fig:blocsVariablesContreReactionBool-vs-vue montre le fonctionnement d'un programme qui, à chaque cycle, change l'état d'un booléen.
@@ -316,7 +327,7 @@ Dans la partie *#gls("backend")*, les blocs logiques de communication se trouven
   ],
 )
 #pagebreak()
-  === MQTT
+  === MQTT <sec:implMQTT>
   Le bloc *MQTT* permet de communiquer avec un broker MQTT. Il est possible de publier des messages sur des topics ou de s'abonner à des topics pour recevoir des messages. 
   
   Le bloc *MQTT* a les *inputs* suivantes :
@@ -337,8 +348,8 @@ Dans la partie *#gls("backend")*, les blocs logiques de communication se trouven
    L'ordre des topics données sur *topicToReceive* est le même que l'ordre des messages reçus sur *msgLastReceived*. Cela permet de traiter les messages dans le même ordre que les topics auxquels on s'est abonné.
 
    La fonction _makeConnectLostHandler(n \*MqttNode)_ permet de gérer la perte de connexion avec le broker MQTT. Elle s'assure de relancer la connexion et de réabonner aux topics si la connexion a un problème.
-  
-  === Node HTTP client
+#pagebreak()  
+=== Node HTTP client <sec:implHTTPClient>
 Le package Go @HttpPackageNetb a été utilisé.
 Pour le Node HTTP client, il est possible de configurer les paramètres suivants :
 - *url* : l'URL de la requête HTTP.
@@ -368,7 +379,7 @@ Le bloc nous retournera les paramètres suivants :
   ],
 )*/
 #pagebreak()
-=== Node HTTP serveur
+=== Node HTTP serveur <sec:implHTTPServeur>
 
 Le package Go @HttpPackageNetb a été utilisé.  
 L’exemple @soysouvanhClientsServeursHTTP permet d’en comprendre davantage sur la création d’un serveur HTTP en Go. Pour le déploiement d’un serveur HTTP sur Docker, la documentation @nicholsonCraignicholsonSimplehttp2023 a été trouvée.
@@ -469,7 +480,7 @@ Exemples de requêtes HTTP (ici _localhost:8080_ est équivalent à _192.168.39.
 #label("fig:RequeteGetShortServerHttp-vs-vue")
 #pagebreak()
 
-  === MODBUS
+  === MODBUS <sec:implModbus>
 Les documentations utilisées pour la création des blocs MODBUS sont :
 - @CodesFonctionsModbus : pour la compréhension du protocole MODBUS.
 - @GoburrowModbus2025 : pour comprendre comment l'implementer en Go.
@@ -529,8 +540,8 @@ Et les *outputs* suivantes :
   ],
 )
 #label("fig:ModbusGestionNewValues-vs-vue")
-
-  == Vue programmation
+#pagebreak()
+  == Vue programmation <sec:implVueProgrammation>
   La vue programmation permet de créer des programmes PLC en utilisant une interface graphique. Elle est représentée par la "Programming Page" sur le schéma @fig:schemaPrincipe-vs-vue. Cette vue permet de créer par *drag and drop* des blocs logiques, des *Inputs* et des *Outputs*, et de les connecter entre eux pour créer un programme PLC.
 
 
@@ -542,7 +553,7 @@ La section @sec:ameliorationInterface-vs-vue décrit plus en détail les aspects
 
 #iconbox(linecolor: hei-pink)[Tous les nodes réalisés sont présentés en annexe au @sec:EnsembleBlocs.]
 
- == Vue User
+ == Vue User <sec:implVueUser>
 
 #figure(
   image("/resources/img/74_exempleBidonUserView.png", width: 80%),
@@ -572,7 +583,7 @@ Pour passer d’une vue à l’autre, on utilise react-router-dom @ReactRouterUs
     caption: [*Vue User* : navigation entre les pages],
   )
   
-  == Vue mode debug
+  == Vue mode debug <sec:implVueDebug>
 
 Le rôle de cette vue a déjà été expliqué @sec:modeDebugDesign.  
 Elle est implémentée côté *#gls("backend")* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent @sec:debugModeData.
@@ -706,7 +717,7 @@ Un autre type de node @fig:nodeSelect-vs-vue est celui avec un "menu déroulant"
 
   === Boutons
   L'exemple de @CSSButtons a été utilisé.
-  Plusieurs classes de boutons ont été définies dans le _css_ (@fig:blocCSS_Bouttons-vs-vue). Le sélecteur de classe de base est ".button". Un exemple d'utilisation serait : 
+  Plusieurs classes de boutons ont été définies dans le _css_ (@fig:blocCSS_boutons-vs-vue). Le sélecteur de classe de base est ".button". Un exemple d'utilisation serait : 
   #figure(
     align(left,
     ```tsx
@@ -716,7 +727,7 @@ Un autre type de node @fig:nodeSelect-vs-vue est celui avec un "menu déroulant"
   )
   Tous les styles définis dans les deux sélecteurs de classe CSS (dans l'exemple _.button_ et _.button1_) correspondants seront cumulés, et les styles de _.button1_ peuvent écraser ceux de _.button_ s'ils affectent les mêmes propriétés.
 
-  On peut utiliser les sélecteurs définis dans @fig:blocCSS_Bouttons-vs-vue, de la même manière que _.button1_. Ils sont représentés en @fig:bouttonsVisu-vs-vue.
+  On peut utiliser les sélecteurs définis dans @fig:blocCSS_boutons-vs-vue, de la même manière que _.button1_. Ils sont représentés en @fig:boutonsVisu-vs-vue.
 
 #figure(
     align(left,
@@ -734,43 +745,46 @@ Un autre type de node @fig:nodeSelect-vs-vue est celui avec un "menu déroulant"
           margin: 4px 4px;
           transition-duration: 0.4s;
           cursor: pointer;
+          font-family: Arial, sans-serif;
+          height: 37px;
       }
       .button1 {
           background-color: white;
           color: black;
-          border: 2px solid #04AA6D;
+          border: 2px solid #6EC800;
       }
 
       .button1:hover {
-          background-color: #04AA6D;
-          color: white;
-      }
-
+          background-color: #6EC800;
+          color: white;}
+      /* button Settings node */
       .buttonNode {
           background-color: white;
           color: black;
           border: 1px solid #1a192b;
-          font-style: italic;
-      }
+          font-style: italic;}
 
       .buttonNode:hover {
           background-color: #1a192b;
-          color: white;
-      }
+          color: white;}
+      .closeSetting{
+          border: 1px solid #ff6060;}
+      .closeSetting:hover{
+          background-color: #ff6060;}
     ```
     ),
-    caption: [*css*, Bouttons],
+    caption: [*css*, boutons],
   
   )
-#label("fig:blocCSS_Bouttons-vs-vue")
+#label("fig:blocCSS_boutons-vs-vue")
 
 #figure(
     image("/resources/img/52_boutonsImageListe.png", width: 80%),
     caption: [
-      exemple - bouttons - visualisation
+      exemple - boutons - visualisation
     ],
   )
-  #label("fig:bouttonsVisu-vs-vue")
+  #label("fig:boutonsVisu-vs-vue")
 === Tools <sec:toolsMenu>
 Pour permettre de modifier la manière d’interagir avec le graphique, un menu déroulant appelé *Tool* a été ajouté. Il permet de choisir entre différents outils.
 
@@ -820,7 +834,7 @@ Les outils peuvent fonctionner de deux manières :
   ],
   )
    #pagebreak()
-  == Gestion des erreurs
+  == Gestion des erreurs <sec:implGestionErreur>
   Pour envoyer un message d'erreur sur la page de programmation, il faut utiliser dans le programme : *serverResponse.ResponseProcessGraph* = "message à envoyer". Cela doit se faire avant la fin de la vérification, donc pour mettre des messages pour un *Node* précis, il faut utiliser l'appel dans la méthode *GetOutput* de celui-ci. C'est ce qui a été utilisé pour @sec:timer.
 
   === Outputs
@@ -859,7 +873,5 @@ Les outils peuvent fonctionner de deux manières :
   )
 
   
-
-  == Conclusion
 
 ]

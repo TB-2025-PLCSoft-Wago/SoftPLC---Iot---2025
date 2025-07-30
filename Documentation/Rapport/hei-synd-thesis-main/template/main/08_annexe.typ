@@ -4,7 +4,7 @@
 
 
 #pagebreak()
-
+//#set heading(offset: 0, numbering: "1.A.1")
 = Annexe <sec:annexe>
 #add-chapter(
   after: <sec:annexe>,
@@ -14,7 +14,7 @@
 )[
   //#let unary(.., last) = "A." + str(last + 1)
   //#counter(heading).update(0)
-  //#set heading(offset: 1, numbering: "A.A.1")
+  
   
 
 
