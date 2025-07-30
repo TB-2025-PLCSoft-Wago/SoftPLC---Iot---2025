@@ -158,9 +158,24 @@ Ainsi, il doit être capable de gérer des caractères simples et des pseudos ta
   ],
 )
 #label("fig:blocFonctionmentStringToBoolSituation3-vs-vue")
+=== Trigger : RF_trig, Rtrig, Ftrig <sec:implTrigger>
+Les blocs suivants permettent de générer uniquement une seule impulsion. Ils sont disponible dans l'accordion sous "Edge Detection".
+#figure(
+  image("/resources/img/87_triger_Bloc.png", width: 70%),
+  caption: [
+    Blocs – Trigger
+  ],
+)
+#figure(
+  image("/resources/img/87_triger_temporelle.png", width: 60%),
+  caption: [
+    Timing diagram – Trigger
+  ],
+)
+
 === SR <sec:implSR>
-  Le bloc *SR* est qui permet de maintenir un état booléen. Il suffit d'une impultion sur l'entrée *S* (set) pour mettre la sortie à _true_ et d'une impultion sur l'entrée *R1* (reset) pour mettre la sortie à _false_.
-  Le reset à la priorité sur le set, c'est-à-dire que si on a une *S* à _true_ et une *R1* à _true_, la sortie sera à _false_.
+  Le bloc *SR* est qui permet de maintenir un état booléen. Il suffit d'une impulsion sur l'entrée *S* (set) pour mettre la sortie à _true_ et d'une impulsion sur l'entrée *R1* (reset) pour mettre la sortie à _false_.
+  Le reset à la priorité sur le set, c'est-à-dire que si on a *S* à _true_ et *R1* à _true_, la sortie sera à _false_.
 #figure(
   image("/resources/img/39_exemple_utilisation_SR.png", width: 100%),
   caption: [
@@ -549,82 +564,17 @@ Et les *outputs* suivantes :
 
 On retrouve ensuite différents fichiers dans le dossier "handles", dédiés à des types particuliers, comme par exemple les _nodes_ de communication.
 
-La section @sec:ameliorationInterface-vs-vue décrit plus en détail les aspects liés à l'interface visuelle.
+//La section @sec:ameliorationInterface-vs-vue décrit plus en détail les aspects liés à l'interface visuelle.
 
 #iconbox(linecolor: hei-pink)[Tous les nodes réalisés sont présentés en annexe au @sec:EnsembleBlocs.]
 
- == Vue User <sec:implVueUser>
+=== Rétroaction
+La documentation _React Flow_ fournit un exemple qui permet de détecter les cycles dans le flow (boucles de rétroaction)@PreventingCycles2025.  
+Si l’utilisateur crée un programme contenant une boucle de rétroaction, cela posera un problème. Les programmes d’automatisation comme CODESYS et TIA Portal ne permettent pas à l’utilisateur de programmer directement une boucle de rétroaction. On fait donc de même.
 
-#figure(
-  image("/resources/img/74_exempleBidonUserView.png", width: 80%),
-  caption: [
-    vue User : bref aperçu
-  ],
-)
+Il suffit simplement de modifier les conditions pour remplir *isValidConnection* côté #gls("frontend").  
+Cependant, si une rétroaction est nécessaire, il suffit d’utiliser les mécanismes permis par les variables (@sec:implVariables).
 
-Le rôle de cette vue a déjà été expliqué @sec:websocketVUE.  
-Elle est implémentée côté *#gls("backend")* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent en @fig:vuePrincipeWebSocketInput-vs-vue et @fig:vuePrincipeWebSocketOutput-vs-vue.
-
-Du côté *#gls("frontend")*, la vue est créée dans le fichier *user.tsx* du dossier *webSocketInterface*. C’est là qu’on gère l’affichage des éléments triés dans les appliances.
-
-Pour passer d’une vue à l’autre, on utilise react-router-dom @ReactRouterUseNavigate : pour naviguer entre les routes (avec `useNavigate`).
-
-
-#figure(
-    align(left,
-    ```tsx
-      const navigate = useNavigate();
-      const openView = () => { navigate('/websocket'); };
-      ...
-      const navigate = useNavigate();
-      const goBackView = () => { navigate(-1); };
-    ```
-    ),
-    caption: [*Vue User* : navigation entre les pages],
-  )
-  
-  == Vue mode debug <sec:implVueDebug>
-
-Le rôle de cette vue a déjà été expliqué @sec:modeDebugDesign.  
-Elle est implémentée côté *#gls("backend")* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent @sec:debugModeData.
-
-Après avoir dû déboguer avec cet outil, il a finalement été choisi d’afficher la valeur des connexions par défaut, et que l’outil *display connection* permette de cacher celles qui prennent trop de place, par exemple. Cependant, côté *#gls("backend")*, dans la fonction _DebugMode_, il y a la première version qui fait l'inverse en commentaire.
-
-Les outils communiquent avec le *#gls("backend")* par la fonction _handleIncomingMessage_, responsable de recevoir les messages _webSocket_. C’est à ce moment-là qu’on ajoute ou enlève les *edges* de la variable _toDebugList_.
-
-Les connexions reçoivent l’animation "dash 1s linear infinite" pour donner l’impression d’un flux de données.
-
-Du côté *#gls("frontend")*, la vue est créée grâce au fichier *debug.tsx* du dossier *webSocketInterface*.
-
-La vue debug est également réduite comparée à la vue programmatation, en utilisant une sous-classe _css_ "hide-when-debug".
-
-#figure(
-  image("/resources/img/76_debugSansDebug.png", width: 100%),
-  caption: [
-    vue programmatation : plus d'éléments visible que vue debug
-  ],
-)
-#figure(
-  image("/resources/img/76_debugAvecDebug.png", width: 100%),
-  caption: [
-    vue debug : moins d'éléments visible que vue debug
-  ],
-)
-#infobox()[Remarquez que les connexions (edges) sont bien différentes en mode debug. Il a donc fallu créer un nouveau type d’edge, car le type "step" défini par la librairie ne suffisait plus. Ce type a été créé dans le fichier _*CustomEdgeStartEndDebug.tsx*_.]
-
-La @fig:sequenceDebug montre comment les données se transmettent entre le côté #gls("frontend") et le côté #gls("backend"). Cela permet notamment de comprendre comment le passage d’un graphique à l’autre est effectué.
-
-#figure(
-  image("/resources/img/76_debug_diagramme_Sequence.png", width: 100%),
-  caption: [
-    vue debug : Diagramme de séquence - Utilisation normal - lien entre #gls("frontend") et #gls("backend")
-  ],
-)
-#label("fig:sequenceDebug")
- 
-
-
-  == Améliorations interface <sec:ameliorationInterface-vs-vue>
   === Rajouter des raccourcies
   Le fichier _useKeyboardShortcuts.tsx_ a été créé pour l'occasion. Il est appelé dans _App.tsx_.  
   Les raccourcis qui ont été rajoutés sont :
@@ -636,7 +586,6 @@ La @fig:sequenceDebug montre comment les données se transmettent entre le côt�
 
   *undo / redo* : Le principe est d'avoir deux piles _redoStack_ et _undoStack_. On utilise _pushToUndoStack()_ pour créer une pile, et _useDebouncedUndo.tsx_ qui vérifie lorsqu'il y a des modifications et utilise un petit délai pour éviter de pousser plusieurs fois à cause d'une modification mineure survenant au même moment.
 
-  #pagebreak()
   === Nodes 
   Un node standard est constitué de trois éléments principaux, comme le montre @fig:blocCSS_Node_Basique-vs-vue. Pour chacun de ces éléments, une classe CSS a été créée. Il est également possible de spécifier plus particulièrement pour des blocs un peu plus complexes, comme le montre @fig:blocCSS_Communication_Modife-vs-vue, par exemple pour agrandir légèrement pour les blocs de communication. Cette structure permet de changer les couleurs et tailles pour chaque type de node.
 
@@ -834,6 +783,81 @@ Les outils peuvent fonctionner de deux manières :
   ],
   )
    #pagebreak()
+
+
+
+ == Vue User <sec:implVueUser>
+
+#figure(
+  image("/resources/img/74_exempleBidonUserView.png", width: 80%),
+  caption: [
+    vue User : bref aperçu
+  ],
+)
+
+Le rôle de cette vue a déjà été expliqué @sec:websocketVUE.  
+Elle est implémentée côté *#gls("backend")* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent en @fig:vuePrincipeWebSocketInput-vs-vue et @fig:vuePrincipeWebSocketOutput-vs-vue.
+
+Du côté *#gls("frontend")*, la vue est créée dans le fichier *user.tsx* du dossier *webSocketInterface*. C’est là qu’on gère l’affichage des éléments triés dans les appliances.
+
+Pour passer d’une vue à l’autre, on utilise react-router-dom @ReactRouterUseNavigate : pour naviguer entre les routes (avec `useNavigate`).
+
+
+#figure(
+    align(left,
+    ```tsx
+      const navigate = useNavigate();
+      const openView = () => { navigate('/websocket'); };
+      ...
+      const navigate = useNavigate();
+      const goBackView = () => { navigate(-1); };
+    ```
+    ),
+    caption: [*Vue User* : navigation entre les pages],
+  )
+  
+  == Vue mode debug <sec:implVueDebug>
+
+Le rôle de cette vue a déjà été expliqué @sec:modeDebugDesign.  
+Elle est implémentée côté *#gls("backend")* dans *serverWebSocket.go*, suivant les schémas du chapitre précédent @sec:debugModeData.
+
+Après avoir dû déboguer avec cet outil, il a finalement été choisi d’afficher la valeur des connexions par défaut, et que l’outil *display connection* permette de cacher celles qui prennent trop de place, par exemple. Cependant, côté *#gls("backend")*, dans la fonction _DebugMode_, il y a la première version qui fait l'inverse en commentaire.
+
+Les outils communiquent avec le *#gls("backend")* par la fonction _handleIncomingMessage_, responsable de recevoir les messages _webSocket_. C’est à ce moment-là qu’on ajoute ou enlève les *edges* de la variable _toDebugList_.
+
+Les connexions reçoivent l’animation "dash 1s linear infinite" pour donner l’impression d’un flux de données.
+
+Du côté *#gls("frontend")*, la vue est créée grâce au fichier *debug.tsx* du dossier *webSocketInterface*.
+
+La vue debug est également réduite comparée à la vue programmatation, en utilisant une sous-classe _css_ "hide-when-debug".
+
+#figure(
+  image("/resources/img/76_debugSansDebug.png", width: 100%),
+  caption: [
+    vue programmatation : plus d'éléments visible que vue debug
+  ],
+)
+#figure(
+  image("/resources/img/76_debugAvecDebug.png", width: 100%),
+  caption: [
+    vue debug : moins d'éléments visible que vue debug
+  ],
+)
+#infobox()[Remarquez que les connexions (edges) sont bien différentes en mode debug. Il a donc fallu créer un nouveau type d’edge, car le type "step" défini par la librairie ne suffisait plus. Ce type a été créé dans le fichier _*CustomEdgeStartEndDebug.tsx*_.]
+
+La @fig:sequenceDebug montre comment les données se transmettent entre le côté #gls("frontend") et le côté #gls("backend"). Cela permet notamment de comprendre comment le passage d’un graphique à l’autre est effectué.
+
+#figure(
+  image("/resources/img/76_debug_diagramme_Sequence.png", width: 100%),
+  caption: [
+    vue debug : Diagramme de séquence - Utilisation normal - lien entre #gls("frontend") et #gls("backend")
+  ],
+)
+#label("fig:sequenceDebug")
+ 
+
+
+
   == Gestion des erreurs <sec:implGestionErreur>
   Pour envoyer un message d'erreur sur la page de programmation, il faut utiliser dans le programme : *serverResponse.ResponseProcessGraph* = "message à envoyer". Cela doit se faire avant la fin de la vérification, donc pour mettre des messages pour un *Node* précis, il faut utiliser l'appel dans la méthode *GetOutput* de celui-ci. C'est ce qui a été utilisé pour @sec:timer.
 
@@ -871,6 +895,15 @@ Les outils peuvent fonctionner de deux manières :
     exemple - erreur *TON*
   ],
   )
+
+  === Find
+   #figure(
+  image("/resources/img/88_erreur_find.png", width: 100%),
+  caption: [
+    exemple - erreur *Find* - iStart pas int
+  ],
+  )
+
 
   
 

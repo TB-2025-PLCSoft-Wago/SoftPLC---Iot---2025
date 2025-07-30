@@ -11,7 +11,7 @@ import {
     ReactFlowProvider,
     useEdgesState,
     useNodesState,
-    Edge, MiniMap,
+    Edge, MiniMap, getOutgoers,
 } from "reactflow";
 
 
@@ -544,7 +544,23 @@ export default function App() {
         if (sourceHandleType !== targetHandleType) {
             return false;
         }
-        return true;
+
+        const hasCycle = (currentNode: Node, visited = new Set<string>()) => {
+            if (visited.has(currentNode.id)) return false;
+
+            visited.add(currentNode.id);
+            const outgoers = getOutgoers(currentNode, nodes, edges);
+
+            for (const outgoer of outgoers) {
+                if (outgoer.id === connection.source) return true; // cycle detect
+                if (hasCycle(outgoer, visited)) return true;
+            }
+
+            return false;
+        };
+
+        return !hasCycle(targetNode);
+        //return true;
     }
     const [isDragging, setIsDragging] = useState(false);
     const handleNodeDragStart = () => {

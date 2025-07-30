@@ -69,6 +69,8 @@ const LogicalNode: React.FC<NodeProps<LogicalNodeData>> = (props) => {
         data.parameterNameData?.length,
     ]);
 
+
+
     useEffect(() => {
         if (Array.isArray(data.parameterValueData)) {
             setInputValues(data.parameterValueData);

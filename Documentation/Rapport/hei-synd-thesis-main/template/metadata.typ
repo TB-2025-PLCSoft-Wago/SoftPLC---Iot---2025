@@ -46,8 +46,8 @@
 
 #let summary-page = (
    summary-title: "Objectif du projet", // <-- Ton nouveau titre ici
-  logo: image("/resources/img/65_Modbus_ReadBool_exemple_3.png", width: 125%),
-
+  //logo: image("/resources/img/65_Modbus_ReadBool_exemple_3.png", width: 125%),
+  logo: image("/resources/img/86_introPosterImage.png", width: 124%),
   //one sentence with max. 240 characters, with spaces.
   objective: [
     L’entreprise WAGO, qui commercialise des automates, a mandaté la HES-SO afin de réaliser un nouveau HAL (Hardware Abstraction Layer) pour ses nouvelles interfaces des PLC WAGO CC100 (751-9401 et 751-9402). L’objectif est de permettre aux automaticiens de programmer de manière simple via une page web, tout en leur donnant la possibilité de réaliser des tâches complexes telles que la communication HTTP, MQTT, Modbus, ainsi que d'autres fonctions avancées. Cela permettra l’intégration de systèmes IoT, en facilitant la mise en œuvre de communications et de fonctions connectées directement depuis l’interface web.

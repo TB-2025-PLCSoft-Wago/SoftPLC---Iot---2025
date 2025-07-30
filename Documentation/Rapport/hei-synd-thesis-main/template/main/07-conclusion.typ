@@ -43,7 +43,7 @@ L’intégration des blocs suivants :
   - SR (@sec:implSR)
   - NOT
   - TOF
-  - trigger : RF_trig, Rtrig, Ftrig
+  - trigger : RF_trig, Rtrig, Ftrig (@sec:implTrigger) 
 ]
 
 Ainsi que d’autres fonctionnalités :
@@ -75,18 +75,39 @@ Pour réaliser toutes ces fonctionnalités, il a fallu :
  #figure(
   image("/resources/img/12_VisuAvant.png", width: 100%),
   caption: [
-    Interface avant
+    Interface programmatation - avant
   ],
 )
 
 #figure(
   image("/resources/img/13_VisuApres.png", width: 100%),
   caption: [
-    Interface après
+    Interface programmatation -  après
   ],
 )
-
+#figure(
+  image("/resources/img/85_interfaceUserConclusion.png", width: 100%),
+  caption: [
+    nouvelle interface user -  après
+  ],
+)
+#figure(
+  image("/resources/img/85_interfaceDebugConclusion.png", width: 100%),
+  caption: [
+    nouvelle interface debug -  après
+  ],
+)
+/*
+Il y a de nombreuse différences :
+#[
+  #set list(marker: ([•], [--]), spacing: auto, indent: 2em)
+- introduire des types plus complexes,
+- permettre la transmission de tableaux de chaînes de caractères entre le #gls("frontend") et le #gls("backend"),
+- prendre en charge les blocs ayant plusieurs _outputs_,
+- etc.
+]
 La différence est la *slide Bar* car avant si on ouvrait tous on n’avait pas accès aux composants du bas.
+*/
 /*
 #infobox()[
   *Bloc bleu* : il sont le résultat d’un test qui a été fait l’objectif était de voir comment était géré le style css des blocs. Le résultat est qu’il est géré par groupe. Ainsi, tous les Blocs _LogicalNode_ ont le même type. Il faudra donc améliorer la structure pour rendre plus facile l’attribution de style si on veut plus personaliser.
@@ -109,6 +130,7 @@ D’un point de vue utilisateur, de nombreuses améliorations ont été apporté
     - l’ajout d’un menu déroulant sur certains blocs pour basculer plus rapidement,
     - le redimensionnement dynamique des blocs,
     - la possibilité d’ajouter des commentaires,
+    - la récupération des valeurs des blocs après un _restore_ grâce à des _useEffect_,
     - l’ajout d’une boîte à outils (toolbox).
 ]
 
@@ -120,7 +142,12 @@ Finalement, un banc de test de démonstration d’une maison connectée a pu êt
 
 == Difficultés rencontrées
 
-La documentation de WDA n'est pas suffisante pour comprendre le fonctionnement de la _library_. Il y a beaucoup de paramètres différents, mais on ne trouve pas ceux qui nous intéressent, la majorité d'entre eux sont pour modifier des paramètres de la configuration automate. Cependant, il a pu être remarqué que les modèles *741-9402* et *751-9401* ne sont pas les mêmes. La documentation du 741-9402 est plus complète, et l'utilisation des entrées/sorties (I/O) y est clairement expliquée. En revanche, il n'a toujours pas été trouvé de documentation concernant l'utilisation du module CAN.
+La documentation de WDA n'est pas suffisante pour comprendre le fonctionnement de la _library_. Il y a beaucoup de paramètres différents, mais on ne trouve pas ceux qui nous intéressent, la majorité d'entre eux sont pour modifier des paramètres de la configuration automate. Cependant, il a pu être remarqué que les modèles *741-9402* et *751-9401* ne sont pas les mêmes. La documentation du *741-9402* est plus complète, et l'utilisation des entrées/sorties (I/O) y est clairement expliquée. En revanche, il n'a toujours pas été trouvé de documentation concernant l'utilisation du module CAN.
+
+Pour l’implémentation de la fonction undo/redo (ctrl + z/y), la difficulté a été de ne pas prendre trop d’évènements. En effet, *React Flow* a tendance à envoyer beaucoup d’évènements pour la moindre action.
+
+De plus, il a fallu s’assurer que le programme ne puisse pas planter et que les fonctionnalités qui plantent soient redémarrées.
+
 
 == Perspectives d'avenir
 === Permettre la création de fonction

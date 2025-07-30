@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>20</zoom_level>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>160</y>
+      <w>660</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;90.0;40.0;90.0;10.0;150.0;10.0;150.0;40.0;310.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>200</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>input
+style=wordwrap
+bg=LIGHT_GRAY
+fg=LIGHT_GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>280</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>output
+style=wordwrap
+bg=LIGHT_GRAY
+fg=LIGHT_GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>240</y>
+      <w>660</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;90.0;40.0;90.0;10.0;100.0;10.0;100.0;40.0;150.0;40.0;150.0;10.0;160.0;10.0;160.0;40.0;310.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>120</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>RF_trig
+-
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>420</y>
+      <w>660</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;90.0;40.0;90.0;10.0;150.0;10.0;150.0;40.0;310.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>460</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>input
+style=wordwrap
+bg=LIGHT_GRAY
+fg=LIGHT_GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>540</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>output
+style=wordwrap
+bg=LIGHT_GRAY
+fg=LIGHT_GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>500</y>
+      <w>660</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;90.0;40.0;90.0;10.0;100.0;10.0;100.0;40.0;310.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>380</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Rtrig
+-
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>680</y>
+      <w>660</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;90.0;40.0;90.0;10.0;150.0;10.0;150.0;40.0;310.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>720</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>input
+style=wordwrap
+bg=LIGHT_GRAY
+fg=LIGHT_GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>800</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>output
+style=wordwrap
+bg=LIGHT_GRAY
+fg=LIGHT_GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>760</y>
+      <w>660</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;150.0;40.0;150.0;10.0;160.0;10.0;160.0;40.0;310.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>340</x>
+      <y>640</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Ftrig
+-
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

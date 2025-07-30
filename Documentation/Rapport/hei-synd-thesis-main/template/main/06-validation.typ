@@ -66,7 +66,7 @@ La section @sec:porteGarage-vs-vue décrit le programme de la porte du garage. C
 
 La section @sec:lampe-vs-vue présente le programme de la lampe _Shelly Bulb_. L’utilisateur peut en contrôler la couleur et la luminosité via l’interface utilisateur. Il est également possible de l’allumer ou de l’éteindre manuellement depuis cette même interface.
 
-La section @sec:lampe2-vs-vue présente le programme des autres lumières. Il permet de contrôler les éclairages selon l’emplacement dans la maison : un appui court sur le bouton _Shelly_ allume les lampes de la pièce où l'on se trouve, tandis qu’un appui long les éteint toutes. Cette fonctionnalité est uniquement disponible pour les pièces *Kitchen* et *Garage*.
+La section @sec:lampe2-vs-vue présente le programme des autres lumières. Il permet de contrôler les éclairages selon l’emplacement dans la maison : un appui court sur le bouton _Shelly_ allume/éteint les lampes de la pièce où l'on se trouve, tandis qu’un appui long les éteint toutes. Cette fonctionnalité est uniquement disponible pour les pièces *Kitchen* et *Garage*.
 
 
 
