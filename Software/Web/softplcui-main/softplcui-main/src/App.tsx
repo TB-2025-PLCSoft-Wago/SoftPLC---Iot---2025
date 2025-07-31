@@ -577,7 +577,7 @@ export default function App() {
         setIsDragging(false);
     };
 
-    useKeyboardShortcuts({ nodes, edges, setNodes, setEdges, getId, isDragging });
+
 
     /* Debug */
     const [checkedDebug, setChecked] = React.useState(false);
@@ -620,7 +620,8 @@ export default function App() {
             : `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='32' width='32'><text y='24' font-size='24'>${emoji}</text></svg>") 16 16, auto`;
 
 
-
+    /*shortcuts*/
+    useKeyboardShortcuts({ nodes, edges, setNodes, setEdges, getId, isDragging, checkedDebug });
 
     const onPaneClick = useCallback(
         (event: React.MouseEvent) => {
@@ -826,7 +827,7 @@ export default function App() {
                             autoClose={3000}
                             pauseOnFocusLoss={false}
             />
-            {/*Debug webScoket*/}
+            {/*Debug webSocket*/}
             {checkedDebug && <Debug setEdges={setEdges} />}
         </ReactFlowProvider>
     );

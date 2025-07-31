@@ -1,5 +1,6 @@
 #import "@preview/hei-synd-thesis:0.1.1": *
 #import "/metadata.typ": *
+= #gls("WDA")
 == WDA analyse 751-9401  <sec:WDA_AnalysePR4>
 Les liens donnés dans la section suivante dépendent de l'adresse de l'automate.
 

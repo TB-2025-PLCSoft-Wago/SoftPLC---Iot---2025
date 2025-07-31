@@ -4,7 +4,7 @@
 
 
 #pagebreak()
-//#set heading(offset: 0, numbering: "1.A.1")
+#set heading(numbering: none)
 = Annexe <sec:annexe>
 #add-chapter(
   after: <sec:annexe>,
@@ -13,19 +13,20 @@
   //heading-offset: 1,
 )[
   //#let unary(.., last) = "A." + str(last + 1)
-  //#counter(heading).update(0)
+  #counter(heading).update(0)
   
   
 
 
-
+#set heading( numbering: "A.1",) //level: 2,depth: 10
+#set heading(offset: 0)
 //#show heading.where(level: 3): set text(red)
 #set page(
   flipped: true,
   )
 
   #pagebreak()
-== Planning
+= Planning
 
 #pagebreak()
 

@@ -9,6 +9,7 @@ export default function useDebouncedUndo(
     pushToUndoStack: () => void,
     undoStack: UndoStack,
     manualPushRef: React.MutableRefObject<boolean>,
+    undoBlockRef: React.MutableRefObject<boolean>,
     delay: number = 500
 ) {
     const debounceTimeout = useRef<number | null>(null);
@@ -16,6 +17,9 @@ export default function useDebouncedUndo(
     useEffect(() => {
         if (manualPushRef.current) {
             manualPushRef.current = false; // Ignore this one, it's manual
+            return;
+        }
+        if (undoBlockRef.current){
             return;
         }
 

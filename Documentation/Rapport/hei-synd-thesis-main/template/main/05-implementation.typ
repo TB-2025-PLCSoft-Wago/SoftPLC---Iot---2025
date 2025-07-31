@@ -345,6 +345,11 @@ Dans la partie *#gls("backend")*, les blocs logiques de communication se trouven
   === MQTT <sec:implMQTT>
   Le bloc *MQTT* permet de communiquer avec un broker MQTT. Il est possible de publier des messages sur des topics ou de s'abonner à des topics pour recevoir des messages. 
   
+  La documentation @MqttPackageGithubcom de la librairie Golang a été utilisée pour réaliser la partie client.  
+  La documentation @MochimqttServer2025 permet de mettre en place un serveur MQTT et explique comment le déployer avec Docker. Il y a également la documentation @HowUseMQTT2022 qui a été utilisée pour faire le programme, elle décrit bien comment implémenter MQTT en golang.
+  De plus, le site @MQTTCoolTestClient a permis de tester le bloc.
+
+  
   Le bloc *MQTT* a les *inputs* suivantes :
   - *xEnable* : l'entrée pour activer le bloc. Si cette entrée est à _false_, le bloc ne fera rien.
   - *topicToSend* : les topics sur lesquels publier (exemple : topic/test1 ,, topic/test2).
@@ -365,7 +370,7 @@ Dans la partie *#gls("backend")*, les blocs logiques de communication se trouven
    La fonction _makeConnectLostHandler(n \*MqttNode)_ permet de gérer la perte de connexion avec le broker MQTT. Elle s'assure de relancer la connexion et de réabonner aux topics si la connexion a un problème.
 #pagebreak()  
 === Node HTTP client <sec:implHTTPClient>
-Le package Go @HttpPackageNetb a été utilisé.
+Le package Go @HttpPackageNetb a été utilisé. L'exemple @GoExampleHTTP a aidé pour débuter. 
 Pour le Node HTTP client, il est possible de configurer les paramètres suivants :
 - *url* : l'URL de la requête HTTP.
 - *user* : l'utilisateur pour l'authentification HTTP.
@@ -584,7 +589,8 @@ Cependant, si une rétroaction est nécessaire, il suffit d’utiliser les méca
   - ctrl + z : annule la dernière modification (undo)  
   - ctrl + y : rétablit la modification annulée (redo)  
 
-  *undo / redo* : Le principe est d'avoir deux piles _redoStack_ et _undoStack_. On utilise _pushToUndoStack()_ pour créer une pile, et _useDebouncedUndo.tsx_ qui vérifie lorsqu'il y a des modifications et utilise un petit délai pour éviter de pousser plusieurs fois à cause d'une modification mineure survenant au même moment.
+  *undo / redo* : Le principe est d'avoir deux piles _redoStack_ et _undoStack_. On utilise _pushToUndoStack()_ pour créer une pile, et _useDebouncedUndo.tsx_ qui vérifie lorsqu'il y a des modifications et utilise un petit délai pour éviter de pousser plusieurs fois à cause d'une modification mineure survenant au même moment. Pour ne pas ajouter un évènement dans _undoStack_, on peut utiliser _manualPushRef.current_ et l’assigner à _true_. On peut également tout bloquer, par exemple en mode _debug_, en assignant _undoBlockRef.current_ à _true_.
+
 
   === Nodes 
   Un node standard est constitué de trois éléments principaux, comme le montre @fig:blocCSS_Node_Basique-vs-vue. Pour chacun de ces éléments, une classe CSS a été créée. Il est également possible de spécifier plus particulièrement pour des blocs un peu plus complexes, comme le montre @fig:blocCSS_Communication_Modife-vs-vue, par exemple pour agrandir légèrement pour les blocs de communication. Cette structure permet de changer les couleurs et tailles pour chaque type de node.

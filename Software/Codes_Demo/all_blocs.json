@@ -1,7 +1,7 @@
 {
   "nodes": [
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "0",
       "type": "commentNode",
@@ -20,7 +20,7 @@
       }
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "1",
       "type": "commentNode",
@@ -40,8 +40,8 @@
       "draggable": true
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "id": "2",
       "type": "LogicalNode",
       "position": {
@@ -88,8 +88,8 @@
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "id": "3",
       "type": "LogicalNode",
       "position": {
@@ -136,8 +136,8 @@
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 263,
+      "width": 102,
+      "height": 262,
       "id": "4",
       "type": "LogicalNode",
       "position": {
@@ -199,8 +199,8 @@
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "id": "5",
       "type": "LogicalNode",
       "position": {
@@ -247,8 +247,8 @@
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "id": "6",
       "type": "LogicalNode",
       "position": {
@@ -300,7 +300,7 @@
       "dragging": false
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "7",
       "type": "commentNode",
@@ -320,13 +320,13 @@
       "draggable": true
     },
     {
-      "width": 248,
-      "height": 143,
+      "width": 247,
+      "height": 142,
       "id": "8",
       "type": "LogicalNode",
       "position": {
-        "x": 444.43729139949875,
-        "y": 803.7779892964394
+        "x": 636.7479575066525,
+        "y": 1988.9708728062196
       },
       "data": {
         "accordion": "Communication",
@@ -370,19 +370,19 @@
       },
       "selected": false,
       "positionAbsolute": {
-        "x": 444.43729139949875,
-        "y": 803.7779892964394
+        "x": 636.7479575066525,
+        "y": 1988.9708728062196
       },
       "dragging": false
     },
     {
-      "width": 248,
-      "height": 143,
+      "width": 247,
+      "height": 142,
       "id": "9",
       "type": "LogicalNode",
       "position": {
-        "x": 740.1666208449501,
-        "y": 801.0141637876034
+        "x": 932.4772869521039,
+        "y": 1986.2070472973837
       },
       "data": {
         "accordion": "Communication",
@@ -418,34 +418,14 @@
       },
       "selected": false,
       "positionAbsolute": {
-        "x": 740.1666208449501,
-        "y": 801.0141637876034
+        "x": 932.4772869521039,
+        "y": 1986.2070472973837
       },
       "dragging": false
     },
     {
-      "width": 217,
-      "height": 52,
-      "id": "10",
-      "type": "commentNode",
-      "position": {
-        "x": 161.67169451814567,
-        "y": 806.7570294879145
-      },
-      "data": {
-        "text": "communication strechable"
-      },
-      "selected": false,
-      "dragging": false,
-      "positionAbsolute": {
-        "x": 161.67169451814567,
-        "y": 806.7570294879145
-      },
-      "draggable": true
-    },
-    {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "id": "11",
       "type": "LogicalNode",
       "position": {
@@ -521,8 +501,8 @@
       "dragging": false
     },
     {
-      "width": 248,
-      "height": 383,
+      "width": 247,
+      "height": 382,
       "id": "12",
       "type": "LogicalNode",
       "position": {
@@ -586,8 +566,8 @@
       "dragging": false
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "id": "13",
       "type": "LogicalNode",
       "position": {
@@ -657,8 +637,8 @@
       }
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "id": "14",
       "type": "LogicalNode",
       "position": {
@@ -724,8 +704,8 @@
       "dragging": false
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "id": "15",
       "type": "LogicalNode",
       "position": {
@@ -791,8 +771,8 @@
       "dragging": false
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "id": "16",
       "type": "LogicalNode",
       "position": {
@@ -858,8 +838,8 @@
       "dragging": false
     },
     {
-      "width": 248,
-      "height": 423,
+      "width": 247,
+      "height": 422,
       "id": "17",
       "type": "LogicalNode",
       "position": {
@@ -925,7 +905,7 @@
       "dragging": false
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "18",
       "type": "commentNode",
@@ -945,8 +925,8 @@
       "draggable": true
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "id": "19",
       "type": "LogicalNode",
       "position": {
@@ -993,7 +973,7 @@
       "dragging": false
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "20",
       "type": "commentNode",
@@ -1013,13 +993,13 @@
       "draggable": true
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "21",
       "type": "commentNode",
       "position": {
-        "x": 799.124712144804,
-        "y": 1976.5617280135534
+        "x": 1306.0842776421691,
+        "y": 1973.3666047015952
       },
       "data": {
         "text": "Handling value "
@@ -1027,19 +1007,19 @@
       "selected": false,
       "dragging": false,
       "positionAbsolute": {
-        "x": 799.124712144804,
-        "y": 1976.5617280135534
+        "x": 1306.0842776421691,
+        "y": 1973.3666047015952
       },
       "draggable": true
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "id": "22",
       "type": "LogicalNode",
       "position": {
-        "x": 1078.5000320197526,
-        "y": 1969.2876705796843
+        "x": 1585.4595975171178,
+        "y": 1966.092547267726
       },
       "data": {
         "accordion": "Handling value",
@@ -1080,14 +1060,14 @@
       },
       "selected": false,
       "positionAbsolute": {
-        "x": 1078.5000320197526,
-        "y": 1969.2876705796843
+        "x": 1585.4595975171178,
+        "y": 1966.092547267726
       },
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "id": "23",
       "type": "LogicalNode",
       "position": {
@@ -1139,7 +1119,7 @@
       "dragging": false
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "24",
       "type": "commentNode",
@@ -1159,8 +1139,8 @@
       "draggable": true
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "id": "25",
       "type": "LogicalNode",
       "position": {
@@ -1212,7 +1192,7 @@
       "dragging": false
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "26",
       "type": "commentNode",
@@ -1232,8 +1212,8 @@
       "draggable": true
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "id": "27",
       "type": "LogicalNode",
       "position": {
@@ -1280,8 +1260,8 @@
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "id": "28",
       "type": "LogicalNode",
       "position": {
@@ -1328,8 +1308,8 @@
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 143,
+      "width": 102,
+      "height": 142,
       "id": "29",
       "type": "LogicalNode",
       "position": {
@@ -1376,8 +1356,8 @@
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "id": "30",
       "type": "LogicalNode",
       "position": {
@@ -1429,8 +1409,8 @@
       "dragging": false
     },
     {
-      "width": 103,
-      "height": 183,
+      "width": 102,
+      "height": 182,
       "id": "31",
       "type": "LogicalNode",
       "position": {
@@ -1482,7 +1462,7 @@
       "dragging": false
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "32",
       "type": "commentNode",
@@ -1502,8 +1482,8 @@
       "draggable": true
     },
     {
-      "width": 223,
-      "height": 93,
+      "width": 202,
+      "height": 82,
       "id": "33",
       "type": "inputNode",
       "position": {
@@ -1552,8 +1532,8 @@
       "dragging": false
     },
     {
-      "width": 223,
-      "height": 93,
+      "width": 202,
+      "height": 82,
       "id": "34",
       "type": "inputNode",
       "position": {
@@ -1606,7 +1586,7 @@
       }
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "35",
       "type": "commentNode",
@@ -1626,8 +1606,8 @@
       "draggable": true
     },
     {
-      "width": 223,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "id": "36",
       "type": "outputNode",
       "position": {
@@ -1674,8 +1654,8 @@
       }
     },
     {
-      "width": 223,
-      "height": 83,
+      "width": 202,
+      "height": 82,
       "id": "37",
       "type": "outputNode",
       "position": {
@@ -1728,7 +1708,7 @@
       }
     },
     {
-      "width": 217,
+      "width": 216,
       "height": 52,
       "id": "38",
       "type": "commentNode",
@@ -1748,8 +1728,8 @@
       "draggable": true
     },
     {
-      "width": 223,
-      "height": 93,
+      "width": 202,
+      "height": 82,
       "id": "39",
       "type": "inputNode",
       "position": {
@@ -1788,8 +1768,8 @@
       "dragging": false
     },
     {
-      "width": 223,
-      "height": 93,
+      "width": 205,
+      "height": 85,
       "id": "40",
       "type": "inputNode",
       "position": {
@@ -1839,8 +1819,8 @@
       }
     },
     {
-      "width": 223,
-      "height": 93,
+      "width": 205,
+      "height": 85,
       "id": "41",
       "type": "inputNode",
       "position": {
@@ -1891,8 +1871,8 @@
       }
     },
     {
-      "width": 223,
-      "height": 83,
+      "width": 205,
+      "height": 85,
       "id": "42",
       "type": "outputNode",
       "position": {
@@ -1945,8 +1925,8 @@
       }
     },
     {
-      "width": 223,
-      "height": 83,
+      "width": 205,
+      "height": 85,
       "id": "43",
       "type": "outputNode",
       "position": {
@@ -1999,8 +1979,8 @@
       }
     },
     {
-      "width": 223,
-      "height": 93,
+      "width": 205,
+      "height": 85,
       "id": "44",
       "type": "inputNode",
       "position": {
@@ -2051,8 +2031,8 @@
       "dragging": false
     },
     {
-      "width": 223,
-      "height": 93,
+      "width": 205,
+      "height": 85,
       "id": "45",
       "type": "inputNode",
       "position": {
@@ -2103,8 +2083,8 @@
       "dragging": false
     },
     {
-      "width": 223,
-      "height": 83,
+      "width": 205,
+      "height": 85,
       "id": "46",
       "type": "outputNode",
       "position": {
@@ -2157,8 +2137,8 @@
       "dragging": false
     },
     {
-      "width": 223,
-      "height": 83,
+      "width": 205,
+      "height": 85,
       "id": "47",
       "type": "outputNode",
       "position": {
@@ -2211,8 +2191,8 @@
       "dragging": false
     },
     {
-      "width": 217,
-      "height": 52,
+      "width": 219,
+      "height": 55,
       "id": "48",
       "type": "commentNode",
       "position": {
@@ -2231,8 +2211,8 @@
       "draggable": true
     },
     {
-      "width": 217,
-      "height": 52,
+      "width": 219,
+      "height": 55,
       "id": "49",
       "type": "commentNode",
       "position": {
@@ -2249,12 +2229,70 @@
         "y": 3475.1324507774684
       },
       "draggable": true
+    },
+    {
+      "width": 102,
+      "height": 222,
+      "id": "50",
+      "type": "LogicalNode",
+      "position": {
+        "x": 1723.64912464558,
+        "y": 1964.5553517742405
+      },
+      "data": {
+        "accordion": "Handling value",
+        "primaryType": "LogicalNode",
+        "type": "FindNode",
+        "display": "Find Node",
+        "label": "Find",
+        "stretchable": false,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "strWhereToSearch"
+          },
+          {
+            "dataType": "value",
+            "name": "strToSeek"
+          },
+          {
+            "dataType": "value",
+            "name": "iStart"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "isFind"
+          }
+        ],
+        "parameterNameData": null,
+        "id": "50",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      "selected": true,
+      "positionAbsolute": {
+        "x": 1723.64912464558,
+        "y": 1964.5553517742405
+      },
+      "dragging": false
     }
   ],
   "edges": [],
   "viewport": {
-    "x": 455.3401919883938,
-    "y": -2333.7384294697404,
-    "zoom": 0.9548416039104164
+    "x": -776.56195970306,
+    "y": -1839.3190603097369,
+    "zoom": 1.0650410719846444
   }
 }

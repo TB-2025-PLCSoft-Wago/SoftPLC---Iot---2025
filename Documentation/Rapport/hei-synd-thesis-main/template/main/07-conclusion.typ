@@ -70,7 +70,10 @@ Pour réaliser toutes ces fonctionnalités, il a fallu :
 - etc.
 ]
 
-=== changement de l’interface
+De plus, les erreurs du TB précédent (2024) ont été corrigées (@sec:erreurNonGerer) et les éléments à régler mentionnés dans (@sec:codePrecedent) ont été pris en compte.
+
+
+=== Changement de l’interface
 
  #figure(
   image("/resources/img/12_VisuAvant.png", width: 100%),
@@ -124,6 +127,7 @@ D’un point de vue utilisateur, de nombreuses améliorations ont été apporté
   #set list(marker: ([•], [--]), spacing: auto, indent: 2em)
     - les contrôles automatisés (copier/coller, annuler/rétablir, couper),
     - l'ajout d'une *slide Bar* dans l'accordion car avant si on ouvrait tous on n’avait pas accès aux composants du bas,
+    - interdire la rétroaction,
     - l’amélioration du visuel,
     - la gestion de fichiers,
     - la possibilité de colorer les connexions pour mieux se repérer,
@@ -138,7 +142,7 @@ Deux nouvelles vues ont également été ajoutées (*user view* et *debug view*)
 
 À cela s’ajoute la résolution de nombreux bugs et l’ajout de plusieurs mécanismes utiles à une future extension du #gls("HAL").
 
-Finalement, un banc de test de démonstration d’une maison connectée a pu être créé, programmé et testé. Cela prouve le bon fonctionnement des solutions mises en place.
+Finalement, un banc de test de démonstration d’une maison connectée a pu être créé, programmé et testé. Cela prouve le bon fonctionnement des solutions mises en place. 
 
 == Difficultés rencontrées
 
@@ -163,27 +167,26 @@ L'avantage est que si une entreprise utilise souvent les mêmes mécanismes, ell
 Il y a de nombreuse possibilités d’amélioration pour l’interface utilisateur.
 #[
   #set list(marker: ([--], [•]),  spacing: auto, indent: 2em)
- -	Interdire les liens qui passent sur un bloc, ajouter une intelligence de connexion.
--	Interdire les boucles de rétroaction (comme dans Codesys) ou les gérer proprement.
--	Ajouter des blocs logiques contenant un champ (pour les Inputs, c’est déjà en partie fait, mais non fonctionnel, et il n’y a pas de système de seuil).
--	Améliorer la nomenclature : éviter d’utiliser "Output" pour l’analogique et le digital, et "Input" pour les constantes. Une idée serait d’ajouter un menu déroulant sur le bloc pour choisir le type.
--	Permettre de coder le #gls("frontend") indépendamment du #gls("backend"), c’est-à-dire générer les accordéons à partir d’un fichier, qui peut être mis à jour lorsqu’on est connecté.
+ //-	Interdire les liens qui passent sur un bloc, ajouter une intelligence de connexion.
+//-	Interdire les boucles de rétroaction (comme dans Codesys) ou les gérer proprement.
+//-	Ajouter des blocs logiques contenant un champ (pour les Inputs, c’est déjà en partie fait, mais non fonctionnel, et il n’y a pas de système de seuil).
+//-	Améliorer la nomenclature : éviter d’utiliser "Output" pour l’analogique et le digital, et "Input" pour les constantes. Une idée serait d’ajouter un menu déroulant sur le bloc pour choisir le type.
+//-	Permettre de coder le #gls("frontend") indépendamment du #gls("backend"), c’est-à-dire générer les accordéons à partir d’un fichier, qui peut être mis à jour lorsqu’on est connecté.
 -	Ajout de raccourcis clavier :
-	- Rendre la touche _Delete_ fonctionnel.
-	-	Ctrl + C / V / A / Z / Y.
-	-	Clic + glisser = multi-sélection.
+//	- Rendre la touche _Delete_ fonctionnel.
+//	-	Ctrl + C / V / A / Z / Y.
+//	-	Clic + glisser = multi-sélection.
 	-	Touche O pour placer un Output, I pour un Input.
 	-	Touche Espace pour placer un composant identique au précédent.
 	-	Shift + clic gauche + glisser pour dupliquer.
-	-	Une autre idée intéressante : une touche (Ctrl + Alt + C) pour ajouter automatiquement tous les blocs nécessaires autour d’un bloc ou groupe sélectionné, avec des valeurs par défaut. Par exemple, on sélectionne un bloc TON, on appuie sur la touche, et le système ajoute automatiquement une constante de 1 seconde, une entrée DIO1 (ou la suivante si déjà utilisée), et une sortie DO1. Les valeurs par défaut ne sont pas obligatoires, on peut faire sans.
-	-	Touche dédiée pour activer ou désactiver les valeurs par défaut.
--	L’ordre des Inputs, Outputs, blocs logiques, etc. dans l’accordion n’est jamais le même, ce qui rend l’utilisation plus pénible car on ne peut pas s'habituer.
--	Amélioration de l’aspect visuel : couleurs et autres éléments graphiques.
+	-	Une autre idée intéressante : une touche (Ctrl + Alt + C) pour ajouter automatiquement tous les blocs nécessaires autour d’un bloc ou groupe sélectionné, avec des valeurs par défaut. Par exemple, on sélectionne un bloc TON, on appuie sur la touche, et le système ajoute automatiquement une constante de 1 seconde, une entrée DIO1 (ou la suivante si déjà utilisée), et une sortie DO1. Les valeurs par défaut ne sont pas obligatoires, on peut faire sans. Mettre une touche dédiée pour activer ou désactiver les valeurs par défaut de cette fonctionnalitée.
+//-	L’ordre des Inputs, Outputs, blocs logiques, etc. dans l’accordion n’est jamais le même, ce qui rend l’utilisation plus pénible car on ne peut pas s'habituer.
+//-	Amélioration de l’aspect visuel : couleurs et autres éléments graphiques.
 -	Ajout d’une barre de menu en haut :
 	-	Affichage des raccourcis clavier
 	-	Aide
-	-	Choix de l’emplacement d’enregistrement par l’utilisateur
-	-	Ajout d’un mode Debug
+//	-	Choix de l’emplacement d’enregistrement par l’utilisateur
+//	-	Ajout d’un mode Debug
 ]
 
 

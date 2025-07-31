@@ -41,7 +41,7 @@ C'est un logiciel de programmation en no-code. Il est possible de faire des prog
 )
 
 
-== Analyse critique du code précédent
+== Analyse critique du code précédent <sec:codePrecedent>
 Le code précédent est un bon point de départ pour la création d'un #gls("HAL") de développement d’automate. Cependant, il y a plusieurs points à améliorer.
 
 Le code est presque totalement fonctionnel malgré quelques petites erreurs. Cependant, la structure actuelle ne permet pas l'intégration de blocs plus complexes que ce qui a été fait. En effet, par exemple, nous pouvons recevoir et transmettre qu'un nombre très limité de paramètres, et la structure de ceux-ci n'est pas très flexible. Le typage des blocs est également très limité. Il utilise le type *float64* pour tous les blocs, ce qui n'est pas adapté à la transmission de données plus complexes. Il serait préférable d'utiliser un type plus flexible, comme un type any, un type générique ou au moins un type *string*. De plus, le code est très difficile à lire et à comprendre car il utilise beaucoup d'imbrications de boucles *for* et *if*. Il manque des commentaires. Il n'a également pas prévu la possibilité d'avoir *plusieurs output* pour un bloc.

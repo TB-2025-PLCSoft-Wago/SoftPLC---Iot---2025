@@ -9,6 +9,7 @@ type UseKeyboardShortcutsProps = {
     setEdges: React.Dispatch<React.SetStateAction<Edge[]>>;
     getId: () => string;
     isDragging: boolean;
+    checkedDebug: boolean;
 };
 
 export default function useKeyboardShortcuts({
@@ -18,12 +19,13 @@ export default function useKeyboardShortcuts({
                                                  setEdges,
                                                  getId,
                                                  isDragging,
+                                                 checkedDebug,
                                              }: UseKeyboardShortcutsProps) {
     const copiedDataRef = useRef<{ nodes: Node[]; edges: Edge[] }>({ nodes: [], edges: [] });
     const undoStack = useRef<{ nodes: Node[]; edges: Edge[] }[]>([]);
     const redoStack = useRef<{ nodes: Node[]; edges: Edge[] }[]>([]);
     const manualPushRef = useRef(false);
-
+    const undoBlockRef = useRef(false);
     const nodesRef = useRef<Node[]>(nodes);
     const edgesRef = useRef<Edge[]>(edges);
 
@@ -41,8 +43,18 @@ export default function useKeyboardShortcuts({
         });
         //redoStack.current = [];
     };
+    useEffect(() => {
+        if (checkedDebug) {
+            undoBlockRef.current = true;
+            console.log("Debug on, manualPushRef = true");
+        } else {
+            undoBlockRef.current = false;
+            console.log("Debug off, manualPushRef = false");
+        }
+    }, [checkedDebug]);
 
     useEffect(() => {
+        console.log("UseEffectKeyboard");
         if (!isDragging) {
             console.log("UseEffectKeyboard");
         }
@@ -161,5 +173,5 @@ export default function useKeyboardShortcuts({
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [setNodes, setEdges, getId]);
 
-    useDebouncedUndo(nodes, edges, pushToUndoStack, undoStack, manualPushRef);
+    useDebouncedUndo(nodes, edges, pushToUndoStack, undoStack, manualPushRef, undoBlockRef);
 }

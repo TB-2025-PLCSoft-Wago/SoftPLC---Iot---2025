@@ -28,20 +28,21 @@ func init() {
 	*/
 	var nameServices []string
 	//for i := range input.Ai {
-	for i := 31; i <= 32; i++ {
+	for i := 31; i <= 34; i++ {
 		nameServices = append(nameServices, "AI"+strconv.Itoa(i-30))
 	}
 	//for i := range input.Temp {
-	for i := 29; i <= 30; i++ {
-		nameServices = append(nameServices, "TEMP"+strconv.Itoa(i-28))
-	}
+	/*
+		for i := 29; i <= 30; i++ {
+			nameServices = append(nameServices, "TEMP"+strconv.Itoa(i-28))
+		}*/
 	services := []servicesStruct{{FriendlyName: "", NameServices: nameServices}}
 	var digitalInputDescription = nodeDescription{
 		AccordionName: "Input",
 		PrimaryType:   "inputNode",
 		Type_:         "analogueInput",
 		Display:       "Analogue Input",
-		Label:         "Input",
+		Label:         "Input analogue",
 		Stretchable:   false,
 		Services:      services,
 		SubServices:   []subServicesStruct{},
