@@ -129,3 +129,13 @@ func init() {
 
 	*/
 }
+func (a *ApplianceInputNode) Clone() *ApplianceInputNode {
+	clonedOutput := make([]InputNodeHandle, len(a.output))
+	copy(clonedOutput, a.output)
+
+	return &ApplianceInputNode{
+		id:       a.id,
+		nodeType: a.nodeType,
+		output:   clonedOutput,
+	}
+}

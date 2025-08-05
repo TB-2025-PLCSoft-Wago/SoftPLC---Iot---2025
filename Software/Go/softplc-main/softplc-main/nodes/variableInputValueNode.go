@@ -67,3 +67,18 @@ func (n *VariableInputValueNode) GetOutput(outName string) *InputNodeHandle {
 	}
 	return nil
 }
+
+func (n *VariableInputValueNode) Clone() *VariableInputValueNode {
+	clonedOutput := make([]InputNodeHandle, len(n.output))
+	copy(clonedOutput, n.output)
+
+	clonedParamValues := make([]string, len(n.parameterValueData))
+	copy(clonedParamValues, n.parameterValueData)
+
+	return &VariableInputValueNode{
+		id:                 n.id,
+		nodeType:           n.nodeType,
+		output:             clonedOutput,
+		parameterValueData: clonedParamValues,
+	}
+}

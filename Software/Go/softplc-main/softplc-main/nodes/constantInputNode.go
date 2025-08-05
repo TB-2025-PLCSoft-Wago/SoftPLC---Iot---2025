@@ -49,3 +49,14 @@ func init() {
 		Output:        []dataTypeNameStruct{{DataType: "value", Name: "Output"}},
 	})
 }
+
+func (c *ConstantInputNode) Clone() *ConstantInputNode {
+	clonedOutput := make([]InputNodeHandle, len(c.output))
+	copy(clonedOutput, c.output)
+
+	return &ConstantInputNode{
+		id:       c.id,
+		nodeType: c.nodeType,
+		output:   clonedOutput,
+	}
+}

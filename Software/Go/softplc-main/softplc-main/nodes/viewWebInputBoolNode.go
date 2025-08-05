@@ -86,3 +86,18 @@ func (n *ViewWebInputBoolNode) GetOutput(outName string) *InputNodeHandle {
 	}
 	return nil
 }
+
+func (n *ViewWebInputBoolNode) Clone() *ViewWebInputBoolNode {
+	clonedOutput := make([]InputNodeHandle, len(n.output))
+	copy(clonedOutput, n.output)
+
+	clonedParamValues := make([]string, len(n.parameterValueData))
+	copy(clonedParamValues, n.parameterValueData)
+
+	return &ViewWebInputBoolNode{
+		id:                 n.id,
+		nodeType:           n.nodeType,
+		output:             clonedOutput,
+		parameterValueData: clonedParamValues,
+	}
+}

@@ -141,7 +141,7 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = (props) => {
         );
         //console.log("constantInput : ", content);
 
-    } else if (data.type.includes("viewWebInput") || (data.type.includes("variableInput"))) {
+    } else if (data.type.includes("viewWebInput") || (data.type.includes("variableInput")) || (data.type.includes("functionInput"))) {
         //console.log("dataType : ", data.outputHandle[0].dataType);
         content = (
             <>

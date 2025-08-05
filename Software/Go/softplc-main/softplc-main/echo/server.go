@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"log"
 	"net/http"
 	"os"
 )
@@ -25,7 +26,7 @@ func EchoServer() {
 	e.POST("/json-graph", func(c echo.Context) error {
 		serverResponse.ResponseProcessGraph = "Graph received"
 
-		//Reset especially comunication
+		//Reset especially communication
 		processGraph.Mutex.Lock()
 		for _, v := range processGraph.LogicalNode {
 			for _, n := range v {
@@ -139,5 +140,129 @@ func EchoServer() {
 		return c.HTML(http.StatusOK, "Graph saved to debug")
 	})
 
+	e.POST("/new-function", func(c echo.Context) error {
+		var jsonBody interface{}
+		if err := c.Bind(&jsonBody); err != nil {
+			return err
+		}
+		graphData, ok := jsonBody.(map[string]interface{})["data"]
+		if !ok {
+			return c.HTML(http.StatusBadRequest, "Graph function wrong format")
+		}
+		name := jsonBody.(map[string]interface{})["name"].(string)
+		CreateFunctionQueue(name, graphData)
+		nodes.FunctionGraphJson = jsonBody
+		nodes.FunctionAddToList()
+		return c.HTML(http.StatusOK, "Graph function saved")
+	})
+
 	e.Logger.Fatal(e.Start(":8889"))
+}
+
+func CreateFunctionQueue(name string, graphFunc interface{}) error {
+	if len(name) >= 5 {
+		name = name[:len(name)-5]
+	}
+	graphNodes, ok := graphFunc.(map[string]interface{})["nodes"]
+	if !ok {
+		return fmt.Errorf("graph function wrong format")
+	}
+	nodeInterfaces, ok := graphNodes.([]interface{})
+	if !ok {
+		return fmt.Errorf("invalid node list format")
+	}
+
+	var nodesJson []processGraph.NodeJson
+	for _, node := range nodeInterfaces {
+		rawMap, ok := node.(map[string]interface{})
+		if !ok {
+			continue
+		}
+
+		convertedNode, err := convertToNodeJson(rawMap)
+		if err != nil {
+			log.Println("node conversion error:", err)
+			continue
+		}
+
+		nodesJson = append(nodesJson, convertedNode)
+	}
+
+	graphEdges := graphFunc.(map[string]interface{})["edges"]
+	graphComplet := map[string]interface{}{
+		"nodes": nodesJson, // graphData2
+		"edges": graphEdges,
+	}
+
+	var graph processGraph.Graph
+
+	jsonBytes, err := json.Marshal(graphComplet)
+	if err != nil {
+		return fmt.Errorf("cannot marshal graphFunc: %w", err)
+	}
+
+	if err := json.Unmarshal(jsonBytes, &graph); err != nil {
+		fmt.Println("JSON Function parse error:", err)
+		return err
+	}
+	processGraph.CreateQueueFunction(graph, name)
+	fmt.Println("function input :", processGraph.ListProcessFunction[name].InputNodes)
+	fp := nodes.FunctionNodeListProcess[name]
+	if processGraph.ListProcessFunction[name].InputNodes != nil {
+		fp.InputNodes = processGraph.ListProcessFunction[name].InputNodes
+	}
+	if processGraph.ListProcessFunction[name].LogicalNode != nil {
+		fp.LogicalNode = processGraph.ListProcessFunction[name].LogicalNode
+	}
+	if processGraph.ListProcessFunction[name].OutputNodes != nil {
+		fp.OutputNodes = processGraph.ListProcessFunction[name].OutputNodes
+	}
+	nodes.FunctionNodeListProcess[name] = fp
+
+	return nil
+
+}
+
+func convertToNodeJson(fullNode map[string]interface{}) (processGraph.NodeJson, error) {
+	data, ok := fullNode["data"].(map[string]interface{})
+	if !ok {
+		return processGraph.NodeJson{}, fmt.Errorf("missing or invalid 'data' field")
+	}
+	id := toString(fullNode["id"])
+	typ := toString(data["type"])
+
+	// Extraire proprement les string
+	friendlyName := toString(data["selectedFriendlyNameData"])
+	service := toString(data["selectedServiceData"])
+	subService := toString(data["selectedSubServiceData"])
+	value := toString(data["valueData"])
+
+	// Convertir parameterValueData []interface{} -> []string
+	rawParamValues, _ := data["parameterValueData"].([]interface{})
+	var paramValues []string
+	for _, val := range rawParamValues {
+		strVal, ok := val.(string)
+		if ok {
+			paramValues = append(paramValues, strVal)
+		}
+	}
+
+	return processGraph.NodeJson{
+		Id:   id,
+		Type: typ,
+		Data: processGraph.Data_{
+			FriendlyName:       friendlyName,
+			Service:            service,
+			SubService:         subService,
+			Value:              value,
+			ParameterValueData: paramValues,
+		},
+	}, nil
+}
+
+func toString(val interface{}) string {
+	if s, ok := val.(string); ok {
+		return s
+	}
+	return ""
 }

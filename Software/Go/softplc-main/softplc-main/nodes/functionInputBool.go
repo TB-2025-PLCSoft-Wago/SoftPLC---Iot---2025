@@ -1,50 +1,32 @@
 package nodes
 
-import (
-	"SoftPLC/variable"
-)
+import "SoftPLC/function"
 
-type VariableInputBoolNode struct {
+type FunctionInputBoolNode struct {
 	id                 int
 	nodeType           string
 	output             []InputNodeHandle
 	parameterValueData []string //select Appliance name + value +
 }
 
-/*
-type Body struct {
-	Di   []bool    `json:"di"`
-	Do   []bool    `json:"do"`
-	Ai   []float64 `json:"ai"`
-	Ao   []float64 `json:"ao"`
-	Temp []float64 `json:"temp"`
-}*/
-
-func (n *VariableInputBoolNode) GetNodeType() string {
+func (n *FunctionInputBoolNode) GetNodeType() string {
 	return n.nodeType
 }
 
-func (n *VariableInputBoolNode) GetId() int {
+func (n *FunctionInputBoolNode) GetId() int {
 	return n.id
 }
 
 func init() {
-	/*
-		resp, _ := http.Get("http://192.168.37.134:8888/api/v1/hal/io")
-		defer resp.Body.Close()
-		body, _ := io.ReadAll(resp.Body)
-		var input Body
-		json.Unmarshal(body, &input)
-	*/
 	var nameServices []string
 	nameServices = []string{"bool", "number", "string"}
 	services := []servicesStruct{{FriendlyName: "", NameServices: nameServices}}
-	var variableInputDescription = nodeDescription{
-		AccordionName:     "Variables",
+	var functionInputDescription = nodeDescription{
+		AccordionName:     "Functions",
 		PrimaryType:       "inputNode",
-		Type_:             "variableInputBool",
-		Display:           "Input bool ",
-		Label:             "variable Input bool",
+		Type_:             "functionInputBool",
+		Display:           " Input bool ",
+		Label:             "function Input bool",
 		Stretchable:       false,
 		Services:          services,
 		SubServices:       []subServicesStruct{},
@@ -52,16 +34,16 @@ func init() {
 		Output:            []dataTypeNameStruct{{DataType: "bool", Name: "Output"}},
 		ParameterNameData: []string{"name", "default value"},
 	}
-	RegisterNodeCreator("variableInputBool", func() (Node, error) {
-		return &VariableInputBoolNode{
+	RegisterNodeCreator("functionInputBool", func() (Node, error) {
+		return &FunctionInputBoolNode{
 			id:       -1,
 			nodeType: "",
 			output:   nil,
 		}, nil
-	}, variableInputDescription)
+	}, functionInputDescription)
 }
 
-func (n *VariableInputBoolNode) InitNode(id_ int, nodeType_ string, output_ []InputNodeHandle, parameterValueData_ []string) {
+func (n *FunctionInputBoolNode) InitNode(id_ int, nodeType_ string, output_ []InputNodeHandle, parameterValueData_ []string) {
 	n.id = id_
 	n.nodeType = nodeType_
 	n.output = output_
@@ -74,11 +56,10 @@ func (n *VariableInputBoolNode) InitNode(id_ int, nodeType_ string, output_ []In
 		n.parameterValueData[1] = "0"
 	}
 	n.output[0].FriendlyName = n.parameterValueData[0]
-	variable.AddInput(n.parameterValueData[0], n.parameterValueData[1])
-
+	function.AddInput(n.parameterValueData[0], n.parameterValueData[1])
 }
 
-func (n *VariableInputBoolNode) GetOutput(outName string) *InputNodeHandle {
+func (n *FunctionInputBoolNode) GetOutput(outName string) *InputNodeHandle {
 	for i, name := range n.output {
 		if name.InputHandle.Name == outName {
 			return &n.output[i]
@@ -86,15 +67,14 @@ func (n *VariableInputBoolNode) GetOutput(outName string) *InputNodeHandle {
 	}
 	return nil
 }
-
-func (n *VariableInputBoolNode) Clone() *VariableInputBoolNode {
+func (n *FunctionInputBoolNode) Clone() *FunctionInputBoolNode {
 	clonedOutput := make([]InputNodeHandle, len(n.output))
 	copy(clonedOutput, n.output)
 
 	clonedParamValues := make([]string, len(n.parameterValueData))
 	copy(clonedParamValues, n.parameterValueData)
 
-	return &VariableInputBoolNode{
+	return &FunctionInputBoolNode{
 		id:                 n.id,
 		nodeType:           n.nodeType,
 		output:             clonedOutput,

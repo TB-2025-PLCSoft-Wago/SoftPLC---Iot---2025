@@ -72,3 +72,13 @@ func (n *AnalogueInputNode) GetOutput(outName string) *InputNodeHandle {
 	}
 	return nil
 }
+func (n *AnalogueInputNode) Clone() *AnalogueInputNode {
+	clonedOutput := make([]InputNodeHandle, len(n.output))
+	copy(clonedOutput, n.output)
+
+	return &AnalogueInputNode{
+		id:       n.id,
+		nodeType: n.nodeType,
+		output:   clonedOutput,
+	}
+}

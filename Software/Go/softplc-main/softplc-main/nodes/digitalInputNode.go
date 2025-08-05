@@ -76,3 +76,14 @@ func (n *DigitalInputNode) GetOutput(outName string) *InputNodeHandle {
 	}
 	return nil
 }
+
+func (n *DigitalInputNode) Clone() *DigitalInputNode {
+	clonedOutput := make([]InputNodeHandle, len(n.output))
+	copy(clonedOutput, n.output)
+
+	return &DigitalInputNode{
+		id:       n.id,
+		nodeType: n.nodeType,
+		output:   clonedOutput,
+	}
+}

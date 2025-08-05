@@ -73,7 +73,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
     }
     useEffect(() => {
         console.log("useEffect");
-        if (!data.type.includes("viewWeb") && !data.type.includes("variable")) {
+        if (!data.type.includes("viewWeb") && !data.type.includes("variable") &&  !data.type.includes("function")) {
             if (selectedFriendlyName === "default") {
                 data.selectedFriendlyNameData = "";
             } else {
@@ -116,7 +116,7 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
 
     let content;
     const {id, selectedServiceData, selectedSubServiceData } = data;
-    if (data.type.includes("viewWeb") || data.type.includes("variable")) {
+    if (data.type.includes("viewWeb") || data.type.includes("variable") || data.type.includes("function")) {
         content = (
             <>
                 <CustomHandle

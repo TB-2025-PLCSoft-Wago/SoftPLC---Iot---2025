@@ -727,6 +727,105 @@ export default function App() {
         reader.readAsText(file);
     };
 
+
+    /*Function*/
+/*    const [openedFunctionData, setOpenedFunctionData] = useState<any>(null);
+    const [openedFunctionName, setOpenedFunctionName] =  useState<string>("");*/
+    const onSaveFunction = (data: any, name: string) => {
+
+        if (!data) {
+            toast.error("Aucune fonction chargée");
+            return;
+        }
+        if (!name) {
+            toast.error("nom manquant.");
+            return;
+        }
+
+
+        const json = {
+            name: name,
+            data: data
+        };
+        console.log("function save data : ", data)
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        const requestOptions: RequestInit = {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify(json),
+            redirect: "follow",
+        };
+
+        const savePromise = fetch("http://localhost:8889/new-function", requestOptions)
+            .then((response) => response.text())
+            .then((result) => {
+                if (result != "Graph function saved") {
+                    console.log("Result :",result)
+                    throw new Error("Failed to save function");
+                }
+                return fetch("http://localhost:8889/get-description")
+                    .then((res) => res.json())
+                    .then((data) => setNodesData(data));
+            })
+            .catch((error) => {
+                if (error.message === "Failed to fetch") {
+                    throw new Error("Server isn't running.")
+                }
+                throw error; // Rethrow the error to handle it in toast.promise
+            });
+
+        toast.promise(
+            savePromise,
+            {
+                pending: "Saving function...",
+                success: "Function saved and list updated!",
+                error: {
+                    render: ({data}) => {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-expect-error
+                        return data.message;
+                    },
+                    autoClose: 7000
+                }
+            }
+        )
+    };
+    //Open Function
+    const handleFunctionOpen = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            try {
+                const text = e.target?.result as string;
+                const data = JSON.parse(text);
+
+                if (!data || !data.nodes || !data.edges) {
+                    throw new Error("Invalid file format");
+                }
+
+                console.log("file.name :",file.name)
+                onSaveFunction(data, file.name);
+
+                // Find the highest id among the nodes
+                const highestId = Math.max(...data.nodes.map((node: Node) => Number(node.id)));
+                // If highestId is a number (not NaN), set id to highestId + 1
+                if (!isNaN(highestId)) {
+                    id = highestId + 1;
+                }
+
+                toast.success("Function loaded from file!");
+            } catch (error: any) {
+                toast.error(`Error loading file: ${error.message}`);
+            }
+        };
+
+        reader.readAsText(file);
+    };
+
     return (
         <ReactFlowProvider>
             <div className="dndflow">
@@ -803,6 +902,33 @@ export default function App() {
                                         }}
                                     >
                                         Open File
+                                    </label>
+                                </>
+                            )}
+
+
+                            {/*open function*/}
+                            {!checkedDebug && (
+                                <>
+                                    <input
+                                        type="file"
+                                        accept=".json"
+                                        onChange={handleFunctionOpen}
+                                        style={{ display: "none" }}
+                                        id="fileUploadFunction"
+                                    />
+
+                                    <label
+                                        htmlFor="fileUploadFunction"
+                                        className="button button1"
+                                        style={{
+                                            display: "inline-flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            boxSizing: "border-box",
+                                        }}
+                                    >
+                                        Open Function
                                     </label>
                                 </>
                             )}

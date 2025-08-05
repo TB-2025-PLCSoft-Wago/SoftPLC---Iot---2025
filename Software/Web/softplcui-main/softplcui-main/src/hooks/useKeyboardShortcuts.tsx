@@ -46,15 +46,14 @@ export default function useKeyboardShortcuts({
     useEffect(() => {
         if (checkedDebug) {
             undoBlockRef.current = true;
-            console.log("Debug on, manualPushRef = true");
+            //console.log("Debug on, manualPushRef = true");
         } else {
             undoBlockRef.current = false;
-            console.log("Debug off, manualPushRef = false");
+            //console.log("Debug off, manualPushRef = false");
         }
     }, [checkedDebug]);
 
     useEffect(() => {
-        console.log("UseEffectKeyboard");
         if (!isDragging) {
             console.log("UseEffectKeyboard");
         }

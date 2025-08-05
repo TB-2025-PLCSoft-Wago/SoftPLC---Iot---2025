@@ -1,6 +1,7 @@
 package processGraph
 
 import (
+	"SoftPLC/function"
 	"SoftPLC/inputUpdate"
 	"SoftPLC/nodes"
 	"SoftPLC/server"
@@ -12,63 +13,34 @@ import (
 	"sync"
 )
 
-var Mutex sync.Mutex
+var MutexFunction sync.Mutex
 
-// NodeJson is a struct that represents a node in the JSON file.
-type NodeJson struct {
-	Id   string `json:"id"`
-	Type string `json:"type"`
-	Data Data_  `json:"data"`
+type functionProcess2 struct {
+	//nameFunction string
+	LogicalNode [][]nodes.LogicalNodeInterface
+	OutputNodes []nodes.OutputNodeInterface
+	InputNodes  []nodes.InputNodeInterface
+	ConstValue  []Const
+}
+type functionOutputNodes struct {
+	OutputNodes []nodes.OutputNodeInterface
 }
 
-// Data_ is a struct that represents the data of a node in the JSON file.
-type Data_ struct {
-	FriendlyName       string   `json:"friendlyName"`
-	Service            string   `json:"service"`
-	SubService         string   `json:"subService"`
-	Value              string   `json:"value"`
-	ParameterValueData []string `json:"parameterValueData"`
+var ListProcessFunction map[string]functionProcess2
+var ListProcessFunctionLogicalNode map[string][][]nodes.LogicalNodeInterface
+var ListProcessFunctionOutputNodes map[string]functionOutputNodes
+var ListProcessFunctionInputNodes map[string][][]nodes.InputNodeInterface
+
+func init() {
+	ListProcessFunction = make(map[string]functionProcess2)
 }
-
-// edge is a struct that represents an edge in the JSON file an edge is the link between two nodes.
-type edge struct {
-	Source       string `json:"source"`
-	Target       string `json:"target"`
-	SourceHandle string `json:"sourceHandle"`
-	TargetHandle string `json:"targetHandle"`
-}
-
-// Graph is a struct that represents the JSON file.
-type Graph struct {
-	NodesJson []NodeJson `json:"nodes"`
-	Edges     []edge     `json:"edges"`
-}
-
-type Const struct {
-	Id    int
-	Value string
-}
-
-// LogicalNode is a slice of slice of nodes.Node tha contains all the nodes in the JSON file except the output/input nodes.
-var LogicalNode [][]nodes.LogicalNodeInterface
-
-// OutputNodes is a slice of nodes.OutputNode that contains all the output nodes in the JSON file.
-var OutputNodes []nodes.OutputNodeInterface
-
-// InputNodes is a slice of nodes.InputNode that contains all the input nodes in the JSON file.
-var InputNodes []nodes.InputNodeInterface
-
-var ConstValue []Const
-
-//CreateQueue is a function that creates the process queues from the JSON file and order the nodes to assure that every node is processed in the right order.
-//It also creates the input and output nodes and link them to the right source/destination
-
-func CreateQueue(g Graph) {
-	Mutex.Lock()
+func CreateQueueFunction(g Graph, name string) {
+	fp := ListProcessFunction[name]
+	MutexFunction.Lock()
 	//find the output nodes and create the process queues
 	for _, nodeJson := range g.NodesJson {
 		if strings.Contains(nodeJson.Type, "Output") {
-			for _, out := range OutputNodes {
+			for _, out := range fp.OutputNodes {
 				for _, outHandle := range out.GetOutputList() {
 					//Prevent the ability to put multiple times the same output
 					if outHandle.Service == nodeJson.Data.Service && outHandle.SubService == nodeJson.Data.SubService {
@@ -77,16 +49,18 @@ func CreateQueue(g Graph) {
 						} else {
 							serverResponse.ResponseProcessGraph = "Multiple use of the same output : " + outHandle.Service
 						}
-						Mutex.Unlock()
+						MutexFunction.Unlock()
 						return
 					}
 				}
 			}
 
 			var queue []nodes.LogicalNodeInterface
-			findPreviousNode(&queue, nodeJson, g)    //find the node link ahead of the output node
-			LogicalNode = append(LogicalNode, queue) //Add a new queue to the process queues
-			//keepOnlyOneLogicalNode()
+			findPreviousNodeFunction(&queue, nodeJson, g, name) //find the node link ahead of the output node
+			fp = ListProcessFunction[name]
+			fp.LogicalNode = append(fp.LogicalNode, queue) //Add a new queue to the process queues
+			ListProcessFunction[name] = fp
+			//keepOnlyOneLogicalNodeFunction ()
 			//create the output node
 			outputToAdd, err := nodes.CreateNode(nodeJson.Type)
 			if err != nil {
@@ -109,6 +83,17 @@ func CreateQueue(g Graph) {
 							}
 						}
 					}
+				} else if description.Input[0].DataType == "function" {
+					for _, subSer := range description.SubServices {
+						if subSer.FriendlyName == nodeJson.Data.FriendlyName && subSer.Primary == nodeJson.Data.Service {
+							for _, sec := range subSer.Secondary {
+								if sec.Name == nodeJson.Data.SubService {
+									nodeInput = nodes.InputHandle{Input: nil, Name: description.Input[0].Name, DataType: sec.DataType}
+								}
+							}
+						}
+					}
+
 				} else {
 					nodeInput = nodes.InputHandle{
 						Input:    nil,
@@ -125,20 +110,25 @@ func CreateQueue(g Graph) {
 				var tabOutputNodeHandle []nodes.OutputNodeHandle
 				tabOutputNodeHandle = append(tabOutputNodeHandle, nodeInputHandle)
 				outputNodeToAddInterface.InitNode(id, nodeJson.Type, tabOutputNodeHandle)
-				OutputNodes = append(OutputNodes, outputNodeToAddInterface) //Add the output node to the OutputNodes slice
+				fp = ListProcessFunction[name]
+				fp.OutputNodes = append(fp.OutputNodes, outputNodeToAddInterface) //Add the output node to the fp.OutputNodes slice
+				ListProcessFunction[name] = fp
+
 			}
 		}
 	}
-	linkNodes(g) //Link the nodes to the right source/destination
-	Mutex.Unlock()
+	ListProcessFunction[name] = fp
+	linkNodesFunction(g, name) //Link the nodes to the right source/destination
+	MutexFunction.Unlock()
 }
 
-// findPreviousNode is a recursive function that find the nodes ahead of the output node and add them to the right slice
-func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson NodeJson, g Graph) {
+// findPreviousNodeFunction is a recursive function that find the nodes ahead of the output node and add them to the right slice
+func findPreviousNodeFunction(queue *[]nodes.LogicalNodeInterface, nodeJson NodeJson, g Graph, name string) {
+	fp := ListProcessFunction[name]
 	for _, edge := range g.Edges {
 		if edge.Target == nodeJson.Id { //find the edge which target the actual node
-			nextNodeJson := findNodeById(edge.Source, g)       //find the source node
-			if !strings.Contains(nextNodeJson.Type, "Input") { //Check if the node ahead is not an input node
+			nextNodeJson := findNodeByIdFunction(edge.Source, g) //find the source node
+			if !strings.Contains(nextNodeJson.Type, "Input") {   //Check if the node ahead is not an input node
 				nextNodeJsonId, _ := strconv.Atoi(nextNodeJson.Id)
 				for i, v := range *queue { //Check if the node is already in the queue	if it is remove it
 					if logicalNode, ok := v.(nodes.LogicalNodeInterface); ok {
@@ -151,12 +141,13 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson NodeJson, g 
 					}
 				}
 				// create the node and add it to the queue
-				nodeToAdd := createNode(nextNodeJson, g)
+				nodeToAdd := createNodeFunction(nextNodeJson, g)
 				*queue = append([]nodes.LogicalNodeInterface{nodeToAdd}, *queue...)
-				findPreviousNode(queue, nextNodeJson, g)
+				findPreviousNodeFunction(queue, nextNodeJson, g, name)
+				//TO DO : maybe add ListProcessFunction[name] = fp
 			} else { //if the node ahead is an input node
 				isIn := false
-				for _, input := range InputNodes {
+				for _, input := range fp.InputNodes {
 					nodeJsonId, _ := strconv.Atoi(nextNodeJson.Id)
 					if input.GetId() == nodeJsonId {
 						isIn = true
@@ -177,17 +168,19 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson NodeJson, g 
 						description, _ := nodes.NodeDescription(nextNodeJson.Type)
 						if strings.Contains(nextNodeJson.Type, "constant") {
 							//val, _ := strconv.ParseFloat(nextNodeJson.Data.Value, 64)
-							//ConstValue = append(ConstValue, Const{Id: inId, Value: val})
+							//fp.ConstValue = append(fp.ConstValue, Const{Id: inId, Value: val})
 							//val, _ := strconv.ParseFloat(nextNodeJson.Data.Value, 64)
-							ConstValue = append(ConstValue, Const{Id: inId, Value: nextNodeJson.Data.Value})
-							for i := range ConstValue {
-								if ConstValue[i].Id == inId {
-									//valFloat := ConstValue[i].Value
+							fp = ListProcessFunction[name]
+							fp.ConstValue = append(fp.ConstValue, Const{Id: inId, Value: nextNodeJson.Data.Value})
+							ListProcessFunction[name] = fp
+							for i := range fp.ConstValue {
+								if fp.ConstValue[i].Id == inId {
+									//valFloat := fp.ConstValue[i].Value
 									//valStr := strconv.FormatFloat(valFloat, 'f', -1, 64)
 									//valStrCopy := valStr
-									valStrCopy := ConstValue[i].Value
+									valStrCopy := fp.ConstValue[i].Value
 									inputHandle = nodes.InputHandle{Input: &valStrCopy, Name: description.Output[0].Name, DataType: description.Output[0].DataType}
-									server.AddDebugState(edge.Source, &ConstValue[i].Value, edge.SourceHandle, description.Output[0].DataType)
+									server.AddDebugState(edge.Source, &fp.ConstValue[i].Value, edge.SourceHandle, description.Output[0].DataType)
 									break
 								}
 							}
@@ -202,6 +195,17 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson NodeJson, g 
 										}
 									}
 								}
+							} else if description.Output[0].DataType == "function" {
+								for _, subSer := range description.SubServices {
+									if subSer.FriendlyName == nextNodeJson.Data.FriendlyName && subSer.Primary == nextNodeJson.Data.Service {
+										for _, sec := range subSer.Secondary {
+											if sec.Name == nextNodeJson.Data.SubService {
+												inputHandle = nodes.InputHandle{Input: nil, Name: description.Output[0].Name, DataType: sec.DataType}
+											}
+										}
+									}
+								}
+
 							} else {
 								inputHandle = nodes.InputHandle{Input: nil, Name: description.Output[0].Name, DataType: description.Output[0].DataType}
 							}
@@ -215,16 +219,19 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson NodeJson, g 
 						var tabInputNodeHandle []nodes.InputNodeHandle
 						tabInputNodeHandle = append(tabInputNodeHandle, inputNodeHandle)
 						inputNodeToAdd.InitNode(inId, nextNodeJson.Type, tabInputNodeHandle, nextNodeJson.Data.ParameterValueData)
-						InputNodes = append(InputNodes, inputNodeToAdd)
+						fp = ListProcessFunction[name]
+						fp.InputNodes = append(fp.InputNodes, inputNodeToAdd)
+						ListProcessFunction[name] = fp
 					}
 				}
 			}
 		}
 	}
+	//ListProcessFunction[name] = fp
 }
 
-// findNodeById is a function that find a node in the JSON file by its id
-func findNodeById(source string, g Graph) NodeJson {
+// findNodeByIdFunction is a function that find a node in the JSON file by its id
+func findNodeByIdFunction(source string, g Graph) NodeJson {
 	for _, nodeJson := range g.NodesJson {
 		if nodeJson.Id == source {
 			return nodeJson
@@ -233,7 +240,7 @@ func findNodeById(source string, g Graph) NodeJson {
 	return NodeJson{}
 }
 
-func getNbInputs(id string, g Graph) int {
+func getNbInputsFunction(id string, g Graph) int {
 	nb := 0
 	var inputs []string
 	for _, edge := range g.Edges {
@@ -254,8 +261,8 @@ func getNbInputs(id string, g Graph) int {
 	return nb
 }
 
-// createNode is a function that create a node from a NodeJson struct
-func createNode(nodeJson NodeJson, g Graph) nodes.LogicalNodeInterface {
+// createNodeFunction is a function that create a node from a NodeJson struct
+func createNodeFunction(nodeJson NodeJson, g Graph) nodes.LogicalNodeInterface {
 	NodeJsonId, _ := strconv.Atoi(nodeJson.Id)
 	nodeToAdd, err := nodes.CreateNode(nodeJson.Type)
 	if err != nil {
@@ -268,7 +275,7 @@ func createNode(nodeJson NodeJson, g Graph) nodes.LogicalNodeInterface {
 		description, _ := nodes.NodeDescription(nodeJson.Type)
 		var input []nodes.InputHandle
 		if description.Stretchable && !(description.Type_ == "StringToBoolNode") { //StringToBoolNode is Stretchable with only one input
-			nbInputs := getNbInputs(nodeJson.Id, g)
+			nbInputs := getNbInputsFunction(nodeJson.Id, g)
 			for i := 0; i < nbInputs; i++ {
 				input = append(input, nodes.InputHandle{Input: nil, Name: description.Input[0].Name + strconv.Itoa(i), DataType: description.Input[0].DataType})
 			}
@@ -287,7 +294,7 @@ func createNode(nodeJson NodeJson, g Graph) nodes.LogicalNodeInterface {
 }
 
 // findEdgeById is a function that find the edges that target a node in the JSON file
-func findLinkedNode(targetId, targetHandle string, g Graph) NodeJson {
+func findLinkedNodeFunction(targetId, targetHandle string, g Graph) NodeJson {
 	for _, edge := range g.Edges {
 		if edge.Target == targetId && edge.TargetHandle == targetHandle {
 			for _, node := range g.NodesJson {
@@ -300,7 +307,7 @@ func findLinkedNode(targetId, targetHandle string, g Graph) NodeJson {
 	return NodeJson{}
 }
 
-func findLinkedEdgeName(targetId, targetHandle string, g Graph) string {
+func findLinkedEdgeNameFunction(targetId, targetHandle string, g Graph) string {
 	for _, edge := range g.Edges {
 		if edge.Target == targetId && edge.TargetHandle == targetHandle {
 			return edge.SourceHandle
@@ -309,37 +316,38 @@ func findLinkedEdgeName(targetId, targetHandle string, g Graph) string {
 	return ""
 }
 
-func linkNodes(g Graph) {
-	/*** Verify InputNodes link ***/
-	for i := range InputNodes {
+func linkNodesFunction(g Graph, name string) {
+	fp := ListProcessFunction[name]
+	/*** Verify fp.InputNodes link ***/
+	for i := range fp.InputNodes {
 		ableToConnect := false
 		for _, edge := range g.Edges {
-			if edge.Source == strconv.Itoa(InputNodes[i].GetId()) {
+			if edge.Source == strconv.Itoa(fp.InputNodes[i].GetId()) {
 				for j := range inputUpdate.InputsOutputsState {
-					inputHandle := InputNodes[i].GetOutput(edge.SourceHandle)
+					inputHandle := fp.InputNodes[i].GetOutput(edge.SourceHandle)
 					inputLink := inputUpdate.InputsOutputsState[j]
 					if inputLink.Service == inputHandle.Service && inputLink.SubService == inputHandle.SubService && inputLink.FriendlyName == inputHandle.FriendlyName {
-						InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &inputUpdate.InputsOutputsState[j].Value
-						server.AddDebugState(edge.Source, &inputUpdate.InputsOutputsState[j].Value, edge.SourceHandle, InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
+						fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &inputUpdate.InputsOutputsState[j].Value
+						server.AddDebugState(edge.Source, &inputUpdate.InputsOutputsState[j].Value, edge.SourceHandle, fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
 						ableToConnect = true
 						break
 					}
 				}
 			}
 		}
-		if strings.Contains(InputNodes[i].GetNodeType(), "constant") { //if contains constant
+		if strings.Contains(fp.InputNodes[i].GetNodeType(), "constant") { //if contains constant
 			ableToConnect = true
 		}
 
-		if strings.Contains(InputNodes[i].GetNodeType(), "viewWeb") {
+		if strings.Contains(fp.InputNodes[i].GetNodeType(), "viewWeb") {
 			for _, edge := range g.Edges {
-				if edge.Source == strconv.Itoa(InputNodes[i].GetId()) {
+				if edge.Source == strconv.Itoa(fp.InputNodes[i].GetId()) {
 					for j := range server.InputsStateWeb {
-						inputHandle := InputNodes[i].GetOutput(edge.SourceHandle)
+						inputHandle := fp.InputNodes[i].GetOutput(edge.SourceHandle)
 						inputLink := server.InputsStateWeb[j]
 						if strconv.Itoa(inputLink.IRCode) == inputHandle.FriendlyName {
-							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &server.InputsStateWeb[j].Value
-							server.AddDebugState(edge.Source, &server.InputsStateWeb[j].Value, edge.SourceHandle, InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
+							fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &server.InputsStateWeb[j].Value
+							server.AddDebugState(edge.Source, &server.InputsStateWeb[j].Value, edge.SourceHandle, fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
 							ableToConnect = true
 							break
 						}
@@ -347,15 +355,32 @@ func linkNodes(g Graph) {
 				}
 			}
 		}
-		if strings.Contains(InputNodes[i].GetNodeType(), "variable") {
+		if strings.Contains(fp.InputNodes[i].GetNodeType(), "variable") {
 			for _, edge := range g.Edges {
-				if edge.Source == strconv.Itoa(InputNodes[i].GetId()) {
+				if edge.Source == strconv.Itoa(fp.InputNodes[i].GetId()) {
 					for j := range variable.InputsStateVariable {
-						inputHandle := InputNodes[i].GetOutput(edge.SourceHandle)
+						inputHandle := fp.InputNodes[i].GetOutput(edge.SourceHandle)
 						inputLink := variable.InputsStateVariable[j]
 						if inputLink.Name == inputHandle.FriendlyName {
-							InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &variable.InputsStateVariable[j].Value
-							server.AddDebugState(edge.Source, &variable.InputsStateVariable[j].Value, edge.SourceHandle, InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
+							fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &variable.InputsStateVariable[j].Value
+							server.AddDebugState(edge.Source, &variable.InputsStateVariable[j].Value, edge.SourceHandle, fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
+							ableToConnect = true
+							break
+						}
+					}
+				}
+			}
+		}
+
+		if strings.Contains(fp.InputNodes[i].GetNodeType(), "function") {
+			for _, edge := range g.Edges {
+				if edge.Source == strconv.Itoa(fp.InputNodes[i].GetId()) {
+					for j := range function.InputsStateFunction {
+						inputHandle := fp.InputNodes[i].GetOutput(edge.SourceHandle)
+						inputLink := function.InputsStateFunction[j]
+						if inputLink.Name == inputHandle.FriendlyName {
+							fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &function.InputsStateFunction[j].Value
+							server.AddDebugState(edge.Source, &function.InputsStateFunction[j].Value, edge.SourceHandle, fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
 							ableToConnect = true
 							break
 						}
@@ -364,25 +389,25 @@ func linkNodes(g Graph) {
 			}
 		}
 		if !ableToConnect {
-			serverResponse.ResponseProcessGraph = "Input node not connected : " + InputNodes[i].GetNodeType() //+ strconv.Itoa(InputNodes[i].GetId())
-			fmt.Println("Input node not connected" + strconv.Itoa(InputNodes[i].GetId()))
+			serverResponse.ResponseProcessGraph = "Input node not connected : " + fp.InputNodes[i].GetNodeType() //+ strconv.Itoa(fp.InputNodes[i].GetId())
+			fmt.Println("Input node not connected" + strconv.Itoa(fp.InputNodes[i].GetId()))
 			break
 		}
 	}
 
-	/*** Verify LogicalNode link ***/
-	for i := range LogicalNode {
-		for j := range LogicalNode[i] {
-			actualNode := LogicalNode[i][j]
+	/*** Verify fp.LogicalNode link ***/
+	for i := range fp.LogicalNode {
+		for j := range fp.LogicalNode[i] {
+			actualNode := fp.LogicalNode[i][j]
 			actualNodeInputs := actualNode.GetInput()
 			for k, in := range actualNodeInputs {
-				srcNodeJson := findLinkedNode(strconv.Itoa(actualNode.GetId()), in.Name, g)
+				srcNodeJson := findLinkedNodeFunction(strconv.Itoa(actualNode.GetId()), in.Name, g)
 				switch {
 				case strings.Contains(srcNodeJson.Type, "Input"):
-					for l := range InputNodes {
+					for l := range fp.InputNodes {
 						nodeJsonId, _ := strconv.Atoi(srcNodeJson.Id)
-						if InputNodes[l].GetId() == nodeJsonId {
-							targetNodeHandle := InputNodes[l].GetOutput(findLinkedEdgeName(strconv.Itoa(actualNode.GetId()), in.Name, g))
+						if fp.InputNodes[l].GetId() == nodeJsonId {
+							targetNodeHandle := fp.InputNodes[l].GetOutput(findLinkedEdgeNameFunction(strconv.Itoa(actualNode.GetId()), in.Name, g))
 							//Check if the data type of the input and the output are the same
 							if targetNodeHandle.InputHandle.DataType == actualNodeInputs[k].DataType {
 								actualNodeInputs[k].Input = targetNodeHandle.InputHandle.Input
@@ -393,10 +418,10 @@ func linkNodes(g Graph) {
 						}
 					}
 				default:
-					for l := range LogicalNode[i] {
+					for l := range fp.LogicalNode[i] {
 						nodeJsonId, _ := strconv.Atoi(srcNodeJson.Id)
-						if LogicalNode[i][l].GetId() == nodeJsonId {
-							targetNodeHandle := LogicalNode[i][l].GetOutput(findLinkedEdgeName(strconv.Itoa(actualNode.GetId()), in.Name, g))
+						if fp.LogicalNode[i][l].GetId() == nodeJsonId {
+							targetNodeHandle := fp.LogicalNode[i][l].GetOutput(findLinkedEdgeNameFunction(strconv.Itoa(actualNode.GetId()), in.Name, g))
 							if targetNodeHandle.DataType == actualNodeInputs[k].DataType {
 								fmt.Println("logical link : " + strconv.Itoa(actualNode.GetId()) + " (" + actualNode.GetNodeType() + ")" + " and " + strconv.Itoa(nodeJsonId) + " (" + srcNodeJson.Type + ")")
 								actualNodeInputs[k].Input = &targetNodeHandle.Output                                                                       // we pass the output address of the first logical node to the input of the second
@@ -413,37 +438,37 @@ func linkNodes(g Graph) {
 	}
 
 	/*** Verify Output link ***/
-	for i := range OutputNodes {
+	for i := range fp.OutputNodes {
 		isLinked := false
 		for _, edge := range g.Edges {
-			if edge.Target == strconv.Itoa(OutputNodes[i].GetId()) {
+			if edge.Target == strconv.Itoa(fp.OutputNodes[i].GetId()) {
 				srcHandleName := edge.SourceHandle
-				srcNodeJson := findLinkedNode(strconv.Itoa(OutputNodes[i].GetId()), edge.TargetHandle, g)
+				srcNodeJson := findLinkedNodeFunction(strconv.Itoa(fp.OutputNodes[i].GetId()), edge.TargetHandle, g)
 				if strings.Contains(srcNodeJson.Type, "Input") {
-					for j := range InputNodes {
+					for j := range fp.InputNodes {
 						src, _ := strconv.Atoi(edge.Source)
-						if InputNodes[j].GetId() == src {
-							dataTypeScr := InputNodes[j].GetOutput(srcHandleName).InputHandle.DataType
-							dataTypeTarget := OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.DataType
+						if fp.InputNodes[j].GetId() == src {
+							dataTypeScr := fp.InputNodes[j].GetOutput(srcHandleName).InputHandle.DataType
+							dataTypeTarget := fp.OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.DataType
 							if dataTypeScr == dataTypeTarget {
 								isLinked = true
-								OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = InputNodes[j].GetOutput(srcHandleName).InputHandle.Input //we pass the input address to the output
-								server.AddDebugState(edge.Source, InputNodes[j].GetOutput(srcHandleName).InputHandle.Input, srcHandleName, dataTypeTarget)
+								fp.OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = fp.InputNodes[j].GetOutput(srcHandleName).InputHandle.Input //we pass the input address to the output
+								server.AddDebugState(edge.Source, fp.InputNodes[j].GetOutput(srcHandleName).InputHandle.Input, srcHandleName, dataTypeTarget)
 								break
 							}
 						}
 					}
 				} else {
-					for j := range LogicalNode {
-						for k := range LogicalNode[j] {
+					for j := range fp.LogicalNode {
+						for k := range fp.LogicalNode[j] {
 							src, _ := strconv.Atoi(edge.Source)
-							if LogicalNode[j][k].GetId() == src {
-								dataTypeScr := LogicalNode[j][k].GetOutput(srcHandleName).DataType
-								dataTypeTarget := OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.DataType
+							if fp.LogicalNode[j][k].GetId() == src {
+								dataTypeScr := fp.LogicalNode[j][k].GetOutput(srcHandleName).DataType
+								dataTypeTarget := fp.OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.DataType
 								if dataTypeScr == dataTypeTarget {
 									isLinked = true
-									OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = &LogicalNode[j][k].GetOutput(srcHandleName).Output //we pass the input address to the output
-									server.AddDebugState(edge.Source, &LogicalNode[j][k].GetOutput(srcHandleName).Output, srcHandleName, dataTypeTarget)
+									fp.OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = &fp.LogicalNode[j][k].GetOutput(srcHandleName).Output //we pass the input address to the output
+									server.AddDebugState(edge.Source, &fp.LogicalNode[j][k].GetOutput(srcHandleName).Output, srcHandleName, dataTypeTarget)
 									break
 								}
 							}
@@ -456,44 +481,10 @@ func linkNodes(g Graph) {
 			}
 		}
 		if !isLinked {
-			serverResponse.ResponseProcessGraph = "Data type mismatch, output node " + OutputNodes[i].GetNodeType() + " of id " + strconv.Itoa(OutputNodes[i].GetId()) + " not connected"
-			fmt.Println("Data type mismatch on two nodes while linking an output to a input : " + OutputNodes[i].GetNodeType() + ", id :" + strconv.Itoa(OutputNodes[i].GetId()))
+			serverResponse.ResponseProcessGraph = "Data type mismatch, output node " + fp.OutputNodes[i].GetNodeType() + " of id " + strconv.Itoa(fp.OutputNodes[i].GetId()) + " not connected"
+			fmt.Println("Data type mismatch on two nodes while linking an output to a input : " + fp.OutputNodes[i].GetNodeType() + ", id :" + strconv.Itoa(fp.OutputNodes[i].GetId()))
 			break
 		}
 	}
-}
-
-// function to find a node by ID in LogicalNode[i]
-func getLogicalNodeById(nodes []nodes.LogicalNodeInterface, id int) nodes.LogicalNodeInterface {
-	for _, n := range nodes {
-		if n.GetId() == id {
-			return n
-		}
-	}
-	return nil
-}
-
-// function minimum of size for LogicalNode[i]
-func keepOnlyOneLogicalNode() {
-	lastQueueIndex := len(LogicalNode) - 1
-	if lastQueueIndex == 0 {
-		return
-	}
-	for n2 := range LogicalNode[lastQueueIndex] {
-		for q1 := range LogicalNode {
-			for n1 := range LogicalNode[q1] {
-				if n1 < (len(LogicalNode[lastQueueIndex]) - 1) {
-					if LogicalNode[lastQueueIndex][n2].GetId() == LogicalNode[q1][n1].GetId() {
-						fmt.Println("remove id : " + strconv.Itoa(n2))
-						LogicalNode[lastQueueIndex] = removeAtIndex(LogicalNode[lastQueueIndex], n2)
-
-					}
-				}
-			}
-		}
-	}
-
-}
-func removeAtIndex(s []nodes.LogicalNodeInterface, i int) []nodes.LogicalNodeInterface {
-	return append(s[:i], s[i+1:]...)
+	ListProcessFunction[name] = fp
 }

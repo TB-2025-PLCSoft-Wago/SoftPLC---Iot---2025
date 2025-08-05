@@ -46,8 +46,13 @@ func main() {
 					variable.UpdateVariableInputs()
 					for _, n := range v {
 						if logicalNode, ok := n.(nodes.LogicalNodeInterface); ok {
+							processGraph.MutexFunction.Lock()
 							logicalNode.ProcessLogic()
-
+							processGraph.MutexFunction.Unlock()
+							/*							if logicalNode.GetNodeType() == "ConfigurableNodeFunction"{
+														ProcessFunction(logicalNode)
+													}*/
+							//si function --> autre process graph
 						}
 					}
 					outputUpdate.UpdateVariables()
