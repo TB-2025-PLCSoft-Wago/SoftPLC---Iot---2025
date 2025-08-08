@@ -194,6 +194,11 @@ Cet exemple permet de régler l’intensité des lampes du garage via la vue *Us
 )
 #label("fig:67_Modbus_WriteValue_exemple_1_userResult-vs-vue")
 
+#pagebreak()
+
+#set page(
+  flipped: false,
+)
 
 
 //-------------------------------------

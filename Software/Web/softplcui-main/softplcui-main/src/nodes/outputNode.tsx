@@ -231,7 +231,10 @@ const OutputNode: React.FC<NodeProps<OutputNodeData>> = (props) => {
         labelColor = "#8A429E";
     } else if (data.type.includes("constant")) {
         labelColor = "brown";
+    }else if (data.type.includes("function")) {
+        labelColor = "#40750B";
     }
+
     return (
         <div className="react-flow__node-default outputNode">
             {data.label && <div style={{ color: labelColor }}>{data.label}</div>}

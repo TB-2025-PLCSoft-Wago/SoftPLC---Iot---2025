@@ -11,7 +11,7 @@
 )
 //TO DO : Rajouter les autres appareils
 
-La salle *23.N320* utilisé pour connecté l’automate WAGO CC100 sur le réseau.
+La salle *23.N320* utilisé pour connecté l’automate WAGO CC100 sur le réseau (23.N32x).
 
 #table(
   columns: 3,
@@ -21,6 +21,7 @@ La salle *23.N320* utilisé pour connecté l’automate WAGO CC100 sur le résea
   [Firefox], [PC], [Permettant meilleure visualisation de WDx],
   [HTTPie], [PC], [Permettant de tester les requêtes HTTP],
   [miro], [site], [Réalisation de schéma, prise de note, réflexion, analyse],
+  [ChatGPT  @ChatGPT], [IA], [Correction orthographique, aide débogage, code de certaines petites fonctions.],
   [WDx], [Automate], [
     Dénomination générale pour parler de WDM + WDD + WDA :
 

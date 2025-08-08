@@ -152,6 +152,11 @@ func findPreviousNode(queue *[]nodes.LogicalNodeInterface, nodeJson NodeJson, g 
 				}
 				// create the node and add it to the queue
 				nodeToAdd := createNode(nextNodeJson, g)
+				if nodeToAdd == nil {
+					// we stop everything or we ignore this node
+					fmt.Println("Node unknown or invalid, addition to the queue stopped.")
+					return
+				}
 				*queue = append([]nodes.LogicalNodeInterface{nodeToAdd}, *queue...)
 				findPreviousNode(queue, nextNodeJson, g)
 			} else { //if the node ahead is an input node
@@ -259,11 +264,15 @@ func createNode(nodeJson NodeJson, g Graph) nodes.LogicalNodeInterface {
 	NodeJsonId, _ := strconv.Atoi(nodeJson.Id)
 	nodeToAdd, err := nodes.CreateNode(nodeJson.Type)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("createNode", err)
+		serverResponse.ResponseProcessGraph = "Error this node to add type isn't logicalNodeInterface : " + nodeJson.Type
+		return nil
 	}
 	logicalNodeToAdd, ok := nodeToAdd.(nodes.LogicalNodeInterface)
 	if !ok {
 		fmt.Println("Error this nodeToAdd type isn't logicalNodeInterface: ", nodeToAdd)
+		serverResponse.ResponseProcessGraph = "Error this node to add type isn't logicalNodeInterface : " + nodeJson.Type
+		return nil
 	} else {
 		description, _ := nodes.NodeDescription(nodeJson.Type)
 		var input []nodes.InputHandle

@@ -1,0 +1,319 @@
+{
+  "nodes": [
+    {
+      "width": 247,
+      "height": 302,
+      "id": "0",
+      "type": "LogicalNode",
+      "position": {
+        "x": 523.7858283255199,
+        "y": 196.66355888419287
+      },
+      "data": {
+        "accordion": "Functions",
+        "primaryType": "LogicalNode",
+        "type": "TestFunc1ConfigurableNodeFunction",
+        "display": "TestFunc1",
+        "label": "TestFunc1",
+        "stretchable": false,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "inputFunction1"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "outputFunction1"
+          }
+        ],
+        "parameterNameData": null,
+        "id": "0",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": []
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 523.7858283255199,
+        "y": 196.66355888419287
+      },
+      "dragging": false
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "id": "2",
+      "type": "inputNode",
+      "position": {
+        "x": 92.54217300541293,
+        "y": 271.8272950944262
+      },
+      "data": {
+        "accordion": "Functions",
+        "primaryType": "inputNode",
+        "type": "functionInputBool",
+        "display": " Input bool ",
+        "label": "function Input bool",
+        "stretchable": false,
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "subServices": [],
+        "inputHandle": [],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "id": "2",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "valueData": "",
+        "dataType": "",
+        "parameterValueData": [
+          "inputFunc2"
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 92.54217300541293,
+        "y": 271.8272950944262
+      },
+      "dragging": false
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "id": "3",
+      "type": "outputNode",
+      "position": {
+        "x": 907.176115202481,
+        "y": 321.81022080508404
+      },
+      "data": {
+        "accordion": "Functions",
+        "primaryType": "outputNode",
+        "type": "functionOutputBool",
+        "display": " Output Bool ",
+        "label": "function Output Bool",
+        "stretchable": false,
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "outputHandle": [],
+        "parameterNameData": null,
+        "id": "3",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "outFunc2",
+        "selectedSubServiceData": "",
+        "valueData": "",
+        "dataType": ""
+      },
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 907.176115202481,
+        "y": 321.81022080508404
+      }
+    },
+    {
+      "width": 102,
+      "height": 222,
+      "id": "4",
+      "type": "LogicalNode",
+      "position": {
+        "x": 372.10744074758657,
+        "y": 342.36270399941225
+      },
+      "data": {
+        "accordion": "Logical gate",
+        "primaryType": "LogicalNode",
+        "type": "OrNode",
+        "display": "Or Node",
+        "label": ">=1",
+        "stretchable": true,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "id": "4",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 372.10744074758657,
+        "y": 342.36270399941225
+      },
+      "dragging": false
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "id": "5",
+      "type": "inputNode",
+      "position": {
+        "x": 97.02916873096154,
+        "y": 428.76035794932704
+      },
+      "data": {
+        "accordion": "Functions",
+        "primaryType": "inputNode",
+        "type": "functionInputBool",
+        "display": " Input bool ",
+        "label": "function Input bool",
+        "stretchable": false,
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "subServices": [],
+        "inputHandle": [],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "id": "2",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "valueData": "",
+        "dataType": "",
+        "parameterValueData": [
+          "inputFunc2_2"
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 97.02916873096154,
+        "y": 428.76035794932704
+      },
+      "dragging": false,
+      "draggable": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "0",
+      "sourceHandle": "outputFunction1",
+      "target": "3",
+      "targetHandle": "Input",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-0outputFunction1-3Input"
+    },
+    {
+      "source": "2",
+      "sourceHandle": "Output",
+      "target": "4",
+      "targetHandle": "Input0",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-2Output-4Input0"
+    },
+    {
+      "source": "4",
+      "sourceHandle": "Output",
+      "target": "0",
+      "targetHandle": "inputFunction1",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-4Output-0inputFunction1"
+    },
+    {
+      "source": "5",
+      "sourceHandle": "Output",
+      "target": "4",
+      "targetHandle": "Input1",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-5Output-4Input1"
+    }
+  ],
+  "viewport": {
+    "x": 265.30356202973314,
+    "y": 75.51473973568119,
+    "zoom": 0.8749524363900969
+  }
+}

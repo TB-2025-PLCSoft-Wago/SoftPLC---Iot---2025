@@ -1,0 +1,258 @@
+{
+  "nodes": [
+    {
+      "width": 247,
+      "height": 342,
+      "data": {
+        "accordion": "Functions",
+        "display": "TestFunc2",
+        "id": "1",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "inputFunc2"
+          },
+          {
+            "dataType": "bool",
+            "name": "inputFunc2_2"
+          }
+        ],
+        "label": "TestFunc2",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "outFunc2"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "TestFunc2ConfigurableNodeFunction",
+        "valueData": ""
+      },
+      "id": "1",
+      "position": {
+        "x": 627.1504662369884,
+        "y": 380.711941470255
+      },
+      "positionAbsolute": {
+        "x": 627.1504662369884,
+        "y": 380.711941470255
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "Input",
+        "dataType": "",
+        "display": "Digital Input",
+        "id": "3",
+        "inputHandle": [],
+        "label": "Input",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "DI1",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DI1",
+              "DI2",
+              "DI3",
+              "DI4",
+              "DI5",
+              "DI6",
+              "DI7",
+              "DI8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "digitalInput",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "3",
+      "position": {
+        "x": 366.39593965266164,
+        "y": 427.8085740251334
+      },
+      "positionAbsolute": {
+        "x": 366.39593965266164,
+        "y": 427.8085740251334
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "Output",
+        "dataType": "",
+        "display": "Digital output",
+        "id": "4",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Output",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "DO1",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "digitalOutput",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "4",
+      "position": {
+        "x": 922.940292648725,
+        "y": 543.8271078798339
+      },
+      "positionAbsolute": {
+        "x": 922.940292648725,
+        "y": 543.8271078798339
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "Input",
+        "dataType": "",
+        "display": "Digital Input",
+        "id": "3",
+        "inputHandle": [],
+        "label": "Input",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "DI2",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DI1",
+              "DI2",
+              "DI3",
+              "DI4",
+              "DI5",
+              "DI6",
+              "DI7",
+              "DI8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "digitalInput",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "5",
+      "position": {
+        "x": 347.01808366788146,
+        "y": 581.9460083069888
+      },
+      "positionAbsolute": {
+        "x": 347.01808366788146,
+        "y": 581.9460083069888
+      },
+      "selected": false,
+      "type": "inputNode"
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-3Output-1inputFunc2",
+      "source": "3",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "1",
+      "targetHandle": "inputFunc2",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-1outFunc2-4Input",
+      "source": "1",
+      "sourceHandle": "outFunc2",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "4",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-5Output-1inputFunc2_2",
+      "source": "5",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "1",
+      "targetHandle": "inputFunc2_2",
+      "type": "step"
+    }
+  ],
+  "viewport": {
+    "x": -166.26679909859467,
+    "y": -383.93477223267877,
+    "zoom": 1.339093609119093
+  }
+}

@@ -483,6 +483,7 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
   #include "/main/08_a1_Exemple_HTTP.typ"
   #include "/main/08_a1_Exemple_HTTPServeur.typ"
   #include "/main/08_a1_Exemple_Modbus.typ"
+  #include "/main/08_a12_Exemple_Function.typ"
   #include "08_a1_homeController.typ"
   #include "08_a2_tousBloc.typ"
   #pagebreak()

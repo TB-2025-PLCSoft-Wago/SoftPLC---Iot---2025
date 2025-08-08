@@ -1,0 +1,264 @@
+{
+  "nodes": [
+    {
+      "width": 202,
+      "height": 82,
+      "id": "0",
+      "type": "inputNode",
+      "position": {
+        "x": 426.1542870125668,
+        "y": 384.71003108246583
+      },
+      "data": {
+        "accordion": "Functions",
+        "primaryType": "inputNode",
+        "type": "functionInputValue",
+        "display": " Input value ",
+        "label": "function Input value",
+        "stretchable": false,
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "subServices": [],
+        "inputHandle": [],
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "id": "0",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "valueData": "",
+        "dataType": "",
+        "parameterValueData": [
+          "InValFunc1"
+        ]
+      },
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 426.1542870125668,
+        "y": 384.71003108246583
+      }
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "id": "1",
+      "type": "outputNode",
+      "position": {
+        "x": 847.201830427179,
+        "y": 327.20071762359595
+      },
+      "data": {
+        "accordion": "Functions",
+        "primaryType": "outputNode",
+        "type": "functionOutputValue",
+        "display": " Output Value ",
+        "label": "function Output Value",
+        "stretchable": false,
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "outputHandle": [],
+        "parameterNameData": null,
+        "id": "1",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "OutValFunc1",
+        "selectedSubServiceData": "",
+        "valueData": "",
+        "dataType": ""
+      },
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 847.201830427179,
+        "y": 327.20071762359595
+      }
+    },
+    {
+      "width": 102,
+      "height": 182,
+      "id": "2",
+      "type": "LogicalNode",
+      "position": {
+        "x": 676.3430227595043,
+        "y": 304.8546891512935
+      },
+      "data": {
+        "accordion": "Handling value",
+        "primaryType": "LogicalNode",
+        "type": "RetainValueNode",
+        "display": "Retain Value Node",
+        "label": "Retain value",
+        "stretchable": false,
+        "services": [],
+        "subServices": [],
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "pass"
+          },
+          {
+            "dataType": "value",
+            "name": "strIn"
+          }
+        ],
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "strOut"
+          }
+        ],
+        "parameterNameData": null,
+        "id": "2",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "valueData": "",
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 676.3430227595043,
+        "y": 304.8546891512935
+      },
+      "dragging": false
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "id": "3",
+      "type": "inputNode",
+      "position": {
+        "x": 435.1163682101268,
+        "y": 243.39932715895213
+      },
+      "data": {
+        "accordion": "Functions",
+        "primaryType": "inputNode",
+        "type": "functionInputBool",
+        "display": " Input bool ",
+        "label": "function Input bool",
+        "stretchable": false,
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "subServices": [],
+        "inputHandle": [],
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "id": "3",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "valueData": "",
+        "dataType": "",
+        "parameterValueData": [
+          "pass"
+        ]
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 435.1163682101268,
+        "y": 243.39932715895213
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "0",
+      "sourceHandle": "Output",
+      "target": "2",
+      "targetHandle": "strIn",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-0Output-2strIn"
+    },
+    {
+      "source": "2",
+      "sourceHandle": "strOut",
+      "target": "1",
+      "targetHandle": "Input",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-2strOut-1Input"
+    },
+    {
+      "source": "3",
+      "sourceHandle": "Output",
+      "target": "2",
+      "targetHandle": "pass",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-3Output-2pass"
+    }
+  ],
+  "viewport": {
+    "x": -435.1158858841866,
+    "y": -294.40157079078597,
+    "zoom": 1.741101126592249
+  }
+}

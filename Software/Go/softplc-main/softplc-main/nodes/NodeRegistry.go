@@ -2,11 +2,12 @@ package nodes
 
 import (
 	"SoftPLC/function"
-	"SoftPLC/inputUpdate"
 	"SoftPLC/variable"
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
+	"sync"
 )
 
 var LogicalNode [][]LogicalNodeInterface
@@ -111,31 +112,45 @@ type functionProcess struct {
 }
 
 var FunctionNodeListProcess map[string]functionProcess
+var mutexFunctionProcess sync.Mutex
 
 func ProcessFunction(name string) {
-	if len(FunctionNodeListProcess[name].OutputNodes) != 0 {
-		inputUpdate.UpdateInputs() // TO DO : DELETE
-		for _, v := range FunctionNodeListProcess[name].LogicalNode {
-			variable.UpdateVariableInputs()
-			for _, n := range v {
-				if logicalNode, ok := n.(LogicalNodeInterface); ok {
-					logicalNode.ProcessLogic()
-				}
-			}
-			//outputUpdate.UpdateVariables()
-			updateVariables(name)
-		}
-		/*
-			outputUpdate.UpdateOutput()
-			server.UpdateOutputValueView()
-			if server.IsActiveDebug {
-				server.DebugMode()
-			}
-		*/
+	/*fnNode, exists := FunctionNodeListProcess[name]
+	if !exists {
+		return // sécurité si le nom n'existe pas
+	}*/
+	if len(FunctionNodeListProcess[name].OutputNodes) == 0 {
+		return
+	}
+	//inputUpdate.UpdateInputs() // TO DO : DELETE
+	for _, v := range FunctionNodeListProcess[name].LogicalNode {
+		variable.UpdateVariableInputs()
+		for _, n := range v {
+			if logicalNode, ok := n.(LogicalNodeInterface); ok {
+				//mutexFunctionProcess.Lock()
+				strID := strconv.Itoa(logicalNode.GetId())
+				fmt.Println("processFunction : ", name+" : "+logicalNode.GetNodeType()+" : "+strID)
+				logicalNode.ProcessLogic()
 
-		//variable.UpdateVariableInputs()
+				//mutexFunctionProcess.Unlock()
+			}
+		}
+		//outputUpdate.UpdateVariables()
+		updateVariables(name)
 		updateFunctionOutputs(name)
 	}
+	/*
+		outputUpdate.UpdateOutput()
+		server.UpdateOutputValueView()
+		if server.IsActiveDebug {
+			server.DebugMode()
+		}
+	*/
+
+	//variable.UpdateVariableInputs()
+	updateFunctionOutputs(name)
+	fmt.Println("processFunction updateFunctionOutputs : ", name)
+
 }
 func updateVariables(name string) {
 	for _, output := range FunctionNodeListProcess[name].OutputNodes {

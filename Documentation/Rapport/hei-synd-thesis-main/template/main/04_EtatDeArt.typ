@@ -53,7 +53,7 @@ Le code ne permet pas de changer le type d'un bloc de manière dynamique, car c'
 Il n'y a pas non plus de méthode permettant de réinitialiser les nodes, ce qui est nécessaire pour pouvoir créer des blocs plus complexes. En effet, il peut être nécessaire de réinitialiser certaints nodes pour pouvoir faire un nouveau _build_ proprement. 
 
 
-=== Ajouter des blocs simples
+=== Ajouter des blocs simples <sec:ajouterBlocSimple>
 
 Il y a également des points positifs. La structure des "Nodes" est facile à utiliser.  
 Pour ajouter un bloc simple, il suffit de créer un fichier dans le dossier *nodes* du programme #gls("backend") (`softplc-main`).  

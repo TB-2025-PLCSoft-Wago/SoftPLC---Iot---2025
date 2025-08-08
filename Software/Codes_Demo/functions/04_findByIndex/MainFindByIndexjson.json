@@ -1,0 +1,262 @@
+{
+  "nodes": [
+    {
+      "width": 247,
+      "height": 342,
+      "data": {
+        "accordion": "Functions",
+        "display": "Find by Index",
+        "id": "0",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "arrayToCheck"
+          },
+          {
+            "dataType": "value",
+            "name": "index"
+          }
+        ],
+        "label": "Find by Index",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "array[index]"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "Find by IndexConfigurableNodeFunction",
+        "valueData": ""
+      },
+      "id": "0",
+      "position": {
+        "x": 482,
+        "y": 270
+      },
+      "positionAbsolute": {
+        "x": 482,
+        "y": 270
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input value",
+        "id": "1",
+        "inputHandle": [],
+        "label": "view Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "array",
+          "arrayToCheck"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "1",
+      "position": {
+        "x": 218.9909622393057,
+        "y": 315.71651489424636
+      },
+      "positionAbsolute": {
+        "x": 218.9909622393057,
+        "y": 315.71651489424636
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input value",
+        "id": "1",
+        "inputHandle": [],
+        "label": "view Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "array",
+          "index"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputValue",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "2",
+      "position": {
+        "x": 212.48618385548565,
+        "y": 444.64670513699014
+      },
+      "positionAbsolute": {
+        "x": 212.48618385548565,
+        "y": 444.64670513699014
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "3",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "array",
+        "selectedSubServiceData": "array[index]",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "3",
+      "position": {
+        "x": 826.5199043705832,
+        "y": 414.37003137587647
+      },
+      "positionAbsolute": {
+        "x": 826.5199043705832,
+        "y": 414.37003137587647
+      },
+      "selected": false,
+      "type": "outputNode"
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-1Output-0arrayToCheck",
+      "source": "1",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "0",
+      "targetHandle": "arrayToCheck",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-2Output-0index",
+      "source": "2",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "0",
+      "targetHandle": "index",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-0array[index]-3Input",
+      "source": "0",
+      "sourceHandle": "array[index]",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "3",
+      "targetHandle": "Input",
+      "type": "step"
+    }
+  ],
+  "viewport": {
+    "x": -136.6283521021876,
+    "y": -410.7416761989258,
+    "zoom": 1.6864890616755688
+  }
+}

@@ -42,6 +42,7 @@
     ```json
 
   */
+  #pagebreak()
 = Application: Home Controller <sec:homeController-vs-vue>
 
 == Reçevoir commande boutons - HTTP serveur <sec:HTTPServeur_boutons-vs-vue>

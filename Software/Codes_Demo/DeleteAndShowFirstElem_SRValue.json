@@ -1,0 +1,1563 @@
+{
+  "nodes": [
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "1",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": "val 1 ,,- val 2 ,,- val 3"
+      },
+      "dragging": false,
+      "id": "1",
+      "position": {
+        "x": 270.0569230763042,
+        "y": 283.259534153681
+      },
+      "positionAbsolute": {
+        "x": 270.0569230763042,
+        "y": 283.259534153681
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Delete and show first element",
+        "selectedSubServiceData": "arrayOut",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "2",
+      "position": {
+        "x": 705.6980537226822,
+        "y": 264.72571535780077
+      },
+      "positionAbsolute": {
+        "x": 705.6980537226822,
+        "y": 264.72571535780077
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Delete and show first element",
+        "selectedSubServiceData": "1er Elem",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "3",
+      "position": {
+        "x": 694.5854762617014,
+        "y": 384.5760238156969
+      },
+      "positionAbsolute": {
+        "x": 694.5854762617014,
+        "y": 384.5760238156969
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Value ",
+        "id": "6",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "arrayToCheckTemp",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputValue",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "8",
+      "position": {
+        "x": 1247.5036040097461,
+        "y": 1087.8675060890828
+      },
+      "positionAbsolute": {
+        "x": 1247.5036040097461,
+        "y": 1087.8675060890828
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 101,
+      "height": 181,
+      "data": {
+        "accordion": "Logical gate",
+        "display": "SR Node",
+        "id": "9",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "S"
+          },
+          {
+            "dataType": "bool",
+            "name": "R1"
+          }
+        ],
+        "label": "SR",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Q"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "SRNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "9",
+      "position": {
+        "x": 636.3482837096153,
+        "y": 912.3815040747525
+      },
+      "positionAbsolute": {
+        "x": 636.3482837096153,
+        "y": 912.3815040747525
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 101,
+      "height": 181,
+      "data": {
+        "accordion": "Comparator",
+        "display": "EQ Node",
+        "id": "10",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "x"
+          },
+          {
+            "dataType": "value",
+            "name": "y"
+          }
+        ],
+        "label": "x = y",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "EQNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "10",
+      "position": {
+        "x": 467.9414450070767,
+        "y": 842.7257507476288
+      },
+      "positionAbsolute": {
+        "x": 467.9414450070767,
+        "y": 842.7257507476288
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input value ",
+        "id": "12",
+        "inputHandle": [],
+        "label": "variable Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "arrayToCheckTemp"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "12",
+      "position": {
+        "x": 90.27201924307366,
+        "y": 729.8089678153827
+      },
+      "positionAbsolute": {
+        "x": 90.27201924307366,
+        "y": 729.8089678153827
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 101,
+      "height": 181,
+      "data": {
+        "accordion": "Handling value",
+        "display": "Retain Value Node",
+        "id": "13",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "pass"
+          },
+          {
+            "dataType": "value",
+            "name": "strIn"
+          }
+        ],
+        "label": "Retain value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "strOut"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RetainValueNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "13",
+      "position": {
+        "x": 1073.2400947850156,
+        "y": 1023.3591957524401
+      },
+      "positionAbsolute": {
+        "x": 1073.2400947850156,
+        "y": 1023.3591957524401
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 101,
+      "height": 141,
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Not Node",
+        "id": "14",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Not",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "NotNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "14",
+      "position": {
+        "x": 923.1354364090349,
+        "y": 954.9296314434315
+      },
+      "positionAbsolute": {
+        "x": 923.1354364090349,
+        "y": 954.9296314434315
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Value ",
+        "id": "6",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "arrayToCheckTemp2",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputValue",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "17",
+      "position": {
+        "x": 825.8469327472756,
+        "y": 539.8284427456829
+      },
+      "positionAbsolute": {
+        "x": 825.8469327472756,
+        "y": 539.8284427456829
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 101,
+      "height": 221,
+      "data": {
+        "accordion": "Handling value",
+        "display": "Concat Node",
+        "id": "19",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "str"
+          }
+        ],
+        "label": "Concat",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "str"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "ConcatNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "19",
+      "position": {
+        "x": 414.24414436005566,
+        "y": 602.1691360019541
+      },
+      "positionAbsolute": {
+        "x": 414.24414436005566,
+        "y": 602.1691360019541
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input value ",
+        "id": "12",
+        "inputHandle": [],
+        "label": "variable Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "arrayToCheckTemp2"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputValue",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "20",
+      "position": {
+        "x": 71.69475932387576,
+        "y": 608.9877633099484
+      },
+      "positionAbsolute": {
+        "x": 71.69475932387576,
+        "y": 608.9877633099484
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 101,
+      "height": 221,
+      "data": {
+        "accordion": "Handling value",
+        "display": "Find Node",
+        "id": "21",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "strWhereToSearch"
+          },
+          {
+            "dataType": "value",
+            "name": "strToSeek"
+          },
+          {
+            "dataType": "value",
+            "name": "iStart"
+          }
+        ],
+        "label": "Find",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "isFind"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "FindNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "21",
+      "position": {
+        "x": 1017.0456025583484,
+        "y": 696.0356415652362
+      },
+      "positionAbsolute": {
+        "x": 1017.0456025583484,
+        "y": 696.0356415652362
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "1",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": " ,, "
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "22",
+      "position": {
+        "x": 774.730912002993,
+        "y": 766.1437219556211
+      },
+      "positionAbsolute": {
+        "x": 774.730912002993,
+        "y": 766.1437219556211
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 101,
+      "height": 141,
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Not Node",
+        "id": "23",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Not",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "NotNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "23",
+      "position": {
+        "x": 1198.401424530973,
+        "y": 751.6436143431558
+      },
+      "positionAbsolute": {
+        "x": 1198.401424530973,
+        "y": 751.6436143431558
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input value",
+        "id": "26",
+        "inputHandle": [],
+        "label": "view Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "arrayToCheck",
+          "value"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "26",
+      "position": {
+        "x": 180.0678311551646,
+        "y": 1116.6253958097707
+      },
+      "positionAbsolute": {
+        "x": 180.0678311551646,
+        "y": 1116.6253958097707
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Output Bool ",
+        "id": "29",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "variable Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "reset",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "29",
+      "position": {
+        "x": 1437.565919710022,
+        "y": 801.3604958362629
+      },
+      "positionAbsolute": {
+        "x": 1437.565919710022,
+        "y": 801.3604958362629
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Variables",
+        "dataType": "",
+        "display": "Input bool ",
+        "id": "30",
+        "inputHandle": [],
+        "label": "variable Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "name",
+          "default value"
+        ],
+        "parameterValueData": [
+          "reset"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "variableInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "30",
+      "position": {
+        "x": 359.8725160774566,
+        "y": 1227.7914597183417
+      },
+      "positionAbsolute": {
+        "x": 359.8725160774566,
+        "y": 1227.7914597183417
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 101,
+      "height": 221,
+      "data": {
+        "accordion": "Handling value",
+        "display": "SRValue Node",
+        "id": "31",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "S"
+          },
+          {
+            "dataType": "bool",
+            "name": "R1"
+          },
+          {
+            "dataType": "value",
+            "name": "valToS"
+          }
+        ],
+        "label": "SRValue",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Q"
+          },
+          {
+            "dataType": "value",
+            "name": "valOut"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "SRValueNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "31",
+      "position": {
+        "x": 1505.2083021710614,
+        "y": 436.15900515345527
+      },
+      "positionAbsolute": {
+        "x": 1505.2083021710614,
+        "y": 436.15900515345527
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 101,
+      "height": 141,
+      "data": {
+        "accordion": "Edge Detection",
+        "display": "Rtrig Node",
+        "id": "32",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Rtrig",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "RtrigNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "32",
+      "position": {
+        "x": 1339.8722787273962,
+        "y": 630.6023036993217
+      },
+      "positionAbsolute": {
+        "x": 1339.8722787273962,
+        "y": 630.6023036993217
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "33",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "arrayToCheck",
+        "selectedSubServiceData": "output val",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "33",
+      "position": {
+        "x": 1741.1868765831048,
+        "y": 578.6826246140774
+      },
+      "positionAbsolute": {
+        "x": 1741.1868765831048,
+        "y": 578.6826246140774
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 101,
+      "height": 181,
+      "data": {
+        "accordion": "Handling value",
+        "display": "DeleteAndShowFirstElem",
+        "id": "34",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "arrayIn"
+          },
+          {
+            "dataType": "value",
+            "name": "splitter"
+          }
+        ],
+        "label": "D+S1",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "arrayOut"
+          },
+          {
+            "dataType": "value",
+            "name": "1er Elem"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "DeleteAndShowFirstElemNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "34",
+      "position": {
+        "x": 532.1512258641413,
+        "y": 275.08885800219895
+      },
+      "positionAbsolute": {
+        "x": 532.1512258641413,
+        "y": 275.08885800219895
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 201,
+      "height": 81,
+      "data": {
+        "accordion": "Constant",
+        "dataType": "",
+        "display": "Constant value",
+        "id": "35",
+        "inputHandle": [],
+        "label": "Constant value Input",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "",
+        "selectedSubServiceData": "",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "constantInput",
+        "valueData": " ,,- "
+      },
+      "dragging": false,
+      "id": "35",
+      "position": {
+        "x": 268.23278568241733,
+        "y": 390.89528519925375
+      },
+      "positionAbsolute": {
+        "x": 268.23278568241733,
+        "y": 390.89528519925375
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 104,
+      "height": 184,
+      "data": {
+        "accordion": "Handling value",
+        "display": "DeleteAndShowFirstElem",
+        "id": "34",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "arrayIn"
+          },
+          {
+            "dataType": "value",
+            "name": "splitter"
+          }
+        ],
+        "label": "D+S1",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "arrayOut"
+          },
+          {
+            "dataType": "value",
+            "name": "1er Elem"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "DeleteAndShowFirstElemNode",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "36",
+      "position": {
+        "x": 575.5616257671483,
+        "y": 607.9897681037793
+      },
+      "positionAbsolute": {
+        "x": 575.5616257671483,
+        "y": 607.9897681037793
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-12Output-10x",
+      "selected": false,
+      "source": "12",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "10",
+      "targetHandle": "x",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-14Output-13pass",
+      "selected": false,
+      "source": "14",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "13",
+      "targetHandle": "pass",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-9Q-14Input",
+      "selected": false,
+      "source": "9",
+      "sourceHandle": "Q",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "14",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-10Output-9S",
+      "selected": false,
+      "source": "10",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "9",
+      "targetHandle": "S",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-13strOut-8Input",
+      "selected": false,
+      "source": "13",
+      "sourceHandle": "strOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "8",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-20Output-19str0",
+      "source": "20",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "19",
+      "targetHandle": "str0",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-12Output-19str1",
+      "source": "12",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "19",
+      "targetHandle": "str1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-22Output-21strToSeek",
+      "source": "22",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "21",
+      "targetHandle": "strToSeek",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-21isFind-23Input",
+      "source": "21",
+      "sourceHandle": "isFind",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "23",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-26Output-10y",
+      "source": "26",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "10",
+      "targetHandle": "y",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-26Output-13strIn",
+      "selected": false,
+      "source": "26",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "13",
+      "targetHandle": "strIn",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-23Output-29Input",
+      "source": "23",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "29",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-30Output-9R1",
+      "source": "30",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "9",
+      "targetHandle": "R1",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-23Output-32Input",
+      "source": "23",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "32",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-32Output-31S",
+      "source": "32",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "31",
+      "targetHandle": "S",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-31valOut-33Input",
+      "source": "31",
+      "sourceHandle": "valOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "33",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-34arrayOut-2Input",
+      "source": "34",
+      "sourceHandle": "arrayOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "2",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-1Output-34arrayIn",
+      "source": "1",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "34",
+      "targetHandle": "arrayIn",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-341er Elem-3Input",
+      "source": "34",
+      "sourceHandle": "1er Elem",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "3",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-35Output-34splitter",
+      "source": "35",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "34",
+      "targetHandle": "splitter",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-36arrayOut-17Input",
+      "source": "36",
+      "sourceHandle": "arrayOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "17",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-36arrayOut-21strWhereToSearch",
+      "source": "36",
+      "sourceHandle": "arrayOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "21",
+      "targetHandle": "strWhereToSearch",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-36arrayOut-31valToS",
+      "source": "36",
+      "sourceHandle": "arrayOut",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "31",
+      "targetHandle": "valToS",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-19str-36arrayIn",
+      "source": "19",
+      "sourceHandle": "str",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "36",
+      "targetHandle": "arrayIn",
+      "type": "step"
+    }
+  ],
+  "viewport": {
+    "x": 294.4890127713693,
+    "y": -180.37251341616877,
+    "zoom": 0.643332449004716
+  }
+}

@@ -89,3 +89,18 @@
   ],
 )
 
+#figure(
+  image("/resources/img/90_functionIO.png", width: 100%),
+  caption: [
+    Blocs : Function (entrées et sorties)
+  ],
+)
+
+#figure(
+  image("/resources/img/90_functionExemples.png", width: 100%),
+  caption: [
+    Blocs : Function - exemples de blocs
+  ],
+)
+
+

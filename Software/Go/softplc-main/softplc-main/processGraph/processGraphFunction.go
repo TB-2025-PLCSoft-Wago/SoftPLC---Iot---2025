@@ -35,6 +35,7 @@ func init() {
 	ListProcessFunction = make(map[string]functionProcess2)
 }
 func CreateQueueFunction(g Graph, name string) {
+	ListProcessFunction[name] = functionProcess2{}
 	fp := ListProcessFunction[name]
 	MutexFunction.Lock()
 	//find the output nodes and create the process queues
@@ -142,6 +143,11 @@ func findPreviousNodeFunction(queue *[]nodes.LogicalNodeInterface, nodeJson Node
 				}
 				// create the node and add it to the queue
 				nodeToAdd := createNodeFunction(nextNodeJson, g)
+				if nodeToAdd == nil {
+					// we stop everything or we ignore this node
+					fmt.Println("Node unknown or invalid, addition to the queue stopped.")
+					return
+				}
 				*queue = append([]nodes.LogicalNodeInterface{nodeToAdd}, *queue...)
 				findPreviousNodeFunction(queue, nextNodeJson, g, name)
 				//TO DO : maybe add ListProcessFunction[name] = fp
@@ -266,11 +272,14 @@ func createNodeFunction(nodeJson NodeJson, g Graph) nodes.LogicalNodeInterface {
 	NodeJsonId, _ := strconv.Atoi(nodeJson.Id)
 	nodeToAdd, err := nodes.CreateNode(nodeJson.Type)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("createNode", err)
+		serverResponse.ResponseProcessGraph = "Error this node to add type isn't logicalNodeInterface : " + nodeJson.Type
+		return nil
 	}
 	logicalNodeToAdd, ok := nodeToAdd.(nodes.LogicalNodeInterface)
 	if !ok {
 		fmt.Println("Error this nodeToAdd type isn't logicalNodeInterface: ", nodeToAdd)
+		serverResponse.ResponseProcessGraph = "Error this node to add type isn't logicalNodeInterface : " + nodeJson.Type
 	} else {
 		description, _ := nodes.NodeDescription(nodeJson.Type)
 		var input []nodes.InputHandle
@@ -467,7 +476,7 @@ func linkNodesFunction(g Graph, name string) {
 								dataTypeTarget := fp.OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.DataType
 								if dataTypeScr == dataTypeTarget {
 									isLinked = true
-									fp.OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = &fp.LogicalNode[j][k].GetOutput(srcHandleName).Output //we pass the input address to the output
+									fp.OutputNodes[i].GetOutput(edge.TargetHandle).OutputHandle.Input = &fp.LogicalNode[j][k].GetOutput(srcHandleName).Output //we pass the input address of logical to the output
 									server.AddDebugState(edge.Source, &fp.LogicalNode[j][k].GetOutput(srcHandleName).Output, srcHandleName, dataTypeTarget)
 									break
 								}

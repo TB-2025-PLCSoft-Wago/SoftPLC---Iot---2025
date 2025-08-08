@@ -41,11 +41,22 @@ func GetFunctionOutput(name string) (value string) {
 	fmt.Println("Function output : no value find ")
 	return "Function output : no value find"
 }
-func UpdateFunctionInputs(name string, value string) {
+func UpdateFunctionInput(name string, value string) {
 	//input
 	for i := range InputsStateFunction {
 		if InputsStateFunction[i].Name == name {
 			InputsStateFunction[i].Value = value
 		}
 	}
+}
+
+func GetFunctionInput(name string) (value string) {
+	//Input
+	for i := range InputsStateFunction {
+		if InputsStateFunction[i].Name == name {
+			return InputsStateFunction[i].Value
+		}
+	}
+	fmt.Println("Function output : no value find ")
+	return "Function output : no value find"
 }

@@ -103,6 +103,7 @@ func (n *CounterNode) ProcessLogic() {
 	}
 	if reset == "1" {
 		n.output[0].Output = "0"
+		return
 	}
 
 	if up == "1" && down == "1" {

@@ -250,6 +250,31 @@ Dans l’exemple @fig:blocRetainValue-vs-vue, on cherche à savoir si l’élém
 )
 #label("fig:blocFindExemple-vs-vue")
 //TO DO : ajouter image exemple etc.
+
+=== Delete and show first element <sec:implDeleteShow>
+Ce bloc permet d’effacer le premier élément d’une _value_ de type tableau. L’intérêt de ce bloc est de traiter de manière séparée chaque élément d’un tableau.
+
+La valeur par défaut de l’entrée *splitter* est (`,,`), cependant pour l’exemple @fig:91_DeleteAndShowFirstExemple-vs-vue, une valeur a été définie, ce qui n’est pas nécessaire dans la majorité des cas d’utilisation.
+
+Dans l’accordion, il se trouve dans "Handling value", sous le nom de "DeleteAndShowFirstElem".
+
+#figure(
+  image("/resources/img/91_DeleteAndShowFirstExemple.png", width: 100%),
+  caption: [
+    exemple – D+S1
+  ],
+)
+#label("fig:91_DeleteAndShowFirstExemple-vs-vue")
+
+=== SR Value <sec:implSRValue>
+Le bloc se comporte de manière semblable au bloc SR (@sec:implSR), à la différence qu’il transmet la valeur de *valToS* vers *valOut* lorsque l’entrée *S* est active, et qu’il remet la valeur *valOut* à vide lorsque l’entrée *R1* est active. Son but est de faciliter la mémorisation de valeurs.
+
+#figure(
+  image("/resources/img/91_BlocSRvalue.png", width: 20%),
+  caption: [
+    Bloc *SR Value*
+  ],
+)
 === Comparator EQ <sec:implComparatorEQ>
 Le bloc *EQ* permet de comparer si deux valeur sont égale et d'activer la sortie si c'est le cas.
 #figure(
@@ -301,7 +326,6 @@ L'exemple @fig:blocsVariablesContreReactionValue-vs-vue montre le fonctionnement
   ],
 )
 #label("fig:blocsVariablesContreReactionValue-vs-vue")
-
 
 
 == Intégration des blocs logiques de communication
@@ -910,7 +934,32 @@ La @fig:sequenceDebug montre comment les données se transmettent entre le côt�
   ],
   )
 
+#pagebreak()
+  == Création de fonction <sec:CreatFonct>
+Pour la création de nouveaux blocs depuis le côté #gls("backend"), l'explication se trouve déjà au @sec:ajouterBlocSimple.  
+Cependant, il a également été ajouté la possibilité de créer des fonctions directement depuis l'interface de programmation (@sec:implVueProgrammation). Cela permet à l'intégrateur de créer directement ses propres fonctions, lui permettant de gagner en temps et en lisibilité.
+L'avantage est que si une entreprise utilise souvent les mêmes mécanismes, elle s'évite un travail redondant.
 
-  
+#warningbox("Cette fonctionnalité est la dernière qui a été créée. De plus, elle offre un nombre énorme de possibilités. Par conséquent, elle comporte encore quelques défauts qui devront être améliorés dans l'avenir. Notamment, lorsqu'on commence à faire de l'imbrication de fonctions, il se peut qu’il faille recharger plusieurs fois les fonctions pour que les connexions se fassent correctement. De plus, certains cas de mauvaise utilisation n'ont pas été traités.")
+
+Le principe est que l'intégrateur crée un graphique de la même manière qu’il le fait habituellement, mais cette fois-ci en utilisant les blocs (@fig:92_functionInOut) afin de définir les entrées et sorties de la fonction. Une fois sa fonction terminée, il doit l'enregistrer où il veut grâce au bouton _Save As_ — à noter que le nom donné au fichier sera le nom de la fonction. Puis, pour que la fonction soit interprétée comme une fonction par le programme, il faut utiliser le bouton _Open Function_ puis sélectionner le fichier créé précédemment. Ainsi, la fonction deviendra accessible dans l’_accordion_ sous l'onglet "Functions" et pourra être utilisée comme un bloc normal pour la création de nouveaux programmes. Ces étapes de création sont montrées en figure (@fig:92_functionPrincipeDeCreation) avec un exemple tout bête.
+
+#figure(
+  image("/resources/img/92_functionInOut.png", width: 100%),
+  caption: [
+    *Fonction* : blocs de création entrée/sorties
+  ],
+)
+#label("fig:92_functionInOut")
+
+#iconbox(linecolor: hei-pink)[Des *exemples* de la fonctionnalité *Functions* sont présentés en annexe au @sec:creationFonction, qui montre comment l’utiliser.]
+
+  #figure(
+  image("/resources/img/92_functionPrincipeDeCreation.png", width: 120%),
+  caption: [
+    *Fonction* : étape de création d'une fonction
+  ],
+)
+#label("fig:92_functionPrincipeDeCreation")
 
 ]

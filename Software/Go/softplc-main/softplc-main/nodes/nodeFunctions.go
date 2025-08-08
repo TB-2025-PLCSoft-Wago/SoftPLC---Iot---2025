@@ -2,6 +2,7 @@ package nodes
 
 import (
 	"SoftPLC/function"
+	"fmt"
 	"log"
 	"strings"
 )
@@ -42,8 +43,6 @@ func FunctionAddToList() {
 			Services:          []servicesStruct{},
 			SubServices:       []subServicesStruct{},
 			ParameterNameData: nil,
-			// InputHandle:     ...
-			// OutputHandle:    ...
 
 			Input:  []dataTypeNameStruct{},
 			Output: []dataTypeNameStruct{},
@@ -111,6 +110,25 @@ func FunctionAddToList() {
 			})
 
 		}
+
+		if strings.Contains(nodeType, "functionInputValue") {
+			paramList, _ := data["parameterValueData"].([]interface{})
+			if len(paramList) > 0 {
+				paramName, _ := paramList[0].(string)
+				newFuncNode.description.Input = append(newFuncNode.description.Input, dataTypeNameStruct{
+					DataType: "value",
+					Name:     paramName,
+				})
+			}
+		}
+		if strings.Contains(nodeType, "functionOutputValue") {
+			paramName, _ := data["selectedServiceData"].(string)
+			newFuncNode.description.Output = append(newFuncNode.description.Output, dataTypeNameStruct{
+				DataType: "value",
+				Name:     paramName,
+			})
+
+		}
 	}
 
 	newFuncNode.graph = graphData
@@ -160,20 +178,28 @@ func update() {
 
 func (n *FunctionNode) ProcessLogic() {
 	name := strings.ReplaceAll(n.nodeType, "ConfigurableNodeFunction", "")
-	for i, input := range FunctionNodeListProcess[name].InputNodes {
+	inputIndex := 0
+	for _, input := range FunctionNodeListProcess[name].InputNodes {
 		nodeType := input.GetNodeType()
 		if strings.Contains(nodeType, "function") {
-			function.UpdateFunctionInputs(input.GetOutput("Output").FriendlyName, *n.input[i].Input) //TO DO : edge.TargetHandle
+			if len(n.input) > inputIndex {
+				function.UpdateFunctionInput(input.GetOutput("Output").FriendlyName, *n.input[inputIndex].Input) //TO DO : edge.TargetHandle
+				inputIndex++
+			} else {
+				fmt.Println("nodeFunctions input error index : ", inputIndex)
+			}
+
 		}
 	}
 
 	ProcessFunction(name) //name + "ConfigurableNodeFunction"
-
-	for i, out := range FunctionNodeListProcess[name].OutputNodes {
+	inputIndex = 0
+	for _, out := range FunctionNodeListProcess[name].OutputNodes {
 		nodeType := out.GetNodeType()
 		if strings.Contains(nodeType, "function") {
 			//TO DO : edge.TargetHandle
-			n.output[i].Output = function.GetFunctionOutput(out.GetOutput("Input").Service)
+			n.output[inputIndex].Output = function.GetFunctionOutput(out.GetOutput("Input").Service)
+			inputIndex++
 		}
 	}
 }

@@ -1,0 +1,775 @@
+{
+  "nodes": [
+    {
+      "width": 247,
+      "height": 302,
+      "data": {
+        "accordion": "Functions",
+        "display": "msgCheckBool",
+        "id": "0",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "string to check"
+          }
+        ],
+        "label": "msgCheckBool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "error"
+          },
+          {
+            "dataType": "bool",
+            "name": "isActive"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "msgCheckBoolConfigurableNodeFunction",
+        "valueData": ""
+      },
+      "id": "0",
+      "position": {
+        "x": 706.0028409957886,
+        "y": 279.0028409957886
+      },
+      "positionAbsolute": {
+        "x": 706.0028409957886,
+        "y": 279.0028409957886
+      },
+      "selected": false,
+      "type": "LogicalNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input value",
+        "id": "1",
+        "inputHandle": [],
+        "label": "view Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "msg test",
+          "msg to check 1"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "1",
+      "position": {
+        "x": 454.08803958461993,
+        "y": 363.98979737301937
+      },
+      "positionAbsolute": {
+        "x": 454.08803958461993,
+        "y": 363.98979737301937
+      },
+      "selected": false,
+      "type": "inputNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "msg test",
+        "selectedSubServiceData": "msg error 1",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "2",
+      "position": {
+        "x": 1009.0912590349017,
+        "y": 336.5760067958329
+      },
+      "positionAbsolute": {
+        "x": 1009.0912590349017,
+        "y": 336.5760067958329
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 202,
+      "height": 82,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "msg test",
+        "selectedSubServiceData": "msg isActive 1",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "3",
+      "position": {
+        "x": 1001.6581559889532,
+        "y": 440.06339087271766
+      },
+      "positionAbsolute": {
+        "x": 1001.6581559889532,
+        "y": 440.06339087271766
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 250,
+      "height": 305,
+      "data": {
+        "accordion": "Functions",
+        "display": "msgCheckBool",
+        "id": "0",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "string to check"
+          }
+        ],
+        "label": "msgCheckBool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "error"
+          },
+          {
+            "dataType": "bool",
+            "name": "isActive"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "msgCheckBoolConfigurableNodeFunction",
+        "valueData": ""
+      },
+      "id": "4",
+      "position": {
+        "x": 705.1982314779754,
+        "y": 508.18784876019527
+      },
+      "positionAbsolute": {
+        "x": 705.1982314779754,
+        "y": 508.18784876019527
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "draggable": true,
+      "dragging": false
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input value",
+        "id": "1",
+        "inputHandle": [],
+        "label": "view Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "msg test",
+          "msg to check 2"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "5",
+      "position": {
+        "x": 453.2834300668067,
+        "y": 593.174805137426
+      },
+      "positionAbsolute": {
+        "x": 453.2834300668067,
+        "y": 593.174805137426
+      },
+      "selected": false,
+      "type": "inputNode",
+      "draggable": true
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "msg test",
+        "selectedSubServiceData": "msg error 2",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "6",
+      "position": {
+        "x": 1008.2866495170884,
+        "y": 565.7610145602396
+      },
+      "positionAbsolute": {
+        "x": 1008.2866495170884,
+        "y": 565.7610145602396
+      },
+      "selected": false,
+      "type": "outputNode",
+      "draggable": true
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "msg test",
+        "selectedSubServiceData": "msg isActive 2",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "7",
+      "position": {
+        "x": 1000.85354647114,
+        "y": 669.2483986371243
+      },
+      "positionAbsolute": {
+        "x": 1000.85354647114,
+        "y": 669.2483986371243
+      },
+      "selected": false,
+      "type": "outputNode"
+    },
+    {
+      "width": 250,
+      "height": 305,
+      "data": {
+        "accordion": "Functions",
+        "display": "msgCheckBool",
+        "id": "0",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "string to check"
+          }
+        ],
+        "label": "msgCheckBool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "error"
+          },
+          {
+            "dataType": "bool",
+            "name": "isActive"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "msgCheckBoolConfigurableNodeFunction",
+        "valueData": ""
+      },
+      "id": "11",
+      "position": {
+        "x": 703.343476499893,
+        "y": 730.7584461300854
+      },
+      "positionAbsolute": {
+        "x": 703.343476499893,
+        "y": 730.7584461300854
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "draggable": true,
+      "dragging": false
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input value",
+        "id": "1",
+        "inputHandle": [],
+        "label": "view Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "msg test",
+          "msg to check 3"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "12",
+      "position": {
+        "x": 451.42867508872433,
+        "y": 815.7454025073162
+      },
+      "positionAbsolute": {
+        "x": 451.42867508872433,
+        "y": 815.7454025073162
+      },
+      "selected": false,
+      "type": "inputNode",
+      "draggable": true
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "msg test",
+        "selectedSubServiceData": "msg error 3",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "id": "13",
+      "position": {
+        "x": 1006.4318945390061,
+        "y": 788.3316119301297
+      },
+      "positionAbsolute": {
+        "x": 1006.4318945390061,
+        "y": 788.3316119301297
+      },
+      "selected": false,
+      "type": "outputNode",
+      "draggable": true
+    },
+    {
+      "width": 205,
+      "height": 85,
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "msg test",
+        "selectedSubServiceData": "msg isActive 3",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "draggable": true,
+      "dragging": false,
+      "id": "14",
+      "position": {
+        "x": 998.9987914930576,
+        "y": 891.8189960070144
+      },
+      "positionAbsolute": {
+        "x": 998.9987914930576,
+        "y": 891.8189960070144
+      },
+      "selected": false,
+      "type": "outputNode"
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-1Output-0string to check",
+      "source": "1",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "0",
+      "targetHandle": "string to check",
+      "type": "step",
+      "selected": false
+    },
+    {
+      "id": "reactflow__edge-0error-2Input",
+      "source": "0",
+      "sourceHandle": "error",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "2",
+      "targetHandle": "Input",
+      "type": "step",
+      "selected": false
+    },
+    {
+      "id": "reactflow__edge-0isActive-3Input",
+      "source": "0",
+      "sourceHandle": "isActive",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "3",
+      "targetHandle": "Input",
+      "type": "step",
+      "selected": false
+    },
+    {
+      "id": "8",
+      "source": "5",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "4",
+      "targetHandle": "string to check",
+      "type": "step",
+      "selected": false
+    },
+    {
+      "id": "9",
+      "source": "4",
+      "sourceHandle": "error",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "6",
+      "targetHandle": "Input",
+      "type": "step",
+      "selected": false
+    },
+    {
+      "id": "10",
+      "source": "4",
+      "sourceHandle": "isActive",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "7",
+      "targetHandle": "Input",
+      "type": "step",
+      "selected": false
+    },
+    {
+      "id": "15",
+      "source": "12",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "11",
+      "targetHandle": "string to check",
+      "type": "step",
+      "selected": false
+    },
+    {
+      "id": "16",
+      "source": "11",
+      "sourceHandle": "error",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "13",
+      "targetHandle": "Input",
+      "type": "step",
+      "selected": false
+    },
+    {
+      "id": "17",
+      "source": "11",
+      "sourceHandle": "isActive",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "14",
+      "targetHandle": "Input",
+      "type": "step",
+      "selected": false
+    }
+  ],
+  "viewport": {
+    "x": -68.32237447964553,
+    "y": -275.177368501641,
+    "zoom": 0.9387229834489115
+  }
+}

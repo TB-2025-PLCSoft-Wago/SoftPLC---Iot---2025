@@ -39,6 +39,8 @@ L’intégration des blocs suivants :
   - Concat (@sec:implConcat)
   - Retain Value (@sec:implRetainValue)
   - Find (@sec:implFind)
+  - D+S1 (@sec:implDeleteShow)
+  - SR Value (@sec:implSRValue)
   - Counter (@sec:implCounter)
   - SR (@sec:implSR)
   - NOT
@@ -52,6 +54,7 @@ Ainsi que d’autres fonctionnalités :
   - L’intégration de #gls("WDA") (@sec:implWDA)
   - La gestion d’erreurs (@sec:implGestionErreur)
   - Les variables (@sec:implVariables)
+  - Permettre la création de fonctions personnalisée (@sec:CreatFonct)
 ]
 
 La modification de la vue : *programming view* (@sec:implVueProgrammation) et la création des vues suivantes :
@@ -120,7 +123,7 @@ La différence est la *slide Bar* car avant si on ouvrait tous on n’avait pas 
 == Comparaison avec les objectifs initial
 /*Les objectifs fixés par pr4 sont atteints. Le programme a pu être testé et permet de créer des programmes très simples. Un nouveau bloc a été ajouté et testé sur l'automate. Le principe de fonctionnement des codes a été vus et il est possible d’ajouter de nouveaux.
 */
-Les objectifs du cahier des charges sont remplis. Des blocs de communication complexes ont été créés, tels que MQTT, client/serveur HTTP et MODBUS. De plus, plusieurs nouveaux blocs ont pu être développés, ce qui permet désormais de réaliser bien plus de fonctionnalités logiques, de traiter des chaînes de caractères, et même de travailler avec des tableaux de chaînes de caractères. L'interface REST #gls("WDA") est utilisée. 
+Les objectifs du cahier des charges sont remplis, sauf pour CAN. Des blocs de communication complexes ont été créés, tels que MQTT, client/serveur HTTP et MODBUS. De plus, plusieurs nouveaux blocs ont pu être développés, ce qui permet désormais de réaliser bien plus de fonctionnalités logiques, de traiter des chaînes de caractères, et même de travailler avec des tableaux de chaînes de caractères. L'interface REST #gls("WDA") est utilisée. 
 
 D’un point de vue utilisateur, de nombreuses améliorations ont été apportées, notamment :
 #[
@@ -152,16 +155,39 @@ Pour l’implémentation de la fonction undo/redo (ctrl + z/y), la difficulté a
 
 De plus, il a fallu s’assurer que le programme ne puisse pas planter et que les fonctionnalités qui plantent soient redémarrées.
 
+Pour la création de fonctions, il a fallu trouver un moyen de transmettre les données 
+vers _nodeFunctions_ autorisé par _Golang_.
 
 == Perspectives d'avenir
-=== Permettre la création de fonction
-Un objectif pour la suite est d'ajouter la possibilité à l'intégrateur de créer ses propres blocs de fonction. Par exemple, on pourrait ajouter une vue similaire à la *programming view*. Dans cette vue, on pourrait créer un graphique avec, en plus, des blocs *function input* et *function output*, à qui l’on attribuerait un nom, comme pour les *variables*. Cela correspondrait aux entrées et sorties du bloc.
+=== Améliorer la création de fonctions
+Un objectif pour la suite est d’optimiser la possibilité pour l’intégrateur de créer ses propres blocs de fonction. 
+Cette fonctionnalité, déjà développée (@sec:CreatFonct), nécessite toutefois des améliorations pour un meilleur fonctionnement. Une phase de test approfondie sera aussi indispensable.
 
-Il faut également un moyen de permettre de modifier les paramètres de la fonction. Une possibilité serait d’avoir une coche pour chaque paramètre lorsque cette vue est activée, et ceux cochés apparaîtraient comme paramètres de la fonction.
+Par exemple, il faut ajouter la prise en charge du multi-instance pour les blocs internes qui dépendent de leur état précédent, 
+comme les SR ou les Trigger. Concrètement, chaque bloc de la fonction implémentée devrait disposer de sa propre instance, 
+et non partager un seul état commun. 
 
-Une fois la fonction terminée, on lui donne un nom et elle apparaît dans l'accordion avec les autres blocs, prête à être utilisée.
+Il faudrait également offrir un moyen de modifier facilement les paramètres d’une fonction.  
+Une possibilité serait d’afficher une case à cocher pour chaque paramètre lorsque la vue est activée.
+Les paramètres cochés apparaîtraient alors comme variables configurables de la fonction.  
+Une autre idée consisterait à créer un tableau de variables propre au graphique affiché, 
+comportant deux colonnes : *nom* et *valeur*.
 
-L'avantage est que si une entreprise utilise souvent les mêmes mécanismes, elle s'évite un travail redondant. Cela est également utile si l’on a une appliance complexe qui doit être utilisée plusieurs fois.
+Les noms définis dans ce tableau pourraient ensuite être réutilisés dans les _settings_, constantes ou autres éléments, le programme remplaçant automatiquement les noms par leurs valeurs.  
+Dans le cas d’une fonction, les noms sans valeur attribuée apparaîtraient dans les _settings_ du bloc, où l’utilisateur pourrait alors définir les valeurs.  
+
+Cette approche est particulièrement utile lorsqu’une logique complexe, telle qu’une _appliance_, 
+doit être réutilisée à plusieurs reprises dans un système.  
+Il suffirait alors de créer un bloc commun, avec seulement dans ses _settings_ les paramètres 
+comme l’adresse IP, le numéro de registre à lire/écrire ou encore un identifiant permettant l’affichage dans la _user view_ (@sec:implVueUser).
+
+Enfin, il serait pratique, qu'en mode _programmatation_ ou _debug_ (@sec:implVueDebug), il soit permis l’ouverture des fonctions, par exemple via un nouvel outil (_tool_) dédié.
+
+=== Ajout de nouveau bloc : calendrier
+Il pourrait être intéressant d’ajouter des blocs permettant de connaître le jour, l’heure 
+ou de vérifier si l’on se trouve dans une plage de dates donnée.  
+Ce type de fonctionnalité serait particulièrement utile dans les systèmes dépendant de l’heure ou de la période (été/hiver), comme par exemple un système de chauffage alimenté par panneaux solaires.
+ 
 
 === Idées d’amélioration et extensions du #gls("frontend") web <sec:objectif>
 Il y a de nombreuse possibilités d’amélioration pour l’interface utilisateur.
@@ -176,15 +202,15 @@ Il y a de nombreuse possibilités d’amélioration pour l’interface utilisate
 //	- Rendre la touche _Delete_ fonctionnel.
 //	-	Ctrl + C / V / A / Z / Y.
 //	-	Clic + glisser = multi-sélection.
-	-	Touche O pour placer un Output, I pour un Input.
-	-	Touche Espace pour placer un composant identique au précédent.
-	-	Shift + clic gauche + glisser pour dupliquer.
-	-	Une autre idée intéressante : une touche (Ctrl + Alt + C) pour ajouter automatiquement tous les blocs nécessaires autour d’un bloc ou groupe sélectionné, avec des valeurs par défaut. Par exemple, on sélectionne un bloc TON, on appuie sur la touche, et le système ajoute automatiquement une constante de 1 seconde, une entrée DIO1 (ou la suivante si déjà utilisée), et une sortie DO1. Les valeurs par défaut ne sont pas obligatoires, on peut faire sans. Mettre une touche dédiée pour activer ou désactiver les valeurs par défaut de cette fonctionnalitée.
+	//-	Touche O pour placer un Output, I pour un Input.
+	//-	Touche Espace pour placer un composant identique au précédent.
+	//-	Shift + clic gauche + glisser pour dupliquer.
+	-	Une idée intéressante : une touche (Ctrl + Alt + C) pour ajouter automatiquement tous les blocs nécessaires autour d’un bloc ou groupe sélectionné, avec des valeurs par défaut. Par exemple, on sélectionne un bloc TON, on appuie sur la touche, et le système ajoute automatiquement une constante de 1 seconde, une entrée DIO1 (ou la suivante si déjà utilisée), et une sortie DO1. Les valeurs par défaut ne sont pas obligatoires, on peut faire sans. Mettre une touche dédiée pour activer ou désactiver les valeurs par défaut de cette fonctionnalitée.
 //-	L’ordre des Inputs, Outputs, blocs logiques, etc. dans l’accordion n’est jamais le même, ce qui rend l’utilisation plus pénible car on ne peut pas s'habituer.
 //-	Amélioration de l’aspect visuel : couleurs et autres éléments graphiques.
--	Ajout d’une barre de menu en haut :
-	-	Affichage des raccourcis clavier
-	-	Aide
+-	Affichage des raccourcis clavier.
+-	Aide avec des exemples pour les blocs.
+- Mettre en évidence les blocs qui posent problèmes.
 //	-	Choix de l’emplacement d’enregistrement par l’utilisateur
 //	-	Ajout d’un mode Debug
 ]
