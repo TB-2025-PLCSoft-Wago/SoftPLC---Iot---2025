@@ -61,7 +61,7 @@
 )
 #label("fig:83_ProofOfConcept_Boutton_Config-vs-vue")
 == Gestion enclenchement du chauffage <sec:enclenchementChauffage-vs-vue>
-L'idée est de faire du tout ou rien sur un relais _myStrom_. Cependant, on offre également la possibilitée d'activée ou désactivé manuellement via l'interface. Sur l'input _topicToReceive_ du bloc _MQTT_, on a la constante "shellies/shelly-s1-Heater-Home/sensor/temperature" qu'on ne voit pas en complet sur le capture d'écran.
+L'idée est de faire du tout ou rien sur un relais _myStrom_. Cependant, on offre également la possibilitée d'activer ou désactiver manuellement via l'interface. Sur l'input _topicToReceive_ du bloc _MQTT_, on a la constante "shellies/shelly-s1-Heater-Home/sensor/temperature" qu'on ne voit pas en complet sur le capture d'écran.
 #figure(
   image("/resources/img/80_Proof_of_concept_Heater_Interface.png", width: 100%),
   caption: [
@@ -249,3 +249,34 @@ L'idée de ce programme est de permettre à l'utilisateur de changer la couleur 
 )
 #label("fig:81_Proof_of_concept_LightColor_garage")
 == Gestion lumières <sec:lampe2-vs-vue>
+#figure(
+  image("/resources/img/97_light_general.png", width: 120%),
+  caption: [
+    *Gestion des lumières garage et cuisine* : vue programmation - vue en complet
+  ],
+)
+
+#figure(
+  image("/resources/img/97_light_cuisineRead.png", width: 120%),
+  caption: [
+    *Gestion des lumières garage et cuisine* : vue programmation - lecture cuisine
+  ],
+)
+#figure(
+  image("/resources/img/97_light_cuisine_write.png", width: 120%),
+  caption: [
+    *Gestion des lumières garage et cuisine* : vue programmation - écriture cuisine
+  ],
+)
+#figure(
+  image("/resources/img/97_light_garage_read.png", width: 120%),
+  caption: [
+    *Gestion des lumières garage et cuisine* : vue programmation - logique garage
+  ],
+)
+#figure(
+  image("/resources/img/97_light_garage_read.png", width: 120%),
+  caption: [
+    *Gestion des lumières garage et cuisine* : vue programmation - écriture garage
+  ],
+)

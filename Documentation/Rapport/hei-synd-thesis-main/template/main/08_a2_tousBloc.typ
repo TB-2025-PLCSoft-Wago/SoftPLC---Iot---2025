@@ -102,5 +102,8 @@
     Blocs : Function - exemples de blocs
   ],
 )
-
+//-------------------------------------
+//Move to end of the annexe
+<sec:endAnnex>
+//-------------------------------------
 

@@ -25,9 +25,9 @@ Le projet se construit sur la base de deux programmes :
   
   En parallèle de toutes ces étapes, la *programming view* a été améliorée par l’ajout de raccourcis clavier, l’amélioration de l’aspect visuel, la possibilité d’ajouter des commentaires, l’intégration de mécanismes de gestion de fichiers, la possibilité de choisir la couleur des connections pour mieux se repérer.
 
-  Le code a été conçu afin d'éviter tous plantage.
+  Le code a été conçu afin d'éviter tout plantage.
 
-  Le code peut maintenant être charger dans l'automate avec DOCKER pour être utilisé pour la création de programme IoT.
+  Le code peut maintenant être chargé dans l'automate avec DOCKER pour être utilisé pour la création de programme IoT.
 #v(2em)
 #if doc.at("keywords", default:none) != none {[
 

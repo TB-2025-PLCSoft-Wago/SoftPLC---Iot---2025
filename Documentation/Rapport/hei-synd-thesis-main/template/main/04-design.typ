@@ -49,9 +49,9 @@ Ce chapitre permet de mieux comprendre l’architecture générale avec les lien
 #label("fig:schemaPrincipe-vs-vue")
 
   #pagebreak()
-== Bloc de haut niveau
+== Blocs de haut niveau
 
-Il existe plusieurs manière d’aborder le problème. Une des approches est de repérer les points commun entre ces blocs de haut niveau pour essayer d’en tirer une forme générique. On remarque que tous ces blocs ont pour objectif de transmettre et recevoir des données. Il faudra donc commencer par le développement de bloc commun pour une communication. Il faut également des blocs permettant de travailler avec des STRING. Le schéma figure 1 montre le concept d’une telle structure avec tous les blocs qui devront être développé autour pour pouvoir créer une communication. 
+Il existe plusieurs manière d’aborder le problème. Une des approches est de repérer les points communs entre ces blocs de haut niveau pour essayer d’en tirer une forme générique. On remarque que tous ces blocs ont pour objectif de transmettre et recevoir des données. Il faudra donc commencer par le développement de blocs communs pour une communication. Il faut également des blocs permettant de travailler avec des STRING. Le schéma figure 1 montre le concept d’une telle structure avec tous les blocs qui devront être développés autour pour pouvoir créer une communication. 
 #figure(
   image("/resources/img/01_communication_principe.png", width: 110%),
   caption: [
@@ -60,7 +60,7 @@ Il existe plusieurs manière d’aborder le problème. Une des approches est de 
 )
 #label("fig:communication-Bloc-principe")
 #ideabox()[
-L’idée étant d’avoir un bloc communication qui s’occupe de la configuration étant différente pour MQTT, HTTP, CAN, etc. Sur le quel, on pourra double cliqués pour accéder à la page de configuration. Sur ce bloc de communication, on pourait ensuite venir lier nos 2 blocs permettant la transition de boolean vers nos trame. Par le future, en mode debug, l’utilisateur pourra voir l’état de la communication grace au "bloc de communication" et voir ce que la logique combinatoire transmet comme trame grâce au bloc en vert.
+L’idée étant d’avoir un bloc communication qui s’occupe de la configuration étant différente pour MQTT, HTTP, CAN, etc. Bloc sur lequel, on pourra cliquer pour accéder à la page de configuration. Sur ce bloc de communication, on pourait ensuite venir lier nos 2 blocs permettant la transition de boolean vers nos trames. Par le futur, en mode debug, l’utilisateur pourra voir l’état de la communication grâce au "bloc de communication" et voir ce que la logique combinatoire transmet comme trame grâce au bloc en vert.
 ]
 
   #pagebreak()
@@ -75,7 +75,7 @@ L’idée étant d’avoir un bloc communication qui s’occupe de la configurat
 
   La vue user WebSocket permet de visualiser en temps réel l'état des _Outputs_ et de gérer les _Inputs_ spécifiques à cette vue. Sur le schéma @fig:schemaPrincipe-vs-vue, elle est représentée par la "View page".
 
-  Cette vue s'accompagne de blocs logiques qui permettent sa création. Ces blocs sont représentés dans la figure @fig:blocWebSocket-vs-vue. Ils permettent de créer des Inputs et Outputs spécifiques à cette vue, permettant ainsi de visualiser l'état de n'importe quelle connexion dans le programme PLC. Un exemple de ce à quoi pourrait ressembler la vue WebSocket est présenté dans la figure @fig:vuePrincipeWebSocket-vs-vue, et le programme qui crée cette vue est présenté dans la figure @fig:ProgrammePrincipeWebSocket-vs-vue. Les parties _recevoir_ et _envoyer_ les messages sont prévues pour du débogage. Les autres parties sont prévues pour contrôler et tester le programme PLC. Remarquez l’impact du champ _Appliance Name_, qui permet de créer des groupes dans la vue WebSocket. Cela facilite le regroupement des Inputs et Outputs par groupe, ce qui est très utile pour la visualisation. L'idée a été inspirée de "Remote Controller" vue en cours de Data Engineering, où une page WebSocket est générée à partir d'un fichier JSON, dont voici le lien https://cyberlearn.hes-so.ch/pluginfile.php/3312976/mod_resource/content/2/index.html. 
+  Cette vue s'accompagne de blocs logiques qui permettent sa création. Ces blocs sont représentés dans la figure @fig:blocWebSocket-vs-vue. Ils permettent de créer des Inputs et Outputs spécifiques à cette vue, permettant ainsi de visualiser l'état de n'importe quelle connexion dans le programme PLC. Un exemple de ce à quoi pourrait ressembler la vue WebSocket est présenté dans la figure @fig:vuePrincipeWebSocket-vs-vue, et le programme qui crée cette vue est présenté dans la figure @fig:ProgrammePrincipeWebSocket-vs-vue. Les parties _recevoir et envoyer les messages_ sont prévues pour du débogage. Les autres parties sont prévues pour contrôler et tester le programme PLC. Remarquez l’impact du champ _Appliance Name_, qui permet de créer des groupes dans la vue WebSocket. Cela facilite le regroupement des Inputs et Outputs par groupe, ce qui est très utile pour la visualisation. L'idée a été inspirée de "Remote Controller" vue en cours de Data Engineering, où une page WebSocket est générée à partir d'un fichier JSON, dont voici le lien https://cyberlearn.hes-so.ch/pluginfile.php/3312976/mod_resource/content/2/index.html. 
   
   #figure(
   image("/resources/img/27_blocsWebSocket_InOut.png", width: 80%),
@@ -120,7 +120,7 @@ En figure @fig:vuePrincipeModedebug-vs-vue se trouve un exemple démontrant enti
 #label("fig:vuePrincipeModedebug-vs-vue")
 
 
-L'outil en question est représenté par une loupe. Quand il est sélectionné, il ajoute ou enlève les edges de la liste des edges dont on veut afficher les valeurs dans la vue de debug. La boîte à outil est expliquée plue en détail dans la section @sec:toolsMenu.
+L'outil en question est représenté par une loupe. Quand il est sélectionné, il ajoute ou enlève les edges de la liste des edges dont on veut afficher les valeurs dans la vue de debug. La boîte à outils est expliquée plus en détails dans la section @sec:toolsMenu.
 #figure(
   image("/resources/img/54_ExempleModeDebugTool.png", width: 50%),
   caption: [
@@ -130,7 +130,7 @@ L'outil en question est représenté par une loupe. Quand il est sélectionné, 
 
 #label("fig:ToolModedebug-vs-vue")
 
-La *transmission des données* ainsi que les mécanismes principaux sont décrit dans le schéma se trouvant @sec:debugModeData.
+La *transmission des données* ainsi que les mécanismes principaux sont décrits dans le schéma se trouvant @sec:debugModeData.
 #pagebreak()
 == Gestion et stockage des données
 
@@ -200,10 +200,10 @@ Le schéma @fig:vuePrincipeModeDebugData-vs-vue permet de comprendre les mécani
 
 Pour les blocs complexes, nous devons pouvoir transmettre autant de données que nécessaire. Pour cela, deux tableaux de chaînes (_String_) sont utilisés :
 
-- Un tableau *parameterValueData* contenant les #underline("valeurs") des paramètres (définis dans le #gls("frontend")).
+- Un tableau *parameterValueData* contenant les #underline("valeurs") des paramètres (définies dans le #gls("frontend")).
 - Un tableau *parameterNameData* contenant les #underline("noms") des paramètres (définis dans le #gls("backend")).
 
-Ces tableaux permettent la transmission des données entre le #gls("backend") et le #gls("frontend") pour les _nodes_ qui le nécessitent, comme les blocs de communication (MQTT, HTTP, MODBUS), ainsi que les blocs *string to bool* et *bool to string*.
+Ces tableaux permettent la transmission des données entre le #gls("backend") et le #gls("frontend") pour les _nodes_ qui le nécessite, comme les blocs de communication (MQTT, HTTP, MODBUS), ainsi que les blocs *string to bool* et *bool to string*.
 
 
  #iconbox(linecolor: hei-pink)[Un exemple de la structure JSON d’un bloc _MQTT_ est présenté en annexe, à la section @sec:mqttConfiguration.]

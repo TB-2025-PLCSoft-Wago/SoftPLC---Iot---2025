@@ -5,7 +5,7 @@
 Durant le cours Projet 4, plusieurs solutions existantes similaires à ce que l’on souhaitait développer ont été identifiées. Cette section présente également le travail réalisé lors du TB 2024, qui précède celui-ci.
 
 == n8n @N8nioN8n2025
-C’est un logiciel d’automation présent en ligne sur gitHub. Il permet une programmation en no-code sur page web comme ce qu’on l’on essaie de faire. Il est surtout conçu pour l’automation de tâche simple. Il permet notamment l’automation de chat alimenté par l’IA, c’est-à-dire des réponses automatiques. Ce n’est pas ce qui nous intéresse mais cela peut nous aider à avoir des idées.
+C’est un logiciel d’automation présent en ligne sur gitHub. Il permet une programmation en no-code sur page web comme ce que l’on essaie de faire. Il est surtout conçu pour l’automation de tâches simples. Il permet notamment l’automation de chat alimenté par l’IA, c’est-à-dire des réponses automatiques. Ce n’est pas ce qui nous intéresse mais cela peut nous aider à avoir des idées.
 
 
 #figure(
@@ -15,7 +15,7 @@ C’est un logiciel d’automation présent en ligne sur gitHub. Il permet une p
   ],
 )
 
-L’activation d’une output en n8n peut ce faire de la manière suivante. Il suffit d’un bloc HTTP Request1 qu’on configure.
+L’activation d’un output en n8n peut se faire de la manière suivante. Il suffit d’un bloc HTTP Request1 qu’on configure.
 
 #figure(
   image("/resources/img/09_Bloc_HTTP_Request1_n8n.png", width: 60%),
@@ -44,7 +44,7 @@ C'est un logiciel de programmation en no-code. Il est possible de faire des prog
 == Analyse critique du code précédent <sec:codePrecedent>
 Le code précédent est un bon point de départ pour la création d'un #gls("HAL") de développement d’automate. Cependant, il y a plusieurs points à améliorer.
 
-Le code est presque totalement fonctionnel malgré quelques petites erreurs. Cependant, la structure actuelle ne permet pas l'intégration de blocs plus complexes que ce qui a été fait. En effet, par exemple, nous pouvons recevoir et transmettre qu'un nombre très limité de paramètres, et la structure de ceux-ci n'est pas très flexible. Le typage des blocs est également très limité. Il utilise le type *float64* pour tous les blocs, ce qui n'est pas adapté à la transmission de données plus complexes. Il serait préférable d'utiliser un type plus flexible, comme un type any, un type générique ou au moins un type *string*. De plus, le code est très difficile à lire et à comprendre car il utilise beaucoup d'imbrications de boucles *for* et *if*. Il manque des commentaires. Il n'a également pas prévu la possibilité d'avoir *plusieurs output* pour un bloc.
+Le code est presque totalement fonctionnel malgré quelques petites erreurs. Cependant, la structure actuelle ne permet pas l'intégration de blocs plus complexes que ce qui a été fait. En effet, par exemple, nous pouvons recevoir et transmettre qu'un nombre très limité de paramètres, et la structure de ceux-ci n'est pas très flexible. Le typage des blocs est également très limité. Il utilise le type *float64* pour tous les blocs, ce qui n'est pas adapté à la transmission de données plus complexes. Il serait préférable d'utiliser un type plus flexible, comme un type any, un type générique ou au moins un type *string*. De plus, le code est très difficile à lire et à comprendre car il utilise beaucoup d'imbrications de boucles *for* et *if*. Il manque des commentaires. Il n'a également pas prévu la possibilité d'avoir *plusieurs outputs* pour un bloc.
 
 Au niveau visuel, la structure doit être améliorée. En effet, on ne peut pas continuer à mettre tous les blocs logiques dans le même fichier. Il faudrait au moins créer des fichiers séparés pour chaque type de bloc logique. La taille des blocs n'est également pas adaptée aux besoins. Le contenu des blocs n’est pas mis à jour après un "restore", il faut implémenter des *useEffect*.
 

@@ -276,7 +276,7 @@ Le bloc se comporte de manière semblable au bloc SR (@sec:implSR), à la diffé
   ],
 )
 === Comparator EQ <sec:implComparatorEQ>
-Le bloc *EQ* permet de comparer si deux valeur sont égale et d'activer la sortie si c'est le cas.
+Le bloc *EQ* permet de comparer si deux valeurs sont égales et d'activer la sortie si c'est le cas.
 #figure(
   image("/resources/img/56_ComparatorEQNode.png", width: 100%),
   caption: [
@@ -298,7 +298,7 @@ La figure @fig:ComparatorGTNode-vs-vue montre la différence entre ces deux cas.
 #label("fig:ComparatorGTNode-vs-vue")
 #pagebreak()
 === Variables <sec:implVariables>
-Afin de permettre des fonctions de type boucle de contre-réaction, il a été choisi de rajouter un système de variable. Les blocs @fig:blocsVariables-vs-vue s'utilisent de la manière suivante : il faut faire correspondre les noms pour que les valeurs correspondent. Pour un même nom, une seule *output* doit être définie, mais plusieurs *Input* peuvent porter ce nom.
+Afin de permettre des fonctions de type boucle de contre-réaction, il a été choisi de rajouter un système de variable. Les blocs @fig:blocsVariables-vs-vue s'utilisent de la manière suivante : il faut faire correspondre les noms pour que les valeurs correspondent. Pour un même nom, un seul *output* doit être défini, mais plusieurs *Input* peuvent porter ce nom.
 
 L'exemple @fig:blocsVariablesContreReactionBool-vs-vue montre le fonctionnement d'un programme qui, à chaque cycle, change l'état d'un booléen.
 
@@ -404,7 +404,7 @@ Pour le Node HTTP client, il est possible de configurer les paramètres suivants
   - *value* x : la valeur de l'en-tête x.
 #infobox()[les _Headers_ sont des paires clé-valeur, par exemple : `{"Content-Type": "application/json"}`. Il faut donc deux paramètres pour chaque Header. De plus, il est possible de mettre plusieurs Headers. ]
   
-Le bloc peut prendre dynamiquement les _inputs_ suivantes :
+Le bloc peut prendre dynamiquement les _inputs_ suivants :
 - *xSend* : un booléen pour envoyer lorsque qu'il passe à _true_.
 - *url path* : la suite du chemin de l'URL de la requête HTTP. Il est ajouté à la suite du paramètre _URL_ pour donner l'URL final.
 - *Method* : la méthode HTTP à utiliser (GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS), par défaut GET.
@@ -604,7 +604,7 @@ Si l’utilisateur crée un programme contenant une boucle de rétroaction, cela
 Il suffit simplement de modifier les conditions pour remplir *isValidConnection* côté #gls("frontend").  
 Cependant, si une rétroaction est nécessaire, il suffit d’utiliser les mécanismes permis par les variables (@sec:implVariables).
 
-  === Rajouter des raccourcies
+  === Rajouter des raccourcis
   Le fichier _useKeyboardShortcuts.tsx_ a été créé pour l'occasion. Il est appelé dans _App.tsx_.  
   Les raccourcis qui ont été rajoutés sont :
   - ctrl + c : copie les nodes/edges sélectionnés  
@@ -657,7 +657,7 @@ Un autre type de node @fig:nodeSelect-vs-vue est celui avec un "menu déroulant"
     ],
   )
   #label("fig:nodeSelect-vs-vue")
-  === Couleurs de connection dynamique
+  === Couleur de connections dynamique
   Pour que l'utilisateur puisse améliorer la lisibilité, il a été rajouté un outil permettant de choisir la couleur des connexions sélectionnées. Cet outil a été inspiré de "Custom Nodes"
  @CustomNodes2025, qui montre un exemple d'utilisation de l'_input_ de type _color_ @fig:colorConnections-vs-vue.
   #figure(
@@ -667,8 +667,8 @@ Un autre type de node @fig:nodeSelect-vs-vue est celui avec un "menu déroulant"
     ],
   )
   #label("fig:colorConnections-vs-vue")
-  === Elément sélectionnées
-  Quand une connection est sélectionnée, elle devient plus large @fig:selectConnections-vs-vue. C'est le meilleur critère d'apparence qu'on peu modifier pour garder la même couleur.
+  === Elément sélectionné
+  Quand une connection est sélectionnée, elle devient plus large @fig:selectConnections-vs-vue. C'est le meilleur critère d'apparence qu'on peut modifier pour garder la même couleur.
   #figure(
     image("/resources/img/47_selectConnection.png", width: 50%),
     caption: [
@@ -940,9 +940,9 @@ Pour la création de nouveaux blocs depuis le côté #gls("backend"), l'explicat
 Cependant, il a également été ajouté la possibilité de créer des fonctions directement depuis l'interface de programmation (@sec:implVueProgrammation). Cela permet à l'intégrateur de créer directement ses propres fonctions, lui permettant de gagner en temps et en lisibilité.
 L'avantage est que si une entreprise utilise souvent les mêmes mécanismes, elle s'évite un travail redondant.
 
-#warningbox("Cette fonctionnalité est la dernière qui a été créée. De plus, elle offre un nombre énorme de possibilités. Par conséquent, elle comporte encore quelques défauts qui devront être améliorés dans l'avenir. Notamment, lorsqu'on commence à faire de l'imbrication de fonctions, il se peut qu’il faille recharger plusieurs fois les fonctions pour que les connexions se fassent correctement. De plus, certains cas de mauvaise utilisation n'ont pas été traités.")
+#warningbox("Cette fonctionnalité est la dernière qui a été créée. De plus, elle offre un nombre énorme de possibilités. Par conséquent, elle comporte encore quelques petits défauts qui devront être corrigés dans l'avenir. Notamment, lorsqu'on commence à faire de l'imbrication de fonctions, il se peut qu’il faille recharger plusieurs fois les fonctions pour que les connexions se fassent correctement. De plus, certains cas de mauvaises utilisations n'ont pas été traités.")
 
-Le principe est que l'intégrateur crée un graphique de la même manière qu’il le fait habituellement, mais cette fois-ci en utilisant les blocs (@fig:92_functionInOut) afin de définir les entrées et sorties de la fonction. Une fois sa fonction terminée, il doit l'enregistrer où il veut grâce au bouton _Save As_ — à noter que le nom donné au fichier sera le nom de la fonction. Puis, pour que la fonction soit interprétée comme une fonction par le programme, il faut utiliser le bouton _Open Function_ puis sélectionner le fichier créé précédemment. Ainsi, la fonction deviendra accessible dans l’_accordion_ sous l'onglet "Functions" et pourra être utilisée comme un bloc normal pour la création de nouveaux programmes. Ces étapes de création sont montrées en figure (@fig:92_functionPrincipeDeCreation) avec un exemple tout bête.
+Le principe est que l'intégrateur crée un graphique de la même manière qu’il le fait habituellement, mais cette fois-ci en utilisant les blocs (@fig:92_functionInOut) afin de définir les entrées et sorties de la fonction. Une fois sa fonction terminée, il doit l'enregistrer où il veut grâce au bouton _Save As_ — à noter que le nom donné au fichier sera le nom de la fonction. Puis, pour que la fonction soit interprétée comme une fonction par le programme, il faut utiliser le bouton _Open Function_ puis sélectionner le fichier créé précédemment. Ainsi, la fonction deviendra accessible dans l’_accordion_ sous l'onglet "Functions" et pourra être utilisée comme un bloc normal pour la création de nouveaux programmes. Ces étapes de création sont montrées en figure (@fig:92_functionPrincipeDeCreation) avec un exemple simple.
 
 #figure(
   image("/resources/img/92_functionInOut.png", width: 100%),
@@ -961,5 +961,15 @@ Le principe est que l'intégrateur crée un graphique de la même manière qu’
   ],
 )
 #label("fig:92_functionPrincipeDeCreation")
+
+#figure(
+image("/resources/img/99_creation_fonction.png", width: 120%),
+caption: [
+  *Fonction* : création d'une fonction - principe
+],
+)
+#label("fig:99_creation_fonction")
+
+
 
 ]

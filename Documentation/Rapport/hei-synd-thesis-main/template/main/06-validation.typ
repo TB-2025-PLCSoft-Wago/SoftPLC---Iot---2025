@@ -46,8 +46,41 @@ On ne peut donc pas garantir un temps de cycle inférieur à 5 secondes, ce qui 
   )
   #label("fig:programmeLentWdaAnalyse-vs-vue")
 
+== Validation générale des blocs
+Les blocs (_nodes_) ont tous été testés avec des programmes de test et fonctionnent comme décrit dans la section implémentation. 
+Les résultats obtenus sont conformes aux attentes. De plus, le tableau (@fig:96_Test_blocGeneral-vs-vue) présente les tests effectués 
+pour chaque bloc lorsque ceux-ci sont applicables.
 
-  
+#figure(
+  image("/resources/img/96_Test_blocGeneral.png", width: 100%),
+  caption: [
+    Tests généraux des blocs
+  ],
+)
+#label("fig:96_Test_blocGeneral-vs-vue")
+
+== Validation de la vue de programmation
+La vue de programmation comporte plusieurs fonctionnalités qui ont été testées et validées. 
+Le tableau @fig:96_Test_vueProgrammation-vs-vue présente les tests réalisés pour chacune de ces fonctionnalités.
+
+#figure(
+  image("/resources/img/96_Test_vueProgrammation.png", width: 100%),
+  caption: [
+    Tests de la vue de programmation
+  ],
+)
+#label("fig:96_Test_vueProgrammation-vs-vue")
+
+== Validation – résumé
+Le tableau @fig:96_test_resume-vs-vue présente un résumé des tests effectués pour chaque fonctionnalité implémentée durant ce TB.
+
+#figure(
+  image("/resources/img/96_test_resume.png", width: 100%),
+  caption: [
+    Résumé des tests effectués
+  ],
+)
+#label("fig:96_test_resume-vs-vue")
 
   == Proof of Concept : maison intelligente <sec:validationProofConcept>
 Le programme de la maison intelligente est un exemple d’application développé grâce aux nouvelles fonctionnalités mises en œuvre durant ce TB. Il démontre les possibilités de connectivité entre des appareils utilisant différents protocoles de communication, et prouve que le point principal du cahier des charges est respecté.
@@ -66,7 +99,7 @@ La section @sec:porteGarage-vs-vue décrit le programme de la porte du garage. C
 
 La section @sec:lampe-vs-vue présente le programme de la lampe _Shelly Bulb_. L’utilisateur peut en contrôler la couleur et la luminosité via l’interface utilisateur. Il est également possible de l’allumer ou de l’éteindre manuellement depuis cette même interface.
 
-La section @sec:lampe2-vs-vue présente le programme des autres lumières. Il permet de contrôler les éclairages selon l’emplacement dans la maison : un appui court sur le bouton _Shelly_ allume/éteint les lampes de la pièce où l'on se trouve, tandis qu’un appui long les éteint toutes. Cette fonctionnalité est uniquement disponible pour les pièces *Kitchen* et *Garage*.
+La section @sec:lampe2-vs-vue présente le programme des autres lumières. Il permet de contrôler les éclairages selon l’emplacement dans la maison : un appui court sur le bouton _Shelly_ allume/éteint les lampes de la pièce où l'on se trouve, tandis qu’un appui long les éteint toutes. Cette fonctionnalité est uniquement disponible pour les pièces *Kitchen* et *Garage*. On peut également contrôler les lampes avec l’interface utilisateur.
 
 
 

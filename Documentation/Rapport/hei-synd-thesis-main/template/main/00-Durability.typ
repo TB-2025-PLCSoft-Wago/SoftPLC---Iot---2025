@@ -12,10 +12,10 @@ L’Agenda 2030 pour le développement durable, adopté par l’ensemble des Ét
   ],
 )
 
-Le projet consiste en la création d'un #gls("HAL") de développement d’automate. Il est donc très probable que le projet soit utiliser dans des applications allant dans le sans d'un développement durable. En effet, l’automatisation des processus industriels peut contribuer à la durabilité en améliorant l’efficacité énergétique (ODD 7). En permettant un pilotage plus fin et en temps réel des équipements, les automates peuvent :
+Le projet consiste en la création d'un #gls("HAL") de développement d’automate. Il est donc très probable que le projet soit utilisé dans des applications allant dans le sens d'un développement durable. En effet, l’automatisation des processus industriels peut contribuer à la durabilité en améliorant l’efficacité énergétique (ODD 7). En permettant un pilotage plus fin et en temps réel des équipements, les automates peuvent :
 - Réduire la consommation énergétique inutile (éclairage, chauffage, moteurs tournant à vide).
 - Optimiser la charge des machines en fonction de la demande réelle.
-- Favoriser l’intégration de sources d’énergie renouvelables en ajustant dynamiquement la production.
+- Favoriser l’intégration de sources d’énergies renouvelables en ajustant dynamiquement la production.
 
 De plus, l’automatisation peut également aider à surveiller et à contrôler les émissions de gaz à effet de serre, ce qui contribue à la lutte contre le changement climatique.
 L'automatisation favorise également la croissance économique (ODD 8) en augmentant la productivité et en réduisant les coûts de production. 

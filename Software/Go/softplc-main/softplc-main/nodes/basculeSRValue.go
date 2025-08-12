@@ -66,7 +66,12 @@ func (n *SRValueNode) ProcessLogic() {
 		}
 	} else {
 		if *n.input[0].Input == "1" {
-			n.output[1].Output = *n.input[2].Input
+			if n.input[2].Input == nil {
+				n.output[1].Output = ""
+				return
+			} else {
+				n.output[1].Output = *n.input[2].Input
+			}
 		}
 	}
 

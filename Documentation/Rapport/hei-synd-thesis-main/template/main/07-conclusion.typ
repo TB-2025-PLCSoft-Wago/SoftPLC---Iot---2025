@@ -91,16 +91,18 @@ De plus, les erreurs du TB précédent (2024) ont été corrigées (@sec:erreurN
     Interface programmatation -  après
   ],
 )
-#figure(
-  image("/resources/img/85_interfaceUserConclusion.png", width: 100%),
-  caption: [
-    nouvelle interface user -  après
-  ],
-)
+
 #figure(
   image("/resources/img/85_interfaceDebugConclusion.png", width: 100%),
   caption: [
     nouvelle interface debug -  après
+  ],
+)
+
+#figure(
+  image("/resources/img/85_interfaceUserConclusion.png", width: 100%),
+  caption: [
+    nouvelle interface user -  après
   ],
 )
 /*
@@ -120,8 +122,8 @@ La différence est la *slide Bar* car avant si on ouvrait tous on n’avait pas 
 ]*/
 
 
-== Comparaison avec les objectifs initial
-/*Les objectifs fixés par pr4 sont atteints. Le programme a pu être testé et permet de créer des programmes très simples. Un nouveau bloc a été ajouté et testé sur l'automate. Le principe de fonctionnement des codes a été vus et il est possible d’ajouter de nouveaux.
+== Comparaison avec les objectifs initiaux
+/*Les objectifs fixés par pr4 sont atteints. Le programme a pu être testé et permet de créer des programmes très simples. Un nouveau bloc a été ajouté et testé sur l'automate. Le principe de fonctionnement des codes a été vu et il est possible d'en ajouter de nouveaux.
 */
 Les objectifs du cahier des charges sont remplis, sauf pour CAN. Des blocs de communication complexes ont été créés, tels que MQTT, client/serveur HTTP et MODBUS. De plus, plusieurs nouveaux blocs ont pu être développés, ce qui permet désormais de réaliser bien plus de fonctionnalités logiques, de traiter des chaînes de caractères, et même de travailler avec des tableaux de chaînes de caractères. L'interface REST #gls("WDA") est utilisée. 
 
@@ -129,7 +131,7 @@ D’un point de vue utilisateur, de nombreuses améliorations ont été apporté
 #[
   #set list(marker: ([•], [--]), spacing: auto, indent: 2em)
     - les contrôles automatisés (copier/coller, annuler/rétablir, couper),
-    - l'ajout d'une *slide Bar* dans l'accordion car avant si on ouvrait tous on n’avait pas accès aux composants du bas,
+    - l'ajout d'une *slide Bar* dans l'accordion car avant si on ouvrait tout on n’avait pas accès aux composants du bas,
     - interdire la rétroaction,
     - l’amélioration du visuel,
     - la gestion de fichiers,
@@ -141,7 +143,7 @@ D’un point de vue utilisateur, de nombreuses améliorations ont été apporté
     - l’ajout d’une boîte à outils (toolbox).
 ]
 
-Deux nouvelles vues ont également été ajoutées (*user view* et *debug view*) et leur création nécessite très peu d’effort de la part de l’utilisateur.
+Deux nouvelles vues ont également été ajoutées (*user view* et *debug view*) et leur création nécessite très peu d’efforts de la part de l’utilisateur.
 
 À cela s’ajoute la résolution de nombreux bugs et l’ajout de plusieurs mécanismes utiles à une future extension du #gls("HAL").
 
@@ -185,7 +187,7 @@ Enfin, il serait pratique, qu'en mode _programmatation_ ou _debug_ (@sec:implVue
 
 === Ajout de nouveau bloc : calendrier
 Il pourrait être intéressant d’ajouter des blocs permettant de connaître le jour, l’heure 
-ou de vérifier si l’on se trouve dans une plage de dates donnée.  
+ou de vérifier si l’on se trouve dans une plage de dates données.  
 Ce type de fonctionnalité serait particulièrement utile dans les systèmes dépendant de l’heure ou de la période (été/hiver), comme par exemple un système de chauffage alimenté par panneaux solaires.
  
 

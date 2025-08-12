@@ -34,8 +34,8 @@ L’objectif est l’amélioration et l’implémentation de nouvelles fonctionn
 Les tâches devant être réalisées sont les suivantes :
 #[
   #set list(marker: ([•], [--]),  spacing: auto, indent: 2em)
-  -	Modifier les programmes actuelle pour utiliser la nouvelle interface REST WDA pour piloté les nouveaux automates.
-  -	L’implémentation de nouveaux blocs de haut niveau comme CAN, MQTT, WebServer, client/serveur HTTP et autres bloc. Il faudra trouver une solution pour faire ces tâches par programmation en bloc.
+  -	Modifier les programmes actuels pour utiliser la nouvelle interface REST WDA pour piloter les nouveaux automates.
+  -	L’implémentation de nouveaux blocs de haut niveau comme CAN, MQTT, WebServer, client/serveur HTTP et autres blocs. Il faudra trouver une solution pour faire ces tâches par programmation en blocs.
   -	Amélioration et extensions du #gls("frontend") web.
   -	Développement d’un banc de test physique et d’une application de démonstration pour une maison connectée.
   -	Documentation, tests et rédaction du rapport, poster et présentation.
@@ -47,7 +47,7 @@ L’application de démonstration d'une maison connectée (@fig:applicationMaiso
 Une page web doit permettre de visualiser l’état des équipements et de les contrôler.
 
 La fonctionnalité de l’application de démonstration qui a été choisie et qui sera développée est la suivante :  
-Depuis une interface web, il sera possible de contrôler une lampe en réglant son intensité et sa couleur. Depuis cette même interface, il sera également possible de régler une consigne de température. Un capteur de température enverra la température et une prise électrique s'activera si la température est trop basse. De plus avec un bouton _Shelly_, on pourra contrôler la porte de garage. Ainsi qu'un autre bouton _Shelly_ gérant l'éclairage du garage et de la cuisine selon notre emplacement dans la maison.
+Depuis une interface web, il sera possible de contrôler une lampe en réglant son intensité et sa couleur. Depuis cette même interface, il sera également possible de régler une consigne de température. Un capteur de température enverra l'information et une prise électrique s'activera si la température est trop basse. De plus avec un bouton _Shelly_, on pourra contrôler la porte de garage. Ainsi qu'un autre bouton _Shelly_ gérant l'éclairage du garage et de la cuisine selon notre emplacement dans la maison.
    
  #iconbox(linecolor: hei-pink)[Le résultat final est présenté au @sec:validationProofConcept et l’annexe @sec:homeController-vs-vue montre le programme. Cependant, il sera difficile à comprendre sans avoir assimilé les chapitres précédents.]
 #figure(

@@ -201,7 +201,3 @@ Cet exemple permet de régler l’intensité des lampes du garage via la vue *Us
 )
 
 
-//-------------------------------------
-//Move to end of the annexe
-<sec:endAnnex>
-//-------------------------------------

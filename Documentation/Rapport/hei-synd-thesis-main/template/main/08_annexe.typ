@@ -21,15 +21,45 @@
 #set heading( numbering: "A.1",) //level: 2,depth: 10
 #set heading(offset: 0)
 //#show heading.where(level: 3): set text(red)
-#set page(
-  flipped: true,
-  )
+
 
   #pagebreak()
 = Planning
+Le planning réalisé est présenté dans les figures suivantes.
+Il est divisé en deux périodes :
 
-#pagebreak()
+- Première période : du début du projet jusqu’au 1ᵉʳ juillet.
+- Seconde période : du 1ᵉʳ juillet jusqu’à la fin du TB.
 
+Chaque période est scindée en trois parties, car l’ensemble ne tient pas sur une seule page.
+
+Le risque indiqué correspond à la probabilité de dépasser le délai prévu. En général, un risque élevé signifie qu’il existe de nombreuses inconnues ou que la tâche est difficile à réaliser.
+
+Les durées de chaque tâche sont arrondies à la journée la plus proche. Les tâches sont présentées comme si elles étaient exécutées de manière séquentielle, mais certaines sont en réalité réalisées en parallèle.
+#set page(
+  flipped: true,
+  )
+#figure(
+  image("/resources/img/98_planningReel_01_1.png", width: 95%),
+)
+#figure(
+  image("/resources/img/98_planningReel_01_2.png", width: 95%),
+)
+#figure(
+  image("/resources/img/98_planningReel_01_3.png", width: 95%),
+)
+
+#figure(
+  image("/resources/img/98_planningReel_02_1.png", width: 95%),
+)
+#figure(
+  image("/resources/img/98_planningReel_02_2.png", width: 95%),
+)
+#figure(
+  image("/resources/img/98_planningReel_02_3.png", width: 95%),
+)
+
+/*
 #muchpdf(
   read("/resources/img/Part_01_Planning_V1.pdf", encoding: none),
   
@@ -44,7 +74,7 @@
 #figure(
   image("/resources/img/Part_02_p2_Planning_V1.png", width: 100%),
 
-)
+)*/
 
 
 
@@ -476,7 +506,15 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
 
     
 
-
+#pagebreak()
+  = My Strom : documentation <sec:myStromDoc-vs-vue>
+  My Strom est un relais qui permet de contrôler le chauffage. Il est possible de le contrôler via une requête HTTP.
+  #figure(
+  image("/resources/img/73_myStromDoc.png", width: 100%),
+  caption: [
+    *My Strom :* Documentation
+  ],
+)
 
   #include "/main/08_a0_ExempleCodeAvecExtrait.typ"
   #include "/main/08_a1_Exemple_MQTT.typ"
@@ -486,17 +524,10 @@ Les figures @fig:valeurActivationWDAOutput-vs-vue et @fig:valeurActivationWDAOut
   #include "/main/08_a12_Exemple_Function.typ"
   #include "08_a1_homeController.typ"
   #include "08_a2_tousBloc.typ"
-  #pagebreak()
-  = Autres annexes
-  == My Strom : documentation <sec:myStromDoc-vs-vue>
-  My Strom est un relais qui permet de contrôler le chauffage. Il est possible de le contrôler via une requête HTTP.
-  #figure(
-  image("/resources/img/73_myStromDoc.png", width: 100%),
-  caption: [
-    *My Strom :* Documentation
-  ],
-)
+  
 
 ]
+
+
 
 

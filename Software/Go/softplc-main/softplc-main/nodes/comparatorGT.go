@@ -1,6 +1,9 @@
 package nodes
 
-import "strconv"
+import (
+	"strconv"
+	"unicode/utf8"
+)
 
 // GTNode that wor like a logical greater than
 type GTNode struct {
@@ -49,18 +52,16 @@ func (n *GTNode) ProcessLogic() {
 	f0, err0 := strconv.ParseFloat(val0, 64)
 	f1, err1 := strconv.ParseFloat(val1, 64)
 
-	if err0 == nil && err1 == nil {
-		if f0 > f1 {
-			n.output[0].Output = "1"
-		} else {
-			n.output[0].Output = "0"
-		}
+	if err0 != nil {
+		f0 = float64(utf8.RuneCountInString(val0))
+	}
+	if err1 != nil {
+		f1 = float64(utf8.RuneCountInString(val1))
+	}
+	if f0 > f1 {
+		n.output[0].Output = "1"
 	} else {
-		if val0 > val1 {
-			n.output[0].Output = "1"
-		} else {
-			n.output[0].Output = "0"
-		}
+		n.output[0].Output = "0"
 	}
 }
 
