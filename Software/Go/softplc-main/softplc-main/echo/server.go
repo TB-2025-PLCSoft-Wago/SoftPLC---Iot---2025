@@ -145,12 +145,12 @@ func EchoServer() {
 		if err := c.Bind(&jsonBody); err != nil {
 			return err
 		}
-		graphData, ok := jsonBody.(map[string]interface{})["data"]
+		/*graphData, ok := jsonBody.(map[string]interface{})["data"]
 		if !ok {
 			return c.HTML(http.StatusBadRequest, "Graph function wrong format")
 		}
 		name := jsonBody.(map[string]interface{})["name"].(string)
-		CreateFunctionQueue(name, graphData)
+		CreateFunctionQueue(name, graphData)*/
 		nodes.FunctionGraphJson = jsonBody
 		nodes.FunctionAddToList()
 		return c.HTML(http.StatusOK, "Graph function saved")
@@ -160,9 +160,9 @@ func EchoServer() {
 }
 
 func CreateFunctionQueue(name string, graphFunc interface{}) error {
-	if len(name) >= 5 {
+	/*if len(name) >= 5 {
 		name = name[:len(name)-5]
-	}
+	}*/
 	graphNodes, ok := graphFunc.(map[string]interface{})["nodes"]
 	if !ok {
 		return fmt.Errorf("graph function wrong format")
@@ -205,6 +205,7 @@ func CreateFunctionQueue(name string, graphFunc interface{}) error {
 		fmt.Println("JSON Function parse error:", err)
 		return err
 	}
+
 	processGraph.CreateQueueFunction(graph, name)
 	fmt.Println("function input :", processGraph.ListProcessFunction[name].InputNodes)
 	fp := nodes.FunctionNodeListProcess[name]

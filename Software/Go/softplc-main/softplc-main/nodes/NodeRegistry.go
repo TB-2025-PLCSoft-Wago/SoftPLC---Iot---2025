@@ -149,7 +149,7 @@ func ProcessFunction(name string) {
 
 	//variable.UpdateVariableInputs()
 	updateFunctionOutputs(name)
-	fmt.Println("processFunction updateFunctionOutputs : ", name)
+	//fmt.Println("processFunction updateFunctionOutputs : ", name)
 
 }
 func updateVariables(name string) {
@@ -176,11 +176,11 @@ func updateFunctionOutputs(name string) {
 			/*** Function output ***/
 			if strings.Contains(output.GetNodeType(), "function") {
 				for _, ccIOState := range function.OutputsStateFunction {
-					if ccIOState.Name == nodeOutputList.FriendlyName {
+					if ccIOState.Name == nodeOutputList.FriendlyName && ccIOState.FunctionName == name {
 						if ccIOState.Value != *nodeOutputList.OutputHandle.Input {
 							//ccIOState.Value = *nodeOutputList.OutputHandle.Input
-							function.UpdateFunctionOutput(ccIOState.Name, *nodeOutputList.OutputHandle.Input)
-							fmt.Println("updateFunctionOutputs")
+							function.UpdateFunctionOutput(ccIOState.Name, *nodeOutputList.OutputHandle.Input, name)
+							//fmt.Println("updateFunctionOutputs")
 						}
 					}
 				}
@@ -188,4 +188,13 @@ func updateFunctionOutputs(name string) {
 			}
 		}
 	}
+}
+
+// Call back to echo createFunction
+type FunctionQueueCreator func(name string, data interface{}) error
+
+var CreatorEcho FunctionQueueCreator
+
+func RegisterFunctionQueue(creatorEcho FunctionQueueCreator) {
+	CreatorEcho = creatorEcho
 }

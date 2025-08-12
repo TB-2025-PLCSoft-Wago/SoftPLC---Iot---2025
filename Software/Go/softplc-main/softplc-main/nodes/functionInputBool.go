@@ -7,8 +7,12 @@ type FunctionInputBoolNode struct {
 	nodeType           string
 	output             []InputNodeHandle
 	parameterValueData []string //select Appliance name + value +
+	functionName       string
 }
 
+func (n *FunctionInputBoolNode) GiveFunctionName(name string) {
+	n.functionName = name
+}
 func (n *FunctionInputBoolNode) GetNodeType() string {
 	return n.nodeType
 }
@@ -56,7 +60,7 @@ func (n *FunctionInputBoolNode) InitNode(id_ int, nodeType_ string, output_ []In
 		n.parameterValueData[1] = "0"
 	}
 	n.output[0].FriendlyName = n.parameterValueData[0]
-	function.AddInput(n.parameterValueData[0], n.parameterValueData[1])
+	function.AddInput(n.parameterValueData[0], n.parameterValueData[1], n.functionName)
 }
 
 func (n *FunctionInputBoolNode) GetOutput(outName string) *InputNodeHandle {

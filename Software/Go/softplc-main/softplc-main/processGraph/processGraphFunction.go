@@ -26,16 +26,16 @@ type functionOutputNodes struct {
 	OutputNodes []nodes.OutputNodeInterface
 }
 
-var ListProcessFunction map[string]functionProcess2
+var ListProcessFunction map[string]*functionProcess2
 var ListProcessFunctionLogicalNode map[string][][]nodes.LogicalNodeInterface
 var ListProcessFunctionOutputNodes map[string]functionOutputNodes
 var ListProcessFunctionInputNodes map[string][][]nodes.InputNodeInterface
 
 func init() {
-	ListProcessFunction = make(map[string]functionProcess2)
+	ListProcessFunction = make(map[string]*functionProcess2)
 }
 func CreateQueueFunction(g Graph, name string) {
-	ListProcessFunction[name] = functionProcess2{}
+	ListProcessFunction[name] = &functionProcess2{}
 	fp := ListProcessFunction[name]
 	MutexFunction.Lock()
 	//find the output nodes and create the process queues
@@ -58,9 +58,9 @@ func CreateQueueFunction(g Graph, name string) {
 
 			var queue []nodes.LogicalNodeInterface
 			findPreviousNodeFunction(&queue, nodeJson, g, name) //find the node link ahead of the output node
-			fp = ListProcessFunction[name]
+
 			fp.LogicalNode = append(fp.LogicalNode, queue) //Add a new queue to the process queues
-			ListProcessFunction[name] = fp
+
 			//keepOnlyOneLogicalNodeFunction ()
 			//create the output node
 			outputToAdd, err := nodes.CreateNode(nodeJson.Type)
@@ -110,15 +110,23 @@ func CreateQueueFunction(g Graph, name string) {
 				}
 				var tabOutputNodeHandle []nodes.OutputNodeHandle
 				tabOutputNodeHandle = append(tabOutputNodeHandle, nodeInputHandle)
-				outputNodeToAddInterface.InitNode(id, nodeJson.Type, tabOutputNodeHandle)
-				fp = ListProcessFunction[name]
+				if node, ok := outputNodeToAddInterface.(*nodes.FunctionOutputBoolNode); ok {
+					node.GiveFunctionName(name)
+					outputNodeToAddInterface.InitNode(id, nodeJson.Type, tabOutputNodeHandle)
+				} else if node, ok := outputNodeToAddInterface.(*nodes.FunctionOutputValueNode); ok {
+					node.GiveFunctionName(name)
+					outputNodeToAddInterface.InitNode(id, nodeJson.Type, tabOutputNodeHandle)
+				} else {
+					outputNodeToAddInterface.InitNode(id, nodeJson.Type, tabOutputNodeHandle)
+				}
+				//outputNodeToAddInterface.InitNode(id, nodeJson.Type, tabOutputNodeHandle) //TO DO output
+
 				fp.OutputNodes = append(fp.OutputNodes, outputNodeToAddInterface) //Add the output node to the fp.OutputNodes slice
-				ListProcessFunction[name] = fp
 
 			}
 		}
 	}
-	ListProcessFunction[name] = fp
+
 	linkNodesFunction(g, name) //Link the nodes to the right source/destination
 	MutexFunction.Unlock()
 }
@@ -150,7 +158,7 @@ func findPreviousNodeFunction(queue *[]nodes.LogicalNodeInterface, nodeJson Node
 				}
 				*queue = append([]nodes.LogicalNodeInterface{nodeToAdd}, *queue...)
 				findPreviousNodeFunction(queue, nextNodeJson, g, name)
-				//TO DO : maybe add ListProcessFunction[name] = fp
+				//TO DO : maybe add
 			} else { //if the node ahead is an input node
 				isIn := false
 				for _, input := range fp.InputNodes {
@@ -176,9 +184,9 @@ func findPreviousNodeFunction(queue *[]nodes.LogicalNodeInterface, nodeJson Node
 							//val, _ := strconv.ParseFloat(nextNodeJson.Data.Value, 64)
 							//fp.ConstValue = append(fp.ConstValue, Const{Id: inId, Value: val})
 							//val, _ := strconv.ParseFloat(nextNodeJson.Data.Value, 64)
-							fp = ListProcessFunction[name]
+
 							fp.ConstValue = append(fp.ConstValue, Const{Id: inId, Value: nextNodeJson.Data.Value})
-							ListProcessFunction[name] = fp
+
 							for i := range fp.ConstValue {
 								if fp.ConstValue[i].Id == inId {
 									//valFloat := fp.ConstValue[i].Value
@@ -224,16 +232,25 @@ func findPreviousNodeFunction(queue *[]nodes.LogicalNodeInterface, nodeJson Node
 						}
 						var tabInputNodeHandle []nodes.InputNodeHandle
 						tabInputNodeHandle = append(tabInputNodeHandle, inputNodeHandle)
-						inputNodeToAdd.InitNode(inId, nextNodeJson.Type, tabInputNodeHandle, nextNodeJson.Data.ParameterValueData)
-						fp = ListProcessFunction[name]
+
+						if node, ok := inputNodeToAdd.(*nodes.FunctionInputBoolNode); ok {
+							node.GiveFunctionName(name)
+							node.InitNode(inId, nextNodeJson.Type, tabInputNodeHandle, nextNodeJson.Data.ParameterValueData)
+						} else if node, ok := inputNodeToAdd.(*nodes.FunctionInputValueNode); ok {
+							node.GiveFunctionName(name)
+							node.InitNode(inId, nextNodeJson.Type, tabInputNodeHandle, nextNodeJson.Data.ParameterValueData)
+						} else {
+							inputNodeToAdd.InitNode(inId, nextNodeJson.Type, tabInputNodeHandle, nextNodeJson.Data.ParameterValueData)
+						}
+
 						fp.InputNodes = append(fp.InputNodes, inputNodeToAdd)
-						ListProcessFunction[name] = fp
+
 					}
 				}
 			}
 		}
 	}
-	//ListProcessFunction[name] = fp
+	//
 }
 
 // findNodeByIdFunction is a function that find a node in the JSON file by its id
@@ -387,11 +404,11 @@ func linkNodesFunction(g Graph, name string) {
 					for j := range function.InputsStateFunction {
 						inputHandle := fp.InputNodes[i].GetOutput(edge.SourceHandle)
 						inputLink := function.InputsStateFunction[j]
-						if inputLink.Name == inputHandle.FriendlyName {
+						if inputLink.Name == inputHandle.FriendlyName && inputLink.FunctionName == name {
 							fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.Input = &function.InputsStateFunction[j].Value
 							server.AddDebugState(edge.Source, &function.InputsStateFunction[j].Value, edge.SourceHandle, fp.InputNodes[i].GetOutput(edge.SourceHandle).InputHandle.DataType)
 							ableToConnect = true
-							break
+							//break
 						}
 					}
 				}
@@ -495,5 +512,5 @@ func linkNodesFunction(g Graph, name string) {
 			break
 		}
 	}
-	ListProcessFunction[name] = fp
+
 }

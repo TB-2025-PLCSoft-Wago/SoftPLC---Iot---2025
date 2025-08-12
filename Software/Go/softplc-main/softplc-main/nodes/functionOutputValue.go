@@ -6,9 +6,14 @@ import (
 )
 
 type FunctionOutputValueNode struct {
-	id       int
-	nodeType string
-	input    []OutputNodeHandle
+	id           int
+	nodeType     string
+	input        []OutputNodeHandle
+	functionName string
+}
+
+func (d *FunctionOutputValueNode) GiveFunctionName(name string) {
+	d.functionName = name
 }
 
 func (d *FunctionOutputValueNode) GetId() int {
@@ -64,7 +69,7 @@ func (d *FunctionOutputValueNode) GetOutput(outName string) *OutputNodeHandle {
 		if name.OutputHandle.Name == outName {
 			if d.input[i].FriendlyName == "default" {
 				d.input[i].FriendlyName = d.input[i].Service //save Name
-				function.AddOutput(d.input[i].Service, "")
+				function.AddOutput(d.input[i].Service, "", d.functionName)
 			}
 			return &d.input[i]
 		}

@@ -17,7 +17,7 @@ func main() {
 	//nodes.CreateNode("TONNode")
 	//fmt.Println(nodes.NodeDescription("digitalOutput"))
 	//fmt.Println(nodes.SystemDescription())
-
+	nodes.RegisterFunctionQueue(echo.CreateFunctionQueue)
 	inputUpdate.InitInputs()
 	timer := time.NewTimer(1000 * time.Millisecond)
 	<-timer.C
@@ -46,9 +46,9 @@ func main() {
 					variable.UpdateVariableInputs()
 					for _, n := range v {
 						if logicalNode, ok := n.(nodes.LogicalNodeInterface); ok {
-							processGraph.MutexFunction.Lock()
+							//processGraph.MutexFunction.Lock()
 							logicalNode.ProcessLogic()
-							processGraph.MutexFunction.Unlock()
+							//processGraph.MutexFunction.Unlock()
 							/*							if logicalNode.GetNodeType() == "ConfigurableNodeFunction"{
 														ProcessFunction(logicalNode)
 													}*/

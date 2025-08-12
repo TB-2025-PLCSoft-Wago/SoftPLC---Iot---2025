@@ -6,9 +6,14 @@ import (
 )
 
 type FunctionOutputBoolNode struct {
-	id       int
-	nodeType string
-	input    []OutputNodeHandle
+	id           int
+	nodeType     string
+	input        []OutputNodeHandle
+	functionName string
+}
+
+func (d *FunctionOutputBoolNode) GiveFunctionName(name string) {
+	d.functionName = name
 }
 
 func (d *FunctionOutputBoolNode) GetId() int {
@@ -57,7 +62,7 @@ func (d *FunctionOutputBoolNode) GetOutput(outName string) *OutputNodeHandle {
 		if name.OutputHandle.Name == outName {
 			if d.input[i].FriendlyName == "default" {
 				d.input[i].FriendlyName = d.input[i].Service //save Name
-				function.AddOutput(d.input[i].Service, "0")
+				function.AddOutput(d.input[i].Service, "0", d.functionName)
 			}
 			return &d.input[i]
 		}

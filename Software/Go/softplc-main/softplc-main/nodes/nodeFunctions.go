@@ -4,6 +4,7 @@ import (
 	"SoftPLC/function"
 	"fmt"
 	"log"
+	"strconv"
 	"strings"
 )
 
@@ -148,6 +149,7 @@ type FunctionNode struct {
 	nodeType string
 	input    []InputHandle
 	output   []OutputHandle
+	isInit   bool
 }
 
 func init() {
@@ -177,13 +179,35 @@ func update() {
 }
 
 func (n *FunctionNode) ProcessLogic() {
+
 	name := strings.ReplaceAll(n.nodeType, "ConfigurableNodeFunction", "")
+	if !n.isInit {
+		for i := range FunctionNodeList {
+			if name == FunctionNodeList[i].name {
+
+				/*graphData, ok := FunctionNodeList[i].graph.(map[string]interface{})["data"]
+				if !ok {
+					fmt.Println("Function error graphData : ", name)
+					return
+				}*/
+				// call echo.CreateFunctionQueue
+				tempName := name + strconv.Itoa(n.id)
+				if err := CreatorEcho(tempName, FunctionNodeList[i].graph); err != nil {
+					fmt.Println("Queue creation failed:", err)
+					return
+				}
+				break
+			}
+		}
+
+		n.isInit = true
+	}
 	inputIndex := 0
-	for _, input := range FunctionNodeListProcess[name].InputNodes {
+	for _, input := range FunctionNodeListProcess[name+strconv.Itoa(n.id)].InputNodes {
 		nodeType := input.GetNodeType()
 		if strings.Contains(nodeType, "function") {
 			if len(n.input) > inputIndex {
-				function.UpdateFunctionInput(input.GetOutput("Output").FriendlyName, *n.input[inputIndex].Input) //TO DO : edge.TargetHandle
+				function.UpdateFunctionInput(input.GetOutput("Output").FriendlyName, *n.input[inputIndex].Input, name+strconv.Itoa(n.id)) //TO DO : edge.TargetHandle
 				inputIndex++
 			} else {
 				fmt.Println("nodeFunctions input error index : ", inputIndex)
@@ -192,13 +216,13 @@ func (n *FunctionNode) ProcessLogic() {
 		}
 	}
 
-	ProcessFunction(name) //name + "ConfigurableNodeFunction"
+	ProcessFunction(name + strconv.Itoa(n.id)) //name + "ConfigurableNodeFunction"
 	inputIndex = 0
-	for _, out := range FunctionNodeListProcess[name].OutputNodes {
+	for _, out := range FunctionNodeListProcess[name+strconv.Itoa(n.id)].OutputNodes {
 		nodeType := out.GetNodeType()
 		if strings.Contains(nodeType, "function") {
 			//TO DO : edge.TargetHandle
-			n.output[inputIndex].Output = function.GetFunctionOutput(out.GetOutput("Input").Service)
+			n.output[inputIndex].Output = function.GetFunctionOutput(out.GetOutput("Input").Service, name+strconv.Itoa(n.id))
 			inputIndex++
 		}
 	}

@@ -152,12 +152,12 @@
       "dragging": false,
       "id": "3",
       "position": {
-        "x": 893.6832159193751,
-        "y": 231.19990557512108
+        "x": 856.1130285064371,
+        "y": 234.95692431641493
       },
       "positionAbsolute": {
-        "x": 893.6832159193751,
-        "y": 231.19990557512108
+        "x": 856.1130285064371,
+        "y": 234.95692431641493
       },
       "selected": false,
       "type": "outputNode"
@@ -275,18 +275,18 @@
     {
       "width": 247,
       "height": 342,
-      "id": "6",
+      "id": "7",
       "type": "LogicalNode",
       "position": {
-        "x": 566.2359323218208,
-        "y": 226.60071707532802
+        "x": 535.0459527291747,
+        "y": 209.749780010638
       },
       "data": {
         "accordion": "Functions",
         "primaryType": "LogicalNode",
-        "type": "2inputs_OR_AND_XORConfigurableNodeFunction",
-        "display": "2inputs_OR_AND_XOR",
-        "label": "2inputs_OR_AND_XOR",
+        "type": "2inputs_OR_AND_XOR_V2ConfigurableNodeFunction",
+        "display": "2inputs_OR_AND_XOR_V2",
+        "label": "2inputs_OR_AND_XOR_V2",
         "stretchable": false,
         "services": [],
         "subServices": [],
@@ -315,7 +315,7 @@
           }
         ],
         "parameterNameData": null,
-        "id": "6",
+        "id": "7",
         "selectedFriendlyNameData": "default",
         "selectedServiceData": "default",
         "selectedSubServiceData": "default",
@@ -324,8 +324,8 @@
       },
       "selected": false,
       "positionAbsolute": {
-        "x": 566.2359323218208,
-        "y": 226.60071707532802
+        "x": 535.0459527291747,
+        "y": 209.749780010638
       },
       "dragging": false
     }
@@ -334,53 +334,29 @@
     {
       "source": "1",
       "sourceHandle": "Output",
-      "target": "6",
+      "target": "7",
       "targetHandle": "X1",
       "type": "step",
       "style": {
         "stroke": "#30362F",
         "strokeWidth": 1
       },
-      "id": "reactflow__edge-1Output-6X1"
+      "id": "reactflow__edge-1Output-7X1"
     },
     {
       "source": "2",
       "sourceHandle": "Output",
-      "target": "6",
+      "target": "7",
       "targetHandle": "X2",
       "type": "step",
       "style": {
         "stroke": "#30362F",
         "strokeWidth": 1
       },
-      "id": "reactflow__edge-2Output-6X2"
+      "id": "reactflow__edge-2Output-7X2"
     },
     {
-      "source": "6",
-      "sourceHandle": "XOR",
-      "target": "5",
-      "targetHandle": "Input",
-      "type": "step",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "id": "reactflow__edge-6XOR-5Input"
-    },
-    {
-      "source": "6",
-      "sourceHandle": "OR",
-      "target": "4",
-      "targetHandle": "Input",
-      "type": "step",
-      "style": {
-        "stroke": "#30362F",
-        "strokeWidth": 1
-      },
-      "id": "reactflow__edge-6OR-4Input"
-    },
-    {
-      "source": "6",
+      "source": "7",
       "sourceHandle": "AND",
       "target": "3",
       "targetHandle": "Input",
@@ -389,12 +365,36 @@
         "stroke": "#30362F",
         "strokeWidth": 1
       },
-      "id": "reactflow__edge-6AND-3Input"
+      "id": "reactflow__edge-7AND-3Input"
+    },
+    {
+      "source": "7",
+      "sourceHandle": "OR",
+      "target": "4",
+      "targetHandle": "Input",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-7OR-4Input"
+    },
+    {
+      "source": "7",
+      "sourceHandle": "XOR",
+      "target": "5",
+      "targetHandle": "Input",
+      "type": "step",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "id": "reactflow__edge-7XOR-5Input"
     }
   ],
   "viewport": {
-    "x": -6.02168945804965,
-    "y": 20.899164918946838,
-    "zoom": 1.0536342789058029
+    "x": 84.05414463999557,
+    "y": 84.62375931474395,
+    "zoom": 1.2103079629475832
   }
 }

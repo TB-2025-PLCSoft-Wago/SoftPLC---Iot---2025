@@ -9,8 +9,12 @@ type FunctionInputValueNode struct {
 	nodeType           string
 	output             []InputNodeHandle
 	parameterValueData []string //select Appliance name + value +
+	functionName       string
 }
 
+func (n *FunctionInputValueNode) GiveFunctionName(name string) {
+	n.functionName = name
+}
 func (n *FunctionInputValueNode) GetNodeType() string {
 	return n.nodeType
 }
@@ -55,7 +59,7 @@ func (n *FunctionInputValueNode) InitNode(id_ int, nodeType_ string, output_ []I
 		n.parameterValueData = append(n.parameterValueData, "")
 	}
 	n.output[0].FriendlyName = n.parameterValueData[0]
-	function.AddInput(n.parameterValueData[0], n.parameterValueData[1])
+	function.AddInput(n.parameterValueData[0], n.parameterValueData[1], n.functionName)
 
 }
 
