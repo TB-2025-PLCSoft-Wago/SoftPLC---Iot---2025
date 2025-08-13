@@ -209,8 +209,45 @@ Ces tableaux permettent la transmission des données entre le #gls("backend") et
  #iconbox(linecolor: hei-pink)[Un exemple de la structure JSON d’un bloc _MQTT_ est présenté en annexe, à la section @sec:mqttConfiguration.]
 
 //TO DO : Mettre en annexe comment rajouter parameterValueData et parameterValueData
+== Diagramme de classes
+Le diagramme de classes @fig:diagrammeClasses-vs-vue présente les principales classes
+et leurs relations dans le système. Il est important de noter que ce diagramme n'est pas exhaustif et ne couvre pas toutes les classes du système, mais il donne une vue d'ensemble des principales classes et de leurs relations. Il est basé sur le code du #gls("backend")
+et peut être utilisé pour mieux comprendre la structure du système.
+#set page(
+  flipped: true,
+)
+#figure(
+  image("/resources/img/100_Architecture_Class_backend.png", width: 99%),
+  caption: [
+    diagramme de classes du #gls("backend") 
+  ],
+)
+#label("fig:diagrammeClasses-vs-vue")
 
-
+#figure(
+  image("/resources/img/100_Architecture_Class_backend_1_node.png", width: 99%),
+  caption: [
+    diagramme de classes du #gls("backend")  - Nodes
+  ],
+)
+#figure(
+  image("/resources/img/100_Architecture_Class_backend_2_var.png", width: 100%),
+  caption: [
+    diagramme de classes du #gls("backend")  - variable
+  ],
+)
+#figure(
+  image("/resources/img/100_Architecture_Class_backend_3_serve.png", width: 100%),
+  caption: [
+    diagramme de classes du #gls("backend")  - Server + Function + echo + i/o
+  ],
+)
+#figure(
+  image("/resources/img/100_Architecture_Class_backend_4_process.png", width: 99%),
+  caption: [
+    diagramme de classes du #gls("backend")  - processGraph
+  ],
+)
 /*
 == Section 1
   Liste :

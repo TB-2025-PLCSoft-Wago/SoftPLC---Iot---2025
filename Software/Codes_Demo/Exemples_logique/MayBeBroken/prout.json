@@ -1,0 +1,104 @@
+{
+  "nodes": [
+    {
+      "accordionName": "Inputs",
+      "type": "inputNode",
+      "display": "Input Node",
+      "label": "Input",
+      "draggable": true
+    },
+    {
+      "accordionName": "Outputs",
+      "type": "outputNode",
+      "display": "Output Node",
+      "label": "Output",
+      "draggable": true
+    },
+    {
+      "accordionName": "Loggical gate",
+      "type": "AndNode",
+      "display": "And Node",
+      "label": "&",
+      "draggable": true,
+      "stretchable": true,
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordionName": "Logical gate",
+      "type": "OrNode",
+      "display": "Or Node",
+      "label": ">=1",
+      "draggable": true,
+      "stretchable": true,
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordionName": "Timer",
+      "type": "TONNode",
+      "display": "Ton Node",
+      "label": "TON",
+      "draggable": true,
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        },
+        {
+          "dataType": "value",
+          "name": "Time"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
+    },
+    {
+      "accordionName": "Timer",
+      "type": "TOFNode",
+      "display": "Tof Node",
+      "label": "TOF",
+      "draggable": true,
+      "input": [
+        {
+          "dataType": "bool",
+          "name": "Input"
+        },
+        {
+          "dataType": "value",
+          "name": "Time"
+        }
+      ],
+      "output": [
+        {
+          "dataType": "bool",
+          "name": "Output"
+        }
+      ]
+    }
+  ]
+}

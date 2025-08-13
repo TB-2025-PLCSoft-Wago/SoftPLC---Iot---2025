@@ -1,0 +1,120 @@
+{
+  "edges": [
+    {
+      "id": "reactflow__edge-0Output-1Input0",
+      "source": "0",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "1",
+      "targetHandle": "Input0",
+      "type": "customStep"
+    }
+  ],
+  "nodes": [
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "And Node",
+        "id": "0",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u0026",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "AndNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 141,
+      "id": "0",
+      "position": {
+        "x": 318.6842655139928,
+        "y": 69.52003341318067
+      },
+      "positionAbsolute": {
+        "x": 318.6842655139928,
+        "y": 69.52003341318067
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Or Node",
+        "id": "1",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "\u003e=1",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": true,
+        "subServices": [],
+        "type": "OrNode",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 181,
+      "id": "1",
+      "position": {
+        "x": 557.504590688537,
+        "y": 119.64586813872981
+      },
+      "positionAbsolute": {
+        "x": 557.504590688537,
+        "y": 119.64586813872981
+      },
+      "selected": false,
+      "type": "LogicalNode",
+      "width": 101
+    }
+  ],
+  "viewport": {
+    "x": -61.027686589718314,
+    "y": 37.35057210254956,
+    "zoom": 1.4339552480158275
+  }
+}

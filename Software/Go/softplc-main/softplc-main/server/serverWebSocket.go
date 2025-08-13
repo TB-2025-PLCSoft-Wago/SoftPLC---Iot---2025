@@ -40,12 +40,6 @@ type Input struct {
 	TextInput bool   `json:"textInput,omitempty"`
 }
 
-/*
-	type Output struct {
-		defaultValue  string
-		overrides     bool
-	}
-*/
 type ApplianceUpdate struct {
 	Type      string   `json:"type"` // always "update"
 	Appliance string   `json:"appliance"`
@@ -95,33 +89,6 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 	clientsMu.Unlock()
 
 	fmt.Println("🟢 client connected")
-
-	/*
-			appliancesJSON := `{
-		    "type": "appliances",
-		    "appliances": [
-					{
-						"name": "TV",
-						"inputs": [
-							{ "text": "Power", "irCode": 123456 },
-							{ "text": "Volume Up", "irCode": 789012 }
-						]
-					},
-					{
-						"name": "HiFi",
-						"inputs": [
-							{ "text": "Bass down", "irCode": 345678 }
-						]
-					},
-					{
-						"name": "Rien",
-						"inputs": [
-							{ "text": "Rien en txt", "irCode": 12431122 },
-							{ "text": "Volume", "irCode": 789012, "textInput": true }
-						]
-					}
-				]
-			}`*/
 	jsonBytes, err := json.Marshal(appliancesJSON)
 	if err != nil {
 		log.Println("Error server webSocket Marshal JSON :", err)
@@ -142,12 +109,9 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 
 			break
 		}
-
-		//fmt.Println("Received:", string(msg))
 		handleIncomingMessage(conn, msg)
 
 		//conn.WriteMessage(websocket.TextMessage, []byte("Echo: "+string(msg))) // Reply only to the one who sent
-		//initOutput()
 	}
 }
 
@@ -245,60 +209,6 @@ func initOutput() {
 		}
 	}
 }
-
-/*
-func initOutput() {
-	appliances := []ApplianceUpdate{
-		{
-			Type:      "update",
-			Appliance: "TV",
-			Outputs: []Output{
-				{ID: 1, Name: "Power State", ApplianceName: "TV", Type: "bool", Value: true},
-				{ID: 2, Name: "Current Channel", ApplianceName: "TV", Type: "string", Value: "Netflix"},
-				{ID: 3, Name: "Volume", ApplianceName: "TV", Type: "float", Value: 17.5},
-			},
-		},
-		{
-			Type:      "update",
-			Appliance: "HiFi",
-			Outputs: []Output{
-				{ID: 1, Name: "Power State", ApplianceName: "HiFi", Type: "bool", Value: false},
-				{ID: 2, Name: "Bass Level", ApplianceName: "HiFi", Type: "float", Value: 3.2},
-				{ID: 3, Name: "Source", ApplianceName: "HiFi", Type: "string", Value: "Bluetooth"},
-			},
-		},
-
-		{
-			Type:      "update",
-			Appliance: "home",
-			Outputs: []Output{
-				{ID: 1, Name: "Power State of home", ApplianceName: "home", Type: "bool", Value: false},
-				{ID: 2, Name: "home Level", ApplianceName: "home", Type: "float", Value: 3.2},
-				{ID: 3, Name: "Source home", ApplianceName: "home", Type: "string", Value: "Bluetooth"},
-			},
-		},
-	}
-
-	clientsMu.Lock()
-	defer clientsMu.Unlock()
-
-	for conn := range clients {
-		for _, appliance := range appliances {
-			jsonData, err := json.Marshal(appliance)
-			if err != nil {
-				fmt.Println("JSON marshal error:", err)
-				continue
-			}
-			err = conn.WriteMessage(websocket.TextMessage, jsonData)
-			if err != nil {
-				fmt.Println("Send error:", err)
-				conn.Close()
-				delete(clients, conn)
-			}
-		}
-	}
-}*/
-
 func handleIncomingMessage(conn *websocket.Conn, msg []byte) {
 
 	var data map[string]interface{}
@@ -352,8 +262,6 @@ func handleIncomingMessage(conn *websocket.Conn, msg []byte) {
 		fmt.Println("🖱️ edge clicked:", data)
 
 		if data["tool"] == "DisplayConnectionDebug" {
-			//fmt.Println("🖱️ edge clicked DisplayConnectionDebug")
-			//delete if exist else append
 			source, ok1 := data["source"].(string)
 			sourceHandle, ok2 := data["sourceHandle"].(string)
 			if ok1 && ok2 {
@@ -375,7 +283,6 @@ func handleIncomingMessage(conn *websocket.Conn, msg []byte) {
 
 	default:
 		fmt.Println("📦 Unrecognized JSON message:", data)
-		//conn.WriteMessage(websocket.TextMessage, []byte("Format not recognized"))
 	}
 }
 
@@ -480,98 +387,6 @@ func UpdateOutputValueByID(outputID int, newValue interface{}) {
 	}
 	log.Printf("⚠️ No OutputState with ID %d found\n", outputID)
 }
-
-/*
-func UpdateOutputValueByID(outputID int, newValue interface{}) {
-	//Update OutputsStateWeb
-	for i := range OutputsStateWeb {
-		if OutputsStateWeb[i].ID == outputID {
-			OutputsStateWeb[i].Value = newValue
-
-			// Find the appliance from the outputID
-			for applianceName, outputs := range AllOutputsByAppliance {
-				for j := range outputs {
-					if outputs[j].ID == outputID {
-						/*
-							// Update the value in the local copy
-							switch outputs[j].Type {
-							case "number":
-								//output.Value, _ = strconv.ParseFloat(newValue, 64)
-							case "value":
-								outputs[j].Value = newValue
-							case "bool":
-								if newValue == "1" {
-									outputs[j].Value = true
-								} else {
-									outputs[j].Value = false
-								}
-							default:
-								fmt.Println("Unrecognized type of typeOf : ", outputs[j].Type)
-								continue
-							}
-*/
-/*
-						// Update AllOutputsByAppliance
-						AllOutputsByAppliance[applianceName][j] = outputs[j]
-
-						// Update the values of all outputs of this device
-						for k := range AllOutputsByAppliance[applianceName] {
-							for _, state := range OutputsStateWeb {
-								if AllOutputsByAppliance[applianceName][k].ID == state.ID {
-									switch AllOutputsByAppliance[applianceName][k].Type {
-									case "number":
-										//output.Value, _ = strconv.ParseFloat(newValue, 64)
-									case "value":
-										AllOutputsByAppliance[applianceName][k].Value = state.Value
-									case "bool":
-										if state.Value == "1" {
-											AllOutputsByAppliance[applianceName][k].Value = true
-										} else {
-											AllOutputsByAppliance[applianceName][k].Value = false
-										}
-									default:
-										fmt.Println("Unrecognized type of typeOf : ", AllOutputsByAppliance[applianceName][k].Type)
-										continue
-									}
-								}
-							}
-						}
-
-						// Send the entire output array for this device
-						applianceUpdate := ApplianceUpdate{
-							Type:      "update",
-							Appliance: applianceName,
-							Outputs:   AllOutputsByAppliance[applianceName],
-						}
-
-						jsonData, err := json.Marshal(applianceUpdate)
-						if err != nil {
-							log.Println("❌ JSON marshal error in UpdateOutputValueByID:", err)
-							return
-						}
-
-						clientsMu.Lock()
-						defer clientsMu.Unlock()
-						for conn := range clients {
-							err = conn.WriteMessage(websocket.TextMessage, jsonData)
-							if err != nil {
-								fmt.Println("Send error:", err)
-								conn.Close()
-								delete(clients, conn)
-							}
-						}
-						return
-					}
-				}
-			}
-
-			log.Printf("⚠️ Complete output not found for ID %d\n", outputID)
-			return
-		}
-	}
-
-	log.Printf("⚠️ No OutputState with ID %d found\n", outputID)
-}*/
 
 func UpdateOutputValueView() {
 	if outputChange {

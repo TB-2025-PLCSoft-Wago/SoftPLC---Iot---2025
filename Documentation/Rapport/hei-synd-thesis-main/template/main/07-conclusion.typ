@@ -164,12 +164,12 @@ vers _nodeFunctions_ autorisé par _Golang_.
 === Améliorer la création de fonctions
 Un objectif pour la suite est d’optimiser la possibilité pour l’intégrateur de créer ses propres blocs de fonction. 
 Cette fonctionnalité, déjà développée (@sec:CreatFonct), nécessite toutefois des améliorations pour un meilleur fonctionnement. Une phase de test approfondie sera aussi indispensable.
-
+/*
 Par exemple, il faut ajouter la prise en charge du multi-instance pour les blocs internes qui dépendent de leur état précédent, 
 comme les SR ou les Trigger. Concrètement, chaque bloc de la fonction implémentée devrait disposer de sa propre instance, 
 et non partager un seul état commun. 
-
-Il faudrait également offrir un moyen de modifier facilement les paramètres d’une fonction.  
+*/
+Par exemple, il faudrait offrir un moyen de modifier facilement les paramètres d’une fonction.  
 Une possibilité serait d’afficher une case à cocher pour chaque paramètre lorsque la vue est activée.
 Les paramètres cochés apparaîtraient alors comme variables configurables de la fonction.  
 Une autre idée consisterait à créer un tableau de variables propre au graphique affiché, 

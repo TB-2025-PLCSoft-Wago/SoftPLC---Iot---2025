@@ -1,0 +1,377 @@
+{
+  "edges": [
+    {
+      "id": "reactflow__edge-6Output-5Input",
+      "source": "6",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "5",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-3Output-4Input",
+      "source": "3",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "4",
+      "targetHandle": "Input",
+      "type": "step"
+    },
+    {
+      "id": "reactflow__edge-0Output-2Input",
+      "source": "0",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "2",
+      "targetHandle": "Input",
+      "type": "step"
+    }
+  ],
+  "nodes": [
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input bool",
+        "id": "0",
+        "inputHandle": [],
+        "label": "view Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "Garage",
+          "open / close door"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "0",
+      "position": {
+        "x": 527,
+        "y": 308
+      },
+      "positionAbsolute": {
+        "x": 527,
+        "y": 308
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 202
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "2",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage",
+        "selectedSubServiceData": "is door open",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "2",
+      "position": {
+        "x": 915.8234753888171,
+        "y": 311.836148639636
+      },
+      "positionAbsolute": {
+        "x": 915.8234753888171,
+        "y": 311.836148639636
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 202
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input bool",
+        "id": "3",
+        "inputHandle": [],
+        "label": "view Input bool",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "Garage",
+          "turn on / off"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "bool",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "3",
+      "position": {
+        "x": 526.1679086109834,
+        "y": 445.719206492551
+      },
+      "positionAbsolute": {
+        "x": 526.1679086109834,
+        "y": 445.719206492551
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 202
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output Bool",
+        "id": "4",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Bool",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Garage",
+        "selectedSubServiceData": "is light on",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputBool",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "4",
+      "position": {
+        "x": 843.2355692088436,
+        "y": 448.02421447533743
+      },
+      "positionAbsolute": {
+        "x": 843.2355692088436,
+        "y": 448.02421447533743
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 202
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Output value",
+        "id": "5",
+        "inputHandle": [
+          {
+            "dataType": "value",
+            "name": "Input"
+          }
+        ],
+        "label": "view Output Value",
+        "outputHandle": [],
+        "parameterNameData": null,
+        "primaryType": "outputNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "Heater",
+        "selectedSubServiceData": "temperature setpoint",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "DO1",
+              "DO2",
+              "DO3",
+              "DO4",
+              "DO5",
+              "DO6",
+              "DO7",
+              "DO8"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebOutputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "5",
+      "position": {
+        "x": 846.1005133293388,
+        "y": 609.6744539589291
+      },
+      "positionAbsolute": {
+        "x": 846.1005133293388,
+        "y": 609.6744539589291
+      },
+      "selected": false,
+      "type": "outputNode",
+      "width": 202
+    },
+    {
+      "data": {
+        "accordion": "View web",
+        "dataType": "",
+        "display": "Input value",
+        "id": "6",
+        "inputHandle": [],
+        "label": "view Input value",
+        "outputHandle": [
+          {
+            "dataType": "value",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": [
+          "appliance name",
+          "signal name"
+        ],
+        "parameterValueData": [
+          "Heater",
+          "temperature setpoint"
+        ],
+        "primaryType": "inputNode",
+        "selectedFriendlyNameData": "",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "",
+        "services": [
+          {
+            "friendlyName": "",
+            "nameServices": [
+              "value",
+              "number",
+              "string"
+            ]
+          }
+        ],
+        "stretchable": false,
+        "subServices": [],
+        "type": "viewWebInputValue",
+        "valueData": ""
+      },
+      "dragging": false,
+      "height": 82,
+      "id": "6",
+      "position": {
+        "x": 542.199341744004,
+        "y": 606.6430208259085
+      },
+      "positionAbsolute": {
+        "x": 542.199341744004,
+        "y": 606.6430208259085
+      },
+      "selected": false,
+      "type": "inputNode",
+      "width": 202
+    }
+  ],
+  "viewport": {
+    "x": -659.6281490191441,
+    "y": -559.5007721235993,
+    "zoom": 2
+  }
+}
