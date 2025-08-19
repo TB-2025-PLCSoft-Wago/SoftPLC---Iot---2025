@@ -83,9 +83,9 @@ func EchoServer() {
 			return err
 		}
 		savedJson = jsonBody
-
+		//TODO : Uncomment to save in file
 		// Convert to JSON to save in file
-		jsonData, err := json.MarshalIndent(jsonBody, "", "  ")
+		/*jsonData, err := json.MarshalIndent(jsonBody, "", "  ")
 		if err != nil {
 			return err
 		}
@@ -93,7 +93,7 @@ func EchoServer() {
 		err2 := os.WriteFile("graph_marcelin_tof.json", jsonData, 0644)
 		if err2 != nil {
 			return err2
-		}
+		}*/
 		return c.HTML(http.StatusOK, "Graph saved")
 	})
 
@@ -108,8 +108,8 @@ func EchoServer() {
 		if err := json.Unmarshal(jsonData, &data); err != nil {
 			return err
 		}
-		return c.JSON(http.StatusOK, data)
-		//return c.JSON(http.StatusOK, savedJson)
+		//return c.JSON(http.StatusOK, data) //return from file
+		return c.JSON(http.StatusOK, savedJson) //return from variable
 	})
 
 	e.GET("/get-description", func(c echo.Context) error {

@@ -1,9 +1,120 @@
 {
-  "edges": [],
-  "nodes": [],
+  "edges": [
+    {
+      "id": "reactflow__edge-0Output-1S",
+      "source": "0",
+      "sourceHandle": "Output",
+      "style": {
+        "stroke": "#30362F",
+        "strokeWidth": 1
+      },
+      "target": "1",
+      "targetHandle": "S",
+      "type": "step"
+    }
+  ],
+  "nodes": [
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "Not Node",
+        "id": "0",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Input"
+          }
+        ],
+        "label": "Not",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Output"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "NotNode",
+        "valueData": ""
+      },
+      "height": 142,
+      "id": "0",
+      "position": {
+        "x": 709,
+        "y": 240
+      },
+      "positionAbsolute": {
+        "x": 709,
+        "y": 240
+      },
+      "type": "LogicalNode",
+      "width": 102
+    },
+    {
+      "data": {
+        "accordion": "Logical gate",
+        "display": "SR Node",
+        "id": "1",
+        "inputHandle": [
+          {
+            "dataType": "bool",
+            "name": "S"
+          },
+          {
+            "dataType": "bool",
+            "name": "R1"
+          }
+        ],
+        "label": "SR",
+        "outputHandle": [
+          {
+            "dataType": "bool",
+            "name": "Q"
+          }
+        ],
+        "parameterNameData": null,
+        "parameterValueData": [
+          "",
+          "",
+          ""
+        ],
+        "primaryType": "LogicalNode",
+        "selectedFriendlyNameData": "default",
+        "selectedServiceData": "default",
+        "selectedSubServiceData": "default",
+        "services": [],
+        "stretchable": false,
+        "subServices": [],
+        "type": "SRNode",
+        "valueData": ""
+      },
+      "height": 182,
+      "id": "1",
+      "position": {
+        "x": 909.5,
+        "y": 327
+      },
+      "positionAbsolute": {
+        "x": 909.5,
+        "y": 327
+      },
+      "type": "LogicalNode",
+      "width": 102
+    }
+  ],
   "viewport": {
-    "x": 0,
-    "y": 0,
-    "zoom": 1
+    "x": -116.98642712716969,
+    "y": 53.55899295895273,
+    "zoom": 1.1486983549970349
   }
 }

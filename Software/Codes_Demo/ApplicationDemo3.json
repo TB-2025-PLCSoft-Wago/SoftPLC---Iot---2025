@@ -1691,8 +1691,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 247,
-      "height": 422,
+      "width": 250,
+      "height": 425,
       "data": {
         "accordion": "Communication",
         "display": "HTTP Node",
@@ -1736,7 +1736,7 @@
           "header Value 2"
         ],
         "parameterValueData": [
-          "http://192.168.37.59/",
+          "http://192.168.37.58/",
           "",
           "",
           "",
@@ -4138,7 +4138,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Retain last push"
       },
@@ -4520,7 +4520,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Garage open logique"
       },
@@ -4540,7 +4540,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Garage close logique"
       },
@@ -6676,7 +6676,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Read Modbus garage state"
       },
@@ -6695,7 +6695,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Write Modbus garage state  -Close / Open Door"
       },
@@ -7948,7 +7948,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Heater low temperature default 21"
       },
@@ -7967,7 +7967,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Heater high temperature default 23"
       },
@@ -9671,7 +9671,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Read Kitchen Light"
       },
@@ -9690,7 +9690,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Write garage light"
       },
@@ -9709,7 +9709,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Write Kitchen light"
       },
@@ -9942,7 +9942,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "OFF all light with long press"
       },
@@ -9961,7 +9961,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Garage stop logique"
       },
@@ -10032,7 +10032,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Send to MyStrom"
       },
@@ -10716,7 +10716,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Garage door light of color"
       },
@@ -10735,7 +10735,7 @@
     },
     {
       "width": 216,
-      "height": 52,
+      "height": 51,
       "data": {
         "text": "Interface light of color"
       },
@@ -10754,8 +10754,8 @@
       "type": "commentNode"
     },
     {
-      "width": 106,
-      "height": 146,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Logical gate",
         "display": "Not Node",
@@ -10859,8 +10859,8 @@
       "type": "inputNode"
     },
     {
-      "width": 206,
-      "height": 86,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -10916,8 +10916,8 @@
       "type": "inputNode"
     },
     {
-      "width": 206,
-      "height": 86,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -10973,8 +10973,8 @@
       "type": "inputNode"
     },
     {
-      "width": 206,
-      "height": 86,
+      "width": 202,
+      "height": 82,
       "data": {
         "accordion": "View web",
         "dataType": "",
@@ -11078,8 +11078,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 106,
-      "height": 146,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -11178,8 +11178,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 106,
-      "height": 146,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -11278,8 +11278,8 @@
       "type": "LogicalNode"
     },
     {
-      "width": 106,
-      "height": 146,
+      "width": 102,
+      "height": 142,
       "data": {
         "accordion": "Edge Detection",
         "display": "RF_trig Node",
@@ -14217,8 +14217,8 @@
     }
   ],
   "viewport": {
-    "x": 124.79026174701312,
-    "y": -2108.900801911076,
+    "x": 1128.1092424142998,
+    "y": -1613.3585740983694,
     "zoom": 0.5
   }
 }
